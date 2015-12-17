@@ -1,0 +1,15 @@
+//bootstrap
+$enable-flex: true;
+
+//$brand-primary: #ff8a00;
+//$brand-primary:#F88D2D;
+$brand-primary: lighten(#DC4E00, 10%);
+//$brand-primary: #ED1D24;
+
+$brand-secondary: #0087cf;
+$link-color: $brand-secondary;
+
+$font-family-sans-serif: -apple-system, "Helvetica Neue", Roboto, Arial, sans-serif;
+
+//$navbar-padding-vertical: 0.3rem;
+$navbar-border-radius: 0;
