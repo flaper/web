@@ -17,7 +17,6 @@ export class StoriesAutoList {
 
   constructor(private storyService:StoryService) {
     this.storyService.get().subscribe((stories) => {
-      console.log(stories);
       this.stories = stories;
     })
   }

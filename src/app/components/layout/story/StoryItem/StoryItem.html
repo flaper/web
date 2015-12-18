@@ -1,0 +1,7 @@
+<div>
+  <a [routerLink]="['/Story', {slug: story.slug}]"><h3>{{story.title}}</h3></a>
+
+  <div>
+    {{story.content.substring(0,100)}}
+  </div>
+</div>
