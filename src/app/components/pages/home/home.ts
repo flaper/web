@@ -1,4 +1,5 @@
 import {Component} from 'angular2/core';
+import {AuthService} from "../../../services/AuthService";
 
 @Component({
   selector: 'page-home',
@@ -8,4 +9,7 @@ import {Component} from 'angular2/core';
   template: require('./home.html')
 })
 export class PageHome {
+  constructor(private authService:AuthService) {
+
+  }
 }

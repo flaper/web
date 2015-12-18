@@ -18,7 +18,7 @@
       </li>
       <li class="nav-item" *ngIf="authService.currentUser">
         <span class="nav-link">
-        {{authService.currentUser.username}}
+        {{authService.currentUser.displayName}}
         </span>
       </li>
       <li class="nav-item" *ngIf="authService.currentUser">
