@@ -1,3 +1,6 @@
+#Configs
+/src/app/config/*.local.json
+/src/app/config/*.local.js
 # Logs
 logs
 *.log
