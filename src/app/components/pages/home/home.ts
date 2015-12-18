@@ -1,15 +1,15 @@
 import {Component} from 'angular2/core';
-import {AuthService} from "../../../services/AuthService";
+import {StoriesAutoList} from "../story/StoriesAutoList/StoriesAutoList";
 
 @Component({
   selector: 'page-home',
-  directives: [],
+  directives: [StoriesAutoList],
   pipes: [],
   styles: [require('./home.scss')],
   template: require('./home.html')
 })
 export class PageHome {
-  constructor(private authService:AuthService) {
+  constructor() {
 
   }
 }
