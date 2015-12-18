@@ -1,5 +1,15 @@
 @import "../../../../css/variables";
 
-.navbar{
+.navbar {
   background-color: $brand-secondary;
+}
+
+.navbar-brand {
+  float: none;
+}
+
+@media (min-width: map-get($grid-breakpoints, 'sm')) {
+  .navbar-brand {
+    float: left;
+  }
 }
