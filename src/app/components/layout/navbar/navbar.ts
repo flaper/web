@@ -1,5 +1,6 @@
 import {Component} from 'angular2/core';
 import {ROUTER_DIRECTIVES} from 'angular2/router';
+import {AuthService} from "../../../services/AuthService";
 
 @Component({
   selector: 'navbar',
@@ -8,6 +9,10 @@ import {ROUTER_DIRECTIVES} from 'angular2/router';
   template: require('./navbar.html')
 })
 export class Navbar {
-  constructor() {
+  constructor(private authService:AuthService) {
+  }
+
+  logout() {
+    this.authService.logout();
   }
 }

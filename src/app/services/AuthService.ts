@@ -1,5 +1,8 @@
 import {Injectable} from 'angular2/core';
-import {ApiService, API_BASE_URL} from'./ApiService';
+import {ApiService, API_SERVER_URL} from'./ApiService';
+import * as Rx from 'rxjs';
+import {UrlService} from './UrlService';
+import {Router} from "angular2/router";
 
 interface Provider {
   name: string
@@ -14,14 +17,114 @@ export let PROVIDERS:Provider[] = [
 ];
 
 PROVIDERS.forEach((provider:Provider) => {
-  provider.authLink = `${API_BASE_URL}auth/${provider.name}`
+  provider.authLink = `${API_SERVER_URL}/auth/${provider.name}`
 });
+
+interface JwtData {
+  id:string;
+  userId:string,
+  created: Date,
+  //seconds
+  ttl: number
+}
+
+export class User {
+  id:string;
+  fullName:string
+}
 
 @Injectable()
 export class AuthService {
-  constructor(private apiService:ApiService) {
+  jwtData:JwtData;
+  currentUser:User;
+  currentUserObservable:Rx.Subject<User>;
 
+  constructor(private api:ApiService, private router:Router) {
+    this.currentUserObservable = new Rx.BehaviorSubject<User>(null);
+    //first let's try to get jwt from URL, then from cache
+    let params = UrlService.getSearchParameters();
+    if (params['jwt']) {
+      let jwtString = decodeURIComponent(params['jwt']);
+      this.validateJwtAndRequestUser(jwtString);
+    }
+    if (this.jwtData) {
+      router.navigate(['/Home']);
+    } else {
+      this.parseJwtCache();
+    }
+  }
+
+  setCurrentUser(user) {
+    localStorage.setItem('currentUser', JSON.stringify(user));
+    this.currentUser = user;
+    this.currentUserObservable.next(user);
+  }
+
+  logout() {
+    this._setJwtData(null);
+    //we don't clear currentUser to make login process faster next time
+    this.currentUser = null;
+    this.currentUserObservable.next(null);
+  }
+
+  parseJwtCache():boolean {
+    let jwtString = localStorage.getItem('jwt');
+    return this.validateJwtAndRequestUser(jwtString);
+  }
+
+  validateJwtAndRequestUser(jwtString:string):boolean {
+    let valid = false;
+    if (jwtString) {
+      try {
+        let jwt = JSON.parse(jwtString);
+        jwt.created = new Date(jwt.created);
+        let validTill = new Date(jwt.created.getTime() + jwt.ttl * 1000);
+        if (jwt.userId && validTill > new Date()) {
+          this._setJwtData(jwt);
+          valid = true;
+          this.setUserFromCache();
+          this.requestUser();
+        }
+      }
+      finally {
+      }
+    }
+    return valid;
+  }
+
+  //can be called before requestUser to decrease app latency
+  setUserFromCache() {
+    let userJSON = localStorage.getItem('currentUser');
+    if (userJSON) {
+      try {
+        let user = JSON.parse(userJSON);
+        //if last user in the cache is the same as credential user
+        if (this.jwtData.userId === user.id) {
+          this.setCurrentUser(user);
+        }
+      }
+      finally {
+      }
+    }
+  }
+
+  requestUser() {
+    let userId = this.jwtData.userId;
+    let observer = this.api.request('get', `users/${userId}`);
+    observer.subscribe(user => this.setCurrentUser(user));
+
+    return observer;
+  }
+
+  _setJwtData(jwtData) {
+    this.jwtData = jwtData;
+    if (jwtData) {
+      localStorage.setItem('jwt', JSON.stringify(jwtData));
+    } else {
+      localStorage.removeItem('jwt');
+    }
   }
 }
+
 
 export let AUTH_SERVICE_PROVIDER = [AuthService];
