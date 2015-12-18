@@ -1,0 +1,15 @@
+{
+  "name": "flaper.org",
+  "homepage": "http://flaper.org",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src/public/bower",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-social": "~4.11.0"
+  }
+}

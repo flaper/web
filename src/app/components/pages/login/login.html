@@ -1,7 +1,12 @@
 <div class="container">
   <h1 class="text-xs-center">Вход</h1>
 
-  <div class="center-block">
-    <button class="btn btn-primary">Войти</button>
+  <div class="login-btns center-block">
+
+    <div *ngFor="#provider of PROVIDERS">
+      <a class="btn btn-block btn-lg btn-social btn-{{provider.name}}">
+        <i class="fa fa-{{provider.name}}"></i>{{provider.loginTitle}}
+      </a>
+    </div>
   </div>
 </div>
