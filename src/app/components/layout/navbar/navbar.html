@@ -7,11 +7,7 @@
   </span>
 
   <div class="collapse navbar-toggleable-xs" id="mainNavbar">
-    <ul class="nav navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" [routerLink]=" ['/Home'] ">Главная</a>
-      </li>
-    </ul>
+    <a class="btn btn-primary btn-sm navbar-btn" [routerLink]="['/CreateStory']">Создать статью</a>
     <ul class="nav navbar-nav pull-xs-right">
       <li class="nav-item" *ngIf="!userService.currentUser">
         <a class="nav-link" [routerLink]=" ['/Login'] "><i class="fa fa-sign-in"></i> Вход</a>

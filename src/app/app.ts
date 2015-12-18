@@ -8,6 +8,7 @@ import {Navbar} from './components/layout/navbar/navbar';
 //pages
 import {PageHome} from './components/pages/home/home';
 import {PageLogin} from './components/pages/login/login';
+import {PageCreateStory} from './components/pages/story/create/create';
 
 @Component({
   selector: 'app',
@@ -29,7 +30,8 @@ import {PageLogin} from './components/pages/login/login';
 })
 @RouteConfig([
   {path: '/', component: PageHome, name: 'Home'},
-  {path: '/login', component: PageLogin, name: 'Login'}
+  {path: '/login', component: PageLogin, name: 'Login'},
+  {path: '/create_story', component: PageCreateStory, name: 'CreateStory'}
 ])
 export class App {
   constructor() {
