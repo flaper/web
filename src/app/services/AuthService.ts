@@ -3,6 +3,7 @@ import {ApiService, API_SERVER_URL} from'./ApiService';
 import * as Rx from 'rxjs';
 import {UrlService} from './UrlService';
 import {Router} from "angular2/router";
+import {User} from "../models/common/User";
 
 interface Provider {
   name: string
@@ -28,15 +29,10 @@ interface JwtData {
   ttl: number
 }
 
-export class User {
-  id:string;
-  fullName:string
-}
-
 @Injectable()
 export class AuthService {
   jwtData:JwtData;
-  currentUser:User;
+  //don't use this, better use UserService.currentUserObservable
   currentUserObservable:Rx.Subject<User>;
 
   constructor(private api:ApiService, private router:Router) {
@@ -56,14 +52,12 @@ export class AuthService {
 
   setCurrentUser(user) {
     localStorage.setItem('currentUser', JSON.stringify(user));
-    this.currentUser = user;
     this.currentUserObservable.next(user);
   }
 
   logout() {
     this._setJwtData(null);
     //we don't clear currentUser to make login process faster next time
-    this.currentUser = null;
     this.currentUserObservable.next(null);
   }
 
