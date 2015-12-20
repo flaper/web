@@ -1,5 +1,5 @@
 <div class="container" *ngIf="user">
   <h1>{{user.displayName}}</h1>
-  <stories-auto-list>
+  <stories-auto-list [where]="{userId: user.id}">
   </stories-auto-list>
 </div>

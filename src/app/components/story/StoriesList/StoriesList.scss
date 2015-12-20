@@ -1,0 +1,10 @@
+@import "../../../../css/variables";
+
+story-item {
+  padding: 1rem 0;
+  margin: 0 0;
+}
+
+story-item:not(:last-of-type) {
+  border-bottom: 1px solid $gray-lighter;
+}

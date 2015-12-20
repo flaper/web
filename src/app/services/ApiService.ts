@@ -1,7 +1,10 @@
 import {Injectable} from 'angular2/core';
-import {Http, RequestOptionsArgs, Headers} from 'angular2/http';
+import {Http, RequestOptionsArgs, Headers, URLSearchParams} from 'angular2/http';
 
 import {Config} from '../config/Config';
+import {URLSearchParams} from "../../../node_modules/angular2/ts/src/http/url_search_params";
+import {Url} from "url";
+import {URLSearchParams} from "../../../node_modules/angular2/ts/src/http/url_search_params";
 export const API_SERVER_URL = `http://${Config.api.host}:${Config.api.port}`;
 
 const API_BASE_URL = `${API_SERVER_URL}/api/`;
@@ -26,7 +29,8 @@ export class ApiService {
     return null;
   }
 
-  request(method, url, data = {}) {
+
+  request(method, url, data = null) {
     let token = ApiService.getJwtToken();
     let options:RequestOptionsArgs = {
       "headers": new Headers({
@@ -39,6 +43,7 @@ export class ApiService {
     let query;
     switch (method) {
       case 'get':
+        options.search = this._mapToURLSearchParams(data);
         query = this.http.get(finalUrl, options);
         break;
       default:
@@ -74,6 +79,15 @@ export class ApiService {
     });
   }
 
+  private _mapToURLSearchParams(map) {
+    let params = new URLSearchParams();
+    if (map) {
+      Object.keys(map).forEach((key) => {
+        params.set(key, map[key]);
+      });
+    }
+    return params;
+  }
 }
 
 export let API_SERVICE_PROVIDER = [ApiService];

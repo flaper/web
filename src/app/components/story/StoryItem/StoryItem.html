@@ -1,7 +1,13 @@
 <div>
+  <div class="story-item-header">
+    <div>
+      <user-link [userId]="story.userId"></user-link>
+    </div>
+    <div class="time">{{story.created | amTimeAgo}}</div>
+  </div>
   <a [routerLink]="['/Story', {slug: story.slug}]"><h3>{{story.title}}</h3></a>
 
   <div>
-    {{story.content.substring(0,100)}}
+    {{story.content.substring(0,200)}}
   </div>
 </div>

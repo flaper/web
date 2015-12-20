@@ -13,10 +13,16 @@ import {StoryService} from "../../../services/StoryService";
   template: require('./StoriesAutoList.html')
 })
 export class StoriesAutoList {
+  @Input()
+  where = {};
+
   stories:Story[] = [];
 
   constructor(private storyService:StoryService) {
-    this.storyService.get().subscribe((stories) => {
+  }
+
+  ngOnInit() {
+    this.storyService.get({where: this.where}).subscribe((stories) => {
       this.stories = stories;
     })
   }

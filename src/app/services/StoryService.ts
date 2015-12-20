@@ -7,8 +7,8 @@ export class StoryService {
   constructor(private api:ApiService) {
   }
 
-  get() {
-    return this.api.request('get', 'stories');
+  get({where}) {
+    return this.api.request('get', 'stories', {filter: JSON.stringify({where: where})});
   }
 
   getBySlug(slug) {

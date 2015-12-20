@@ -1,3 +1,5 @@
+/// <reference path="../../typings/main.d.ts" />
+
 import {Component} from 'angular2/core';
 import {RouteConfig, Router, ROUTER_DIRECTIVES} from 'angular2/router';
 import {Http} from 'angular2/http';
