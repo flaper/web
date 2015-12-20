@@ -3,7 +3,7 @@
 import {Component, Input} from 'angular2/core';
 import {RouteParams} from 'angular2/router';
 import {Story} from "../../../../models/common/Story";
-import {StoryComponent} from "../../../layout/story/Story/Story";
+import {StoryComponent} from "../../../story/Story/Story";
 import {StoryService} from "../../../../services/StoryService";
 
 @Component({
@@ -16,8 +16,8 @@ import {StoryService} from "../../../../services/StoryService";
 export class PageStory {
   story:Story;
 
-  constructor(routeParam:RouteParams, private storyService:StoryService) {
-    let slug = routeParam.params['slug'];
+  constructor(routeParams:RouteParams, private storyService:StoryService) {
+    let slug = routeParams.params['slug'];
     this.storyService.getBySlug(slug).subscribe(story => this.story = story);
   }
 }

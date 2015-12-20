@@ -10,6 +10,7 @@ import {PageHome} from './components/pages/home/home';
 import {PageLogin} from './components/pages/login/login';
 import {PageCreateStory} from './components/pages/story/create/create';
 import {PageStory} from './components/pages/story/story/PageStory';
+import {PageUser} from './components/pages/user/PageUser';
 
 @Component({
   selector: 'app',
@@ -34,6 +35,7 @@ import {PageStory} from './components/pages/story/story/PageStory';
   {path: '/login', component: PageLogin, name: 'Login'},
   {path: '/create_story', component: PageCreateStory, name: 'CreateStory'},
   {path: '/s/:slug', component: PageStory, name: 'Story'},
+  {path: '/@/:id', component: PageUser, name: 'User'},
 ])
 export class App {
   constructor() {

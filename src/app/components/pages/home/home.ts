@@ -1,5 +1,5 @@
 import {Component} from 'angular2/core';
-import {StoriesAutoList} from "../../layout/story/StoriesAutoList/StoriesAutoList";
+import {StoriesAutoList} from "../../story/StoriesAutoList/StoriesAutoList";
 
 @Component({
   selector: 'page-home',

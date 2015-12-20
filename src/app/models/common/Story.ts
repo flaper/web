@@ -4,6 +4,7 @@ export class Story {
   slug:string;
   title:string;
   content:string;
+  contentHTML: string;
   created:Date;
   updated:Date;
 }

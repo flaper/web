@@ -13,6 +13,10 @@ export class UserService {
     authService.currentUserObservable.subscribe((user) => this.currentUser = user);
     this.currentUserObservable = authService.currentUserObservable;
   }
+
+  getById(id) {
+    return this.api.request('get', `users/${id}`);
+  }
 }
 
 export let USER_SERVICE_PROVIDER = [UserService];

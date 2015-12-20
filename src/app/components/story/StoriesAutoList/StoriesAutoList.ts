@@ -1,9 +1,9 @@
 import {Component, Input} from 'angular2/core';
 import {FORM_DIRECTIVES} from 'angular2/common';
-import {UserService} from "../../../../services/UserService";
-import {Story} from "../../../../models/common/Story";
+import {UserService} from "../../../services/UserService";
+import {Story} from "../../../models/common/Story";
 import {StoriesList} from "../StoriesList/StoriesList";
-import {StoryService} from "../../../../services/StoryService";
+import {StoryService} from "../../../services/StoryService";
 
 @Component({
   selector: 'stories-auto-list',

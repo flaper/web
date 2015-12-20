@@ -1,0 +1,10 @@
+<div class="story-head">
+  <div>
+    <user-link [userId]="story.userId"></user-link>
+  </div>
+  <div class="time">{{story.created | amTimeAgo}}</div>
+</div>
+<h1>{{story.title}}</h1>
+
+<div [innerHtml]="story.contentHTML">
+</div>
