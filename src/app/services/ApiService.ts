@@ -2,9 +2,7 @@ import {Injectable} from 'angular2/core';
 import {Http, RequestOptionsArgs, Headers, URLSearchParams} from 'angular2/http';
 
 import {Config} from '../config/Config';
-import {URLSearchParams} from "../../../node_modules/angular2/ts/src/http/url_search_params";
 import {Url} from "url";
-import {URLSearchParams} from "../../../node_modules/angular2/ts/src/http/url_search_params";
 export const API_SERVER_URL = `http://${Config.api.host}:${Config.api.port}`;
 
 const API_BASE_URL = `${API_SERVER_URL}/api/`;

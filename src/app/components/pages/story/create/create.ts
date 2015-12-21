@@ -12,8 +12,8 @@ import {SimpleCreate} from "../../../story/create/SimpleCreate/SimpleCreate";
   template: require('./create.html')
 })
 export class PageCreateStory {
-  constructor(private userService:UserService, router: Router) {
-    if (!userService.currentUser){
+  constructor(private userService:UserService, router:Router) {
+    if (!userService.currentUser) {
       router.navigate(['/Login']);
     }
   }
