@@ -15,6 +15,8 @@ import {StoryService} from "../../../services/StoryService";
 export class StoriesAutoList {
   @Input()
   where = {};
+  @Input()
+  showAuthor:boolean = true;
 
   stories:Story[] = [];
 

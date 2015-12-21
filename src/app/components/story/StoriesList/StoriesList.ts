@@ -16,6 +16,8 @@ import {StoryItem} from "../StoryItem/StoryItem";
 export class StoriesList {
   @Input()
   stories:Story[] = [];
+  @Input()
+  showAuthor:boolean = true;
 
   constructor() {
   }

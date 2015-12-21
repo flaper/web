@@ -17,6 +17,8 @@ import {TimeAgoPipe} from 'angular2-moment';
 export class StoryItem {
   @Input()
   story:Story;
+  @Input()
+  showAuthor:boolean = true;
 
   constructor() {
   }

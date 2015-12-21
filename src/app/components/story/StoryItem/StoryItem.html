@@ -1,6 +1,6 @@
 <div>
   <div class="story-item-header">
-    <div>
+    <div *ngIf="showAuthor">
       <user-link [userId]="story.userId"></user-link>
     </div>
     <div class="time">{{story.created | amTimeAgo}}</div>
