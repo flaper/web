@@ -34,7 +34,7 @@ export class SimpleCreate {
     FormDraft.save(DRAFT_KEY, values);
   }
 
-  onSubmit() {
+  onSubmit(event) {
     if (this.form.valid) {
       let data = this.form.value;
       this.error = null;
