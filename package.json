@@ -32,6 +32,7 @@
   "dependencies": {
     "angular2": "2.0.0-beta.0",
     "angular2-moment": "^0.1.1",
+    "autosize": "^3.0.14",
     "bootstrap": "twbs/bootstrap#v4.0.0-alpha.2",
     "es6-promise": "^3.0.2",
     "es6-shim": "^0.33.3",

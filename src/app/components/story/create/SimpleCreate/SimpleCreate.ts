@@ -5,12 +5,13 @@ import {CORE_DIRECTIVES, FORM_DIRECTIVES, FormBuilder, ControlGroup, Validators}
 import {Story} from "../../../../models/common/Story";
 import {StoryService} from "../../../../services/StoryService";
 import {FormDraft} from "../../../../services/draft/FormDraft";
-import {Autofocus} from "../../../../directives/Autofocus/Autofocus";
+import {Autosize} from "../../../../directives/Autosize/Autosize";
+import {AutoFocusIt} from "../../../../directives/AutoFocusIt/AutoFocusIt";
 
 const DRAFT_KEY = 'CreateStory';
 @Component({
   selector: 'simple-create',
-  directives: [CORE_DIRECTIVES, FORM_DIRECTIVES, Autofocus],
+  directives: [CORE_DIRECTIVES, FORM_DIRECTIVES, AutoFocusIt, Autosize],
   styles: [require('./SimpleCreate.scss')],
   template: require('./SimpleCreate.html')
 })

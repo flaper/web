@@ -1,5 +1,6 @@
 import {Injectable} from 'angular2/core';
 import {Control, ControlGroup} from 'angular2/common';
+import * as _ from 'lodash';
 
 @Injectable()
 export class FormDraft {
@@ -8,6 +9,9 @@ export class FormDraft {
   }
 
   static save(key, values) {
+    values = _.mapValues(values, (value) => {
+      return (typeof value === 'string') ? value.trim() : value;
+    });
     if (values) {
       localStorage.setItem(key, JSON.stringify(values));
     } else {
