@@ -1,6 +1,7 @@
 /// <reference path="../../../../../../typings/main.d.ts" />
 
 import {Component, Input} from 'angular2/core';
+import {Router} from 'angular2/router';
 import {CORE_DIRECTIVES, FORM_DIRECTIVES, FormBuilder, ControlGroup, Validators} from 'angular2/common';
 import {Story} from "../../../../models/common/Story";
 import {StoryService} from "../../../../services/StoryService";
@@ -17,10 +18,11 @@ const DRAFT_KEY = 'CreateStory';
 })
 export class SimpleCreate {
   form:ControlGroup;
+  error:string;
 
-  constructor(private storyService:StoryService, private fb:FormBuilder) {
+  constructor(private storyService:StoryService, private fb:FormBuilder, private router:Router) {
     this.form = fb.group({
-      title: '',
+      title: ['', Validators.required],
       content: ['', Validators.required]
     });
 
@@ -32,4 +34,16 @@ export class SimpleCreate {
     FormDraft.save(DRAFT_KEY, values);
   }
 
+  onSubmit() {
+    if (this.form.valid) {
+      let data = this.form.value;
+      this.error = null;
+      this.storyService.post(data).subscribe(() => {
+        FormDraft.remove(DRAFT_KEY);
+        this.router.navigate(['/Home'])
+      }, (e) => {
+        this.error = e.message;
+      })
+    }
+  }
 }

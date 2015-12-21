@@ -51,31 +51,29 @@ export class ApiService {
         break;
     }
 
-    return query.map(result => {
+    return query.catch((response) => {
+      //error handling
+      //noinspection TypeScriptUnresolvedFunction
+      let text = response.text();
+      let error = null;
+      try {
+        error = JSON.parse(text);
+        error = error.error;
+      }
+      finally {
+      }
+      if (error) {
+        throw error;
+      } else {
+        throw response;
+      }
+    }).map(result => {
       let text = result.text();
       //e.g. empty result can be returned for "delete"
       if (text === '') {
         return {};
       }
       return result.json()
-    }).map(result => {
-      //ApiService.logging(`Got answer: ${JSON.stringify(result)}` , LOG_TYPE);
-      //localizing errors
-      //if (result.error && result.error.details) {
-      //let firstError = '';
-      //let details = result.error.details;
-      //for (let field in details.codes) {
-      //  let errors = details.codes[field];
-      //  for (let key in errors) {
-      //    let error = errors[key];
-      //    let message = ApiService.validationMessage(error, field, result.error.details.context);
-      //    details.messages[field][key] = message;
-      //    firstError = firstError ? firstError : message;
-      //  }
-      //}
-      //result.error.message = firstError ? firstError : result.error.message;
-      //}
-      return result;
     });
   }
 

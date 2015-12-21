@@ -14,6 +14,10 @@ export class StoryService {
   getBySlug(slug) {
     return this.api.request('get', `stories/slug/${slug}`);
   }
+
+  post(data) {
+    return this.api.request('post', 'stories', data);
+  }
 }
 
 export let STORY_SERVICE_PROVIDER = [StoryService];

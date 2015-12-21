@@ -1,10 +1,15 @@
 <div>
-  <form class="form" [ngFormModel]="form">
+  <form class="form" [ngFormModel]="form" (submit)="onSubmit($event)">
+    <div class="has-danger" *ngIf="error">
+      <span class="text-help">{{error}}</span>
+    </div>
     <fieldset class="form-group">
       <input ngControl="title" type="text" placeholder="Заголовок" class="form-control" auto-focus-it>
     </fieldset>
     <fieldset class="form-group">
       <textarea ngControl="content" placeholder="Текст статьи" class="form-control" rows="5" autosize></textarea>
     </fieldset>
+
+    <button type="submit" class="btn btn-primary">Создать</button>
   </form>
 </div>
