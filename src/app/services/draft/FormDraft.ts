@@ -1,3 +1,4 @@
+/// <reference path="../../../../typingsOurs/main.d.ts" />
 import {Injectable} from 'angular2/core';
 import {Control, ControlGroup} from 'angular2/common';
 import * as _ from 'lodash';

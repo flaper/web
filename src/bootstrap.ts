@@ -6,7 +6,6 @@ import {ELEMENT_PROBE_PROVIDERS} from 'angular2/platform/common_dom';
 import {ROUTER_PROVIDERS} from 'angular2/router';
 import {HTTP_PROVIDERS} from 'angular2/http';
 
-//
 import * as moment from 'moment';
 
 /*
@@ -22,6 +21,7 @@ require('./css/main.scss');
  */
 export function main() {
   moment.locale('ru');
+  //noinspection TypeScriptValidateTypes
   return bootstrap(App, [
     // These are dependencies of our App
     HTTP_PROVIDERS,

@@ -1,4 +1,4 @@
-/// <reference path="../../../../../typings/main.d.ts" />
+/// <reference path="../../../../../typingsOurs/main.d.ts" />
 
 import {Component, Input} from 'angular2/core';
 import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';

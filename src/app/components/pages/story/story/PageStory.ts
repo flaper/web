@@ -1,4 +1,4 @@
-/// <reference path="../../../../../../typings/main.d.ts" />
+/// <reference path="../../../../../../typingsOurs/main.d.ts" />
 
 import {Component, Input} from 'angular2/core';
 import {RouteParams} from 'angular2/router';
