@@ -12,10 +12,8 @@
     "test/injector.spec.ts",
     "test/sanity-test.spec.ts",
     "src/app/app.spec.ts",
-    "src/app/app.ts",
     "src/app/providers/title.spec.ts",
     "src/app/providers/title.ts",
-    "src/bootstrap.ts",
     "src/vendor.ts"
   ],
   "compileOnSave": false

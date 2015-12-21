@@ -4,7 +4,6 @@ import {Component, Input} from 'angular2/core';
 import {ROUTER_DIRECTIVES} from 'angular2/router';
 import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
 import {Story} from "../../../models/common/Story";
-import * as moment from 'moment';
 import {TimeAgoPipe} from 'angular2-moment';
 import {UserLink} from "../../user/UserLink/UserLink";
 
@@ -20,6 +19,5 @@ export class StoryComponent {
   story:Story;
 
   constructor() {
-    moment.locale('ru');
   }
 }

@@ -6,6 +6,9 @@ import {ELEMENT_PROBE_PROVIDERS} from 'angular2/platform/common_dom';
 import {ROUTER_PROVIDERS} from 'angular2/router';
 import {HTTP_PROVIDERS} from 'angular2/http';
 
+//
+import * as moment from 'moment';
+
 /*
  * App Component
  * our top level component that holds all of our components
@@ -18,6 +21,7 @@ require('./css/main.scss');
  * our Services and Providers into Angular's dependency injection
  */
 export function main() {
+  moment.locale('ru');
   return bootstrap(App, [
     // These are dependencies of our App
     HTTP_PROVIDERS,
