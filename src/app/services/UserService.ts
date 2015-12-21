@@ -14,8 +14,15 @@ export class UserService {
     this.currentUserObservable = authService.currentUserObservable;
   }
 
+  private _usersCache:Map<string, User> = new Map<string, User>();
+
   getById(id) {
-    return this.api.request('get', `users/${id}`);
+    if (!this._usersCache[id]) {
+      let obs = this.api.request('get', `users/${id}`).publishLast();
+      obs.connect();
+      this._usersCache[id] = obs;
+    }
+    return this._usersCache[id];
   }
 }
 
