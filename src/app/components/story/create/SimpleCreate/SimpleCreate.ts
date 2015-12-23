@@ -1,6 +1,6 @@
 /// <reference path="../../../../../../typingsOurs/main.d.ts" />
 
-import {Component, Input} from 'angular2/core';
+import {Component, Input, ElementRef} from 'angular2/core';
 import {Router} from 'angular2/router';
 import {CORE_DIRECTIVES, FORM_DIRECTIVES, FormBuilder, Control, ControlGroup, Validators} from 'angular2/common';
 import {Story} from "../../../../models/common/Story";
@@ -9,6 +9,7 @@ import {FormDraft} from "../../../../services/draft/FormDraft";
 import {Autosize} from "../../../../directives/Autosize/Autosize";
 import {AutoFocusIt} from "../../../../directives/AutoFocusIt/AutoFocusIt";
 import {DropzoneComponent} from "../../../image/dropzone/DropzoneComponent";
+import {generateEvent} from "../../../../libs/common/common";
 
 const DRAFT_KEY = 'CreateStory';
 @Component({
@@ -21,7 +22,8 @@ export class SimpleCreate {
   form:ControlGroup;
   error:string;
 
-  constructor(private storyService:StoryService, private fb:FormBuilder, private router:Router) {
+  constructor(private storyService:StoryService, private fb:FormBuilder, private router:Router,
+              private elementRef:ElementRef) {
     this.form = fb.group({
       title: ['', Validators.required],
       content: ['', Validators.required]
@@ -49,7 +51,13 @@ export class SimpleCreate {
 
   newImage(image) {
     let control = <Control> this.form.controls['content'];
-    let value = control.value + "\n" + `![](${image.Location})`;
+    let value = control.value;
+    if (value.length && value[value.length - 1] !== '\n') {
+      value += "\n";
+    }
+    value += `![](${image.Location})`;
     control.updateValue(value, {onlySelf: false, emitEvent: true});
+    let el = this.elementRef.nativeElement.querySelector('textarea');
+    el.dispatchEvent(generateEvent('autosize:update', {}));
   }
 }
