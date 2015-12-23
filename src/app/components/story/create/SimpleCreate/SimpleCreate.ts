@@ -2,12 +2,13 @@
 
 import {Component, Input} from 'angular2/core';
 import {Router} from 'angular2/router';
-import {CORE_DIRECTIVES, FORM_DIRECTIVES, FormBuilder, ControlGroup, Validators} from 'angular2/common';
+import {CORE_DIRECTIVES, FORM_DIRECTIVES, FormBuilder, Control, ControlGroup, Validators} from 'angular2/common';
 import {Story} from "../../../../models/common/Story";
 import {StoryService} from "../../../../services/StoryService";
 import {FormDraft} from "../../../../services/draft/FormDraft";
 import {Autosize} from "../../../../directives/Autosize/Autosize";
 import {AutoFocusIt} from "../../../../directives/AutoFocusIt/AutoFocusIt";
+import {IMAGE_UPLOAD_URL} from "../../../../services/ImageService";
 
 const DRAFT_KEY = 'CreateStory';
 @Component({
@@ -17,6 +18,7 @@ const DRAFT_KEY = 'CreateStory';
   template: require('./SimpleCreate.html')
 })
 export class SimpleCreate {
+  IMAGE_UPLOAD_URL = IMAGE_UPLOAD_URL;
   form:ControlGroup;
   error:string;
 
@@ -25,7 +27,6 @@ export class SimpleCreate {
       title: ['', Validators.required],
       content: ['', Validators.required]
     });
-
     FormDraft.load(DRAFT_KEY, this.form);
     this.form.valueChanges.subscribe(SimpleCreate.valueChanged);
   }
@@ -45,5 +46,15 @@ export class SimpleCreate {
         this.error = e.message;
       })
     }
+  }
+
+  imageEvent(event) {
+    //console.log('image event called');
+    let image = event.detail.image;
+    //console.log(image ? image : event);
+
+    let control = <Control> this.form.controls['content'];
+    let value = control.value + "\n" + `![](${image.Location})`;
+    control.updateValue(value, false, true);
   }
 }

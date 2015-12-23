@@ -5,7 +5,7 @@ import {Config} from '../config/Config';
 import {Url} from "url";
 export const API_SERVER_URL = `http://${Config.api.host}:${Config.api.port}`;
 
-const API_BASE_URL = `${API_SERVER_URL}/api/`;
+export const API_BASE_URL = `${API_SERVER_URL}/api/`;
 
 @Injectable()
 export class ApiService {
