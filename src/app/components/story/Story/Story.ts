@@ -5,6 +5,7 @@ import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
 import {Story} from "../../../models/common/Story";
 import {TimeAgoPipe} from 'angular2-moment';
 import {UserLink} from "../../user/UserLink/UserLink";
+import {ACL} from "../../../acl/ACL";
 
 @Component({
   selector: 'story',
@@ -17,6 +18,6 @@ export class StoryComponent {
   @Input()
   story:Story;
 
-  constructor() {
+  constructor(private acl:ACL) {
   }
 }

@@ -3,6 +3,7 @@ import {AUTH_SERVICE_PROVIDER} from './AuthService';
 import {USER_SERVICE_PROVIDER} from './UserService';
 import {STORY_SERVICE_PROVIDER} from './StoryService';
 import {IMAGE_SERVICE_PROVIDER} from './ImageService';
+import {ACL_PROVIDER} from '../acl/ACL';
 
 // Include injectables that you want to have globally throughout our app
 export let APP_PROVIDERS:Array<any> = [
@@ -10,5 +11,6 @@ export let APP_PROVIDERS:Array<any> = [
   AUTH_SERVICE_PROVIDER,
   USER_SERVICE_PROVIDER,
   STORY_SERVICE_PROVIDER,
-  IMAGE_SERVICE_PROVIDER
+  IMAGE_SERVICE_PROVIDER,
+  ACL_PROVIDER
 ];

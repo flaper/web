@@ -1,8 +1,13 @@
 <div class="story-head">
-  <div>
-    <user-link [userId]="story.userId"></user-link>
+  <div class="story-head-left">
+    <div>
+      <user-link [userId]="story.userId"></user-link>
+    </div>
+    <div class="time">{{story.created | amTimeAgo}}</div>
   </div>
-  <div class="time">{{story.created | amTimeAgo}}</div>
+  <div *ngIf="acl.can('Story.write', story)">
+    <a class="btn btn-secondary"><i class="fa fa-pencil"></i> Редактировать</a>
+  </div>
 </div>
 <h1>{{story.title}}</h1>
 
