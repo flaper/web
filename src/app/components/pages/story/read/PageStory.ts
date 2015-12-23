@@ -2,7 +2,7 @@
 
 import {Component} from 'angular2/core';
 import {Story} from "../../../../models/common/Story";
-import {StoryComponent} from "../../../story/Story/Story";
+import {StoryComponent} from "../../../story/Story/StoryComponent";
 
 @Component({
   selector: 'page-story',
