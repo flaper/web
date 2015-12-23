@@ -4,6 +4,7 @@ import * as Rx from 'rxjs';
 import {UrlService} from './UrlService';
 import {Router} from "angular2/router";
 import {User} from "../models/common/User";
+import {UserService} from "./UserService";
 
 interface Provider {
   name: string
@@ -104,7 +105,7 @@ export class AuthService {
 
   requestUser() {
     let userId = this.jwtData.userId;
-    let observer = this.api.request('get', `users/${userId}`);
+    let observer = this.api.request('get', `users/${userId}`, {filter: JSON.stringify({include: 'roles'})});
     observer.subscribe(user => this.setCurrentUser(user));
 
     return observer;

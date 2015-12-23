@@ -6,17 +6,24 @@ import * as Rx from 'rxjs';
 
 @Injectable()
 export class UserService {
+  currentUserId:string;
   currentUser:User;
   currentUserObservable:Rx.Subject<User>;
 
   constructor(private api:ApiService, authService:AuthService) {
-    authService.currentUserObservable.subscribe((user) => this.currentUser = user);
+    authService.currentUserObservable.subscribe((user) => {
+      this.currentUser = user;
+      this.currentUserId = user ? user.id : null;
+    });
     this.currentUserObservable = authService.currentUserObservable;
   }
 
   private _usersCache:Map<string, User> = new Map<string, User>();
 
   getById(id) {
+    if (id === this.currentUserId) {
+      return this.currentUserObservable;
+    }
     if (!this._usersCache[id]) {
       let obs = this.api.request('get', `users/${id}`).publishLast();
       obs.connect();

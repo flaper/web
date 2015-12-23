@@ -36,11 +36,12 @@ export class ACL {
   }
 
   isAdmin() {
-    return false;
+    let roles:any = _.get(this.userService.currentUser, "roles");
+    return roles && (roles.indexOf('admin') > -1)
   }
 
   isOwner(model) {
-    return model.userId && this.userService.currentUser && model.userId === this.userService.currentUser.id;
+    return model.userId && model.userId === this.userService.currentUserId;
   }
 }
 export let ACL_PROVIDER = [ACL];
