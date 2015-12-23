@@ -12,7 +12,5 @@
 
     <button type="submit" class="btn btn-primary">Создать</button>
   </form>
-  <form id="defaultDropzone" action="{{IMAGE_UPLOAD_URL}}" class="dropzone" (success)="imageEvent($event)">
-    <input type="hidden" name="type" value="create-story">
-  </form>
+  <dropzone (newImage)="newImage($event)"></dropzone>
 </div>

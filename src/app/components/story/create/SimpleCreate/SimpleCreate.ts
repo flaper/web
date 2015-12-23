@@ -8,17 +8,16 @@ import {StoryService} from "../../../../services/StoryService";
 import {FormDraft} from "../../../../services/draft/FormDraft";
 import {Autosize} from "../../../../directives/Autosize/Autosize";
 import {AutoFocusIt} from "../../../../directives/AutoFocusIt/AutoFocusIt";
-import {IMAGE_UPLOAD_URL} from "../../../../services/ImageService";
+import {DropzoneComponent} from "../../../image/dropzone/DropzoneComponent";
 
 const DRAFT_KEY = 'CreateStory';
 @Component({
   selector: 'simple-create',
-  directives: [CORE_DIRECTIVES, FORM_DIRECTIVES, AutoFocusIt, Autosize],
+  directives: [CORE_DIRECTIVES, FORM_DIRECTIVES, AutoFocusIt, Autosize, DropzoneComponent],
   styles: [require('./SimpleCreate.scss')],
   template: require('./SimpleCreate.html')
 })
 export class SimpleCreate {
-  IMAGE_UPLOAD_URL = IMAGE_UPLOAD_URL;
   form:ControlGroup;
   error:string;
 
@@ -48,13 +47,9 @@ export class SimpleCreate {
     }
   }
 
-  imageEvent(event) {
-    //console.log('image event called');
-    let image = event.detail.image;
-    //console.log(image ? image : event);
-
+  newImage(image) {
     let control = <Control> this.form.controls['content'];
     let value = control.value + "\n" + `![](${image.Location})`;
-    control.updateValue(value, false, true);
+    control.updateValue(value, {onlySelf: false, emitEvent: true});
   }
 }

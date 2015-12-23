@@ -10,6 +10,12 @@
     },
     "moment/moment-node.d.ts": {
       "commit": "40c60850ad6c8175a62d5ab48c4e016ea5b3dffe"
+    },
+    "dropzone/dropzone.d.ts": {
+      "commit": "d8359c5a99c7965a51dcf0e26b65170f2c53af80"
+    },
+    "jquery/jquery.d.ts": {
+      "commit": "d8359c5a99c7965a51dcf0e26b65170f2c53af80"
     }
   }
 }

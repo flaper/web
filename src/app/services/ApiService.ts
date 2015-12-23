@@ -3,6 +3,7 @@ import {Http, RequestOptionsArgs, Headers, URLSearchParams} from 'angular2/http'
 
 import {Config} from '../config/Config';
 import {Url} from "url";
+import {JwtToken} from "./JwtToken";
 export const API_SERVER_URL = `http://${Config.api.host}:${Config.api.port}`;
 
 export const API_BASE_URL = `${API_SERVER_URL}/api/`;
@@ -12,24 +13,9 @@ export class ApiService {
   constructor(public http:Http) {
   }
 
-  //should be via AuthService in future, cannot make it works on angular alpha
-  static getJwtToken() {
-    let data = localStorage.getItem('jwt');
-    if (data) {
-      try {
-        data = JSON.parse(data);
-        return data.id;
-      }
-      finally {
-
-      }
-    }
-    return null;
-  }
-
 
   request(method, url, data = null) {
-    let token = ApiService.getJwtToken();
+    let token = JwtToken.get();
     let options:RequestOptionsArgs = {
       "headers": new Headers({
         Accept: 'application/json',

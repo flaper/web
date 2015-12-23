@@ -27,7 +27,7 @@ export class FormDraft {
       let value = data[key];
       let control = <Control> form.controls[key];
       if (value && control) {
-        control.updateValue(value, true);
+        control.updateValue(value, {});
       }
     })
   }
