@@ -11,7 +11,6 @@ import {AutoFocusIt} from "../../../../directives/AutoFocusIt/AutoFocusIt";
 import {DropzoneComponent} from "../../../image/dropzone/DropzoneComponent";
 import {generateEvent} from "../../../../libs/common/common";
 
-const DRAFT_KEY = 'CreateStory';
 @Component({
   selector: 'simple-create',
   directives: [CORE_DIRECTIVES, FORM_DIRECTIVES, AutoFocusIt, Autosize, DropzoneComponent],
@@ -19,29 +18,49 @@ const DRAFT_KEY = 'CreateStory';
   template: require('./SimpleCreate.html')
 })
 export class SimpleCreate {
+  DRAFT_KEY = 'WRITE_STORY';
+
+  @Input()
+  story:Story;
+
   form:ControlGroup;
   error:string;
 
   constructor(private storyService:StoryService, private fb:FormBuilder, private router:Router,
               private elementRef:ElementRef) {
-    this.form = fb.group({
-      title: ['', Validators.required],
-      content: ['', Validators.required]
-    });
-    FormDraft.load(DRAFT_KEY, this.form);
-    this.form.valueChanges.subscribe(SimpleCreate.valueChanged);
   }
 
-  static valueChanged(values) {
-    FormDraft.save(DRAFT_KEY, values);
+  ngOnInit() {
+    this.DRAFT_KEY = this.story ? `${this.DRAFT_KEY}_${this.story.id}` : this.DRAFT_KEY;
+
+    let title = this.story ? this.story.title : '';
+    let content = this.story ? this.story.content : '';
+    this.form = this.fb.group({
+      title: [title, Validators.required],
+      content: [content, Validators.required]
+    });
+    //apply local changed only after 'updated' date
+    let sinceDate = this.story ? this.story.updated : null;
+    FormDraft.load(this.DRAFT_KEY, this.form, sinceDate);
+
+    //to preserve this
+    this.form.valueChanges.subscribe(values => this.valueChanged(values));
+  }
+
+  ngAfterViewInit() {
+    this._autosizeUpdate();
+  }
+
+  valueChanged(values) {
+    FormDraft.save(this.DRAFT_KEY, values);
   }
 
   onSubmit(event) {
     if (this.form.valid) {
-      let data = this.form.value;
+      let data = this.getStoryData();
       this.error = null;
-      this.storyService.post(data).subscribe(() => {
-        FormDraft.remove(DRAFT_KEY);
+      this.storyService.save(data).subscribe(() => {
+        FormDraft.remove(this.DRAFT_KEY);
         this.router.navigate(['/Home'])
       }, (e) => {
         this.error = e.message;
@@ -57,6 +76,18 @@ export class SimpleCreate {
     }
     value += `![](${image.Location})`;
     control.updateValue(value, {onlySelf: false, emitEvent: true});
+    this._autosizeUpdate();
+  }
+
+  getStoryData() {
+    let data = this.form.value;
+    if (this.story) {
+      data.id = this.story.id;
+    }
+    return data;
+  }
+
+  private _autosizeUpdate() {
     let el = this.elementRef.nativeElement.querySelector('textarea');
     el.dispatchEvent(generateEvent('autosize:update', {}));
   }

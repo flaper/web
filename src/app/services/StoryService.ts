@@ -18,6 +18,14 @@ export class StoryService {
   post(data) {
     return this.api.request('post', 'stories', data);
   }
+
+  put(data) {
+    return this.api.request('put', `stories/${data.id}`, data);
+  }
+
+  save(data) {
+    return data.id ? this.put(data) : this.post(data);
+  }
 }
 
 export let STORY_SERVICE_PROVIDER = [StoryService];

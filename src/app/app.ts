@@ -10,9 +10,9 @@ import {Navbar} from './components/layout/navbar/navbar';
 //pages
 import {PageHome} from './components/pages/home/home';
 import {PageLogin} from './components/pages/login/login';
-import {PageCreateStory} from './components/pages/story/create/create';
+import {PageWriteStory} from './components/pages/story/write/PageWriteStory';
 import {PageUser} from './components/pages/user/PageUser';
-import {LayoutStory} from "./components/pages/story/layout/LayoutStory";
+import {PageStory} from "./components/pages/story/read/PageStory";
 
 @Component({
   selector: 'app',
@@ -35,8 +35,9 @@ import {LayoutStory} from "./components/pages/story/layout/LayoutStory";
 @RouteConfig([
   {path: '/', component: PageHome, name: 'Home'},
   {path: '/login', component: PageLogin, name: 'Login'},
-  {path: '/create_story', component: PageCreateStory, name: 'CreateStory'},
-  {path: '/s/:slug/...', component: LayoutStory, name: 'Story'},
+  {path: '/create_story', component: PageWriteStory, name: 'CreateStory'},
+  {path: '/s/:slug', component: PageStory, name: 'Story'},
+  {path: '/s/:slug/edit', component: PageWriteStory, name: 'WriteStory'},
   {path: '/@/:id', component: PageUser, name: 'User'},
 ])
 export class App {

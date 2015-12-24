@@ -10,19 +10,29 @@ export class FormDraft {
   constructor() {
   }
 
-  static save(key, values) {
-    values = _.mapValues(values, (value) => {
+  static save(key, value) {
+    FormDraft.requireKey(key);
+
+    value = _.mapValues(value, (value) => {
       return (typeof value === 'string') ? value.trim() : value;
     });
-    if (values) {
-      localStorage.setItem(`${KEY_PREFIX}${key}`, JSON.stringify(values));
+
+    if (value) {
+      let data = {
+        date: new Date(),
+        value: value
+      };
+      localStorage.setItem(`${KEY_PREFIX}${key}`, JSON.stringify(data));
     } else {
       localStorage.removeItem(`${KEY_PREFIX}${key}`);
     }
   }
 
-  static load(key, form:ControlGroup) {
-    let data = this._safeLoad(`${KEY_PREFIX}${key}`);
+  static load(key, form:ControlGroup, minDate = new Date(0)) {
+    FormDraft.requireKey(key);
+    minDate = minDate ? minDate : new Date(0);
+
+    let data = this._safeLoad(`${KEY_PREFIX}${key}`, minDate);
     Object.keys(data).forEach((key) => {
       let value = data[key];
       let control = <Control> form.controls[key];
@@ -36,18 +46,29 @@ export class FormDraft {
     localStorage.removeItem(`${KEY_PREFIX}${key}`);
   }
 
-  private static _safeLoad(key) {
-    let value = localStorage.getItem(key);
-    if (value) {
-      try {
-        value = JSON.parse(value);
-      } finally {
-
-      }
+  private static _safeLoad(key, minDate) {
+    let data = localStorage.getItem(key);
+    if (!data) {
+      return {};
     }
-    if (!value) {
+
+    try {
+      data = JSON.parse(data);
+      var value = data.value;
+      var cacheDate = new Date(data.date);
+    } catch (e) {
+      return {};
+    }
+
+    if (!value || !cacheDate || cacheDate < minDate) {
       value = {};
     }
     return value;
+  }
+
+  private static requireKey(key) {
+    if (!key) {
+      throw  'FormDraft key should not be null';
+    }
   }
 }

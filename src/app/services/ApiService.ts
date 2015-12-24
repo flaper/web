@@ -52,13 +52,26 @@ export class ApiService {
         throw response;
       }
     }).map(result => {
-      let text = result.text();
-      //e.g. empty result can be returned for "delete"
-      if (text === '') {
-        return {};
+        let text = result.text();
+        //e.g. empty result can be returned for "delete"
+        if (text === '') {
+          return {};
+        }
+        return result.json()
+      })
+      .map(ApiService.proceedDates)
+  }
+
+  private static proceedDates(data) {
+    if (data instanceof Object) {
+      if (data.created) {
+        data.created = new Date(data.created);
       }
-      return result.json()
-    });
+      if (data.updated) {
+        data.updated = new Date(data.updated);
+      }
+    }
+    return data;
   }
 
   private _mapToURLSearchParams(map) {

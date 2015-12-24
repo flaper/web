@@ -6,7 +6,7 @@
     <div class="time">{{story.created | amTimeAgo}}</div>
   </div>
   <div *ngIf="acl.can('Story.write', story)">
-    <a class="btn btn-secondary" [routerLink]="['Edit']"><i class="fa fa-pencil"></i> Редактировать</a>
+    <a class="btn btn-secondary" [routerLink]="['/WriteStory', {slug: story.slug}]"><i class="fa fa-pencil"></i> Редактировать</a>
   </div>
 </div>
 <h1>{{story.title}}</h1>

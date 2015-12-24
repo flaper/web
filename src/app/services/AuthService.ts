@@ -98,7 +98,8 @@ export class AuthService {
           this.setCurrentUser(user);
         }
       }
-      finally {
+      catch (e) {
+
       }
     }
   }

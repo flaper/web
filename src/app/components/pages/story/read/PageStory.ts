@@ -1,8 +1,10 @@
 /// <reference path="../../../../../../typingsOurs/main.d.ts" />
 
 import {Component} from 'angular2/core';
+import {RouteParams} from 'angular2/router'
 import {Story} from "../../../../models/common/Story";
 import {StoryComponent} from "../../../story/Story/StoryComponent";
+import {StoryService} from "../../../../services/StoryService";
 
 @Component({
   selector: 'page-story',
@@ -14,6 +16,10 @@ import {StoryComponent} from "../../../story/Story/StoryComponent";
 export class PageStory {
   story:Story;
 
-  constructor() {
+  constructor(routeParams:RouteParams, storyService:StoryService) {
+    let slug = routeParams.params['slug'];
+    storyService.getBySlug(slug).subscribe(story => {
+      this.story = story;
+    });
   }
 }

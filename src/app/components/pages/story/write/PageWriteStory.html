@@ -1,0 +1,4 @@
+<div class="container" *ngIf="newStory || !!story">
+  <h1 class="text-xs-center">{{newStory ? 'Создать' : 'Редактировать'}} статью</h1>
+  <simple-create [story]="story"></simple-create>
+</div>
