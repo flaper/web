@@ -12,12 +12,12 @@ import {DropzoneComponent} from "../../../image/dropzone/DropzoneComponent";
 import {generateEvent} from "../../../../libs/common/common";
 
 @Component({
-  selector: 'simple-create',
+  selector: 'simple-write',
   directives: [CORE_DIRECTIVES, FORM_DIRECTIVES, AutoFocusIt, Autosize, DropzoneComponent],
-  styles: [require('./SimpleCreate.scss')],
-  template: require('./SimpleCreate.html')
+  styles: [require('./SimpleWrite.scss')],
+  template: require('./SimpleWrite.html')
 })
-export class SimpleCreate {
+export class SimpleWrite {
   DRAFT_KEY = 'WRITE_STORY';
 
   @Input()

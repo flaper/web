@@ -2,13 +2,13 @@ import {Component} from 'angular2/core';
 import {FORM_DIRECTIVES} from 'angular2/common';
 import {Router, RouteParams} from 'angular2/router';
 import {UserService} from "../../../../services/UserService";
-import {SimpleCreate} from "../../../story/create/SimpleCreate/SimpleCreate";
+import {SimpleWrite} from "../../../story/write/SimpleWrite/SimpleWrite";
 import {Story} from "../../../../models/common/Story";
 import {StoryService} from "../../../../services/StoryService";
 
 @Component({
   selector: 'page-write-story',
-  directives: [FORM_DIRECTIVES, SimpleCreate],
+  directives: [FORM_DIRECTIVES, SimpleWrite],
   pipes: [],
   styles: [require('./PageWriteStory.scss')],
   template: require('./PageWriteStory.html')

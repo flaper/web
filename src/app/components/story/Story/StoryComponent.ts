@@ -7,7 +7,6 @@ import {Story} from "../../../models/common/Story";
 import {TimeAgoPipe} from 'angular2-moment';
 import {UserLink} from "../../user/UserLink/UserLink";
 import {ACL} from "../../../acl/ACL";
-import {SimpleCreate} from "../create/SimpleCreate/SimpleCreate";
 
 @Component({
   selector: 'story',
