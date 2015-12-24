@@ -22,6 +22,7 @@ export class SimpleWrite {
 
   @Input()
   story:Story;
+  newStory:boolean;
 
   form:ControlGroup;
   error:string;
@@ -31,6 +32,7 @@ export class SimpleWrite {
   }
 
   ngOnInit() {
+    this.newStory = !this.story;
     this.DRAFT_KEY = this.story ? `${this.DRAFT_KEY}_${this.story.id}` : this.DRAFT_KEY;
 
     let title = this.story ? this.story.title : '';
@@ -59,9 +61,9 @@ export class SimpleWrite {
     if (this.form.valid) {
       let data = this.getStoryData();
       this.error = null;
-      this.storyService.save(data).subscribe(() => {
+      this.storyService.save(data).subscribe((story) => {
         FormDraft.remove(this.DRAFT_KEY);
-        this.router.navigate(['/Home'])
+        this.router.navigate(['/Story', {slug: story.slug}])
       }, (e) => {
         this.error = e.message;
       })

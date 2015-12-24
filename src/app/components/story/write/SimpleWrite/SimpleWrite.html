@@ -7,10 +7,11 @@
       <input ngControl="title" type="text" placeholder="Заголовок" class="form-control" auto-focus-it>
     </fieldset>
     <fieldset class="form-group">
-      <textarea ngControl="content" placeholder="Текст статьи (поддерживается markdown)" class="form-control" rows="5" autosize></textarea>
+      <textarea ngControl="content" placeholder="Текст статьи (поддерживается markdown)" class="form-control" rows="5"
+                autosize></textarea>
     </fieldset>
 
-    <button type="submit" class="btn btn-primary">Создать</button>
+    <button type="submit" class="btn btn-primary">{{newStory ? 'Создать' : 'Сохранить'}}</button>
   </form>
   <dropzone (newImage)="newImage($event)"></dropzone>
 </div>
