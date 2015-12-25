@@ -7,6 +7,7 @@ import {Story} from "../../../models/common/Story";
 import {TimeAgoPipe} from 'angular2-moment';
 import {UserLink} from "../../user/UserLink/UserLink";
 import {ACL} from "../../../acl/ACL";
+import * as moment from 'moment';
 
 @Component({
   selector: 'story',
@@ -19,6 +20,16 @@ export class StoryComponent {
   @Input()
   story:Story;
 
+  private _moment;
+
   constructor(private acl:ACL) {
+    this._moment = moment;
+  }
+
+  showChangedTime() {
+    let diff = this.story.updated.getTime() - this.story.created.getTime();
+    //so at least 3 minutes has passed
+    let ifSomeTimePassed = diff / 1000 > 60 * 3;
+    return ifSomeTimePassed && this._moment(this.story.created).fromNow() !== this._moment(this.story.updated).fromNow()
   }
 }
