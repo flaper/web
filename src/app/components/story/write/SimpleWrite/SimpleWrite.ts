@@ -76,7 +76,7 @@ export class SimpleWrite {
     if (value.length && value[value.length - 1] !== '\n') {
       value += "\n";
     }
-    value += `![](${image.Location})`;
+    value += `![](${image.id})`;
     control.updateValue(value, {onlySelf: false, emitEvent: true});
     this._autosizeUpdate();
   }
