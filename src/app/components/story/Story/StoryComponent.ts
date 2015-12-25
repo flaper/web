@@ -30,6 +30,12 @@ export class StoryComponent {
     let diff = this.story.updated.getTime() - this.story.created.getTime();
     //so at least 3 minutes has passed
     let ifSomeTimePassed = diff / 1000 > 60 * 3;
-    return ifSomeTimePassed && this._moment(this.story.created).fromNow() !== this._moment(this.story.updated).fromNow()
+    let passedFromNow = Math.min((new Date()).getTime() - this.story.created.getTime(), 1);
+
+    //so we e.g. don't care about 1 month if already 2 years passed
+    let ifSignificant = diff / passedFromNow > 0.1;
+
+    return ifSignificant && ifSomeTimePassed &&
+      this._moment(this.story.created).fromNow() !== this._moment(this.story.updated).fromNow()
   }
 }
