@@ -1,6 +1,6 @@
 /// <reference path="../../../../../typingsOurs/main.d.ts" />
 
-import {Component, Input, ElementRef} from 'angular2/core';
+import {Component, Input, Output, EventEmitter, ElementRef} from 'angular2/core';
 import {CORE_DIRECTIVES, FORM_DIRECTIVES, FormBuilder, Control, ControlGroup, Validators} from 'angular2/common';
 import {Comment} from "../../../models/common/Comment";
 import {CommentService} from "../../../services/CommentService";
@@ -24,6 +24,9 @@ export class CommentWrite {
   //for new comment
   @Input()
   subjectId:string;
+
+  @Output()
+  commentChange:EventEmitter<Comment> = new EventEmitter<Comment>();
 
   newComment:boolean;
   disabled:boolean = false;
@@ -62,21 +65,21 @@ export class CommentWrite {
     if (this.form.valid) {
       let data = this.getCommentData();
       this.disabled = true;
-      this.commentService.save(data).subscribe((comment) => {
-        this.clearForm();
-        this.disabled = false;
-        //this.router.navigate(['/Story', {slug: story.slug}])
-      }, (e) => {
-        this.disabled = false;
-      })
+      this.commentService.save(data)
+        .subscribe((comment) => {
+          this.clearForm();
+          this.disabled = false;
+          this.commentChange.emit(comment);
+        }, (e) => {
+          this.disabled = false;
+        })
     }
   }
 
   clearForm() {
+    let control = <Control> this.form.controls['content'];
+    control.updateValue('', {});
     FormDraft.remove(this.DRAFT_KEY);
-    this.form = this.fb.group({
-      content: ['', Validators.required]
-    });
   }
 
   getCommentData() {
@@ -85,7 +88,6 @@ export class CommentWrite {
     if (this.comment) {
       data.id = this.comment.id;
     }
-    console.log('data', data);
     return data;
   }
 

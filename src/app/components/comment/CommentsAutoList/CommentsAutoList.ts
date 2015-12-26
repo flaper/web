@@ -23,6 +23,15 @@ export class CommentsAutoList {
   }
 
   ngOnInit() {
+    this.reloadComments();
+  }
+
+  commentAdded(comment) {
+    this.comments.unshift(comment);
+    this.reloadComments();
+  }
+
+  reloadComments() {
     this.commentService.getBySubjectId(this.subjectId).subscribe((comments) => {
       this.comments = comments;
     })
