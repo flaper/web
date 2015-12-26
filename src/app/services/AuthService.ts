@@ -107,7 +107,12 @@ export class AuthService {
   requestUser() {
     let userId = this.jwtData.userId;
     let observer = this.api.request('get', `users/${userId}`, {filter: JSON.stringify({include: 'roles'})});
-    observer.subscribe(user => this.setCurrentUser(user));
+    observer.subscribe(user => this.setCurrentUser(user),
+      (error) => {
+        //e.g. at stage server when record removed
+        this.logout();
+      }
+    );
 
     return observer;
   }
