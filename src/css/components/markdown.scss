@@ -1,9 +1,11 @@
 .md-images-group {
   display: flex;
   flex-flow: row wrap;
+  justify-content: space-around;
   & > div {
     flex: auto;
     width: 200px;
+    max-width: 900px;
     margin: 0 0.5rem 1rem;
   }
   & img {
