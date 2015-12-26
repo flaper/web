@@ -1,0 +1,6 @@
+<h5>Комментарии</h5>
+<hr>
+<comment-write *ngIf="userService.currentUser && subjectId" [subjectId]="subjectId"></comment-write>
+<comments-list [comments]="comments">
+
+</comments-list>

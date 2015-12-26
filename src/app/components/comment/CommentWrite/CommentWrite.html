@@ -1,0 +1,8 @@
+<form class="form" [ngFormModel]="form" (submit)="onSubmit($event)">
+  <fieldset class="form-group">
+      <textarea ngControl="content" placeholder="Новый комментарий" class="form-control" rows="2"
+                autosize></textarea>
+  </fieldset>
+
+  <button type="submit" class="btn btn-primary btn-sm" [disabled]="disabled">{{newComment ? 'Сказать' : 'Сохранить'}}</button>
+</form>

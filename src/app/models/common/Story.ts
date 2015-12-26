@@ -1,5 +1,6 @@
 export class Story {
   id:string;
+  status: string;
   userId:string;
   slug:string;
   title:string;

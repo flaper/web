@@ -5,10 +5,11 @@ import {RouteParams} from 'angular2/router'
 import {Story} from "../../../../models/common/Story";
 import {StoryComponent} from "../../../story/Story/StoryComponent";
 import {StoryService} from "../../../../services/StoryService";
+import {CommentsAutoList} from "../../../comment/CommentsAutoList/CommentsAutoList";
 
 @Component({
   selector: 'page-story',
-  directives: [StoryComponent],
+  directives: [StoryComponent, CommentsAutoList],
   pipes: [],
   styles: [require('./PageStory.scss')],
   template: require('./PageStory.html')

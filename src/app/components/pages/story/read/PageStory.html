@@ -1,3 +1,4 @@
 <div class="container" *ngIf="story">
   <story [story]="story"></story>
+  <comments-auto-list [subjectId]="story.id"></comments-auto-list>
 </div>

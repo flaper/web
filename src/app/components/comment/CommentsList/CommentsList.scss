@@ -1,9 +1,11 @@
 @import "../../../../css/variables";
 
-story-item {
+comment-component {
   padding: 1rem 0;
   margin: 0 0;
+
   &:not(:last-of-type) {
     border-bottom: 1px solid $gray-lighter;
   }
 }
+
