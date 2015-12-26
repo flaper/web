@@ -1,11 +1,12 @@
+<div class="comment-item-header">
+  <div>
+    <user-link [userId]="comment.userId"></user-link>
+  </div>
+  <div class="time">{{comment.created | amTimeAgo}}</div>
+</div>
+<div class="comment-content">
+  {{comment.content}}
+</div>
 <div>
-  <div class="comment-item-header">
-    <div>
-      <user-link [userId]="comment.userId"></user-link>
-    </div>
-    <div class="time">{{comment.created | amTimeAgo}}</div>
-  </div>
-  <div class="comment-content">
-    {{comment.content}}
-  </div>
+  <like [subject]="comment"></like>
 </div>

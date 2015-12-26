@@ -17,5 +17,6 @@
 </div>
 <h1>{{story.title}}</h1>
 
-<div [innerHtml]="story.contentHTML">
+<div [innerHtml]="story.contentHTML" class="contentHTML">
 </div>
+<like [subject]="story"></like>

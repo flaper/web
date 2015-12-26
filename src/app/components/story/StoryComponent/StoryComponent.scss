@@ -1,13 +1,21 @@
-.story-head {
-  margin: 0.5rem -0.5rem;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  & > div {
-    margin: 0.5rem 0.5rem;
+:host {
+  display: block;
+  margin-bottom: 1rem;
+  .story-head {
+    margin: 0.5rem -0.5rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    & > div {
+      margin: 0.5rem 0.5rem;
+    }
+    .time > span {
+      white-space: nowrap;
+      display: inline-block;
+    }
   }
-  .time > span{
-    white-space: nowrap;
-    display: inline-block;
+
+  like {
+    font-size: 1.3rem;
   }
 }
