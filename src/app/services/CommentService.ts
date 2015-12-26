@@ -1,14 +1,18 @@
 import {Injectable} from 'angular2/core';
 import {ApiService} from "./ApiService";
+import {LikeService} from "./LikeService";
 
 @Injectable()
 export class CommentService {
-  constructor(private api:ApiService) {
+  constructor(private api:ApiService, private likeService:LikeService) {
   }
 
   getBySubjectId(subjectId) {
     if (!subjectId) throw 'Comment.getBySubjectId - subjectId required';
-    return this.api.request('get', 'comments', {filter: JSON.stringify({where: {subjectId: subjectId}})});
+    return this.api.request('get', 'comments', {filter: JSON.stringify({where: {subjectId: subjectId}})})
+      .do((data) => {
+        this.likeService.requestLikesInfo(data.map(model => model.id));
+      });
   }
 
   post(data) {

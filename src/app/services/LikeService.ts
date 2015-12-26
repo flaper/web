@@ -30,6 +30,23 @@ export class LikeService {
     return this._myLikes[id];
   }
 
+  requestLikesInfo(allIds) {
+    let ids = allIds.filter(id => !this._myLikes[id]);
+    if (ids.length > 0) {
+      ids.forEach((id) => {
+        this._myLikes[id] = new Rx.BehaviorSubject(false);
+      });
+
+      //let's request for allIds to update cache
+      let where = {userId: this.userService.currentUserId, subjectId: {inq: allIds}};
+      let filter = {where: where};
+      this.api.request('get', 'likes', {filter: JSON.stringify(filter)})
+        .subscribe(likes => {
+          likes.forEach(like => this._myLikes[like.subjectId].next(true));
+        })
+    }
+  }
+
   toggle(subjectId) {
     let ob = this._myLikes[subjectId];
     if (ob) {
