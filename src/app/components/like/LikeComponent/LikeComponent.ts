@@ -2,6 +2,7 @@
 import {Component, Input} from 'angular2/core';
 import {ILikable} from "../../../models/common/ILikable";
 import {LikeService} from "../../../services/LikeService";
+import {UserService} from "../../../services/UserService";
 
 @Component({
   selector: 'like',
@@ -11,14 +12,15 @@ export class LikeComponent {
   @Input()
   subject:ILikable;
 
-  constructor(private likeService:LikeService) {
+  constructor(private likeService:LikeService, private userService:UserService) {
   }
 
   toggleLike() {
-    console.log('toggle');
-    this.likeService.toggle(this.subject.id)
-      .subscribe((response) => {
-        this.subject.numberOfLikes = response.count;
-      })
+    if (this.userService.currentUser) {
+      this.likeService.toggle(this.subject.id)
+        .subscribe((response) => {
+          this.subject.numberOfLikes = response.count;
+        })
+    }
   }
 }
