@@ -1,13 +1,17 @@
 import {Injectable} from 'angular2/core';
 import {ApiService} from "./ApiService";
+import {LikeService} from "./LikeService";
 
 @Injectable()
 export class StoryService {
-  constructor(private api:ApiService) {
+  constructor(private api:ApiService, private likeService:LikeService) {
   }
 
   get({where}) {
-    return this.api.request('get', 'stories', {filter: JSON.stringify({where: where})});
+    return this.api.request('get', 'stories', {filter: JSON.stringify({where: where})})
+      .do((data) => {
+        this.likeService.requestLikesInfo(data.map(model => model.id));
+      });
   }
 
   getBySlug(slug) {
