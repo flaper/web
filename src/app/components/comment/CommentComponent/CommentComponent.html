@@ -11,7 +11,7 @@
         <div class="time">{{comment.created | amTimeAgo}}</div>
       </div>
     </div>
-    <post-actions (actionClicked)="actionEvent($event)"></post-actions>
+    <post-actions (actionClicked)="actionEvent($event)" *ngIf="acl.can('Comment.write', comment)"></post-actions>
   </div>
   <div class="comment-content">
     {{comment.content}}

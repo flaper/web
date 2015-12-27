@@ -11,6 +11,9 @@ export class ACL {
   LIST = {
     Story: {
       write: ['$owner', 'admin']
+    },
+    Comment: {
+      write: ['$owner', 'super']
     }
   };
 
@@ -30,14 +33,26 @@ export class ACL {
         case 'admin':
           result = result || this.isAdmin();
           break;
+        case 'super':
+          result = result || this.isSuper();
+          break;
       }
     }
     return result;
   }
 
+  getRoles() {
+    return _.get(this.userService.currentUser, "roles");
+  }
+
   isAdmin() {
-    let roles:any = _.get(this.userService.currentUser, "roles");
-    return roles && (roles.indexOf('admin') > -1)
+    let roles:any = this.getRoles();
+    return roles && (roles.indexOf('admin') > -1) || this.isSuper();
+  }
+
+  isSuper() {
+    let roles:any = this.getRoles();
+    return roles && (roles.indexOf('super') > -1)
   }
 
   isOwner(model) {

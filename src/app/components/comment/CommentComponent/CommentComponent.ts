@@ -8,6 +8,7 @@ import {TimeAgoPipe} from 'angular2-moment';
 import {LikeComponent} from "../../like/LikeComponent/LikeComponent";
 import {PostActions} from "../../post/PostActions/PostActions";
 import {CommentService} from "../../../services/CommentService";
+import {ACL} from "../../../acl/ACL";
 
 @Component({
   selector: 'comment-component',
@@ -21,7 +22,7 @@ export class CommentComponent {
   @Input()
   comment:Comment;
 
-  constructor(private commentService:CommentService) {
+  constructor(private commentService:CommentService, private acl:ACL) {
   }
 
   actionEvent(event) {
