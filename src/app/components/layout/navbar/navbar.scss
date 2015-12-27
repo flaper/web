@@ -22,10 +22,14 @@
 
 .my-avatar {
   $value: 2.3rem;
-  max-height: $value;
-  max-width: $value;
+  height: $value;
+  width: $value;
   border: 2px solid lighten($brand-secondary, 10);
   border-radius: $value / 2;
+}
+
+.fa-sign-out {
+  width: 1em;
 }
 
 .navbar-nav .nav-avatar-item {
