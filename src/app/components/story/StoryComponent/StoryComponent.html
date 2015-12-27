@@ -1,13 +1,16 @@
 <div class="story-head">
-  <div class="story-head-left">
-    <div>
-      <user-link [userId]="story.userId"></user-link>
-    </div>
-    <div class="time">
-      <span>{{story.created | amTimeAgo}}</span>
+  <div class="media">
+    <user-avatar [userId]="story.userId" class="media-left"></user-avatar>
+    <div class="media-body">
+      <div>
+        <user-link [userId]="story.userId"></user-link>
+      </div>
+      <div class="time">
+        <span>{{story.created | amTimeAgo}}</span>
       <span *ngIf="showChangedTime()">
         (изменено {{story.updated | amTimeAgo}})
       </span>
+      </div>
     </div>
   </div>
   <div *ngIf="acl.can('Story.write', story)">

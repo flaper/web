@@ -1,9 +1,14 @@
 <div>
   <div class="story-item-header">
     <div *ngIf="showAuthor">
-      <user-link [userId]="story.userId"></user-link>
+      <div class="media">
+        <user-avatar [userId]="story.userId" class="media-left"></user-avatar>
+        <div class="media-body">
+          <user-link [userId]="story.userId"></user-link>
+          <div class="time">{{story.created | amTimeAgo}}</div>
+        </div>
+      </div>
     </div>
-    <div class="time">{{story.created | amTimeAgo}}</div>
   </div>
   <a [routerLink]="['/Story', {slug: story.slug}]"><h3>{{story.title}}</h3></a>
 

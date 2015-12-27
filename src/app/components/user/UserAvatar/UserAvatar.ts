@@ -6,12 +6,12 @@ import {UserService} from "../../../services/UserService";
 import {User} from "../../../models/common/User";
 
 @Component({
-  selector: 'user-link',
+  selector: 'user-avatar',
   directives: [ROUTER_DIRECTIVES],
   pipes: [],
-  template: require('./UserLink.html')
+  template: require('./UserAvatar.html')
 })
-export class UserLink {
+export class UserAvatar {
   @Input()
   userId:string;
 
