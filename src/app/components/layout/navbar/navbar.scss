@@ -27,6 +27,14 @@
   border: 2px solid lighten($brand-secondary, 10);
   border-radius: $value / 2;
 }
-.navbar-nav .nav-item.my-avatar-container + .nav-item{
-  margin-left: 0.4rem;
+
+.navbar-nav .nav-avatar-item {
+  float: left;
+  margin-right: 0.4rem;
+}
+
+@media (max-width: map-get($grid-breakpoints, 'md')-1px) {
+  .navbar-nav .nav-item.hidden-sm-down + .nav-item {
+    margin-left: 0;
+  }
 }
