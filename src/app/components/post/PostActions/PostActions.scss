@@ -1,0 +1,11 @@
+:host {
+  display: block;
+}
+
+.tether-container {
+  position: absolute;
+  visibility: hidden;
+  //can be improved,as it can provoke scrolls for mobile if relative != body
+  top: 0;
+  left: 0;
+}

@@ -6,10 +6,11 @@ import {UserLink} from "../../user/UserLink/UserLink";
 import {UserAvatar} from "../../user/UserAvatar/UserAvatar";
 import {TimeAgoPipe} from 'angular2-moment';
 import {LikeComponent} from "../../like/LikeComponent/LikeComponent";
+import {PostActions} from "../../post/PostActions/PostActions";
 
 @Component({
   selector: 'comment-component',
-  directives: [UserLink, UserAvatar, LikeComponent],
+  directives: [UserLink, UserAvatar, LikeComponent, PostActions],
   pipes: [TimeAgoPipe],
   styles: [require('./CommentComponent.scss')],
   template: require('./CommentComponent.html')
@@ -20,5 +21,9 @@ export class CommentComponent {
   comment:Comment;
 
   constructor() {
+  }
+
+  actionEvent(event) {
+    this.comment = null;
   }
 }

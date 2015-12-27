@@ -1,5 +1,9 @@
 :host {
   display: block;
+  .comment-header{
+    display: flex;
+    justify-content: space-between;
+  }
   .time {
     font-size: 0.8rem;
   }

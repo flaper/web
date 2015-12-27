@@ -1,17 +1,22 @@
-<div class="media">
-  <div class="media-left">
-    <user-avatar [userId]="comment.userId" [size]="avatarSize"></user-avatar>
-  </div>
-  <div class="media-body">
-    <div>
-      <user-link [userId]="comment.userId"></user-link>
+<div class="post" *ngIf="comment">
+  <div class="comment-header">
+    <div class="media">
+      <div class="media-left">
+        <user-avatar [userId]="comment.userId" [size]="avatarSize"></user-avatar>
+      </div>
+      <div class="media-body">
+        <div>
+          <user-link [userId]="comment.userId"></user-link>
+        </div>
+        <div class="time">{{comment.created | amTimeAgo}}</div>
+      </div>
     </div>
-    <div class="time">{{comment.created | amTimeAgo}}</div>
+    <post-actions (actionClicked)="actionEvent($event)"></post-actions>
   </div>
-</div>
-<div class="comment-content">
-  {{comment.content}}
-</div>
-<div>
-  <like [subject]="comment"></like>
+  <div class="comment-content">
+    {{comment.content}}
+  </div>
+  <div>
+    <like [subject]="comment"></like>
+  </div>
 </div>

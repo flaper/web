@@ -16,6 +16,9 @@
     },
     "jquery/jquery.d.ts": {
       "commit": "d8359c5a99c7965a51dcf0e26b65170f2c53af80"
+    },
+    "tether/tether.d.ts": {
+      "commit": "a6ff9f6e195a334afd89e4b721d05e9520eee4c0"
     }
   }
 }
