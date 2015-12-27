@@ -12,6 +12,9 @@
       <li class="nav-item" *ngIf="!userService.currentUser">
         <a class="nav-link" [routerLink]=" ['/Login'] "><i class="fa fa-sign-in"></i> Вход</a>
       </li>
+      <li class="nav-item my-avatar-container" *ngIf="userService.currentUser">
+        <img class="my-avatar" src="{{userService.currentUser.photo}}">
+      </li>
       <li class="nav-item" *ngIf="userService.currentUser">
         <span class="nav-link">
         {{userService.currentUser.displayName}}

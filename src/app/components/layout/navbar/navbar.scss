@@ -18,3 +18,14 @@
   margin-top: 3px;
   margin-bottom: 3px;
 }
+
+.my-avatar {
+  $value: 2.3rem;
+  max-height: $value;
+  max-width: $value;
+  border: 2px solid lighten($brand-secondary, 10);
+  border-radius: $value / 2;
+}
+.navbar-nav .nav-item.my-avatar-container + .nav-item{
+  margin-left: 0.4rem;
+}
