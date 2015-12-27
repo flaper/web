@@ -19,6 +19,9 @@ export class CommentsAutoList {
 
   comments:Comment[] = [];
 
+  //at least one time comments were loaded
+  wasLoaded:boolean = false;
+
   constructor(private commentService:CommentService, private userService:UserService) {
   }
 
@@ -34,6 +37,7 @@ export class CommentsAutoList {
   reloadComments() {
     this.commentService.getBySubjectId(this.subjectId).subscribe((comments) => {
       this.comments = comments;
+      this.wasLoaded = true;
     })
   }
 }

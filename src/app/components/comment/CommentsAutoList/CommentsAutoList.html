@@ -1,6 +1,10 @@
 <h5>Комментарии</h5>
 <hr>
-<comment-write *ngIf="userService.currentUser && subjectId" [subjectId]="subjectId" (commentChange)="commentAdded($event)"></comment-write>
+<comment-write *ngIf="userService.currentUser && subjectId" [subjectId]="subjectId"
+               (commentChange)="commentAdded($event)"></comment-write>
+<div *ngIf="!userService.currentUser && wasLoaded && comments.length === 0" class="no-comments">
+  Пока нет ни одного комментария.
+</div>
 <comments-list [comments]="comments">
 
 </comments-list>
