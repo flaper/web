@@ -7,6 +7,7 @@ import {UserAvatar} from "../../user/UserAvatar/UserAvatar";
 import {TimeAgoPipe} from 'angular2-moment';
 import {LikeComponent} from "../../like/LikeComponent/LikeComponent";
 import {PostActions} from "../../post/PostActions/PostActions";
+import {CommentService} from "../../../services/CommentService";
 
 @Component({
   selector: 'comment-component',
@@ -20,10 +21,11 @@ export class CommentComponent {
   @Input()
   comment:Comment;
 
-  constructor() {
+  constructor(private commentService:CommentService) {
   }
 
   actionEvent(event) {
+    this.commentService.del(this.comment.id);
     this.comment = null;
   }
 }

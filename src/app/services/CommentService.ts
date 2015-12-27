@@ -26,6 +26,11 @@ export class CommentService {
   save(data) {
     return data.id ? this.put(data) : this.post(data);
   }
+
+  del(subjectId) {
+    if (!subjectId) throw 'Comment.del - subjectId required';
+    return this.api.request('delete', `comments/${subjectId}`).publishLast().connect();
+  }
 }
 
 export let COMMENT_SERVICE_PROVIDER = [CommentService];

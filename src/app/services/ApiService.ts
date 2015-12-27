@@ -30,6 +30,9 @@ export class ApiService {
         options.search = this._mapToURLSearchParams(data);
         query = this.http.get(finalUrl, options);
         break;
+      case 'delete':
+        query = this.http.delete(finalUrl, options);
+        break;
       default:
         query = this.http[method](finalUrl, JSON.stringify(data), options);
         break;
