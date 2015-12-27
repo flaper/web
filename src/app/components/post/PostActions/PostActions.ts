@@ -1,9 +1,9 @@
 /// <reference path="../../../../../typingsOurs/main.d.ts" />
 
 import {Component, Input, Output, EventEmitter, ElementRef} from 'angular2/core';
-import {Comment} from "../../../models/common/Comment";
 import * as tether from 'tether';
 import Tether = tether.Tether;
+import {ACL} from "../../../acl/ACL";
 
 @Component({
   selector: 'post-actions',
@@ -14,14 +14,17 @@ import Tether = tether.Tether;
 })
 export class PostActions {
   @Input()
-  comment:Comment;
+  model;
+
+  @Input()
+  actions = [{name: 'delete', title: 'Удалить'}];
 
   @Output()
   actionClicked:EventEmitter<string> = new EventEmitter<string>();
 
   tetherObject;
 
-  constructor(private elementRef:ElementRef) {
+  constructor(private elementRef:ElementRef, private acl:ACL) {
   }
 
   ngOnDestroy() {
@@ -57,7 +60,6 @@ export class PostActions {
   private hideTether() {
     let container = this.elementRef.nativeElement.querySelector('.tether-container');
     let element = this.tetherObject.element;
-    //element.setAttribute('class', 'post-actions-widget tether-open');
     element.setAttribute('style', '');
     container.appendChild(element);
     this.tetherObject.destroy();

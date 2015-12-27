@@ -29,6 +29,21 @@ export class StoryService {
   save(data) {
     return data.id ? this.put(data) : this.post(data);
   }
+
+  del(subjectId) {
+    return this.changeStatus(subjectId, 'delete');
+  }
+
+  deny(subjectId) {
+    return this.changeStatus(subjectId, 'deny');
+  }
+
+  private changeStatus(subjectId, action) {
+    if (!subjectId) throw 'Story.changeStatus - subjectId required';
+    let observable = this.api.request('put', `stories/${subjectId}/status/${action}`).publishLast();
+    observable.connect();
+    return observable;
+  }
 }
 
 export let STORY_SERVICE_PROVIDER = [StoryService];

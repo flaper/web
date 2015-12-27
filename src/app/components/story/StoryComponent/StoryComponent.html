@@ -16,6 +16,8 @@
   <div *ngIf="acl.can('Story.write', story)">
     <a class="btn btn-secondary" [routerLink]="['/WriteStory', {slug: story.slug}]"><i class="fa fa-pencil"></i>
       Редактировать</a>
+    <post-actions class="active" [actions]="actions" [model]="story" (actionClicked)="actionEvent($event)"
+                  *ngIf="acl.can('Story.write', story)"></post-actions>
   </div>
 </div>
 <h1>{{story.title}}</h1>

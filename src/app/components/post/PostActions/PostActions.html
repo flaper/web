@@ -2,6 +2,11 @@
 
 <div class="tether-container">
   <div class="post-actions-widget tether-open">
-    <div (click)="actionEvent('delete')"><i class="fa fa-trash"></i> Удалить</div>
+    <div *ngFor="#action of actions">
+      <div (click)="actionEvent(action.name)" *ngIf="!action.acl || acl.can(action.acl, model)" class="post-action">
+        <i class="fa {{action.icon}}" [class.fa-trash]="!action.icon"></i>
+        {{action.title}}
+      </div>
+    </div>
   </div>
 </div>

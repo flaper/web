@@ -5,7 +5,7 @@
   transition: $transition-all;
 }
 
-.post:hover {
+.post:hover, post-actions.active {
   .fa-chevron-down, .fa-chevron-up {
     transition: none;
     color: $gray-light;
@@ -17,7 +17,7 @@
   border: 1px solid $gray-dark;
   padding: 0.1rem 0;
   box-shadow: 0 0 2px $gray-dark;
-  & > div {
+  .post-action {
     padding: 0.3rem 0.5rem;
     cursor: pointer;
     &:hover {
