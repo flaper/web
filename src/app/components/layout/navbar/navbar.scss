@@ -11,6 +11,7 @@
 @media (min-width: map-get($grid-breakpoints, 'sm')) {
   .navbar-brand {
     float: left;
+    font-weight: bold;
   }
 }
 
