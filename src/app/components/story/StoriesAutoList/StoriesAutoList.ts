@@ -15,6 +15,9 @@ export class StoriesAutoList {
   @Input()
   where = {};
   @Input()
+  order = "";
+
+  @Input()
   showAuthor:boolean = true;
 
   stories:Story[] = [];
@@ -23,7 +26,7 @@ export class StoriesAutoList {
   }
 
   ngOnInit() {
-    this.storyService.get({where: this.where}).subscribe((stories) => {
+    this.storyService.get({where: this.where, order: this.order}).subscribe((stories) => {
       this.stories = stories;
     })
   }

@@ -1,10 +1,22 @@
 <div class="container">
-  <h1 class="text-xs-center">
-    Добро пожаловать!
-  </h1>
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link active" data-toggle="tab" href="#lastStories">Последние статьи</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#topStories">Топ Статей</a>
+    </li>
+  </ul>
 
-  <h2 class="text-xs-center">Последние статьи</h2>
-  <stories-auto-list>
+  <div class="tab-content">
+    <div class="tab-pane active" id="lastStories">
+      <h2 class="text-xs-center">Последние статьи</h2>
+      <stories-auto-list>
 
-  </stories-auto-list>
+      </stories-auto-list>
+    </div>
+    <div class="tab-pane" id="topStories" role="tabpanel">
+      <top-stories></top-stories>
+    </div>
+  </div>
 </div>

@@ -7,8 +7,9 @@ export class StoryService {
   constructor(private api:ApiService, private likeService:LikeService) {
   }
 
-  get({where}) {
-    return this.api.request('get', 'stories', {filter: JSON.stringify({where: where})})
+  get({where, order = ""}) {
+    let filter = JSON.stringify({where: where, order: order});
+    return this.api.request('get', 'stories', {filter: filter })
       .do((data) => {
         this.likeService.requestLikesInfo(data.map(model => model.id));
       });

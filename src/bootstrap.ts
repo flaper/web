@@ -2,6 +2,7 @@
  * Providers provided by Angular
  */
 import {bootstrap} from 'angular2/platform/browser';
+import {enableProdMode} from 'angular2/core';
 import {ELEMENT_PROBE_PROVIDERS} from 'angular2/platform/common_dom';
 import {ROUTER_PROVIDERS} from 'angular2/router';
 import {HTTP_PROVIDERS} from 'angular2/http';
@@ -22,6 +23,7 @@ require('./css/main.scss');
 export function main() {
   moment.locale('ru');
   //noinspection TypeScriptValidateTypes
+  enableProdMode();
   return bootstrap(App, [
     // These are dependencies of our App
     HTTP_PROVIDERS,

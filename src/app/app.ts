@@ -9,6 +9,7 @@ import {APP_PROVIDERS} from './services/providers';
 import {Navbar} from './components/layout/navbar/navbar';
 //pages
 import {PageHome} from './components/pages/home/home';
+import {PageTopStories} from "./components/pages/home/topStories/topStories";
 import {PageLogin} from './components/pages/login/login';
 import {PageWriteStory} from './components/pages/story/write/PageWriteStory';
 import {PageUser} from './components/pages/user/PageUser';
@@ -34,6 +35,7 @@ import {PageStory} from "./components/pages/story/read/PageStory";
 })
 @RouteConfig([
   {path: '/', component: PageHome, name: 'Home'},
+  {path: '/top', component: PageTopStories, name: 'Top'},
   {path: '/login', component: PageLogin, name: 'Login'},
   {path: '/create_story', component: PageWriteStory, name: 'CreateStory'},
   {path: '/s/:slug', component: PageStory, name: 'Story'},

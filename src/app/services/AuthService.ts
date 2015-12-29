@@ -13,7 +13,7 @@ interface Provider {
 }
 export let PROVIDERS:Provider[] = [
   {name: 'vk', loginTitle: 'Войти через Вконтакте'},
-  {name: 'odnoklassniki', loginTitle: 'Войти через Одноклассники'},
+  //{name: 'odnoklassniki', loginTitle: 'Войти через Одноклассники'},
   {name: 'facebook', loginTitle: 'Войти через Facebook'},
   {name: 'google', loginTitle: 'Войти через Google'},
 ];
