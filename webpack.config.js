@@ -23,7 +23,7 @@ module.exports = {
 
   // Config for our build files
   output: {
-    path: root('__build__'),
+    path: root('src/public/__build__'),
     filename: '[name].js',
     sourceMapFilename: '[name].map',
     chunkFilename: '[id].chunk.js'
