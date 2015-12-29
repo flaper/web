@@ -14,11 +14,12 @@ import {PageLogin} from './components/pages/login/login';
 import {PageWriteStory} from './components/pages/story/write/PageWriteStory';
 import {PageUser} from './components/pages/user/PageUser';
 import {PageStory} from "./components/pages/story/read/PageStory";
+import {Footer} from "./components/layout/footer/footer";
 
 @Component({
   selector: 'app',
   providers: [FORM_PROVIDERS, APP_PROVIDERS],
-  directives: [ROUTER_DIRECTIVES, Navbar],
+  directives: [ROUTER_DIRECTIVES, Navbar, Footer],
   // Every Angular template is first compiled by the browser before Angular runs it's compiler
   template: `
     <header>
