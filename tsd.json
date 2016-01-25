@@ -19,6 +19,9 @@
     },
     "tether/tether.d.ts": {
       "commit": "a6ff9f6e195a334afd89e4b721d05e9520eee4c0"
+    },
+    "lodash/lodash.d.ts": {
+      "commit": "7b3d5a6ea5acda4a81f71309f1cc62354e63b681"
     }
   }
 }
