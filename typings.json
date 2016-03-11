@@ -4,13 +4,8 @@
   },
   "devDependencies": {},
   "ambientDependencies": {
-    "angular-protractor": "github:angular/DefinitelyTyped/angular-protractor/angular-protractor.d.ts#31e7317c9a0793857109236ef7c7f223305a8aa9",
-    "es6-shim": "github:angular/DefinitelyTyped/es6-shim/es6-shim.d.ts#31e7317c9a0793857109236ef7c7f223305a8aa9",
-    "hammerjs": "github:angular/DefinitelyTyped/hammerjs/hammerjs.d.ts#31e7317c9a0793857109236ef7c7f223305a8aa9",
-    "jasmine": "github:angular/DefinitelyTyped/jasmine/jasmine.d.ts#31e7317c9a0793857109236ef7c7f223305a8aa9",
-    "lodash": "github:DefinitelyTyped/DefinitelyTyped/lodash/lodash.d.ts#24e12a7af994afa2226af70fbfae0adc78736a9e",
-    "node": "github:angular/DefinitelyTyped/node/node.d.ts#31e7317c9a0793857109236ef7c7f223305a8aa9",
-    "selenium-webdriver": "github:angular/DefinitelyTyped/selenium-webdriver/selenium-webdriver.d.ts#31e7317c9a0793857109236ef7c7f223305a8aa9",
-    "zone": "github:angular/DefinitelyTyped/zone/zone.d.ts#31e7317c9a0793857109236ef7c7f223305a8aa9"
+    "angular-protractor": "registry:dt/angular-protractor#1.5.0+20160127022504",
+    "lodash": "registry:dt/lodash#3.10.0+20160308151359",
+    "node": "registry:dt/node#4.0.0+20160311162451"
   }
 }
