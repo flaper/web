@@ -7,8 +7,6 @@ import {enableProdMode} from 'angular2/core';
 import {
   ROUTER_PROVIDERS,
   ROUTER_DIRECTIVES,
-  LocationStrategy,
-  HashLocationStrategy
 } from 'angular2/router';
 import {FORM_PROVIDERS} from 'angular2/common';
 import {HTTP_PROVIDERS} from 'angular2/http';
@@ -33,7 +31,7 @@ const APPLICATION_PROVIDERS = [
   ...ROUTER_PROVIDERS,
   ...FORM_PROVIDERS,
   ...APP_PROVIDERS,
-  ngCore.provide(LocationStrategy, { useClass: HashLocationStrategy })
+  //ngCore.provide(LocationStrategy, { useClass: HashLocationStrategy })
 ];
 
 // application_directives: directives that are global through out the application
