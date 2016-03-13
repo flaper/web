@@ -1,5 +1,19 @@
 <div class="container" *ngIf="user">
-  <h1>{{user.displayName}}</h1>
+  <div class="media">
+   <span class="media-left">
+     <img class="media-object img-thumbnail" src="{{user.photoLarge}}" alt="{{user.displayName}}">
+   </span>
+
+    <div class="media-body">
+      <h1 class="media-heading">{{user.displayName}}</h1>
+
+      <div *ngIf="userService.currentUser">
+      <span *ngIf="amount !== null">
+      Баллов: {{amount}}
+      </span>
+      </div>
+    </div>
+  </div>
   <stories-auto-list [where]="{userId: user.id}" [showAuthor]="false">
   </stories-auto-list>
 </div>

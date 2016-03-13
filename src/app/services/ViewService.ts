@@ -1,6 +1,5 @@
 import {Injectable} from 'angular2/core';
 import {ApiService} from "./ApiService";
-import {LikeService} from "./LikeService";
 
 @Injectable()
 export class ViewService {

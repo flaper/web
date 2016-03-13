@@ -1,0 +1,10 @@
+:host {
+  display: block;
+  margin-top: 1rem;
+  .media {
+    img {
+      max-height: 10rem;
+      max-width: 10rem;
+    }
+  }
+}
