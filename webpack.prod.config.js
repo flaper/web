@@ -40,7 +40,6 @@ module.exports = {
   debug: false,
 
   entry: {
-    'polyfills': './src/polyfills.ts',
     'vendor': './src/vendor.ts',
     'main': './src/main.ts'
   },
@@ -97,12 +96,12 @@ module.exports = {
         loader: 'json-loader',
       },
 
-      // Support for CSS as raw text
-      {
-        test: /\.css$/,
-        loader: 'raw-loader',
-      },
+      // support for global scss in src/app folder
+      {test: /css\/.*\.scss$/, loader: 'style!css!autoprefixer!sass'},
 
+
+      //Support scss for angular components
+      {test: /app\/.*\.scss$/, loader: 'raw!autoprefixer!sass'},
       // support for .html as raw text
       {
         test: /\.html$/,
@@ -126,7 +125,7 @@ module.exports = {
     new DedupePlugin(),
     new OccurenceOrderPlugin(true),
     new CommonsChunkPlugin({
-      name: ['main', 'vendor', 'polyfills'],
+      name: ['main', 'vendor'],
       filename: '[name].bundle.js',
       minChunks: Infinity
     }),
