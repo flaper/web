@@ -1,8 +1,5 @@
-/// <reference path="../../../../../typingsOurs/main.d.ts" />
-
 import {Component, Input, Output, EventEmitter, ElementRef} from 'angular2/core';
-import * as tether from 'tether';
-import Tether = tether.Tether;
+import * as Tether from 'tether';
 import {ACL} from "../../../acl/ACL";
 
 @Component({

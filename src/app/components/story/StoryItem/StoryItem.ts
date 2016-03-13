@@ -1,5 +1,3 @@
-/// <reference path="../../../../../typingsOurs/main.d.ts" />
-
 import {Component, Input} from 'angular2/core';
 import {RouterLink} from 'angular2/router';
 import {Story} from "../../../models/common/Story";

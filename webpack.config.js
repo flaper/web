@@ -1,99 +1,118 @@
-/*
- * Helper: root(), and rootDir() are defined at the bottom
- */
-var sliceArgs = Function.prototype.call.bind(Array.prototype.slice);
-var toString = Function.prototype.call.bind(Object.prototype.toString);
-var path = require('path');
-var webpack = require('webpack');
-// Webpack Plugins
-var CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
+// @AngularClass
 
+var webpack = require('webpack');
+var helpers = require('./helpers');
+
+var CopyWebpackPlugin = require('copy-webpack-plugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+var ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
+
+var ENV = process.env.ENV = process.env.NODE_ENV = 'development';
+var HMR = helpers.hasProcessFlag('hot');
+
+var metadata = {
+  title: 'Флапер',
+  baseUrl: '/',
+  host: 'localhost',
+  port: 3000,
+  ENV: ENV,
+  HMR: HMR
+};
 /*
  * Config
+ * with default values at webpack.default.conf
  */
 module.exports = {
-  // for faster builds use 'eval'
-  devtool: 'source-map',
+  // static data for index.html
+  metadata: metadata,
+  devtool: 'cheap-module-eval-source-map',
+  // cache: true,
   debug: true,
+  // devtool: 'eval' // for faster builds use 'eval'
 
+  // our angular app
   entry: {
+    //'polyfills': './src/polyfills.ts',
     'vendor': './src/vendor.ts',
-    'app': './src/bootstrap.ts' // our angular app
+    'app': './src/main.ts'
+  },
+
+  resolve: {
+    extensions: ['', '.ts', '.js']
   },
 
   // Config for our build files
   output: {
-    path: root('src/public/__build__'),
-    filename: '[name].js',
+    path: helpers.root('dist'),
+    filename: '[name].bundle.js',
     sourceMapFilename: '[name].map',
     chunkFilename: '[id].chunk.js'
   },
 
-  resolve: {
-    // ensure loader extensions match
-    extensions: ['', '.ts', '.js', '.json', '.css', '.html']
-  },
-
   module: {
-    preLoaders: [{test: /\.ts$/, loader: 'tslint-loader'}],
+    preLoaders: [
+      // { test: /\.ts$/, loader: 'tslint-loader', exclude: [ helpers.root('node_modules') ] },
+      // TODO(gdi2290): `exclude: [ helpers.root('node_modules/rxjs') ]` fixed with rxjs 5 beta.3 release
+      { test: /\.js$/, loader: "source-map-loader", exclude: [ helpers.root('node_modules/rxjs') ] }
+    ],
     loaders: [
       // Support for .ts files.
-      {
-        test: /\.ts$/,
-        loader: 'ts-loader',
-        query: {
-          'ignoreDiagnostics': [
-            2403, // 2403 -> Subsequent variable declarations
-            2300, // 2300 Duplicate identifier
-            2374, // 2374 -> Duplicate number index signature
-            2375  // 2375 -> Duplicate string index signature
-          ]
-        },
-        exclude: [/\.spec\.ts$/, /\.e2e\.ts$/, /node_modules/]
-      },
+      { test: /\.ts$/, loader: 'awesome-typescript-loader', exclude: [ /\.(spec|e2e)\.ts$/ ] },
 
       // Support for *.json files.
-      {test: /\.json$/, loader: 'json-loader'},
+      { test: /\.json$/,  loader: 'json-loader' },
 
       // support for global scss in src/app folder
-      {test: /src\/css\/.*\.scss$/, loader: 'style!css!autoprefixer!sass'},
+      {test: /css\/.*\.scss$/, loader: 'style!css!autoprefixer!sass'},
+
 
       //Support scss for angular components
-      {test: /src\/app\/.*\.scss$/, loader: 'raw!autoprefixer!sass'},
+      {test: /app\/.*\.scss$/, loader: 'raw!autoprefixer!sass'},
 
       // support for .html as raw text
-      {test: /\.html$/, loader: 'raw-loader'},
-    ],
-    noParse: [/zone\.js\/dist\/.+/, /angular2\/bundles\/.+/]
+      { test: /\.html$/,  loader: 'raw-loader', exclude: [ helpers.root('src/index.html') ] }
+
+    ]
   },
 
   plugins: [
-    new CommonsChunkPlugin({name: 'vendor', filename: 'vendor.js', minChunks: Infinity}),
-    new CommonsChunkPlugin({name: 'common', filename: 'common.js', minChunks: 2, chunks: ['app', 'vendor']})
+    new ForkCheckerPlugin(),
+    new webpack.optimize.OccurenceOrderPlugin(true),
+    new webpack.optimize.CommonsChunkPlugin({ name: ['app', 'vendor'], minChunks: Infinity }),
+    // static assets
+    new CopyWebpackPlugin([ { from: 'src/assets', to: 'assets' } ]),
+    // generating html
+    new HtmlWebpackPlugin({ template: 'src/index.html', chunksSortMode: 'none' }),
+    // Environment helpers (when adding more properties make sure you include them in custom-typings.d.ts)
+    new webpack.DefinePlugin({
+      'ENV': JSON.stringify(metadata.ENV),
+      'HMR': HMR
+    })
   ],
 
   // Other module loader config
+
+  // our Webpack Development Server config
   tslint: {
     emitErrors: false,
-    failOnHint: false
+    failOnHint: false,
+    resourcePath: 'src',
   },
-  // our Webpack Development Server config
   devServer: {
+    port: metadata.port,
+    host: metadata.host,
     historyApiFallback: true,
-    contentBase: 'src/public',
-    publicPath: '/__build__'
+    watchOptions: {
+      aggregateTimeout: 300,
+      poll: 1000
+    }
+  },
+  node: {
+    global: 'window',
+    process: true,
+    crypto: 'empty',
+    module: false,
+    clearImmediate: false,
+    setImmediate: false
   }
-
 };
-
-// Helper functions
-
-function root(args) {
-  args = sliceArgs(arguments, 0);
-  return path.join.apply(path, [__dirname].concat(args));
-}
-
-function rootNode(args) {
-  args = sliceArgs(arguments, 0);
-  return root.apply(path, ['node_modules'].concat(args));
-}
