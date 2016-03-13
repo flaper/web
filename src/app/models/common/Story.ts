@@ -6,6 +6,8 @@ export class Story {
   title:string;
   content:string;
   contentHTML: string;
+  views: number;
+  viewsRecent: number;
   created:Date;
   updated:Date;
 }

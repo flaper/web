@@ -24,4 +24,9 @@
 
 <div [innerHtml]="story.contentHTML" class="contentHTML">
 </div>
-<like [subject]="story"></like>
+<div class="story-footer">
+  <like [subject]="story"></like>
+  <span class="pull-xs-right" title="Просмотров">
+    <small><i class="fa fa-eye"></i></small>
+    {{story.views + story.viewsRecent + 1}}</span>
+</div>

@@ -11,6 +11,7 @@ import {UserLink} from "../../user/UserLink/UserLink";
 import {UserAvatar} from "../../user/UserAvatar/UserAvatar";
 import {StoryService} from "../../../services/StoryService";
 import {PostActions} from "../../post/PostActions/PostActions";
+import {ViewService} from "../../../services/ViewService";
 
 @Component({
   selector: 'story',
@@ -28,8 +29,13 @@ export class StoryComponent {
     {name: 'deny', title: 'Отклонить', icon: 'fa-ban', acl: 'Story.deny'},
     {name: 'delete', title: 'Удалить'}];
 
-  constructor(private acl:ACL, private storyService:StoryService, private router:Router) {
+  constructor(private acl:ACL, private storyService:StoryService, private router:Router,
+              private viewService:ViewService) {
     this._moment = moment;
+  }
+
+  ngOnInit() {
+    this.viewService.post(this.story.id);
   }
 
   showChangedTime() {
@@ -46,7 +52,6 @@ export class StoryComponent {
   }
 
   actionEvent(event) {
-    console.log(event);
     let observable;
     switch (event) {
       case 'delete':
