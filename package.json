@@ -1,6 +1,6 @@
 {
   "name": "flaper-web",
-  "version": "0.0.1",
+  "version": "0.1.1",
   "description": "Flaper website",
   "repository": {
     "type": "git",
@@ -12,6 +12,7 @@
   "license": "MIT",
   "main": "",
   "scripts": {
+    "s3publish": "aws s3 cp dist s3://flaper --recursive",
     "clean": "npm cache clean && rimraf node_modules doc typings coverage dist",
     "clean:dist": "rimraf dist",
     "preclean:install": "npm run clean",
