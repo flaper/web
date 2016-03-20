@@ -3,19 +3,32 @@
 :host {
   display: block;
   margin-top: 1rem;
-  .user-media {
-    display: flex;
-    align-items: center;
-    img {
-      max-height: 10rem;
-      max-width: 10rem;
-      @media (max-width: map-get($grid-breakpoints, 'sm')) {
-        max-width: 4rem;
-        padding: 0.1rem;
-      }
+  @media (max-width: map-get($grid-breakpoints, 'sm')) {
+    margin-top: 0.5rem;
+  }
+}
+
+.user-media {
+  display: flex;
+  align-items: center;
+  img {
+    max-height: 10rem;
+    max-width: 10rem;
+    @media (max-width: map-get($grid-breakpoints, 'sm')) {
+      max-width: 4rem;
+      padding: 0.1rem;
     }
-    .media-body {
-      align-self: flex-start;
+  }
+  .media-body {
+    align-self: flex-start;
+  }
+}
+
+nav {
+  margin-top: 0.5rem;
+  &.navbar-light .navbar-nav {
+    .router-link-active {
+      color: rgba(0, 0, 0, 0.6);
     }
   }
 }

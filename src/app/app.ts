@@ -39,7 +39,7 @@ import {PageStory} from "./components/pages/story/read/PageStory";
   {path: '/create_story', component: PageWriteStory, name: 'CreateStory'},
   {path: '/s/:slug', component: PageStory, name: 'Story'},
   {path: '/s/:slug/edit', component: PageWriteStory, name: 'WriteStory'},
-  {path: '/@/:id', component: PageUser, name: 'User'},
+  {path: '/@/:id/...', component: PageUser, name: 'User'},
 ])
 export class App {
   constructor() {
