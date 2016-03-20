@@ -1,12 +1,14 @@
-<div class="container">
-  <h1 class="text-xs-center">Вход</h1>
+<div>
+  <div class="container">
+    <h1 class="text-xs-center">Вход</h1>
 
-  <div class="login-btns center-block">
+    <div class="login-btns center-block">
 
-    <div *ngFor="#provider of PROVIDERS">
-      <a class="btn btn-block btn-social btn-{{provider.name}}" href="{{provider.authLink}}">
-        <i class="fa fa-{{provider.name}}"></i>{{provider.loginTitle}}
-      </a>
+      <div *ngFor="#provider of PROVIDERS">
+        <a class="btn btn-block btn-social btn-{{provider.name}}" href="{{provider.authLink}}">
+          <i class="fa fa-{{provider.name}}"></i>{{provider.loginTitle}}
+        </a>
+      </div>
     </div>
   </div>
 </div>

@@ -20,13 +20,15 @@ import {PageStory} from "./components/pages/story/read/PageStory";
   directives: [ROUTER_DIRECTIVES, Navbar, Footer],
   // Every Angular template is first compiled by the browser before Angular runs it's compiler
   template: `
-    <header>
-      <navbar></navbar>
-    </header>
+    <div class="above-footer">
+        <header>
+          <navbar></navbar>
+        </header>
 
-    <main>
-      <router-outlet></router-outlet>
-    </main>
+        <main>
+          <router-outlet></router-outlet>
+        </main>
+    </div>
 
     <footer>
     </footer>
