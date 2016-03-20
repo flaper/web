@@ -1,4 +1,10 @@
 <div>
   <h2>Инфо</h2>
-  <div>Еще нет данных.</div>
+
+  <div *ngIf="identities !== null">
+    <div *ngFor="#identity of identities">
+      <span>{{identity.provider}}:</span>
+      <a href="{{identity.url}}" target="_blank">{{identity.displayName}}</a>
+    </div>
+  </div>
 </div>

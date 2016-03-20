@@ -31,6 +31,10 @@ export class UserService {
     }
     return this._usersCache[id];
   }
+
+  getUserIdentitiesById(id){
+   return this.api.request('get', `users/${id}/identities`)
+  }
 }
 
 export let USER_SERVICE_PROVIDER = [UserService];
