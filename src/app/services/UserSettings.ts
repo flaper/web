@@ -3,6 +3,7 @@ import {User} from "../models/common/User";
 import {ApiService} from "./ApiService";
 import {UserService} from "./UserService";
 import * as Rx from 'rxjs';
+import * as _ from 'lodash';
 
 @Injectable()
 export class UserSettings {
@@ -60,11 +61,14 @@ export class UserSettings {
   }
 
   getByUserId(id) {
-    return this.api.request('get', `users/${id}/settings`);
-  }
-
-  getUserIdentitiesById(id) {
-    return this.api.request('get', `users/${id}/identities`)
+    return this.api.request('get', `users/${id}/settings`).map(data => {
+      _.forOwn(UserSettings.SETTINGS, (settings) => {
+        if (!data.hasOwnProperty(settings.name)) {
+          data[settings.name] = settings.def;
+        }
+      });
+      return data;
+    })
   }
 }
 
