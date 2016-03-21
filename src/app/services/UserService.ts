@@ -20,6 +20,10 @@ export class UserService {
 
   private _usersCache:Map<string, User> = new Map<string, User>();
 
+  isCurrentUser(user:User) {
+    return this.currentUser && user && this.currentUser.id === user.id;
+  }
+
   getById(id) {
     if (id === this.currentUserId) {
       return this.currentUserObservable;
@@ -32,8 +36,8 @@ export class UserService {
     return this._usersCache[id];
   }
 
-  getUserIdentitiesById(id){
-   return this.api.request('get', `users/${id}/identities`)
+  getUserIdentitiesById(id) {
+    return this.api.request('get', `users/${id}/identities`)
   }
 }
 

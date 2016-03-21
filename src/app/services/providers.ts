@@ -2,6 +2,7 @@ import {API_SERVICE_PROVIDER} from './ApiService';
 import {AUTH_SERVICE_PROVIDER} from './AuthService';
 import {ACL_PROVIDER} from '../acl/ACL';
 import {USER_SERVICE_PROVIDER} from './UserService';
+import {USER_SETTINGS_PROVIDER} from './UserSettings';
 import {STORY_SERVICE_PROVIDER} from './StoryService';
 import {COMMENT_SERVICE_PROVIDER} from './CommentService';
 import {IMAGE_SERVICE_PROVIDER} from './ImageService';
@@ -20,5 +21,6 @@ export let APP_PROVIDERS:Array<any> = [
   COMMENT_SERVICE_PROVIDER,
   LIKE_SERVICE_PROVIDER,
   VIEW_SERVICE_PROVIDER,
-  ACCOUNT_SERVICE_PROVIDER
+  ACCOUNT_SERVICE_PROVIDER,
+  USER_SETTINGS_PROVIDER
 ];

@@ -9,13 +9,14 @@ import {UserService} from "./UserService";
 interface Provider {
   name: string
   loginTitle: string
+  publicUrlTitle: string
   authLink?: string
 }
 export let PROVIDERS:Provider[] = [
-  {name: 'vk', loginTitle: 'Войти через Вконтакте'},
-  {name: 'odnoklassniki', loginTitle: 'Войти через Одноклассники'},
-  {name: 'facebook', loginTitle: 'Войти через Facebook'},
-  {name: 'google', loginTitle: 'Войти через Google'},
+  {name: 'vk', loginTitle: 'Войти через Вконтакте', publicUrlTitle: 'ВКонтакте'},
+  {name: 'odnoklassniki', loginTitle: 'Войти через Одноклассники', publicUrlTitle: 'Одноклассники'},
+  {name: 'facebook', loginTitle: 'Войти через Facebook', publicUrlTitle: 'Facebook'},
+  {name: 'google', loginTitle: 'Войти через Google', publicUrlTitle: 'Google Plus'},
 ];
 
 PROVIDERS.forEach((provider:Provider) => {
