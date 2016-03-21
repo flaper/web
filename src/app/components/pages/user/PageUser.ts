@@ -22,7 +22,7 @@ import {UserSettings} from "../../../services/UserSettings";
   {path: '/stats', name: 'UserStats', component: UserStats}
 ])
 export class PageUser {
-  static User:User;//to access from child routes
+  static User:User; // to access from child routes
   user:User;
   amount:number = null;
   settings:Array<any> = null;
@@ -39,7 +39,6 @@ export class PageUser {
       }
       this.userSettings.getByUserId(id)
         .subscribe(settings => {
-          console.log(settings);
           this.settings = settings
         })
     });
