@@ -1,13 +1,14 @@
 export class Story {
   id:string;
-  status: string;
+  status:string;
   userId:string;
   slug:string;
   title:string;
   content:string;
-  contentHTML: string;
-  views: number;
-  viewsRecent: number;
+  contentHTML:string;
+  shortInline:string;
+  views:number;
+  viewsRecent:number;
   created:Date;
   updated:Date;
 }

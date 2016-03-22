@@ -38,6 +38,23 @@ export class StoryComponent {
     this.viewService.post(this.story.id);
   }
 
+  ngAfterViewInit() {
+    let mobile = window.innerWidth < 500;
+    let id = mobile ? 'mobile-story-share' : 'story-share';
+
+    let share = Ya.share2(id,
+      {
+        content: {
+          url: `http://flaper.org/s/${this.story.slug}`,
+          title: this.story.title,
+          description: this.story.shortInline
+        },
+        theme:{
+          counter: !mobile
+        }
+      });
+  }
+
   showChangedTime() {
     let diff = this.story.updated.getTime() - this.story.created.getTime();
     //so at least 3 minutes has passed

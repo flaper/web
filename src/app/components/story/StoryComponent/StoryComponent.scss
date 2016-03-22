@@ -16,6 +16,13 @@
   }
 
   .story-footer {
+    margin-top: 0.5rem;
+    display: flex;
     font-size: 1.3rem;
+    justify-content: space-between;
+  }
+  .mobile-story-footer {
+    display: flex;
+    justify-content: center;
   }
 }
