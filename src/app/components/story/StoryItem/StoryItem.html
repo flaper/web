@@ -12,8 +12,10 @@
   </div>
   <a [routerLink]="['/Story', {slug: story.slug}]"><h3>{{story.title}}</h3></a>
 
-  <div>
-    {{story.content.substring(0,200)}}
+  <div class="short-inline" *ngIf="story.shortInline" [innerHtml]="story.shortInline">
+  </div>
+  <div *ngIf="!story.shortInline">
+    {{story.content.substring(0,400)}}
   </div>
 </div>
 <like [subject]="story"></like>
