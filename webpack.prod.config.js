@@ -134,6 +134,10 @@ module.exports = {
       {
         from: 'src/assets',
         to: 'assets'
+      },
+      {
+        from: 'src/root',
+        to: '.'
       }
     ]),
     // generating html
