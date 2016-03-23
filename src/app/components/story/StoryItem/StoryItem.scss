@@ -1,3 +1,5 @@
+@import "../../../../css/variables";
+
 :host {
   display: block;
   h3 {
@@ -7,4 +9,10 @@
 
 .short-inline {
   white-space: pre-line;
+}
+.story-item-footer{
+ .comments-number{
+   margin-left: 1rem;
+   color: $gray-light;
+ }
 }
