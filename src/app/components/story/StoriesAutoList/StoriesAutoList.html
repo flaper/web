@@ -1,3 +1,4 @@
-<stories-list [stories]="stories" [showAuthor]="showAuthor">
+<stories-list [stories]="stories" [showAuthor]="showAuthor" *ngFor="#stories of storiesGroup">
 
 </stories-list>
+<load-more *ngIf="lastLength === storyService.LIMIT" [loading]="loading" (loadMore)="loadMore()"></load-more>

@@ -1,0 +1,12 @@
+@import "../../../../css/variables";
+
+:host {
+  display: flex;
+  height: 4rem;
+  align-items: center;
+  justify-content: center;
+}
+
+img {
+  max-height: 3.5rem;
+}

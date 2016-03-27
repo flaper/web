@@ -4,12 +4,15 @@ import {LikeService} from "./LikeService";
 
 @Injectable()
 export class StoryService {
+
   constructor(private api:ApiService, private likeService:LikeService) {
   }
 
-  get({where, order = ""}) {
-    let filter = JSON.stringify({where: where, order: order});
-    return this.api.request('get', 'stories', {filter: filter })
+  LIMIT = 20;//default limit
+
+  get({where, order = "", skip = 0}) {
+    let filter = JSON.stringify({where: where, order: order, skip: skip, limit: this.LIMIT});
+    return this.api.request('get', 'stories', {filter: filter})
       .do((data) => {
         this.likeService.requestLikesInfo(data.map(model => model.id));
       });

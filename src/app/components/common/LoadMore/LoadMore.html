@@ -1,0 +1,10 @@
+<div class="btn btn-block btn-info btn-lg" *ngIf="!loading" (click)="load()">
+  <!--<i class="fa fa-caret-down"></i>-->
+  <i class="fa fa-angle-double-down"></i>
+  Загрузить еще
+  <i class="fa fa-angle-double-down"></i>
+</div>
+
+<div *ngIf="loading" class="text-xs-center">
+  <img src="/assets/img/loading.gif">
+</div>
