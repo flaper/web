@@ -11,8 +11,13 @@ export class CommentService {
     if (!subjectId) throw 'Comment.getBySubjectId - subjectId required';
     return this.api.request('get', 'comments', {filter: JSON.stringify({where: {subjectId: subjectId}})})
       .do((data) => {
+        //we need to know if current user able to add a "like"
         this.likeService.requestLikesInfo(data.map(model => model.id));
       });
+  }
+
+  last(subjectIds) {
+    return this.api.request('get', 'comments/last', {ids: JSON.stringify(subjectIds)});
   }
 
   post(data) {

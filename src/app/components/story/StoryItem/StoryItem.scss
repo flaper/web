@@ -2,17 +2,23 @@
 
 :host {
   display: block;
-  h3 {
-    margin: 0;
-  }
+}
+
+h3 {
+  margin: 0;
+}
+
+.media {
+  margin-bottom: 0;
 }
 
 .short-inline {
   white-space: pre-line;
 }
-.story-item-footer{
- .comments-number{
-   margin-left: 1rem;
-   color: $gray-light;
- }
+
+.story-item-footer {
+  .comments-number {
+    margin-left: 1rem;
+    color: $gray-light;
+  }
 }

@@ -4,7 +4,7 @@ import {LikeService} from "./LikeService";
 
 @Injectable()
 export class StoryService {
-  LIMIT = 5; //default limit
+  LIMIT = 20; //default limit
 
   constructor(private api:ApiService, private likeService:LikeService) {
   }
