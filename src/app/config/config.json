@@ -4,6 +4,7 @@
     "port": "4000"
   },
   "debug": {
-    "api" : false
-  }
+    "api": false
+  },
+  "limit": 20
 }

@@ -1,10 +1,11 @@
 import {Injectable} from 'angular2/core';
 import {ApiService} from "./ApiService";
 import {LikeService} from "./LikeService";
+import {Config} from '../config/Config';
 
 @Injectable()
 export class StoryService {
-  LIMIT = 20; //default limit
+  LIMIT = Config.limit;
 
   constructor(private api:ApiService, private likeService:LikeService) {
   }
