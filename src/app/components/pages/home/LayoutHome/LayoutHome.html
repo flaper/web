@@ -1,0 +1,22 @@
+<div class="container">
+  <nav class="navbar navbar-light bg-faded">
+    <div class="nav navbar-nav">
+      <a class="nav-item nav-link" [routerLink]="['Home']"
+         [class.active]="router.hostComponent.name==='PageLastStories'">Последние</a>
+      <a class="nav-item nav-link" [routerLink]="['Top']"
+         [class.active]="router.hostComponent.name==='PageTopStories'">Лучшие</a>
+    </div>
+  </nav>
+
+  <div [ngSwitch]="page">
+    <template ngSwitchWhen="lastStories">
+      <last-stories></last-stories>
+    </template>
+    <template ngSwitchWhen="topStories">
+      <top-stories></top-stories>
+    </template>
+    <template ngSwitchDefault>
+      Unsupported page {{page}}
+    </template>
+  </div>
+</div>

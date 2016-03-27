@@ -4,11 +4,11 @@ import {LikeService} from "./LikeService";
 
 @Injectable()
 export class StoryService {
+  LIMIT = 5; //default limit
 
   constructor(private api:ApiService, private likeService:LikeService) {
   }
 
-  LIMIT = 20;//default limit
 
   get({where, order = "", skip = 0}) {
     let filter = JSON.stringify({where: where, order: order, skip: skip, limit: this.LIMIT});

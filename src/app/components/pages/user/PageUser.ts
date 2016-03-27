@@ -1,5 +1,5 @@
 import {Component} from 'angular2/core';
-import {RouteConfig, RouteParams, RouterLink} from 'angular2/router';
+import {RouteConfig, RouteParams} from 'angular2/router';
 import {UserService} from "../../../services/UserService";
 import {User} from "../../../models/common/User";
 import {StoriesAutoList} from "../../story/StoriesAutoList/StoriesAutoList";
@@ -12,7 +12,6 @@ import {UserSettings} from "../../../services/UserSettings";
 
 @Component({
   selector: 'page-user',
-  directives: [RouterLink],
   styles: [require('./PageUser.scss')],
   template: require('./PageUser.html')
 })

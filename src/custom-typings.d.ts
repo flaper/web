@@ -29,6 +29,10 @@ declare var Ya: {
   share2: any
 };
 
+declare var Waypoint: {
+  Inview: any
+};
+
 interface GlobalEnvironment {
   ENV;
   HMR;

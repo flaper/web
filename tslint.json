@@ -8,11 +8,6 @@
       true,
       120
     ],
-    "member-ordering": [
-      true,
-      "public-before-private",
-      "variables-before-functions"
-    ],
     "no-arg": true,
     "no-construct": true,
     "no-duplicate-key": true,

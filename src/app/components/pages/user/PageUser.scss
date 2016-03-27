@@ -26,9 +26,4 @@
 
 nav {
   margin-top: 0.5rem;
-  &.navbar-light .navbar-nav {
-    .router-link-active {
-      color: rgba(0, 0, 0, 0.6);
-    }
-  }
 }

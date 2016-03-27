@@ -1,0 +1,7 @@
+nav {
+  &.navbar-light .navbar-nav {
+    .router-link-active {
+      color: rgba(0, 0, 0, 0.6);
+    }
+  }
+}
