@@ -14,6 +14,7 @@ import {PageUser} from './components/pages/user/PageUser';
 import {PageStory} from "./components/pages/story/read/PageStory";
 import {PageLastStories} from "./components/pages/home/PageLastStories/PageLastStories";
 import {PageTopStories} from "./components/pages/home/PageTopStories/PageTopStories";
+import {PageNews} from "./components/pages/home/PageNews/PageNews";
 
 @Component({
   selector: 'app',
@@ -36,6 +37,7 @@ import {PageTopStories} from "./components/pages/home/PageTopStories/PageTopStor
 })
 @RouteConfig([
   {path: '/', component: PageLastStories, name: 'Home'},
+  {path: '/news', component: PageNews, name: 'News'},
   {path: '/top', component: PageTopStories, name: 'Top'},
   {path: '/login', component: PageLogin, name: 'Login'},
   {path: '/create_story', component: PageWriteStory, name: 'CreateStory'},

@@ -5,6 +5,8 @@
          [class.active]="router.hostComponent.name==='PageLastStories'">Последние</a>
       <a class="nav-item nav-link" [routerLink]="['Top']"
          [class.active]="router.hostComponent.name==='PageTopStories'">Лучшие</a>
+      <a class="nav-item nav-link" [routerLink]="['News']"
+         [class.active]="router.hostComponent.name==='PageNews'">Активные</a>
     </div>
   </nav>
 
@@ -14,6 +16,9 @@
     </template>
     <template ngSwitchWhen="topStories">
       <top-stories></top-stories>
+    </template>
+    <template ngSwitchWhen="news">
+      <news></news>
     </template>
     <template ngSwitchDefault>
       Unsupported page {{page}}
