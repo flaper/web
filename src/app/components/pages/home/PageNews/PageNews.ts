@@ -1,6 +1,6 @@
 import {Component} from 'angular2/core';
 import {LayoutHome} from "../LayoutHome/LayoutHome";
-import {DefaultPageService} from "../../../../services/helpers/DefaultPageService";
+import {PageService} from "../../../../services/helpers/PageService";
 
 @Component({
   selector: 'page-news',
@@ -8,7 +8,7 @@ import {DefaultPageService} from "../../../../services/helpers/DefaultPageServic
   template: require('./PageNews.html')
 })
 export class PageNews {
-  constructor(defaultPage:DefaultPageService) {
-    defaultPage.set('News')
+  constructor(pageService:PageService) {
+    pageService.setDefault('News')
   }
 }

@@ -9,7 +9,7 @@ import {IMAGE_SERVICE_PROVIDER} from './ImageService';
 import {LIKE_SERVICE_PROVIDER} from './LikeService';
 import {VIEW_SERVICE_PROVIDER} from './ViewService';
 import {ACCOUNT_SERVICE_PROVIDER} from './AccountService';
-import {DEFAULT_PAGE_PROVIDER} from './helpers/DefaultPageService';
+import {PAGE_PROVIDER} from './helpers/PageService';
 
 // Include injectables that you want to have globally throughout our app
 export let APP_PROVIDERS:Array<any> = [
@@ -24,5 +24,5 @@ export let APP_PROVIDERS:Array<any> = [
   VIEW_SERVICE_PROVIDER,
   ACCOUNT_SERVICE_PROVIDER,
   USER_SETTINGS_PROVIDER,
-  DEFAULT_PAGE_PROVIDER
+  PAGE_PROVIDER
 ];

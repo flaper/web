@@ -3,7 +3,7 @@
     &#9776;
   </button>
   <span class="brand-container">
-    <a class="navbar-brand" (click)="defaultPage.goToDefault()">Флапер</a>
+    <a class="navbar-brand" (click)="pageService.navigateToDefault()">Флапер</a>
   </span>
   <ul class="nav navbar-nav pull-xs-right">
     <li class="nav-item" *ngIf="!userService.currentUser">

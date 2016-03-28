@@ -2,9 +2,10 @@ import {Injectable} from 'angular2/core';
 import {ApiService, API_SERVER_URL} from'./ApiService';
 import * as Rx from 'rxjs';
 import {UrlService} from './UrlService';
-import {Router} from "angular2/router";
+import {Location} from "angular2/router";
 import {User} from "../models/common/User";
 import {UserService} from "./UserService";
+import {PageService} from "./helpers/PageService";
 
 interface Provider {
   name: string
@@ -37,7 +38,8 @@ export class AuthService {
   //don't use this, better use UserService.currentUserObservable
   currentUserObservable:Rx.Subject<User>;
 
-  constructor(private api:ApiService, private router:Router) {
+  constructor(private api:ApiService, private location:Location,
+              pageService:PageService) {
     this.currentUserObservable = new Rx.BehaviorSubject<User>(null);
     //first let's try to get jwt from URL, then from cache
     let params = UrlService.getSearchParameters();
@@ -46,7 +48,9 @@ export class AuthService {
       this.validateJwtAndRequestUser(jwtString);
     }
     if (this.jwtData) {
-      router.navigate(['/Home']);
+      if (location.path().indexOf('/callback') > -1) {
+        pageService.navigateAfterLogin();
+      }
     } else {
       this.parseJwtCache();
     }

@@ -15,7 +15,7 @@ import {PageStory} from "./components/pages/story/read/PageStory";
 import {PageLastStories} from "./components/pages/home/PageLastStories/PageLastStories";
 import {PageTopStories} from "./components/pages/home/PageTopStories/PageTopStories";
 import {PageNews} from "./components/pages/home/PageNews/PageNews";
-import {DefaultPageService} from "./services/helpers/DefaultPageService";
+import {PageService} from "./services/helpers/PageService";
 
 @Component({
   selector: 'app',
@@ -47,9 +47,9 @@ import {DefaultPageService} from "./services/helpers/DefaultPageService";
   {path: '/@/:id/...', component: PageUser, name: 'User'},
 ])
 export class App {
-  constructor(location:Location, defaultPage:DefaultPageService) {
+  constructor(location:Location, pageService:PageService) {
     if (location.path() === '') {
-      defaultPage.goToDefault();
+      pageService.navigateToDefault();
     }
   }
 }
