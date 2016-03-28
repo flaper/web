@@ -1,3 +1,15 @@
+<div *ngIf="winners && winners.length && stories">
+  <h3 class="text-xs-center">Победители прошлой недели:</h3>
+
+  <div *ngFor="#winner of winners">
+    <div *ngIf="stories[winner.id]">
+      <strong>{{winner.place}}. </strong>
+      <a [routerLink]="['/Story', {slug: stories[winner.id].slug}]">
+        <span>{{stories[winner.id].title}}</span>
+      </a>
+    </div>
+  </div>
+</div>
 <h2 class="text-xs-center">Лучшие статьи</h2>
 <stories-auto-list order="numberOfLikes DESC" [where]="where">
 
