@@ -1,7 +1,7 @@
 /// <reference path="../../typingsOurs/main.d.ts" />
 
 import {Component} from 'angular2/core';
-import {RouteConfig, Location, Router} from 'angular2/router';
+import {RouteConfig, Location} from 'angular2/router';
 import {Http} from 'angular2/http';
 
 import {Navbar} from './components/layout/navbar/navbar';
@@ -20,7 +20,6 @@ import {PageService} from "./services/helpers/PageService";
 @Component({
   selector: 'app',
   directives: [Navbar, Footer],
-  // Every Angular template is first compiled by the browser before Angular runs it's compiler
   template: `
     <div class="above-footer">
         <header>
@@ -47,8 +46,9 @@ import {PageService} from "./services/helpers/PageService";
   {path: '/@/:id/...', component: PageUser, name: 'User'},
 ])
 export class App {
-  constructor(location:Location, pageService:PageService) {
-    if (location.path() === '') {
+  constructor(pageService:PageService, location:Location) {
+    let path = location.path();
+    if (!path || path === '/') {
       pageService.navigateToDefault();
     }
   }

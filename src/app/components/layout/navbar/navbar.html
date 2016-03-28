@@ -7,7 +7,7 @@
   </span>
   <ul class="nav navbar-nav pull-xs-right">
     <li class="nav-item" *ngIf="!userService.currentUser">
-      <a class="nav-link" [routerLink]=" ['/Login'] "><i class="fa fa-sign-in"></i> Вход</a>
+      <a class="nav-link" (click)="pageService.navigateToLogin()"><i class="fa fa-sign-in"></i> Вход</a>
     </li>
     <li class="nav-avatar-item" *ngIf="userService.currentUser">
       <img class="my-avatar" src="{{userService.currentUser.photo}}">

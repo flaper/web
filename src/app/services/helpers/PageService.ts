@@ -36,9 +36,24 @@ export class PageService {
     return value;
   }
 
+  public navigateToLogin() {
+    let path = this.router.currentInstruction.toRootUrl();
+    if (!path || path === '/' || (path.indexOf('/Login') > -1)) {
+      localStorage.removeItem(PAGE_BEFORE_LOGIN);
+    } else {
+      localStorage.setItem(PAGE_BEFORE_LOGIN, `${path}${window.location.search}`);
+    }
+    this.router.navigate(['/Login']);
+  }
+
   public navigateAfterLogin() {
-    let route = this.getDefault();
-    this.router.navigate([route]);
+    let path = localStorage.getItem(PAGE_BEFORE_LOGIN);
+    if (path) {
+      this.router.navigateByUrl(path);
+    } else {
+      let route = this.getDefault();
+      this.router.navigate([route]);
+    }
   }
 }
 
