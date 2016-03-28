@@ -1,7 +1,7 @@
 /// <reference path="../../typingsOurs/main.d.ts" />
 
 import {Component} from 'angular2/core';
-import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
+import {RouteConfig, Location, Router} from 'angular2/router';
 import {Http} from 'angular2/http';
 
 import {Navbar} from './components/layout/navbar/navbar';
@@ -15,10 +15,11 @@ import {PageStory} from "./components/pages/story/read/PageStory";
 import {PageLastStories} from "./components/pages/home/PageLastStories/PageLastStories";
 import {PageTopStories} from "./components/pages/home/PageTopStories/PageTopStories";
 import {PageNews} from "./components/pages/home/PageNews/PageNews";
+import {DefaultPageService} from "./services/helpers/DefaultPageService";
 
 @Component({
   selector: 'app',
-  directives: [ROUTER_DIRECTIVES, Navbar, Footer],
+  directives: [Navbar, Footer],
   // Every Angular template is first compiled by the browser before Angular runs it's compiler
   template: `
     <div class="above-footer">
@@ -46,6 +47,9 @@ import {PageNews} from "./components/pages/home/PageNews/PageNews";
   {path: '/@/:id/...', component: PageUser, name: 'User'},
 ])
 export class App {
-  constructor() {
+  constructor(location:Location, defaultPage:DefaultPageService) {
+    if (location.path() === '') {
+      defaultPage.goToDefault();
+    }
   }
 }

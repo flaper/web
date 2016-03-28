@@ -1,7 +1,7 @@
 <div class="container">
   <nav class="navbar navbar-light bg-faded">
     <div class="nav navbar-nav">
-      <a class="nav-item nav-link" [routerLink]="['Home']"
+      <a class="nav-item nav-link" [routerLink]="['Home', {remember: true}]"
          [class.active]="router.hostComponent.name==='PageLastStories'">Последние</a>
       <a class="nav-item nav-link" [routerLink]="['Top']"
          [class.active]="router.hostComponent.name==='PageTopStories'">Лучшие</a>
