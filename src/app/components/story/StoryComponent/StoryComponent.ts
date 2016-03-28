@@ -1,7 +1,7 @@
 /// <reference path="../../../../../typingsOurs/main.d.ts" />
 
 import {Component, Input} from 'angular2/core';
-import {RouterLink, Router} from 'angular2/router';
+import {Router} from 'angular2/router';
 import {Story} from "../../../models/common/Story";
 import {TimeAgoPipe} from 'angular2-moment';
 import {ACL} from "../../../acl/ACL";
@@ -9,13 +9,15 @@ import * as moment from 'moment';
 import {LikeComponent} from "../../like/LikeComponent/LikeComponent";
 import {UserLink} from "../../user/UserLink/UserLink";
 import {UserAvatar} from "../../user/UserAvatar/UserAvatar";
-import {StoryService} from "../../../services/StoryService";
+import {StoryService} from "../../../services/story/StoryService";
 import {PostActions} from "../../post/PostActions/PostActions";
 import {ViewService} from "../../../services/ViewService";
+import {PageService} from "../../../services/helpers/PageService";
+import {StoryBestService} from "../../../services/story/StoryBestService";
 
 @Component({
   selector: 'story',
-  directives: [RouterLink, UserLink, UserAvatar, LikeComponent, PostActions],
+  directives: [UserLink, UserAvatar, LikeComponent, PostActions],
   pipes: [TimeAgoPipe],
   styles: [require('./StoryComponent.scss')],
   template: require('./StoryComponent.html')
@@ -27,10 +29,12 @@ export class StoryComponent {
   private _moment;
   private actions = [
     {name: 'deny', title: 'Отклонить', icon: 'fa-ban', acl: 'Story.deny'},
-    {name: 'delete', title: 'Удалить'}];
+    {name: 'delete', title: 'Удалить'},
+    {name: 'best', title: 'Победитель', icon: 'fa-trophy', acl: 'super'},
+  ];
 
-  constructor(private acl:ACL, private storyService:StoryService, private router:Router,
-              private viewService:ViewService) {
+  constructor(private acl:ACL, private storyService:StoryService, private viewService:ViewService,
+              private pageService:PageService, private router:Router, private storyBestService:StoryBestService) {
     this._moment = moment;
   }
 
@@ -49,7 +53,7 @@ export class StoryComponent {
           title: this.story.title,
           description: this.story.shortInline
         },
-        theme:{
+        theme: {
           counter: !mobile
         }
       });
@@ -69,19 +73,27 @@ export class StoryComponent {
   }
 
   actionEvent(event) {
-    let observable;
     switch (event) {
       case 'delete':
-        observable = this.storyService.del(this.story.id);
+        this.storyService.del(this.story.id).subscribe(() => {
+          this.pageService.navigateToDefault();
+        });
         break;
       case 'deny':
-        observable = this.storyService.deny(this.story.id);
+        this.storyService.deny(this.story.id).subscribe(() => {
+          this.pageService.navigateToDefault();
+        });
+        break;
+      case 'best':
+        let place = window.prompt('Какой место должен занять отзыв?', '');
+        if (place) {
+          this.storyBestService.post(this.story.id, place).subscribe(() => {
+            this.router.navigate(['Top'])
+          })
+        }
         break;
       default:
         throw `Unsupported event ${event}`;
     }
-    observable.subscribe(() => {
-      this.router.navigate(['/Home']);
-    })
   }
 }

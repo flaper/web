@@ -20,7 +20,12 @@ export class ACL {
   };
 
   can(action, model = null) {
-    let list:any = _.get(this.LIST, action);
+    let list = null;
+    if (['admin', 'super'].indexOf(action) > -1) {
+      list = [action];
+    } else {
+      list = _.get(this.LIST, action);
+    }
     if (!list) {
       return false;
     }

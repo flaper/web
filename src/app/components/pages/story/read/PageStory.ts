@@ -4,7 +4,7 @@ import {Component} from 'angular2/core';
 import {RouteParams} from 'angular2/router'
 import {Story} from "../../../../models/common/Story";
 import {StoryComponent} from "../../../story/StoryComponent/StoryComponent";
-import {StoryService} from "../../../../services/StoryService";
+import {StoryService} from "../../../../services/story/StoryService";
 import {CommentsAutoList} from "../../../comment/CommentsAutoList/CommentsAutoList";
 
 @Component({

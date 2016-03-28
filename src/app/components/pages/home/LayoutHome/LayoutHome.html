@@ -3,10 +3,13 @@
     <div class="nav navbar-nav">
       <a class="nav-item nav-link" [routerLink]="['Home', {remember: true}]"
          [class.active]="router.hostComponent.name==='PageLastStories'">Последние</a>
-      <a class="nav-item nav-link" [routerLink]="['Top']"
-         [class.active]="router.hostComponent.name==='PageTopStories'">Лучшие</a>
       <a class="nav-item nav-link" [routerLink]="['News']"
          [class.active]="router.hostComponent.name==='PageNews'">Активные</a>
+      <a class="nav-item nav-link" [routerLink]="['Top']"
+         [class.active]="router.hostComponent.name==='PageTopStories'">
+        <i class="fa fa-trophy"></i>
+        Лучшие
+      </a>
     </div>
   </nav>
 

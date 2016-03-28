@@ -1,7 +1,7 @@
 import {Component, Input} from 'angular2/core';
 import {Story} from "../../../models/common/Story";
 import {StoriesList} from "../StoriesList/StoriesList";
-import {StoryService} from "../../../services/StoryService";
+import {StoryService} from "../../../services/story/StoryService";
 import {LoadMore} from "../../common/LoadMore/LoadMore";
 
 @Component({

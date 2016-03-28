@@ -3,7 +3,7 @@ import {RouteParams} from 'angular2/router';
 import {UserService} from "../../../../services/UserService";
 import {SimpleWrite} from "../../../story/write/SimpleWrite/SimpleWrite";
 import {Story} from "../../../../models/common/Story";
-import {StoryService} from "../../../../services/StoryService";
+import {StoryService} from "../../../../services/story/StoryService";
 import {PageService} from "../../../../services/helpers/PageService";
 
 @Component({

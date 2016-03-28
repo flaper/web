@@ -3,7 +3,8 @@ import {AUTH_SERVICE_PROVIDER} from './AuthService';
 import {ACL_PROVIDER} from '../acl/ACL';
 import {USER_SERVICE_PROVIDER} from './UserService';
 import {USER_SETTINGS_PROVIDER} from './UserSettings';
-import {STORY_SERVICE_PROVIDER} from './StoryService';
+import {STORY_SERVICE_PROVIDER} from './story/StoryService';
+import {STORY_BEST_SERVICE_PROVIDER} from './story/StoryBestService';
 import {COMMENT_SERVICE_PROVIDER} from './CommentService';
 import {IMAGE_SERVICE_PROVIDER} from './ImageService';
 import {LIKE_SERVICE_PROVIDER} from './LikeService';
@@ -18,6 +19,7 @@ export let APP_PROVIDERS:Array<any> = [
   ACL_PROVIDER,
   USER_SERVICE_PROVIDER,
   STORY_SERVICE_PROVIDER,
+  STORY_BEST_SERVICE_PROVIDER,
   IMAGE_SERVICE_PROVIDER,
   COMMENT_SERVICE_PROVIDER,
   LIKE_SERVICE_PROVIDER,

@@ -1,7 +1,7 @@
 import {Injectable} from 'angular2/core';
-import {ApiService} from "./ApiService";
-import {LikeService} from "./LikeService";
-import {Config} from '../config/Config';
+import {ApiService} from "./../ApiService";
+import {LikeService} from "./../LikeService";
+import {Config} from '../../config/Config';
 
 @Injectable()
 export class StoryService {

@@ -4,7 +4,7 @@ import {Component, Input, ElementRef} from 'angular2/core';
 import {Router} from 'angular2/router';
 import {CORE_DIRECTIVES, FORM_DIRECTIVES, FormBuilder, Control, ControlGroup, Validators} from 'angular2/common';
 import {Story} from "../../../../models/common/Story";
-import {StoryService} from "../../../../services/StoryService";
+import {StoryService} from "../../../../services/story/StoryService";
 import {FormDraft} from "../../../../services/draft/FormDraft";
 import {Autosize} from "../../../../directives/Autosize/Autosize";
 import {AutoFocusIt} from "../../../../directives/AutoFocusIt/AutoFocusIt";
