@@ -37,7 +37,7 @@ export class LikeService {
         this._myLikes[id] = new Rx.BehaviorSubject(false);
       });
 
-      //let's request for allIds to update cache
+      //let's request for allIds to update cache if we need at least one
       let where = {userId: this.userService.currentUserId, subjectId: {inq: allIds}};
       let filter = {where: where};
       this.api.request('get', 'likes', {filter: JSON.stringify(filter)})

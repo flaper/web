@@ -6,6 +6,8 @@ import {Story} from "../../../models/common/Story";
 import {StoryItem} from "../StoryItem/StoryItem";
 import {CommentService} from "../../../services/CommentService";
 import {CommentsList} from "../../comment/CommentsList/CommentsList";
+import * as _ from 'lodash';
+import {LikeService} from "../../../services/LikeService";
 
 @Component({
   selector: 'stories-list',
@@ -21,13 +23,18 @@ export class StoriesList {
 
   commentsGroupById = null;
 
-  constructor(private commentService:CommentService) {
+  constructor(private commentService:CommentService, private likeService:LikeService) {
   }
 
   ngOnInit() {
     this.commentService.last(this.stories.map(story => story.id))
       .subscribe(groups => {
-        this.commentsGroupById = groups
+        let commentsIds = [];
+        this.commentsGroupById = groups;
+        _.forOwn(groups, group => {
+          group.forEach(comment => commentsIds.push(comment.id))
+        });
+        this.likeService.requestLikesInfo(commentsIds);
       });
   }
 }
