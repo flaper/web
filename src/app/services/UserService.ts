@@ -3,6 +3,7 @@ import {User} from "../models/common/User";
 import {AuthService} from "./AuthService";
 import {ApiService} from "./ApiService";
 import * as Rx from 'rxjs';
+import * as _ from 'lodash';
 
 @Injectable()
 export class UserService {

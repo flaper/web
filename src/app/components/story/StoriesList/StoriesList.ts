@@ -8,7 +8,6 @@ import {CommentService} from "../../../services/CommentService";
 import {CommentsList} from "../../comment/CommentsList/CommentsList";
 import * as _ from 'lodash';
 import {LikeService} from "../../../services/LikeService";
-import {UserService} from "../../../services/UserService";
 
 @Component({
   selector: 'stories-list',
