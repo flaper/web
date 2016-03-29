@@ -18,10 +18,10 @@ export class TopStories {
 
   constructor(storyBestService:StoryBestService, storyService:StoryService) {
     let minTime = moment.utc().startOf('week').subtract(7, 'days').toDate();
-    this.where = {created: {gt: minTime}};
     storyBestService.getCurrentWinners().subscribe(data => {
       this.winners = data;
       let ids = data.map(row => row.id);
+      this.where = {and: [{created: {gt: minTime}}, {id: {nin: ids}}]};
       if (ids.length) {
         storyService.get({where: {id: {inq: ids}}})
           .subscribe(stories => {

@@ -11,6 +11,6 @@
   </div>
 </div>
 <h2 class="text-xs-center">Лучшие статьи</h2>
-<stories-auto-list order="numberOfLikes DESC" [where]="where">
+<stories-auto-list order="numberOfLikes DESC" [where]="where" *ngIf="where">
 
 </stories-auto-list>
