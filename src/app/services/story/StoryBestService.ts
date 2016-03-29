@@ -6,7 +6,8 @@ export class StoryBestService {
 
   constructor(private api:ApiService) {
   }
-  getCurrentWinners(){
+
+  getCurrentWinners() {
     return this.api.request('get', 'StoryBests');
   }
 
