@@ -20,21 +20,21 @@ export class LikeService {
    * @returns {any}
    */
   ifHasLikeObservable(id) {
-    if (!this._myLikes[id]) {
-      this._myLikes[id] = new Rx.BehaviorSubject(false);
+    if (!this._myLikes.has(id)) {
+      this._myLikes.set(id, new Rx.BehaviorSubject(false));
 
       let where = {subjectId: id, userId: this.userService.currentUserId};
       this.api.request('get', 'likes/count', {where: JSON.stringify(where)})
-        .subscribe(result => this._myLikes[id].next(!!result.count));
+        .subscribe(result => this._myLikes.get(id).next(!!result.count));
     }
-    return this._myLikes[id];
+    return this._myLikes.get(id);
   }
 
   requestLikesInfo(allIds) {
-    let ids = allIds.filter(id => !this._myLikes[id]);
+    let ids = allIds.filter(id => !this._myLikes.has(id));
     if (ids.length > 0) {
       ids.forEach((id) => {
-        this._myLikes[id] = new Rx.BehaviorSubject(false);
+        this._myLikes.set(id, new Rx.BehaviorSubject(false));
       });
 
       //let's request for allIds to update cache if we need at least one
@@ -42,13 +42,13 @@ export class LikeService {
       let filter = {where: where};
       this.api.request('get', 'likes', {filter: JSON.stringify(filter)})
         .subscribe(likes => {
-          likes.forEach(like => this._myLikes[like.subjectId].next(true));
+          likes.forEach(like => this._myLikes.get(like.subjectId).next(true));
         })
     }
   }
 
   toggle(subjectId) {
-    let ob = this._myLikes[subjectId];
+    let ob = this._myLikes.get(subjectId);
     if (ob) {
       ob.next(!ob.getValue());
     }

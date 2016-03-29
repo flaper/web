@@ -1,10 +1,11 @@
 import {Injectable} from 'angular2/core';
 import {ApiService} from "./ApiService";
 import {LikeService} from "./LikeService";
+import {UserService} from "./UserService";
 
 @Injectable()
 export class CommentService {
-  constructor(private api:ApiService, private likeService:LikeService) {
+  constructor(private api:ApiService, private likeService:LikeService, private userService:UserService) {
   }
 
   getBySubjectId(subjectId) {
@@ -13,6 +14,7 @@ export class CommentService {
       .do((data) => {
         //we need to know if current user able to add a "like"
         this.likeService.requestLikesInfo(data.map(model => model.id));
+        this.userService.requestIds(data.map(model => model.userId));
       });
   }
 

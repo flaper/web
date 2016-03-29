@@ -8,6 +8,7 @@ import {CommentService} from "../../../services/CommentService";
 import {CommentsList} from "../../comment/CommentsList/CommentsList";
 import * as _ from 'lodash';
 import {LikeService} from "../../../services/LikeService";
+import {UserService} from "../../../services/UserService";
 
 @Component({
   selector: 'stories-list',
@@ -23,18 +24,26 @@ export class StoriesList {
 
   commentsGroupById = null;
 
-  constructor(private commentService:CommentService, private likeService:LikeService) {
+  constructor(private commentService:CommentService, private likeService:LikeService,
+              private userService:UserService) {
   }
 
   ngOnInit() {
+    let usersIds = this.stories.map(story => story.userId);
+    this.userService.requestIds(usersIds);
     this.commentService.last(this.stories.map(story => story.id))
       .subscribe(groups => {
         let commentsIds = [];
+        let usersIds = [];
         this.commentsGroupById = groups;
         _.forOwn(groups, group => {
-          group.forEach(comment => commentsIds.push(comment.id))
+          group.forEach(comment => {
+            commentsIds.push(comment.id);
+            usersIds.push(comment.userId);
+          })
         });
         this.likeService.requestLikesInfo(commentsIds);
+        this.userService.requestIds(usersIds);
       });
   }
 }
