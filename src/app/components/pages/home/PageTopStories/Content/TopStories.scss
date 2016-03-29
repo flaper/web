@@ -1,0 +1,29 @@
+@import "../../../../../../css/variables";
+
+:host {
+  @media (min-width: map-get($grid-breakpoints, 'md')) {
+    display: flex;
+    flex-direction: row-reverse;
+    .right-column {
+      width: 300px;
+      flex-shrink: 0;
+      margin-left: 0.5rem;
+    }
+  }
+}
+
+.right-column {
+  ul {
+    margin-bottom: 0;
+  }
+  .winners {
+    margin-top: 0.5rem;
+  }
+  h4 {
+    margin-bottom: 0;
+  }
+  .list-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+}

@@ -8,7 +8,7 @@ import * as _ from 'lodash';
 @Component({
   selector: 'top-stories',
   directives: [StoriesAutoList],
-  pipes: [],
+  styles: [require('./TopStories.scss')],
   template: require('./TopStories.html')
 })
 export class TopStories {
