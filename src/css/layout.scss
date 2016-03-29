@@ -3,6 +3,9 @@
 html, body {
   height: 100%;
 }
+html{
+  overflow-y: scroll;
+}
 app{
   min-height: 100%;
   display: flex;
