@@ -1,4 +1,4 @@
-:host{
+:host {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -7,10 +7,24 @@
   flex-direction: column;
   justify-content: center;
 }
+
 .login-btns {
   max-width: 30rem;
   .btn-social {
     margin-top: 1rem;
     margin-bottom: 1rem;
   }
+}
+
+.btn-mail {
+  color: #fff;
+  $local-background: #195592;
+  background-color: $local-background;
+  border-color: rgba(0, 0, 0, 0.2);
+  &:hover{
+    background-color: darken($local-background, 6);
+  }
+}
+.fa-mail:before{
+  content: '@';
 }

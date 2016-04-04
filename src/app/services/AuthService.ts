@@ -15,6 +15,7 @@ interface Provider {
 }
 export let PROVIDERS:Provider[] = [
   {name: 'vk', loginTitle: 'Войти через Вконтакте', publicUrlTitle: 'ВКонтакте'},
+  {name: 'mail', loginTitle: 'Войти через Mail.ru', publicUrlTitle: 'Mail.ru'},
   {name: 'odnoklassniki', loginTitle: 'Войти через Одноклассники', publicUrlTitle: 'Одноклассники'},
   {name: 'facebook', loginTitle: 'Войти через Facebook', publicUrlTitle: 'Facebook'},
   {name: 'google', loginTitle: 'Войти через Google', publicUrlTitle: 'Google Plus'},
