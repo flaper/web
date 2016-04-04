@@ -13,10 +13,7 @@
     </div>
     <post-actions (actionClicked)="actionEvent($event)" *ngIf="acl.can('Comment.write', comment)"></post-actions>
   </div>
-  <div class="comment-content" *ngIf="!comment.contentHTML">
-    {{comment.content}}
-  </div>
-  <div [innerHtml]="comment.contentHTML" class="comment-content" *ngIf="comment.contentHTML">
+  <div [innerHtml]="comment.contentHTML" class="comment-content">
   </div>
   <div>
     <like [subject]="comment"></like>
