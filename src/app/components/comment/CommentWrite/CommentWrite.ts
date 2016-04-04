@@ -28,6 +28,9 @@ export class CommentWrite {
   @Output()
   commentChange:EventEmitter<Comment> = new EventEmitter<Comment>();
 
+  @Output()
+  updateCanceled:EventEmitter<boolean> = new EventEmitter<boolean>();
+
   newComment:boolean;
   disabled:boolean = false;
 
@@ -67,6 +70,9 @@ export class CommentWrite {
       this.disabled = true;
       this.commentService.save(data)
         .subscribe((comment) => {
+          if (this.comment) {
+            Object.assign(this.comment, comment);
+          }
           this.clearForm();
           this.disabled = false;
           this.commentChange.emit(comment);

@@ -11,11 +11,19 @@
         <div class="time">{{comment.created | amTimeAgo}}</div>
       </div>
     </div>
-    <post-actions (actionClicked)="actionEvent($event)" *ngIf="acl.can('Comment.write', comment)"></post-actions>
+    <post-actions (actionClicked)="actionEvent($event)" *ngIf="acl.can('Comment.write', comment)"
+                  [model]="comment" [actions]="actions">
+    </post-actions>
   </div>
-  <div [innerHtml]="comment.contentHTML" class="comment-content">
+  <div *ngIf="!updateMode">
+    <div [innerHtml]="comment.contentHTML" class="comment-content">
+    </div>
+    <div>
+      <like [subject]="comment"></like>
+    </div>
   </div>
-  <div>
-    <like [subject]="comment"></like>
-  </div>
+  <comment-write *ngIf="updateMode" [comment]="comment" (commentChange)="commentSaved()"
+                 (updateCanceled)="updateMode = false">
+
+  </comment-write>
 </div>
