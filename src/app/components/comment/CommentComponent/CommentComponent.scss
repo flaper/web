@@ -9,6 +9,9 @@
   }
   .comment-content {
     margin-top: 0.3rem;
+    p:last-child{
+      margin-bottom: 0;
+    }
   }
   like {
     font-size: 0.9em;
