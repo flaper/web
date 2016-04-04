@@ -5,5 +5,5 @@
   </fieldset>
 
   <button type="submit" class="btn btn-primary btn-sm" [disabled]="disabled">{{newComment ? 'Сказать' : 'Сохранить'}}</button>
-  <button type="button" class="btn btn-link btn-sm" *ngIf="comment" (click)="updateCanceled.emit(true)">Отменить</button>
+  <button type="button" class="btn btn-link btn-sm" *ngIf="!newComment" (click)="updateCanceled.emit(true)">Отменить</button>
 </form>

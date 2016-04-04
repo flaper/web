@@ -54,6 +54,9 @@ export class CommentWrite {
 
     //to preserve this
     this.form.valueChanges.subscribe(values => this.valueChanged(values));
+    if (!this.newComment) {
+      this.elementRef.nativeElement.querySelector('textarea').focus();
+    }
   }
 
   ngAfterViewInit() {
@@ -70,7 +73,7 @@ export class CommentWrite {
       this.disabled = true;
       this.commentService.save(data)
         .subscribe((comment) => {
-          if (this.comment) {
+          if (!this.newComment) {
             Object.assign(this.comment, comment);
           }
           this.clearForm();
