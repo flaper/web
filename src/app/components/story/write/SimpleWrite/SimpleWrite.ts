@@ -67,6 +67,11 @@ export class SimpleWrite {
       }, (e) => {
         this.error = e.message;
       })
+    } else {
+      if (!this.form.controls['title'].valid){
+        this.error = 'Заголовок является обязательным';
+        this.elementRef.nativeElement.querySelector('input[name="title"]').focus();
+      }
     }
   }
 
