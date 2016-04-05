@@ -15,6 +15,9 @@ export class UserService {
     authService.currentUserObservable.subscribe((user) => {
       this.currentUser = user;
       this.currentUserId = user ? user.id : null;
+      if (user) {
+        this._usersCache.set(user.id, Rx.Observable.of(user));
+      }
     });
     this.currentUserObservable = authService.currentUserObservable;
   }
@@ -26,9 +29,6 @@ export class UserService {
   }
 
   getById(id) {
-    if (id === this.currentUserId) {
-      return this.currentUserObservable;
-    }
     if (!this._usersCache.has(id)) {
       this._usersCache.set(id, new Rx.ReplaySubject<User>(1));
       this.api.request('get', `users/${id}`)
