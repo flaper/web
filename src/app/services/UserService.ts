@@ -16,7 +16,9 @@ export class UserService {
       this.currentUser = user;
       this.currentUserId = user ? user.id : null;
       if (user) {
-        this._usersCache.set(user.id, Rx.Observable.of(user));
+        let o = new Rx.ReplaySubject<User>(1);
+        o.next(user);
+        this._usersCache.set(user.id, o);
       }
     });
     this.currentUserObservable = authService.currentUserObservable;
