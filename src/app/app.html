@@ -1,0 +1,15 @@
+<menu-left *ngIf="userService.currentUser"></menu-left>
+<div class="full-page-container">
+  <div class="above-footer">
+    <header>
+      <navbar></navbar>
+    </header>
+
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+
+  <footer>
+  </footer>
+</div>

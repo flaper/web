@@ -1,0 +1,26 @@
+<div class="ml" [class.ml-toggle]="hasToggle()">
+  <div class="ml-header">
+    <span class="pull-xs-right hidden-xs-down" (click)="toggle()"><i class="fa fa-bars"></i></span>
+    <span class="pull-xs-right hidden-sm-up" (click)="toggleSm()"><i class="fa fa-bars"></i></span>
+  </div>
+  <ul class="nav nav-pills nav-stacked mobile-collapsed" id="ml-items">
+    <li class="nav-item">
+      <a class="nav-link nav-user" [routerLink]="['/User', {id:userService.currentUser.id}]">
+        <i>
+          <img class="img-circle" src="{{userService.currentUser.photo}}">
+        </i>
+                    <span class="label">
+                      {{userService.currentUser.displayName}}
+                    </span>
+      </a>
+    </li>
+    <li *ngFor="#item of items" class="nav-item">
+      <a class="nav-link" [routerLink]="item.route">
+      <span class="icon-container text-xs-center">
+        <i class="{{item.iconClass}}"></i>
+      </span>
+        <span class="label">{{item.label}}</span>
+      </a>
+    </li>
+  </ul>
+</div>

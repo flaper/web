@@ -27,3 +27,6 @@
     justify-content: center;
   }
 }
+.left-column{
+  min-width: 0;//fix word-wrapping for flex child
+}
