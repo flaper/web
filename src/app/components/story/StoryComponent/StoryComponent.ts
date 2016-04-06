@@ -29,7 +29,7 @@ export class StoryComponent {
   private _moment;
   private actions = [
     {name: 'deny', title: 'Отклонить', icon: 'fa-ban', acl: 'Story.deny'},
-    {name: 'delete', title: 'Удалить'},
+    {name: 'delete', title: 'Удалить', acl: 'Story.delete'},
     {name: 'best', title: 'Победитель', icon: 'fa-trophy', acl: 'super'},
   ];
 

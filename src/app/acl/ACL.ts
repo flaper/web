@@ -11,7 +11,7 @@ export class ACL {
   LIST = {
     Story: {
       write: ['$owner', 'admin'],
-      del: ['$owner'],
+      delete: ['$owner'],
       deny: ['admin']
     },
     Comment: {
