@@ -1,5 +1,3 @@
-/// <reference path="../../../../../typingsOurs/main.d.ts" />
-
 import {Component, Input} from 'angular2/core';
 import {Router} from 'angular2/router';
 import {Story} from "../../../models/common/Story";
@@ -42,11 +40,13 @@ export class StoryComponent {
     this.viewService.post(this.story.id);
   }
 
+  private _yaShare = null;
+
   ngAfterViewInit() {
     let mobile = window.innerWidth < 500;
     let id = mobile ? 'mobile-story-share' : 'story-share';
 
-    let share = Ya.share2(id,
+    this._yaShare = Ya.share2(id,
       {
         content: {
           url: `http://flaper.org/s/${this.story.slug}`,
@@ -57,6 +57,13 @@ export class StoryComponent {
           counter: !mobile
         }
       });
+  }
+
+  ngOnDestroy() {
+    if (this._yaShare) {
+      this._yaShare.destroy();
+      this._yaShare = null;
+    }
   }
 
   showChangedTime() {
