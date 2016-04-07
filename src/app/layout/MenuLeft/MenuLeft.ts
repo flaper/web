@@ -38,6 +38,7 @@ export class MenuLeft {
   toggleSm() {
     let el = this.elementRef.nativeElement.querySelector('#ml-items');
     el.classList.remove('mobile-collapsed');
-    $(el).collapse('toggle');
+    let $el: any = $(el);
+    $el.collapse('toggle');
   }
 }

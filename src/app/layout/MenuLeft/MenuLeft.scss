@@ -23,6 +23,7 @@ $local-border: 1px solid lighten($brand-secondary, 10);
 }
 
 :host {
+  flex-shrink: 0;
   display: flex;
 }
 
