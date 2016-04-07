@@ -5,13 +5,14 @@
   </div>
   <ul class="nav nav-pills nav-stacked mobile-collapsed" id="ml-items">
     <li class="nav-item">
-      <a class="nav-link nav-user" [routerLink]="['/User', {id:userService.currentUser.id}]">
-        <i>
-          <img class="img-circle" src="{{userService.currentUser.photo}}">
+      <a class="nav-link" [routerLink]="['/User', {id:userService.currentUser.id}]">
+      <span class="icon-container text-xs-center">
+        <i class="fa fa-list">
         </i>
-                    <span class="label">
-                      {{userService.currentUser.displayName}}
-                    </span>
+      </span>
+      <span class="label">
+          Мои статьи
+      </span>
       </a>
     </li>
     <li *ngFor="#item of items" class="nav-item">
