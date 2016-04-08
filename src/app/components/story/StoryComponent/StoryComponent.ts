@@ -1,7 +1,6 @@
 import {Component, Input} from 'angular2/core';
 import {Router} from 'angular2/router';
 import {Story} from "../../../models/common/Story";
-import {TimeAgoPipe} from 'angular2-moment';
 import {ACL} from "../../../acl/ACL";
 import * as moment from 'moment';
 import {LikeComponent} from "../../like/LikeComponent/LikeComponent";
@@ -16,7 +15,6 @@ import {StoryBestService} from "../../../services/story/StoryBestService";
 @Component({
   selector: 'story',
   directives: [UserLink, UserAvatar, LikeComponent, PostActions],
-  pipes: [TimeAgoPipe],
   styles: [require('./StoryComponent.scss')],
   template: require('./StoryComponent.html')
 })

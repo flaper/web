@@ -19,6 +19,7 @@ import * as moment from 'moment';
  * our top level component that holds all of our components
  */
 import {App} from './app/app';
+import {TimeAgoPipe} from "../node_modules/angular2-moment/TimeAgoPipe";
 require('./css/main.scss');
 
 /*
@@ -42,6 +43,7 @@ const APPLICATION_DIRECTIVES = [
 
 // application_pipes: pipes that are global through out the application
 const APPLICATION_PIPES = [
+  TimeAgoPipe
 ];
 
 
