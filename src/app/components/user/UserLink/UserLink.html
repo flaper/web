@@ -1,1 +1,15 @@
-<a [routerLink]="['/User', {id:user.id}]" *ngIf="user">{{user.displayName}}</a>
+<span *ngIf="user">
+<a [routerLink]="['/User', {id:user.id}]">{{user.displayName}}</a>
+<small class="stats">
+  <span class="stories-number" title="Количество статей">
+      <i class="fa fa-book">
+      </i>
+      {{user.storiesNumber}}
+  </span>
+  <span class="likes-number" title="Количество лайков">
+      <i class="fa fa-thumbs-o-up">
+      </i>
+      {{user.likesNumber}}
+  </span>
+</small>
+</span>

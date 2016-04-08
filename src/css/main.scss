@@ -1,7 +1,8 @@
 @import 'bootstrap';
 @import "layout/layout";
 @import 'general';
-@import "./components/markdown";
-@import "./components/like";
-@import "./components/image";
 @import "./components/post/main";
+@import "./components/image";
+@import "./components/like";
+@import "./components/markdown";
+@import "./components/user-link";
