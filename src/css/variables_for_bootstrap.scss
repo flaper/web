@@ -3,8 +3,9 @@ $enable-flex: true;
 
 $brand-primary: lighten(#DC4E00, 10%);
 $brand-secondary: rgb(38, 174, 147);
+//$brand-secondary: rgb(23, 192, 217);
 
-$link-color: darken($brand-secondary, 10);
+$link-color: #0087cf;
 $font-family-sans-serif: -apple-system, "Helvetica Neue", Roboto, Arial, sans-serif;
 $headings-line-height: 1.5;
 //$navbar-padding-vertical: 0.3rem;

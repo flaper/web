@@ -5,13 +5,17 @@
   border-bottom: 1px solid lighten($brand-secondary, 10);
   &.has-user {
     background-color: white;
+    @media (max-width: map-get($grid-breakpoints, 'sm')-1) {
+      //xs
+      display: none;
+    }
   }
   &:not(.has-user) {
     .navbar-brand {
       color: #fff;
     }
     .nav-link {
-      color: hsla(0, 0%, 100%, .5)
+      color: #fff;
     }
   }
 }
@@ -32,12 +36,18 @@
   margin-bottom: 3px;
 }
 
-.my-avatar {
-  $value: 2.3rem;
-  height: $value;
-  width: $value;
-  border: 2px solid lighten($brand-secondary, 10);
-  border-radius: $value / 2;
+.nav-user {
+  padding: 0;
+  .my-avatar {
+    $value: 2.3rem;
+    height: $value;
+    width: $value;
+    border: 2px solid lighten($brand-secondary, 10);
+    border-radius: $value / 2;
+  }
+  .me-name {
+    margin-left: 0.15rem;
+  }
 }
 
 .fa-sign-out {

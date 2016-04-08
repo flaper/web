@@ -1,5 +1,7 @@
 import {Component, ElementRef} from 'angular2/core';
 import {UserService} from "../../services/UserService";
+import {PageService} from "../../services/helpers/PageService";
+import {AuthService} from "../../services/AuthService";
 
 @Component({
   selector: 'menu-left',
@@ -13,7 +15,8 @@ export class MenuLeft {
     {label: 'О проекте', route: ['/Story', {slug: 'Флапер'}], iconClass: 'fa fa-info-circle'}
   ];
 
-  constructor(private userService:UserService, private elementRef:ElementRef) {
+  constructor(private userService:UserService, private elementRef:ElementRef,
+              private pageService:PageService, private authService: AuthService) {
   }
 
   hasToggle() {
@@ -38,7 +41,11 @@ export class MenuLeft {
   toggleSm() {
     let el = this.elementRef.nativeElement.querySelector('#ml-items');
     el.classList.remove('mobile-collapsed');
-    let $el: any = $(el);
+    let $el:any = $(el);
     $el.collapse('toggle');
+  }
+
+  logout() {
+    this.authService.logout();
   }
 }

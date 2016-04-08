@@ -1,17 +1,25 @@
 <div class="ml" [class.ml-toggle]="hasToggle()">
   <div class="ml-header">
     <span class="pull-xs-right hidden-xs-down" (click)="toggle()"><i class="fa fa-bars"></i></span>
-    <span class="pull-xs-right hidden-sm-up" (click)="toggleSm()"><i class="fa fa-bars"></i></span>
+    <span class="hidden-sm-up">
+        <span (click)="toggleSm()"><i class="fa fa-bars"></i></span>
+        <a class="navbar-brand" (click)="pageService.navigateToDefault()">
+          <small>Флапер</small>
+        </a>
+        <a class="btn btn-primary btn-sm" [routerLink]="['/CreateStory']">Создать статью</a>
+        <img class="pull-xs-right my-avatar" src="{{userService.currentUser.photo}}"
+             [routerLink]="['/User', {id:userService.currentUser.id}]">
+    </span>
   </div>
   <ul class="nav nav-pills nav-stacked mobile-collapsed" id="ml-items">
     <li class="nav-item">
       <a class="nav-link" [routerLink]="['/User', {id:userService.currentUser.id}]">
       <span class="icon-container text-xs-center">
-        <i class="fa fa-list">
+        <i class="fa fa-user">
         </i>
       </span>
       <span class="label">
-          Мои статьи
+          Моя страница
       </span>
       </a>
     </li>
@@ -21,6 +29,16 @@
         <i class="{{item.iconClass}}"></i>
       </span>
         <span class="label">{{item.label}}</span>
+      </a>
+    </li>
+    <li class="hidden-sm-up nav-item">
+      <a class="nav-link" (click)="logout()">
+        <span class="icon-container text-xs-center">
+          <i class="fa fa-sign-out"></i>
+        </span>
+        <span class="label">
+          Выход
+        </span>
       </a>
     </li>
   </ul>

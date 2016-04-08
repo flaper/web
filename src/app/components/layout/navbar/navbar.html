@@ -9,17 +9,23 @@
     <li class="nav-item" *ngIf="!userService.currentUser">
       <a class="nav-link" (click)="pageService.navigateToLogin()"><i class="fa fa-sign-in"></i> Вход</a>
     </li>
-    <li class="nav-avatar-item" *ngIf="userService.currentUser">
-      <img class="my-avatar" src="{{userService.currentUser.photo}}">
-    </li>
-    <li class="nav-item hidden-sm-down" *ngIf="userService.currentUser">
-        <span class="nav-link">
-        {{userService.currentUser.displayName}}
-        </span>
-    </li>
-    <li class="nav-item" *ngIf="userService.currentUser">
-      <a class="nav-link" (click)="logout()">
-        <i class="fa fa-sign-out"></i> Выйти</a>
+    <li class="nav-item dropdown" *ngIf="userService.currentUser">
+      <a class="nav-link dropdown-toggle nav-user" id="userDropDownMenu" data-toggle="dropdown"
+         aria-haspopup="true">
+        <img class="my-avatar" src="{{userService.currentUser.photo}}">
+        <span class="hidden-sm-down me-name">{{userService.currentUser.displayName}}</span>
+      </a>
+
+      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropDownMenu">
+        <a class="dropdown-item" [routerLink]="['/User', {id:userService.currentUser.id}]">
+          <i class="fa fa-user"></i> Моя страница
+        </a>
+
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" (click)="logout()">
+          <i class="fa fa-sign-out"></i> Выход
+        </a>
+      </div>
     </li>
   </ul>
 
