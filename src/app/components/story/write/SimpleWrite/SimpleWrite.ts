@@ -13,7 +13,7 @@ import {generateEvent} from "../../../../libs/common/common";
 
 @Component({
   selector: 'simple-write',
-  directives: [CORE_DIRECTIVES, FORM_DIRECTIVES, AutoFocusIt, Autosize, DropzoneComponent],
+  directives: [AutoFocusIt, Autosize, DropzoneComponent],
   styles: [require('./SimpleWrite.scss')],
   template: require('./SimpleWrite.html')
 })
