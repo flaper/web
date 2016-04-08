@@ -5,12 +5,10 @@ import {FormBuilder, Control, ControlGroup, Validators} from 'angular2/common';
 import {Comment} from "../../../models/common/Comment";
 import {CommentService} from "../../../services/CommentService";
 import {FormDraft} from "../../../services/draft/FormDraft";
-import {Autosize} from "../../../directives/Autosize/Autosize";
 import {generateEvent} from "../../../libs/common/common";
 
 @Component({
   selector: 'comment-write',
-  directives: [Autosize],
   styles: [require('./CommentWrite.scss')],
   template: require('./CommentWrite.html')
 })
@@ -89,6 +87,7 @@ export class CommentWrite {
     let control = <Control> this.form.controls['content'];
     control.updateValue('', {});
     FormDraft.remove(this.DRAFT_KEY);
+    this._autosizeUpdate();
   }
 
   getCommentData() {

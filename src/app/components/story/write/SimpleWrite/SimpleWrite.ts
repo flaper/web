@@ -6,14 +6,13 @@ import {FormBuilder, Control, ControlGroup, Validators} from 'angular2/common';
 import {Story} from "../../../../models/common/Story";
 import {StoryService} from "../../../../services/story/StoryService";
 import {FormDraft} from "../../../../services/draft/FormDraft";
-import {Autosize} from "../../../../directives/Autosize/Autosize";
 import {AutoFocusIt} from "../../../../directives/AutoFocusIt/AutoFocusIt";
 import {DropzoneComponent} from "../../../image/dropzone/DropzoneComponent";
 import {generateEvent} from "../../../../libs/common/common";
 
 @Component({
   selector: 'simple-write',
-  directives: [AutoFocusIt, Autosize, DropzoneComponent],
+  directives: [AutoFocusIt, DropzoneComponent],
   styles: [require('./SimpleWrite.scss')],
   template: require('./SimpleWrite.html')
 })
