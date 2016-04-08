@@ -4,7 +4,6 @@ import {Component, Input} from 'angular2/core';
 import {Comment} from "../../../models/common/Comment";
 import {UserLink} from "../../user/UserLink/UserLink";
 import {UserAvatar} from "../../user/UserAvatar/UserAvatar";
-import {LikeComponent} from "../../like/LikeComponent/LikeComponent";
 import {PostActions} from "../../post/PostActions/PostActions";
 import {CommentService} from "../../../services/CommentService";
 import {ACL} from "../../../acl/ACL";
@@ -12,7 +11,7 @@ import {CommentWrite} from "../CommentWrite/CommentWrite";
 
 @Component({
   selector: 'comment-component',
-  directives: [UserLink, UserAvatar, LikeComponent, PostActions, CommentWrite],
+  directives: [UserLink, UserAvatar, PostActions, CommentWrite],
   styles: [require('./CommentComponent.scss')],
   template: require('./CommentComponent.html')
 })

@@ -21,6 +21,7 @@ import * as moment from 'moment';
 import {App} from './app/app';
 import {TimeAgoPipe} from "../node_modules/angular2-moment/TimeAgoPipe";
 import {Autosize} from "./app/directives/Autosize/Autosize";
+import {LikeComponent} from "./app/components/like/LikeComponent/LikeComponent";
 require('./css/main.scss');
 
 /*
@@ -39,7 +40,8 @@ const APPLICATION_PROVIDERS = [
 // application_directives: directives that are global through out the application
 const APPLICATION_DIRECTIVES = [
   ...ROUTER_DIRECTIVES,
-    Autosize
+    Autosize,
+  LikeComponent
 ];
 
 // application_pipes: pipes that are global through out the application

@@ -3,7 +3,6 @@ import {Router} from 'angular2/router';
 import {Story} from "../../../models/common/Story";
 import {ACL} from "../../../acl/ACL";
 import * as moment from 'moment';
-import {LikeComponent} from "../../like/LikeComponent/LikeComponent";
 import {UserLink} from "../../user/UserLink/UserLink";
 import {UserAvatar} from "../../user/UserAvatar/UserAvatar";
 import {StoryService} from "../../../services/story/StoryService";
@@ -14,7 +13,7 @@ import {StoryBestService} from "../../../services/story/StoryBestService";
 
 @Component({
   selector: 'story',
-  directives: [UserLink, UserAvatar, LikeComponent, PostActions],
+  directives: [UserLink, UserAvatar, PostActions],
   styles: [require('./StoryComponent.scss')],
   template: require('./StoryComponent.html')
 })
