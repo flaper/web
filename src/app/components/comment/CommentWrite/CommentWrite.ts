@@ -1,7 +1,7 @@
 /// <reference path="../../../../../typingsOurs/main.d.ts" />
 
 import {Component, Input, Output, EventEmitter, ElementRef} from 'angular2/core';
-import {CORE_DIRECTIVES, FORM_DIRECTIVES, FormBuilder, Control, ControlGroup, Validators} from 'angular2/common';
+import {FormBuilder, Control, ControlGroup, Validators} from 'angular2/common';
 import {Comment} from "../../../models/common/Comment";
 import {CommentService} from "../../../services/CommentService";
 import {FormDraft} from "../../../services/draft/FormDraft";
@@ -10,7 +10,7 @@ import {generateEvent} from "../../../libs/common/common";
 
 @Component({
   selector: 'comment-write',
-  directives: [CORE_DIRECTIVES, FORM_DIRECTIVES, Autosize],
+  directives: [Autosize],
   styles: [require('./CommentWrite.scss')],
   template: require('./CommentWrite.html')
 })

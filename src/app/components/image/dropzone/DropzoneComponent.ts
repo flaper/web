@@ -1,7 +1,6 @@
 /// <reference path="../../../../../typingsOurs/main.d.ts" />
 
 import {Component, ElementRef, EventEmitter, Output} from 'angular2/core';
-import {CORE_DIRECTIVES} from 'angular2/common';
 import {IMAGE_UPLOAD_URL} from "../../../services/ImageService";
 import {AuthService} from "../../../services/AuthService";
 import {JwtToken} from "../../../services/JwtToken";
@@ -10,7 +9,6 @@ let Dropzone = require('dropzone');
 
 @Component({
   selector: 'dropzone',
-  directives: [CORE_DIRECTIVES],
   styles: [require('./DropzoneComponent.scss')],
   template: require('./DropzoneComponent.html')
 })
