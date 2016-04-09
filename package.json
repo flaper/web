@@ -102,6 +102,7 @@
     "remap-istanbul": "^0.5.1",
     "rimraf": "^2.5.2",
     "sass-loader": "^3.2.0",
+    "script-loader": "^0.6.1",
     "source-map-loader": "^0.1.5",
     "style-loader": "^0.13.0",
     "ts-helper": "0.0.1",

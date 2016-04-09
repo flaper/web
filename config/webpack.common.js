@@ -40,7 +40,7 @@ module.exports = {
   //
   // See: http://webpack.github.io/docs/configuration.html#entry
   entry: {
-
+    'global': './src/js/global.js',
     'polyfills': './src/polyfills.ts',
     'vendor': './src/vendor.ts',
     'main': './src/main.browser.ts'
@@ -102,7 +102,6 @@ module.exports = {
     //
     // See: http://webpack.github.io/docs/configuration.html#module-loaders
     loaders: [
-
       // Typescript loader support for .ts and Angular 2 async routes via .async.ts
       //
       // See: https://github.com/s-panferov/awesome-typescript-loader
@@ -178,9 +177,13 @@ module.exports = {
     //
     // See: https://www.npmjs.com/package/copy-webpack-plugin
     new CopyWebpackPlugin([{
-      from: 'src/assets',
-      to: 'assets'
-    }]),
+        from: 'src/assets',
+        to: 'assets'
+      }, {
+        from: 'src/root',
+        to: '.'
+      }]
+    ),
 
     // Plugin: HtmlWebpackPlugin
     // Description: Simplifies creation of HTML files to serve your webpack bundles.
