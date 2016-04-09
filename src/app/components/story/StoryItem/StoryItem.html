@@ -12,6 +12,9 @@
 
   <div class="short-inline" *ngIf="story.shortInline" [innerHtml]="story.shortInline">
   </div>
+  <div class="read-more">
+    <a [routerLink]="['/Story', {slug: story.slug}]">Читать далее...</a>
+  </div>
 </div>
 <div class="story-item-footer">
   <like [subject]="story"></like>
