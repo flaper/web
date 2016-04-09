@@ -6,7 +6,8 @@ import {ElementRef, Directive} from 'angular2/core';
 export class AutoFocusIt {
   constructor(public el:ElementRef) {
   }
-  ngOnInit(){
+
+  ngOnInit() {
     // autofocus fix for multiple views
     this.el.nativeElement.focus();
   }

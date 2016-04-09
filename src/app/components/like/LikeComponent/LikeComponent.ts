@@ -34,7 +34,7 @@ export class LikeComponent {
     if (this.userService.currentUser && this.userService.currentUserId !== this.subject.userId) {
       this.likeService.toggle(this.subject.id)
         .subscribe((response) => {
-          this.subject.numberOfLikes = response.count;
+          this.subject.likesNumber = response.count;
         })
     }
   }
