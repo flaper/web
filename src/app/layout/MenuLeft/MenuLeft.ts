@@ -16,11 +16,11 @@ export class MenuLeft {
   ];
 
   constructor(private userService:UserService, private elementRef:ElementRef,
-              private pageService:PageService, private authService: AuthService) {
+              private pageService:PageService, private authService:AuthService) {
   }
 
   hasToggle() {
-    let item = localStorage.getItem('ml-toggle');
+    let item = ls.getItem('ml-toggle');
     try {
       item = JSON.parse(item);
     }
@@ -35,7 +35,7 @@ export class MenuLeft {
     //mobile && tablets collapsed by default, desktop not
     let el = this.elementRef.nativeElement.querySelector('.ml');
     el.classList.toggle('ml-toggle');
-    localStorage.setItem('ml-toggle', el.classList.contains('ml-toggle'));
+    ls.setItem('ml-toggle', el.classList.contains('ml-toggle'));
   }
 
   toggleSm() {

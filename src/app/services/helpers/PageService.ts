@@ -22,7 +22,7 @@ export class PageService {
   }
 
   public setDefault(value) {
-    localStorage.setItem(PAGE_DEFAULT, value);
+    ls.setItem(PAGE_DEFAULT, value);
   }
 
   public navigateToDefault() {
@@ -31,7 +31,7 @@ export class PageService {
 
 
   private static GetFromLS() {
-    let value = localStorage.getItem(PAGE_DEFAULT);
+    let value = ls.getItem(PAGE_DEFAULT);
     value = ['News', 'Home'].indexOf(value) > -1 ? value : null;
     return value;
   }
@@ -39,15 +39,15 @@ export class PageService {
   public navigateToLogin() {
     let path = this.router.currentInstruction.toRootUrl();
     if (!path || path === '/' || (path.indexOf('/Login') > -1)) {
-      localStorage.removeItem(PAGE_BEFORE_LOGIN);
+      ls.removeItem(PAGE_BEFORE_LOGIN);
     } else {
-      localStorage.setItem(PAGE_BEFORE_LOGIN, `${path}${window.location.search}`);
+      ls.setItem(PAGE_BEFORE_LOGIN, `${path}${window.location.search}`);
     }
     this.router.navigate(['/Login']);
   }
 
   public navigateAfterLogin() {
-    let path = localStorage.getItem(PAGE_BEFORE_LOGIN);
+    let path = ls.getItem(PAGE_BEFORE_LOGIN);
     if (path) {
       this.router.navigateByUrl(path);
     } else {

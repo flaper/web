@@ -1,6 +1,6 @@
 export class JwtToken {
   static get() {
-    let jwtString = localStorage.getItem('jwt');
+    let jwtString = ls.getItem('jwt');
     if (jwtString) {
       try {
         var jwt = JSON.parse(jwtString);

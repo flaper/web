@@ -22,9 +22,9 @@ export class FormDraft {
         date: new Date(),
         value: value
       };
-      localStorage.setItem(`${KEY_PREFIX}${key}`, JSON.stringify(data));
+      ls.setItem(`${KEY_PREFIX}${key}`, JSON.stringify(data));
     } else {
-      localStorage.removeItem(`${KEY_PREFIX}${key}`);
+      ls.removeItem(`${KEY_PREFIX}${key}`);
     }
   }
 
@@ -43,11 +43,11 @@ export class FormDraft {
   }
 
   static remove(key) {
-    localStorage.removeItem(`${KEY_PREFIX}${key}`);
+    ls.removeItem(`${KEY_PREFIX}${key}`);
   }
 
   private static _safeLoad(key, minDate) {
-    let data = localStorage.getItem(key);
+    let data = ls.getItem(key);
     if (!data) {
       return {};
     }

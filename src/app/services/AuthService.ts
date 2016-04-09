@@ -60,7 +60,7 @@ export class AuthService {
   }
 
   setCurrentUser(user) {
-    localStorage.setItem('currentUser', JSON.stringify(user));
+    ls.setItem('currentUser', JSON.stringify(user));
     this.currentUserObservable.next(user);
   }
 
@@ -71,7 +71,7 @@ export class AuthService {
   }
 
   parseJwtCache():boolean {
-    let jwtString = localStorage.getItem('jwt');
+    let jwtString = ls.getItem('jwt');
     return this.validateJwtAndRequestUser(jwtString);
   }
 
@@ -97,7 +97,7 @@ export class AuthService {
 
   //can be called before requestUser to decrease app latency
   setUserFromCache() {
-    let userJSON = localStorage.getItem('currentUser');
+    let userJSON = ls.getItem('currentUser');
     if (userJSON) {
       try {
         let user = JSON.parse(userJSON);
@@ -128,9 +128,9 @@ export class AuthService {
   _setJwtData(jwtData) {
     this.jwtData = jwtData;
     if (jwtData) {
-      localStorage.setItem('jwt', JSON.stringify(jwtData));
+      ls.setItem('jwt', JSON.stringify(jwtData));
     } else {
-      localStorage.removeItem('jwt');
+      ls.removeItem('jwt');
     }
   }
 }
