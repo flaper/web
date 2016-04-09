@@ -13,7 +13,7 @@ import {ACCOUNT_SERVICE_PROVIDER} from './AccountService';
 import {PAGE_PROVIDER} from './helpers/PageService';
 
 // Include injectables that you want to have globally throughout our app
-export let APP_PROVIDERS:Array<any> = [
+export let PROVIDERS:Array<any> = [
   API_SERVICE_PROVIDER,
   AUTH_SERVICE_PROVIDER,
   ACL_PROVIDER,
