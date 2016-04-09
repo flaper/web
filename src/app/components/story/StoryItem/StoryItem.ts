@@ -12,8 +12,6 @@ import {UserAvatar} from "../../user/UserAvatar/UserAvatar";
 export class StoryItem {
   @Input()
   story:Story;
-  @Input()
-  showAuthor:boolean = true;
 
   constructor() {
   }

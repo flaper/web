@@ -16,9 +16,6 @@ export class StoriesAutoList {
   @Input()
   order = "";
 
-  @Input()
-  showAuthor:boolean = true;
-
   skip = 0;
   storiesGroup:Array<Story[]> = [];
   lastLength = 0;

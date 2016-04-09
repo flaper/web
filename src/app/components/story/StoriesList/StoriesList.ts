@@ -18,8 +18,6 @@ import {LikeService} from "../../../services/LikeService";
 export class StoriesList {
   @Input()
   stories:Story[] = [];
-  @Input()
-  showAuthor:boolean = true;
 
   commentsGroupById = null;
 
