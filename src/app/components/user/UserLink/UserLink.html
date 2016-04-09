@@ -1,12 +1,12 @@
 <span *ngIf="user">
 <a [routerLink]="['/User', {id:user.id}]">{{user.displayName}}</a>
-<small class="stats">
+<small class="stats" [class.hidden-xs-down]="hiddenStatsXs">
   <span class="stories-number" title="Количество статей">
       <i class="fa fa-book">
       </i>
       {{user.storiesNumber}}
   </span>
-  <span class="likes-number" title="Количество лайков">
+  <span class="likes-number hidden-xs-down" title="Количество лайков">
       <i class="fa fa-thumbs-o-up">
       </i>
       {{user.likesNumber}}

@@ -6,7 +6,7 @@
       </div>
       <div class="media-body">
         <div>
-          <user-link [userId]="comment.userId"></user-link>
+          <user-link [userId]="comment.userId" hiddenStatsXs="true"></user-link>
         </div>
         <div class="time">{{comment.created | amTimeAgo}}</div>
       </div>

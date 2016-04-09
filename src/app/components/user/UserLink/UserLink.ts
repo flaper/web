@@ -15,6 +15,9 @@ export class UserLink {
   @Input()
   userId:string;
 
+  @Input()
+  hiddenStatsXs:boolean = false;
+
   user:User;
 
   constructor(private userService:UserService) {
