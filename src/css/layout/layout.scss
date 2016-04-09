@@ -15,7 +15,8 @@ body {
     min-height: 100%;
     display: flex;
     position: relative;
-    @media (max-width: map-get($grid-breakpoints, 'sm')) {
+    @media (max-width: map-get($grid-breakpoints, 'sm')-1) {
+      //xs devices
       display: block;
     }
 
