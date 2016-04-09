@@ -28,9 +28,9 @@ export class UserInfo {
     this.userService.getUserIdentitiesById(this.user.id).subscribe(identities => {
       this.identities = identities.map(row => {
         let provider = row['provider'];
-        let map = _.keyBy('name', PROVIDERS);
+        let map = _.keyBy(PROVIDERS, 'name');
         row['providerTitle'] = map[provider] ? map[provider]['publicUrlTitle'] : provider;
-        row['icon'] = map[provider] && map[provider]['icon'] ? map[provider]['icon'] : `fa fa-${provider}`;
+        row['icon'] = map[provider]['icon'];
         return row;
       });
     });

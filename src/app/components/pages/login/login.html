@@ -6,7 +6,7 @@
 
       <div *ngFor="#provider of PROVIDERS">
         <a class="btn btn-block btn-social btn-{{provider.name}}" href="{{provider.authLink}}">
-          <i class="fa fa-{{provider.name}}"></i>{{provider.loginTitle}}
+          <i class="{{provider.icon}}"></i>{{provider.loginTitle}}
         </a>
       </div>
     </div>

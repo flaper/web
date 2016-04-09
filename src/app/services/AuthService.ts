@@ -11,18 +11,20 @@ interface Provider {
   name: string
   loginTitle: string
   publicUrlTitle: string
+  icon?: string
   authLink?: string
 }
 export let PROVIDERS:Provider[] = [
   {name: 'vk', loginTitle: 'Войти через Вконтакте', publicUrlTitle: 'ВКонтакте'},
-  {name: 'mail', loginTitle: 'Войти через Mail.ru', publicUrlTitle: 'Mail.ru'},
+  {name: 'mail', loginTitle: 'Войти через Mail.ru', publicUrlTitle: 'Mail.ru', icon: 'fa fa-at'},
   {name: 'odnoklassniki', loginTitle: 'Войти через Одноклассники', publicUrlTitle: 'Одноклассники'},
   {name: 'facebook', loginTitle: 'Войти через Facebook', publicUrlTitle: 'Facebook'},
   {name: 'google', loginTitle: 'Войти через Google', publicUrlTitle: 'Google Plus'},
 ];
 
 PROVIDERS.forEach((provider:Provider) => {
-  provider.authLink = `${API_SERVER_URL}/auth/${provider.name}`
+  provider.authLink = `${API_SERVER_URL}/auth/${provider.name}`;
+  provider.icon = provider.icon ? provider.icon : 'fa fa-' + provider.name;
 });
 
 interface JwtData {
