@@ -62,6 +62,7 @@ if ('production' === ENV) {
  */
 export function main() {
   moment.locale('ru');
+  //noinspection TypeScriptValidateTypes
   return browser.bootstrap(App, [
       ...APPLICATION_PROVIDERS,
       ngCore.provide(ngCore.PLATFORM_DIRECTIVES, {useValue: APPLICATION_DIRECTIVES, multi: true}),
