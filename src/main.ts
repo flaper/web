@@ -1,6 +1,3 @@
-/*
- * Providers provided by Angular
- */
 import * as browser from 'angular2/platform/browser';
 import * as ngCore from 'angular2/core';
 import {enableProdMode} from 'angular2/core';
@@ -14,14 +11,11 @@ import {APP_PROVIDERS} from './app/services/providers';
 
 import * as moment from 'moment';
 
-/*
- * App Component
- * our top level component that holds all of our components
- */
 import {App} from './app/app';
 import {TimeAgoPipe} from "../node_modules/angular2-moment/TimeAgoPipe";
 import {Autosize} from "./app/directives/Autosize/Autosize";
 import {LikeComponent} from "./app/components/like/LikeComponent/LikeComponent";
+import {FixedPipe} from "./app/pipes/FixedPipe";
 require('./css/main.scss');
 
 /*
@@ -46,6 +40,7 @@ const APPLICATION_DIRECTIVES = [
 
 // application_pipes: pipes that are global through out the application
 const APPLICATION_PIPES = [
+  FixedPipe,
   TimeAgoPipe
 ];
 
