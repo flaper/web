@@ -1,14 +1,12 @@
-let _ = require('lodash');
+let _merge = require('lodash/merge');
 
 let common = require('./config.json');
 
 let config = null;
 if (ENV === 'production') {
-  console.log('production');
-  config = _.merge({}, common, require('./config.production.json'));
+  config = _merge({}, common, require('./config.production.json'));
 } else {
-  console.log('dev');
-  config = _.merge({}, common, require('./config.local.json'))
+  config = _merge({}, common, require('./config.local.json'))
 }
 
 

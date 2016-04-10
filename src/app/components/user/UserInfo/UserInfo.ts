@@ -3,7 +3,7 @@ import {User} from "../../../models/common/User";
 import {PageUser} from "../../pages/user/PageUser";
 import {UserService} from "../../../services/UserService";
 import {PROVIDERS} from "../../../services/AuthService";
-import * as _ from 'lodash';
+let _keyBy = require('lodash/keyBy');
 import {UserSettings} from "../../../services/UserSettings";
 
 class IdentityProvider {
@@ -28,7 +28,7 @@ export class UserInfo {
     this.userService.getUserIdentitiesById(this.user.id).subscribe(identities => {
       this.identities = identities.map(row => {
         let provider = row['provider'];
-        let map = _.keyBy(PROVIDERS, 'name');
+        let map = _keyBy(PROVIDERS, 'name');
         row['providerTitle'] = map[provider] ? map[provider]['publicUrlTitle'] : provider;
         row['icon'] = map[provider]['icon'];
         return row;

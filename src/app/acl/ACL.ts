@@ -1,6 +1,6 @@
 import {Injectable} from 'angular2/core';
 import {UserService} from "../services/UserService";
-import * as _ from 'lodash';
+var _get = require('lodash/get.js');
 
 @Injectable()
 export class ACL {
@@ -24,7 +24,7 @@ export class ACL {
     if (['admin', 'super'].indexOf(action) > -1) {
       list = [action];
     } else {
-      list = _.get(this.LIST, action);
+      list = _get(this.LIST, action);
     }
     if (!list) {
       return false;
@@ -49,7 +49,7 @@ export class ACL {
   }
 
   getRoles() {
-    return _.get(this.userService.currentUser, "roles");
+    return _get(this.userService.currentUser, "roles");
   }
 
   isAdmin() {

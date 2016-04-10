@@ -1,7 +1,6 @@
 import {Injectable} from 'angular2/core';
 import {Router} from 'angular2/router';
 
-import {UserService} from "../UserService";
 import {JwtToken} from "../JwtToken";
 const PAGE_DEFAULT = 'PAGE_DEFAULT';
 const PAGE_BEFORE_LOGIN = '_PAGE_BEFORE_LOGIN';

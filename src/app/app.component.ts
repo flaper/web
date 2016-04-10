@@ -19,7 +19,7 @@ import {ROUTES} from './routes';
 })
 @RouteConfig(ROUTES)
 export class App {
-  constructor(public appState:AppState, pageService:PageService, location:Location, private userService:UserService) {
+  constructor(public appState:AppState ,pageService:PageService, location:Location, private userService:UserService) {
     let path = location.path();
     if (!path || path === '/') {
       pageService.navigateToDefault();

@@ -1,7 +1,7 @@
 /// <reference path="../../../../typingsOurs/main.d.ts" />
 import {Injectable} from 'angular2/core';
 import {Control, ControlGroup} from 'angular2/common';
-import * as _ from 'lodash';
+var _mapValues = require('lodash/mapValues');
 
 const KEY_PREFIX = 'FORM_DRAFT_';
 @Injectable()
@@ -13,7 +13,7 @@ export class FormDraft {
   static save(key, value) {
     FormDraft.requireKey(key);
 
-    value = _.mapValues(value, (value) => {
+    value = _mapValues(value, (value) => {
       return (typeof value === 'string') ? value.trim() : value;
     });
 

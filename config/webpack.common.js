@@ -40,9 +40,12 @@ module.exports = {
   //
   // See: http://webpack.github.io/docs/configuration.html#entry
   entry: {
-    'global': './src/js/global.js',
-    'polyfills': './src/polyfills.ts',
-    'vendor': './src/vendor.ts',
+    'main.css' : './src/chunks/main.css.ts',
+    'polyfills': './src/chunks/polyfills.ts',
+    'global': './src/chunks/global.ts',
+    'vendor': './src/chunks/vendor.ts',
+    'angular': './src/chunks/angular.ts',
+    'angular_vendor': './src/chunks/angular_vendor.ts',
     'main': './src/main.browser.ts'
 
   },
@@ -51,7 +54,9 @@ module.exports = {
   //
   // See: http://webpack.github.io/docs/configuration.html#resolve
   resolve: {
-
+    //alias: {
+    //  'moment$': 'moment/min/moment.min.js'
+    //},
     // An array of extensions that should be used to resolve modules.
     //
     // See: http://webpack.github.io/docs/configuration.html#resolve-extensions
@@ -64,7 +69,6 @@ module.exports = {
     modulesDirectories: ['node_modules'],
 
   },
-
   // Options affecting the normal modules.
   //
   // See: http://webpack.github.io/docs/configuration.html#module
@@ -144,7 +148,8 @@ module.exports = {
   //
   // See: http://webpack.github.io/docs/configuration.html#plugins
   plugins: [
-
+    //new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /ru/),
+    new webpack.ContextReplacementPlugin(/moment[\\\/]locale$/, /^\.\/(ru)$/),
     // Plugin: ForkCheckerPlugin
     // Description: Do type checking in a separate process, so webpack don't need to wait.
     //
@@ -166,7 +171,7 @@ module.exports = {
     // See: https://webpack.github.io/docs/list-of-plugins.html#commonschunkplugin
     // See: https://github.com/webpack/docs/wiki/optimization#multi-page-app
     new webpack.optimize.CommonsChunkPlugin({
-      name: helpers.reverse(['polyfills', 'vendor', 'main']),
+      name: helpers.reverse(['polyfills', 'global', 'main.css', 'vendor','angular', 'angular_vendor', 'main']),
       minChunks: Infinity
     }),
 
@@ -193,7 +198,8 @@ module.exports = {
     // See: https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
       template: 'src/index.html',
-      chunksSortMode: helpers.packageSort(['polyfills', 'vendor', 'main'])
+      chunksSortMode: helpers.packageSort(['polyfills', 'global', 'main.css', 'vendor',
+        'angular', 'angular_vendor', 'main'])
     })
 
   ],

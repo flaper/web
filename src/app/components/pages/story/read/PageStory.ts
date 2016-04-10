@@ -1,5 +1,3 @@
-/// <reference path="../../../../../../typingsOurs/main.d.ts" />
-
 import {Component} from 'angular2/core';
 import {RouteParams} from 'angular2/router'
 import {Story} from "../../../../models/common/Story";
@@ -10,7 +8,6 @@ import {CommentsAutoList} from "../../../comment/CommentsAutoList/CommentsAutoLi
 @Component({
   selector: 'page-story',
   directives: [StoryComponent, CommentsAutoList],
-  pipes: [],
   styles: [require('./PageStory.scss')],
   template: require('./PageStory.html')
 })

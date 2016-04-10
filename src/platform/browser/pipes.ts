@@ -3,7 +3,7 @@
  */
 
 import {provide, PLATFORM_PIPES} from 'angular2/core';
-import {TimeAgoPipe} from "angular2-moment";
+import {TimeAgoPipe} from "angular2-moment/TimeAgoPipe";
 import {FixedPipe} from "../../app/pipes/FixedPipe";
 
 // application_pipes: pipes that are global through out the application

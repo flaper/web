@@ -6,7 +6,8 @@ import {Story} from "../../../models/common/Story";
 import {StoryItem} from "../StoryItem/StoryItem";
 import {CommentService} from "../../../services/CommentService";
 import {CommentsList} from "../../comment/CommentsList/CommentsList";
-import * as _ from 'lodash';
+let _forOwn = require('lodash/forOwn');
+
 import {LikeService} from "../../../services/LikeService";
 
 @Component({
@@ -33,7 +34,7 @@ export class StoriesList {
         let commentsIds = [];
         let usersIds = [];
         this.commentsGroupById = groups;
-        _.forOwn(groups, group => {
+        _forOwn(groups, group => {
           group.forEach(comment => {
             commentsIds.push(comment.id);
             usersIds.push(comment.userId);

@@ -3,17 +3,21 @@
 // at the entry point of the async loaded file. Also see custom-typings.d.ts as you also need to
 // run `typings install x` where `x` is your module
 
-// Angular 2
-import 'angular2/platform/browser';
-import 'angular2/platform/common_dom';
-import 'angular2/core';
-import 'angular2/common';
-import 'angular2/http';
-import 'angular2/router';
 
-// RxJS
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/mergeMap';
+//lodash about 31KB
+import "lodash/keyBy";
+import "lodash/get";
+import "lodash/forOwn";
+import "lodash/merge";//this method 10KB, can be removed
+import "lodash/uniq";
+import "lodash/mapValues";
+
+import * as moment from 'moment';//51KB if no locales (else ~215)
+moment.locale('ru');//~ 4KB, angular2-moment/node_modules should be removed if locale not working
+
+import 'autosize'; //4 KB
+
+import 'dropzone'; //33 KB
 
 if ('production' === ENV) {
   // Production

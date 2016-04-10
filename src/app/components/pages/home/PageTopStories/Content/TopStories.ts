@@ -3,7 +3,7 @@ import {StoriesAutoList} from "../../../../story/StoriesAutoList/StoriesAutoList
 import * as moment from 'moment';
 import {StoryBestService} from "../../../../../services/story/StoryBestService";
 import {StoryService} from "../../../../../services/story/StoryService";
-import * as _ from 'lodash';
+let _keyBy = require('lodash/keyBy');
 
 @Component({
   selector: 'top-stories',
@@ -25,7 +25,7 @@ export class TopStories {
       if (ids.length) {
         storyService.get({where: {id: {inq: ids}}})
           .subscribe(stories => {
-            this.stories = _.keyBy(stories, 'id');
+            this.stories = _keyBy(stories, 'id');
           })
       }
     });

@@ -9,13 +9,8 @@ import {bootstrap} from 'angular2/platform/browser';
 import {DIRECTIVES, PIPES, PROVIDERS} from './platform/browser';
 import {ENV_PROVIDERS} from './platform/environment';
 
-import * as moment from 'moment';
-
 import {FORM_PROVIDERS} from 'angular2/common';
 import {HTTP_PROVIDERS} from 'angular2/http';
-
-
-require('./css/main.scss');
 
 /*
  * App Component
@@ -28,7 +23,6 @@ import {App, APP_PROVIDERS} from './app/index';
  * our Services and Providers into Angular's dependency injection
  */
 export function main(initialHmrState?: any): Promise<any> {
-  moment.locale('ru');
   return bootstrap(App, [
     ...ENV_PROVIDERS,
     ...PROVIDERS,

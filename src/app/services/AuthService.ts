@@ -4,7 +4,6 @@ import * as Rx from 'rxjs';
 import {UrlService} from './UrlService';
 import {Location} from "angular2/router";
 import {User} from "../models/common/User";
-import {UserService} from "./UserService";
 import {PageService} from "./helpers/PageService";
 
 interface Provider {

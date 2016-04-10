@@ -3,7 +3,7 @@ import {User} from "../models/common/User";
 import {AuthService} from "./AuthService";
 import {ApiService} from "./ApiService";
 import * as Rx from 'rxjs';
-import * as _ from 'lodash';
+let _uniq = require('lodash/uniq');
 
 @Injectable()
 export class UserService {
@@ -40,7 +40,7 @@ export class UserService {
   }
 
   requestIds(allIds) {
-    allIds = _.uniq(allIds);
+    allIds = _uniq(allIds);
     let ids = allIds.filter(id => !this._usersCache.has(id));
     if (ids.length > 0) {
       ids.forEach((id) => {

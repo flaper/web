@@ -1,11 +1,8 @@
 import {Component, Input, Output, EventEmitter, ElementRef} from 'angular2/core';
-import * as Tether from 'tether';
 import {ACL} from "../../../acl/ACL";
 
 @Component({
   selector: 'post-actions',
-  directives: [],
-  pipes: [],
   styles: [require('./PostActions.scss')],
   template: require('./PostActions.html')
 })
