@@ -1,4 +1,4 @@
-import {PageLogin} from './components/pages/login/login';
+import {PageLogin} from './components/pages/login/PageLogin';
 import {PageWriteStory} from './components/pages/story/write/PageWriteStory';
 import {PageUser} from './components/pages/user/PageUser';
 import {PageStory} from "./components/pages/story/read/PageStory";

@@ -1,4 +1,5 @@
 import {Component} from 'angular2/core';
+import {Title} from "angular2/platform/browser"
 import {StoriesAutoList} from "../../../story/StoriesAutoList/StoriesAutoList";
 import * as moment from 'moment';
 import {StoryBestService} from "../../../../services/story/StoryBestService";
@@ -15,7 +16,8 @@ export class PageTopStoriesLast {
   winners = [];
   stories = null;
 
-  constructor(storyBestService:StoryBestService, storyService:StoryService) {
+  constructor(storyBestService:StoryBestService, storyService:StoryService, ts: Title) {
+    ts.setTitle('Кандидаты на лучшие статьи');
     let maxTime = moment.utc().startOf('week').toDate();
     let minTime = moment.utc().startOf('week').subtract(14, 'days').toDate();
     storyBestService.getCurrentWinners().subscribe(data => {

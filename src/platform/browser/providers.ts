@@ -7,12 +7,14 @@ import {FORM_PROVIDERS} from 'angular2/common';
 import {HTTP_PROVIDERS} from 'angular2/http';
 // Angular 2 Router
 import {ROUTER_PROVIDERS, LocationStrategy, PathLocationStrategy} from 'angular2/router';
+import {Title} from "angular2/platform/browser"
 
 /*
  * Application Providers/Directives/Pipes
  * providers/directives/pipes that only live in our browser environment
  */
 export const APPLICATION_PROVIDERS = [
+  Title,
   ...FORM_PROVIDERS,
   ...HTTP_PROVIDERS,
   ...ROUTER_PROVIDERS,

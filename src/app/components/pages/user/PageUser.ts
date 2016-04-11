@@ -9,6 +9,7 @@ import {UserInfo} from "../../user/UserInfo/UserInfo";
 import {UserStats} from "../../user/UserStats/UserStats";
 import {ACL} from "../../../acl/ACL";
 import {UserSettings} from "../../../services/UserSettings";
+import {Title} from "angular2/platform/browser"
 
 @Component({
   selector: 'page-user',
@@ -27,9 +28,10 @@ export class PageUser {
   settings:Array<any> = null;
 
   constructor(routeParams:RouteParams, private userService:UserService, private accountService:AccountService,
-              private userSettings:UserSettings, private acl:ACL) {
+              private userSettings:UserSettings, private acl:ACL, ts:Title) {
     let id = routeParams.params['id'];
     this.userService.getById(id).subscribe(user => {
+      ts.setTitle(user.displayName);
       this.user = user;
       PageUser.User = user;
       if (this.userService.currentUser) {
