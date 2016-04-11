@@ -1,6 +1,6 @@
 export class User {
   id:string;
-  fullName:string;
+  displayName:string;
   roles:string[];
   photo:string;
   photoLarge:string;
