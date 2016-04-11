@@ -6,6 +6,7 @@ import {Comment} from "../../../models/common/Comment";
 import {CommentService} from "../../../services/CommentService";
 import {FormDraft} from "../../../services/draft/FormDraft";
 import {generateEvent} from "../../../libs/common/common";
+import {UserService} from "../../../services/UserService";
 
 @Component({
   selector: 'comment-write',
@@ -38,7 +39,8 @@ export class CommentWrite {
   active:boolean = false;
   form:ControlGroup;
 
-  constructor(private commentService:CommentService, private fb:FormBuilder, private elementRef:ElementRef) {
+  constructor(private commentService:CommentService, private fb:FormBuilder, private elementRef:ElementRef,
+              private  userService:UserService) {
   }
 
   ngOnInit() {

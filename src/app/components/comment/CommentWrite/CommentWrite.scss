@@ -1,4 +1,28 @@
+@import "../../../../css/variables";
+
 :host {
   display: block;
   margin-bottom: 1rem;
+}
+
+.compact {
+  .input-container {
+    display: flex;
+    align-items: center;
+    .user-avatar {
+      flex-grow: 0;
+      margin-right: 0.3rem;
+    }
+    .form-group {
+      flex-grow: 1;
+      margin-bottom: 0;
+    }
+    margin-bottom: 0.8rem;
+  }
+}
+
+.form:not(.compact) {
+  .user-avatar {
+    display: none;
+  }
 }
