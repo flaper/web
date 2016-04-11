@@ -6,13 +6,14 @@ import {Story} from "../../../models/common/Story";
 import {StoryItem} from "../StoryItem/StoryItem";
 import {CommentService} from "../../../services/CommentService";
 import {CommentsList} from "../../comment/CommentsList/CommentsList";
+import {CommentsShortList} from "../../comment/CommentsShortList/CommentsShortList";
 let _forOwn = require('lodash/forOwn');
 
 import {LikeService} from "../../../services/LikeService";
 
 @Component({
   selector: 'stories-list',
-  directives: [StoryItem, CommentsList],
+  directives: [StoryItem, CommentsShortList],
   styles: [require('./StoriesList.scss')],
   template: require('./StoriesList.html')
 })

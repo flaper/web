@@ -23,6 +23,9 @@ export class CommentWrite {
   @Input()
   subjectId:string;
 
+  @Input()
+  compact:boolean = false;
+
   @Output()
   commentChange:EventEmitter<Comment> = new EventEmitter<Comment>();
 
@@ -32,6 +35,7 @@ export class CommentWrite {
   newComment:boolean;
   disabled:boolean = false;
 
+  active:boolean = false;
   form:ControlGroup;
 
   constructor(private commentService:CommentService, private fb:FormBuilder, private elementRef:ElementRef) {
@@ -81,6 +85,13 @@ export class CommentWrite {
           this.disabled = false;
         })
     }
+  }
+
+  onBlur() {
+    //workaround to make click on button works, as blur happens before click
+    setTimeout(() => {
+      this.active = false
+    }, 100);
   }
 
   clearForm() {

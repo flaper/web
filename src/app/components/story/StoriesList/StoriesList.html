@@ -2,11 +2,7 @@
   <story-item [story]="story">
 
   </story-item>
-  <div class="comments-group"
-       *ngIf="commentsGroupById && commentsGroupById[story.id] && commentsGroupById[story.id].length>0">
-    <comments-list
-      [comments]="commentsGroupById[story.id]">
-
-    </comments-list>
-  </div>
+  <comments-short-list [subject]="story" [recentCommentsInput]="commentsGroupById[story.id].reverse()"
+                       *ngIf="commentsGroupById && commentsGroupById[story.id] && commentsGroupById[story.id].length>0">
+  </comments-short-list>
 </div>

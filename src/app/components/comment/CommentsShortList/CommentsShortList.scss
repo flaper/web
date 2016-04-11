@@ -1,0 +1,16 @@
+@import "../../../../css/variables";
+
+:host {
+  display: block;
+}
+
+.btn-more {
+  background-color: #eee;
+  border-radius: 0;
+}
+
+@media (max-width: map-get($grid-breakpoints, 'sm')-1px) {
+  .btn-more {
+    font-size: 0.8rem;
+  }
+}

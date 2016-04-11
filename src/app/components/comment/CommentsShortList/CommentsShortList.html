@@ -1,0 +1,12 @@
+<div *ngIf="previousCommentsNumber">
+  <div class="btn btn-block btn-more" (click)="showPreviousComments()" *ngIf="!previousOpened">
+    Показать еще комментарии ({{previousCommentsNumber}})
+  </div>
+  <div class="btn btn-block btn-more" (click)="hidePreviousComments()" *ngIf="previousOpened">
+    Показать только последние
+  </div>
+</div>
+<comments-list *ngIf="previousOpened" [comments]="previousComments"></comments-list>
+<comments-list [comments]="recentComments"></comments-list>
+<comment-write *ngIf="userService.currentUser" [subjectId]="subject.id"
+               (commentChange)="commentAdded($event)" [compact]="true"></comment-write>
