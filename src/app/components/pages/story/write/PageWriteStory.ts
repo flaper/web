@@ -1,4 +1,5 @@
 import {Component} from 'angular2/core';
+import {Title} from "angular2/platform/browser"
 import {RouteParams} from 'angular2/router';
 import {UserService} from "../../../../services/UserService";
 import {SimpleWrite} from "../../../story/write/SimpleWrite/SimpleWrite";
@@ -17,12 +18,14 @@ export class PageWriteStory {
   newStory:boolean;
 
   constructor(userService:UserService, storyService:StoryService,
-              pageService:PageService, routeParams:RouteParams) {
+              pageService:PageService, routeParams:RouteParams, ts: Title) {
     if (!userService.currentUser) {
       pageService.navigateToLogin();
       return;
     } else {
       let slug = routeParams.params['slug'];
+      let title = slug ? 'Редактировать статью': 'Создать статью';
+      ts.setTitle(title);
       this.newStory = !slug;
       if (slug) {
         storyService.getBySlug(slug).subscribe(story => {
