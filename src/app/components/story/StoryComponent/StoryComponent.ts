@@ -48,7 +48,7 @@ export class StoryComponent {
         content: {
           url: `http://flaper.org/s/${this.story.slug}`,
           title: this.story.title,
-          description: this.story.shortInline
+          description: this.story.shortText
         },
         theme: {
           counter: !mobile

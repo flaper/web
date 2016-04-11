@@ -7,6 +7,7 @@ export class Story {
   content:string;
   contentHTML:string;
   shortInline:string;
+  shortText:string;
   views:number;
   viewsRecent:number;
   created:Date;
