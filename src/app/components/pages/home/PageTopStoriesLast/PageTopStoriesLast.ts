@@ -20,7 +20,7 @@ export class PageTopStoriesLast {
     ts.setTitle('Кандидаты на лучшие статьи');
     let maxTime = moment.utc().startOf('week').toDate();
     let minTime = moment.utc().startOf('week').subtract(14, 'days').toDate();
-    storyBestService.getCurrentWinners().subscribe(data => {
+    storyBestService.getPreviousWinners(1).subscribe(data => {
       this.winners = data;
       let ids = data.map(row => row.id);
       this.where = {and: [{created: {gt: minTime, lt: maxTime}}, {id: {nin: ids}}]};

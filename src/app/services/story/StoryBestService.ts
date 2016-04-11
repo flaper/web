@@ -11,6 +11,10 @@ export class StoryBestService {
     return this.api.request('get', 'StoryBests');
   }
 
+  getPreviousWinners(weeksAgo) {
+    return this.api.request('get', `StoryBests/${weeksAgo}`);
+  }
+
   post(id, place) {
     return this.api.request('post', 'StoryBests', {id, place});
   }
