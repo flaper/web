@@ -3,6 +3,7 @@ import {Component, Input} from 'angular2/core';
 import {ILikable} from "../../../models/common/ILikable";
 import {LikeService} from "../../../services/LikeService";
 import {UserService} from "../../../services/UserService";
+import {PageService} from "../../../services/helpers/PageService";
 
 @Component({
   selector: 'like',
@@ -17,7 +18,7 @@ export class LikeComponent {
 
   private ifIHaveLike = false;
 
-  constructor(private likeService:LikeService, private userService:UserService) {
+  constructor(private likeService:LikeService, private userService:UserService, private pageService:PageService) {
 
   }
 
@@ -34,10 +35,11 @@ export class LikeComponent {
   }
 
   toggleLike() {
-    if (this.userService.currentUser && this.userService.currentUserId !== this.subject.userId) {
+    if (!this.userService.currentUser) {
+      this.pageService.navigateToLogin();
+    } else if (this.userService.currentUserId !== this.subject.userId) {
       this.likeService.toggle(this.subject.id)
         .subscribe((response) => {
-          console.log(response);
           this.subject.likesNumber = response.count;
         })
     }
