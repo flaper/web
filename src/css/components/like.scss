@@ -1,25 +1,39 @@
 .like {
-  //color: $link-color;
   color: $gray-light;
   small {
     font-weight: bold;
   }
-  //font-size: 0.9em;
   cursor: pointer;
   .fa-heart {
     display: none;
   }
-  &:hover{
-    .text-like {
-      text-decoration: underline;
+
+  &:not(.icon-mode) {
+    &:hover {
+      .text-like {
+        text-decoration: underline;
+      }
+    }
+    &.active {
+      .fa-heart {
+        display: inline;
+      }
+      .fa-heart-o {
+        display: none;
+      }
     }
   }
-  &.active{
-    .fa-heart {
-      display: inline;
-    }
-    .fa-heart-o {
-      display: none;
+
+  &.icon-mode {
+    color: $link-color;
+    &:hover, &.active {
+      font-weight: bold;
+      .fa-heart {
+        display: inline;
+      }
+      .fa-heart-o {
+        display: none;
+      }
     }
   }
 }

@@ -12,6 +12,9 @@ export class LikeComponent {
   @Input()
   subject:ILikable;
 
+  @Input()
+  iconMode:boolean = false;
+
   private ifIHaveLike = false;
 
   constructor(private likeService:LikeService, private userService:UserService) {
