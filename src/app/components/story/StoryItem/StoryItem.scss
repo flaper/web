@@ -17,9 +17,27 @@ h3 {
 }
 
 .story-item-footer {
+  margin-top: 0.3rem;
+  padding: 0.3rem 0.5rem;
+  border-top: 1px solid #ddd;
+  color: $gray-light;
+  font-weight: bold;
+  $local-margin: 1.5rem;
+  small {
+    font-weight: bold;
+  }
   .comments-number {
-    margin-left: 1rem;
+    margin-left: $local-margin;
     color: $gray-light;
+  }
+  .comment-it {
+    margin-left: $local-margin;
+    &:hover {
+      small {
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
   }
 }
 

@@ -5,7 +5,7 @@
     </div>
     <fieldset class="form-group">
       <textarea ngControl="content" placeholder="Новый комментарий" class="form-control" rows="{{compact ? 1 : 2}}"
-                (focus)="active=true" (blur)="onBlur()"
+                (focus)="onFocus()" (blur)="onBlur()"
                 autosize></textarea>
     </fieldset>
   </div>

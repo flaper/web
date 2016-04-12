@@ -20,6 +20,9 @@ export class CommentsShortList {
   @Input()
   recentCommentsInput:Comment[] = [];//to use only during initialization
 
+  @Input()
+  commentItObservable;
+
   recentComments:Comment[] = [];
 
   previousComments:Comment[] = [];

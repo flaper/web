@@ -1,12 +1,20 @@
 .like {
-  color: $link-color;
+  //color: $link-color;
+  color: $gray-light;
+  small {
+    font-weight: bold;
+  }
   //font-size: 0.9em;
   cursor: pointer;
   .fa-heart {
     display: none;
   }
-  &:hover, &.active {
-    font-weight: bold;
+  &:hover{
+    .text-like {
+      text-decoration: underline;
+    }
+  }
+  &.active{
     .fa-heart {
       display: inline;
     }

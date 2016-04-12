@@ -9,4 +9,5 @@
 <comments-list *ngIf="previousOpened" [comments]="previousComments"></comments-list>
 <comments-list [comments]="recentComments"></comments-list>
 <comment-write *ngIf="userService.currentUser" [subjectId]="subject.id"
-               (commentChange)="commentAdded($event)" [compact]="true"></comment-write>
+               (commentChange)="commentAdded($event)" [compact]="true" [commentItObservable]="commentItObservable"
+></comment-write>

@@ -7,6 +7,7 @@ import {CommentService} from "../../../services/CommentService";
 import {FormDraft} from "../../../services/draft/FormDraft";
 import {generateEvent} from "../../../libs/common/common";
 import {UserService} from "../../../services/UserService";
+import * as Rx from 'rxjs';
 
 @Component({
   selector: 'comment-write',
@@ -26,6 +27,9 @@ export class CommentWrite {
 
   @Input()
   compact:boolean = false;
+
+  @Input()
+  commentItObservable:Rx.Observable<boolean>;
 
   @Output()
   commentChange:EventEmitter<Comment> = new EventEmitter<Comment>();
@@ -61,6 +65,11 @@ export class CommentWrite {
     if (!this.newComment) {
       this.elementRef.nativeElement.querySelector('textarea').focus();
     }
+    if (this.commentItObservable) {
+      this.commentItObservable.subscribe(() => {
+        this.elementRef.nativeElement.querySelector('textarea').focus();
+      })
+    }
   }
 
   ngAfterViewInit() {
@@ -89,11 +98,22 @@ export class CommentWrite {
     }
   }
 
+  _lastOnBlurId = null;
+
   onBlur() {
     //workaround to make click on button works, as blur happens before click
-    setTimeout(() => {
+    this._lastOnBlurId = setTimeout(() => {
+      this._lastOnBlurId = null;
       this.active = false
     }, 100);
+  }
+
+  onFocus() {
+    if (this._lastOnBlurId) {
+      clearTimeout(this._lastOnBlurId);
+      this._lastOnBlurId = null;
+    }
+    this.active = true;
   }
 
   clearForm() {

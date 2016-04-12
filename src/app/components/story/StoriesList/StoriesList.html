@@ -1,8 +1,9 @@
 <div *ngFor="#story of stories" class="story-item-container">
-  <story-item [story]="story">
+  <story-item [story]="story" (commentIt)="onCommentIt($event)">
 
   </story-item>
   <comments-short-list [subject]="story" [recentCommentsInput]="commentsGroupById[story.id].reverse()"
-                       *ngIf="commentsGroupById && commentsGroupById[story.id] && commentsGroupById[story.id].length>0">
+                       *ngIf="commentsGroupById && commentsGroupById[story.id] && (commentsGroupById[story.id].length>0
+                       || commentItActive[story.id])" [commentItObservable]="commentItEvents[story.id]">
   </comments-short-list>
 </div>

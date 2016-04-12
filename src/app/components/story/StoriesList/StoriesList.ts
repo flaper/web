@@ -8,6 +8,7 @@ import {CommentService} from "../../../services/CommentService";
 import {CommentsList} from "../../comment/CommentsList/CommentsList";
 import {CommentsShortList} from "../../comment/CommentsShortList/CommentsShortList";
 let _forOwn = require('lodash/forOwn');
+import * as Rx from 'rxjs';
 
 import {LikeService} from "../../../services/LikeService";
 
@@ -22,6 +23,8 @@ export class StoriesList {
   stories:Story[] = [];
 
   commentsGroupById = null;
+  commentItEvents = {};
+  commentItActive = {};
 
   constructor(private commentService:CommentService, private likeService:LikeService,
               private userService:UserService) {
@@ -29,6 +32,7 @@ export class StoriesList {
 
   ngOnInit() {
     let usersIds = this.stories.map(story => story.userId);
+    this.stories.forEach(story => this.commentItEvents[story.id] = new Rx.ReplaySubject<boolean>(1));
     this.userService.requestIds(usersIds);
     this.commentService.last(this.stories.map(story => story.id))
       .subscribe(groups => {
@@ -44,5 +48,10 @@ export class StoriesList {
         this.likeService.requestLikesInfo(commentsIds);
         this.userService.requestIds(usersIds);
       });
+  }
+
+  onCommentIt(id) {
+    this.commentItActive[id] = true;
+    this.commentItEvents[id].next(true);
   }
 }

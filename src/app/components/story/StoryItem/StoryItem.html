@@ -1,12 +1,12 @@
 <div>
   <div class="story-item-header">
-      <div class="media">
-        <user-avatar [userId]="story.userId" class="media-left"></user-avatar>
-        <div class="media-body">
-          <user-link [userId]="story.userId"></user-link>
-          <div class="time">{{story.created | amTimeAgo}}</div>
-        </div>
+    <div class="media">
+      <user-avatar [userId]="story.userId" class="media-left"></user-avatar>
+      <div class="media-body">
+        <user-link [userId]="story.userId"></user-link>
+        <div class="time">{{story.created | amTimeAgo}}</div>
       </div>
+    </div>
   </div>
   <a [routerLink]="['/Story', {slug: story.slug}]"><h3>{{story.title}}</h3></a>
 
@@ -18,7 +18,10 @@
 </div>
 <div class="story-item-footer">
   <like [subject]="story"></like>
-  <span class="comments-number">
-    <i class="fa fa-comments"></i> {{story.commentsNumber}}
+  <span (click)="onCommentIt()" class="comment-it">
+    <i class="fa fa-comment"></i>
+    <small>
+      Комментировать
+    </small>
   </span>
 </div>

@@ -1,3 +1,4 @@
 <span (click)="toggleLike()" class="like" [class.active]="ifIHaveLike">
-  <i class="fa fa-heart-o"></i><i class="fa fa-heart"></i> {{subject.likesNumber}}
+  <i class="fa fa-heart-o"></i><i class="fa fa-heart"></i>
+  <small class="text-like">Нравится <span *ngIf="subject.likesNumber">({{subject.likesNumber}})</span></small>
 </span>
