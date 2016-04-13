@@ -4,6 +4,7 @@ import {AUTH_SERVICE_PROVIDER} from './AuthService';
 import {ACL_PROVIDER} from '../acl/ACL';
 import {USER_SERVICE_PROVIDER} from './UserService';
 import {USER_SETTINGS_PROVIDER} from './UserSettings';
+import {OBJECT_SERVICE_PROVIDER} from './object/ObjectService';
 import {LIKE_SERVICE_PROVIDER} from './LikeService';
 import {STORY_SERVICE_PROVIDER} from './story/StoryService';
 import {STORY_BEST_SERVICE_PROVIDER} from './story/StoryBestService';
@@ -20,6 +21,7 @@ export let PROVIDERS:Array<any> = [
   ACL_PROVIDER,
   USER_SERVICE_PROVIDER,
   USER_SETTINGS_PROVIDER,
+  OBJECT_SERVICE_PROVIDER,
   LIKE_SERVICE_PROVIDER,
   STORY_SERVICE_PROVIDER,
   STORY_BEST_SERVICE_PROVIDER,
