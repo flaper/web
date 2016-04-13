@@ -6,15 +6,18 @@ import {PageLastStories} from "./components/pages/home/PageLastStories/PageLastS
 import {PageTopStories} from "./components/pages/home/PageTopStories/PageTopStories";
 import {PageTopStoriesLast} from "./components/pages/home/PageTopStoriesLast/PageTopStoriesLast";
 import {PageNews} from "./components/pages/home/PageNews/PageNews";
+import {PageFlapSync} from "./components/pages/flap/PageFlapSync/PageFlapSync";
 
 export const ROUTES = [
   {path: '/', component: PageLastStories, name: 'Home'},
-  {path: '/news', component: PageNews, name: 'News'},
-  {path: '/top', component: PageTopStories, name: 'Top'},
-  {path: '/top_last', component: PageTopStoriesLast, name: 'TopLast'},
-  {path: '/login', component: PageLogin, name: 'Login'},
-  {path: '/create_story', component: PageWriteStory, name: 'CreateStory'},
+  {path: '/p/news', component: PageNews, name: 'News'},
+  {path: '/p/top', component: PageTopStories, name: 'Top'},
+  {path: '/p/top_last', component: PageTopStoriesLast, name: 'TopLast'},
+  {path: '/p/login', component: PageLogin, name: 'Login'},
+  {path: '/p/create_story', component: PageWriteStory, name: 'CreateStory'},
   {path: '/s/:slug', component: PageStory, name: 'Story'},
   {path: '/s/:slug/edit', component: PageWriteStory, name: 'WriteStory'},
   {path: '/@/:id/...', component: PageUser, name: 'User'},
+  {path: '/p/sync/:id', component: PageFlapSync, name: 'FlapSync'},
+  //{path: '/места/:region/:slug', component: }
 ];
