@@ -6,22 +6,3 @@ textarea {
   resize: vertical;
 }
 
-@media (max-width: map-get($grid-breakpoints, 'sm')-1) {
-  //xs devices
-  h1 {
-    font-size: 1.55rem;
-    margin-bottom: 0;
-  }
-  h2 {
-    font-size: 1.45rem;
-    margin-bottom: 0;
-  }
-  h3 {
-    font-size: 1.35rem;
-    margin-bottom: 0;
-  }
-  h4 {
-    font-size: 1.25rem;
-    margin-bottom: 0;
-  }
-}

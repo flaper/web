@@ -1,4 +1,4 @@
-<div *ngIf="previousCommentsNumber">
+<div *ngIf="previousCommentsNumber" class="comments-toggle">
   <div class="btn btn-block btn-more" (click)="showPreviousComments()" *ngIf="!previousOpened">
     Показать еще комментарии ({{previousCommentsNumber}})
   </div>

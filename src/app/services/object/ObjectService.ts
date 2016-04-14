@@ -1,10 +1,9 @@
 import {Injectable} from 'angular2/core';
 import {Router} from 'angular2/router';
 import {ApiService} from "./../ApiService";
+import {FObject} from "../../models/common/FObject";
+import {DOMAINS} from "../../models/common/Domain"
 
-const DOMAINS = {
-  PLACES: 'места'
-};
 
 @Injectable()
 export class ObjectService {
@@ -16,7 +15,8 @@ export class ObjectService {
     if (region) {
       query['region'] = region;
     }
-    return this.api.request('get', `objects/bySlug`, query);
+    return this.api.request('get', `objects/bySlug`, query)
+      .map(data => new FObject({init: data}));
   }
 
   static getUrl(obj) {

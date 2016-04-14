@@ -1,4 +1,29 @@
-<div *ngIf="obj">
-  <h1 class="text-xs-center">{{obj.title}}</h1>
+<div *ngIf="obj" class="content">
+  <div class="row">
+    <div class="col-md-3">
+      &nbsp;
+    </div>
+    <div class="col-md-9">
+      <h1>{{obj.title}}</h1>
+
+      <div class="rating-container">
+        <div class="big-star">
+          {{obj.flap.rating | fixed : 1}}
+        </div>
+        <div>
+          Рейтинг: <strong>{{obj.flap.rating | fixed : 1}}</strong>/10 | Отзывы:
+          <strong>{{obj.flap.reviewsNumber}}</strong>
+        </div>
+      </div>
+      <div *ngIf="obj.isPlace()" class="contact-block">
+        <div *ngIf="obj.getAddress()">
+          <span class="text-muted">Адрес:</span> {{obj.getAddress()}}
+        </div>
+        <div *ngIf="obj.fields.phones">
+          <span class="text-muted">Телефоны:</span> {{obj.fields.phones.join('; ')}}
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 

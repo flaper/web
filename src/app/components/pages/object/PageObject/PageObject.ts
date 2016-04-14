@@ -12,14 +12,15 @@ import {FObject} from "../../../../models/common/FObject";
 export class PageObject {
   obj:FObject;
 
-  constructor(private ts:Title, routeParams:RouteParams, objectService:ObjectService, data:RouteData) {
+  constructor(ts:Title, routeParams:RouteParams, objectService:ObjectService, data:RouteData) {
     let mainDomain = routeParams.params['mainDomain'];
     mainDomain = mainDomain ? mainDomain : data.get('mainDomain');
     let region = routeParams.params['region'];
     let slug = routeParams.params['slug'];
     objectService.getBySlug({mainDomain, region, slug})
-      .subscribe(data => {
-        this.obj = data;
+      .subscribe(fobject => {
+        this.obj = fobject;
+        ts.setTitle(fobject.title);
       });
   }
 }
