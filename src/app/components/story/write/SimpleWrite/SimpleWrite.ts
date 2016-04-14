@@ -1,7 +1,7 @@
 /// <reference path="../../../../../../typingsOurs/main.d.ts" />
 
 import {Component, Input, ElementRef} from 'angular2/core';
-import {Router} from 'angular2/router';
+import {Router, Location} from 'angular2/router';
 import {FormBuilder, Control, ControlGroup, Validators} from 'angular2/common';
 import {Story} from "../../../../models/common/Story";
 import {StoryService} from "../../../../services/story/StoryService";
@@ -27,7 +27,7 @@ export class SimpleWrite {
   error:string;
 
   constructor(private storyService:StoryService, private fb:FormBuilder, private router:Router,
-              private elementRef:ElementRef) {
+              private elementRef:ElementRef, private _location:Location) {
   }
 
   ngOnInit() {
@@ -96,5 +96,13 @@ export class SimpleWrite {
   private _autosizeUpdate() {
     let el = this.elementRef.nativeElement.querySelector('textarea');
     el.dispatchEvent(generateEvent('autosize:update', {}));
+  }
+
+  onCancel() {
+    if (this.story) {
+      this.router.navigate(['/Story', {slug: this.story.slug}])
+    } else {
+      this._location.back();
+    }
   }
 }
