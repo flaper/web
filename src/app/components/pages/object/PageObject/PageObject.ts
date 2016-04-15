@@ -12,7 +12,7 @@ import {ScreenService} from "../../../../services/helpers/ScreenService";
 })
 export class PageObject {
   obj:FObject;
-  images;
+  images = [];
 
   constructor(ts:Title, routeParams:RouteParams, _object:ObjectService, data:RouteData) {
     let mainDomain = routeParams.params['mainDomain'];
@@ -24,7 +24,7 @@ export class PageObject {
         this.obj = fobject;
         ts.setTitle(fobject.title);
         let imagesLimit = ScreenService.isXl() ? 6 : 4;
-        this.images = fobject.flap.images.slice(0, imagesLimit);
+        this.images = fobject.getImages({filterAvatar: true}).slice(0, imagesLimit);
       });
   }
 }

@@ -8,7 +8,7 @@ export class FObject extends InitableModel {
   mainDomain:string;
   region:string;
   fields:Array<any>;
-  flap: any;
+  flap:any;
 
   constructor({init: init = null}) {
     super({init});
@@ -27,5 +27,21 @@ export class FObject extends InitableModel {
       res = parts.join(', ');
     }
     return res;
+  }
+
+  getImages({filterAvatar = false}={}) {
+    let images = this.flap.images;
+    if (filterAvatar) {
+      let filterId = null;
+      if (this.flap.avatar) {
+        let matches = this.flap.avatar.match(/\/(\d+)_middle/);
+        filterId = matches ? +matches[1] : null;
+      }
+      if (filterId) {
+
+        images = images.filter(image => image != filterId);
+      }
+    }
+    return images;
   }
 }
