@@ -5,11 +5,13 @@
 import {provide, PLATFORM_PIPES} from 'angular2/core';
 import {TimeAgoPipe} from "angular2-moment/TimeAgoPipe";
 import {FixedPipe} from "../../app/pipes/FixedPipe";
+import {FlapImagePipe} from "../../app/pipes/FlapImagePipe";
 
 // application_pipes: pipes that are global through out the application
 export const APPLICATION_PIPES = [
   FixedPipe,
-  TimeAgoPipe
+  TimeAgoPipe,
+  FlapImagePipe
 ];
 
 export const PIPES = [

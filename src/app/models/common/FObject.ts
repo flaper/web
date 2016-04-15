@@ -8,6 +8,7 @@ export class FObject extends InitableModel {
   mainDomain:string;
   region:string;
   fields:Array<any>;
+  flap: any;
 
   constructor({init: init = null}) {
     super({init});

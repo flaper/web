@@ -1,18 +1,25 @@
-<div *ngIf="obj" class="content">
-  <div class="row">
-    <div class="col-md-3">
-      &nbsp;
+<div *ngIf="obj" class="container-xl">
+  <div class="block-header">
+    <div class="block-avatar">
+      <img class="img-fluid img-thumbnail avatar" src="{{obj.flap.avatar}}">
     </div>
-    <div class="col-md-9">
-      <h1>{{obj.title}}</h1>
-
-      <div class="rating-container">
-        <div class="big-star">
-          {{obj.flap.rating | fixed : 1}}
+    <div class="block-main-info">
+      <div class="avatar-wrapper-sm">
+        <div class="avatar-sm hidden-xs-down hidden-md-up">
+          <img class="img-fluid avatar" src="{{obj.flap.avatar}}">
         </div>
         <div>
-          Рейтинг: <strong>{{obj.flap.rating | fixed : 1}}</strong>/10 | Отзывы:
-          <strong>{{obj.flap.reviewsNumber}}</strong>
+          <h1>{{obj.title}}</h1>
+
+          <div class="rating-container">
+            <div class="big-star">
+              {{obj.flap.rating | fixed : 1}}
+            </div>
+            <div>
+              Рейтинг: <strong>{{obj.flap.rating | fixed : 1}}</strong>/10 | Отзывы:
+              <strong>{{obj.flap.reviewsNumber}}</strong>
+            </div>
+          </div>
         </div>
       </div>
       <div *ngIf="obj.isPlace()" class="contact-block">
@@ -23,6 +30,11 @@
           <span class="text-muted">Телефоны:</span> {{obj.fields.phones.join('; ')}}
         </div>
       </div>
+    </div>
+  </div>
+  <div *ngIf="images.length > 0" class="images hidden-sm-down">
+    <div *ngFor="#image of images">
+      <img class="img-thumbnail" src="{{image | flapImage}}">
     </div>
   </div>
 </div>

@@ -4,6 +4,49 @@ h1 {
   margin-bottom: 0;
 }
 
+.avatar {
+  margin-top: 0.5rem;
+}
+
+@media (max-width: map-get($grid-breakpoints, 'md')-1) {
+  .block-avatar {
+    text-align: center;
+  }
+  .avatar {
+    max-height: 15rem;
+  }
+}
+
+@media (min-width: map-get($grid-breakpoints, 'sm')) and (max-width: map-get($grid-breakpoints, 'md')-1) {
+  .block-avatar {
+    display: none;
+  }
+  .avatar-wrapper-sm {
+    display: flex;
+    .avatar-sm {
+      img {
+        max-width: 5rem;
+        max-height: 6rem;
+      }
+      align-self: center;
+      margin-right: 0.5rem;
+    }
+  }
+}
+
+@media (min-width: map-get($grid-breakpoints, 'md')) {
+  .block-header {
+    display: flex;
+    .block-avatar {
+      width: 33%;
+      max-width: 300px;
+      max-height: inherit;
+      align-self: center;
+      margin-right: 1rem;
+    }
+  }
+}
+
 $local-color: $gray;
 .rating-container {
   display: flex;
@@ -31,4 +74,19 @@ $local-color: $gray;
 .contact-block {
   margin-top: 0.5rem;
   font-size: 0.9rem;
+}
+
+.images {
+  display: flex;
+  margin: 1rem 0;
+  & > div {
+    flex: auto;
+    width: 200px;
+    max-width: 900px;
+    margin: auto 0.5rem auto;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
 }

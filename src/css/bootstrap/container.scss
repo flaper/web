@@ -1,0 +1,11 @@
+$container-max-widths-xl: (
+  sm: 576px,
+  md: 720px,
+  lg: 940px,
+  xl: 1540px
+) !default;
+
+.container-xl {
+  @include make-container();
+  @include make-container-max-widths($max-widths: $container-max-widths-xl);
+}

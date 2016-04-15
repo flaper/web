@@ -11,6 +11,7 @@ import {FObject} from "../../../../models/common/FObject";
 })
 export class PageObject {
   obj:FObject;
+  images;
 
   constructor(ts:Title, routeParams:RouteParams, objectService:ObjectService, data:RouteData) {
     let mainDomain = routeParams.params['mainDomain'];
@@ -21,6 +22,7 @@ export class PageObject {
       .subscribe(fobject => {
         this.obj = fobject;
         ts.setTitle(fobject.title);
+        this.images = fobject.flap.images.slice(0, 4);
       });
   }
 }
