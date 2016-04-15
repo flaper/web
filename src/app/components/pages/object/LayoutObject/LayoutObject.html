@@ -9,7 +9,11 @@
           <img class="img-fluid avatar" src="{{obj.flap.avatar}}">
         </div>
         <div>
-          <h1>{{obj.title}}</h1>
+          <h1 *ngIf="isMain()">{{obj.title}}</h1>
+
+          <h1 *ngIf="!isMain()">
+            <a [routerLink]="['Main']">{{obj.title}}</a>
+          </h1>
 
           <div class="rating-container">
             <div class="big-star">
@@ -32,10 +36,6 @@
       </div>
     </div>
   </div>
-  <div *ngIf="images.length > 0" class="images hidden-sm-down">
-    <div *ngFor="#image of images">
-      <img class="img-thumbnail" src="{{image | flapImage}}">
-    </div>
-  </div>
+  <router-outlet></router-outlet>
 </div>
 

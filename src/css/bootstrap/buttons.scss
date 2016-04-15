@@ -1,0 +1,6 @@
+.btn-group-justified {
+  display: flex;
+  & > * {
+    flex-grow: 1;
+  }
+}

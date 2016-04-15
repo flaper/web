@@ -1,5 +1,6 @@
 import {InitableModel} from "../core/InitableModel";
 import {DOMAINS} from './Domain';
+import {ObjectService} from "../../services/object/ObjectService";
 
 export class FObject extends InitableModel {
   id:string;
@@ -27,6 +28,10 @@ export class FObject extends InitableModel {
       res = parts.join(', ');
     }
     return res;
+  }
+
+  getRoute() {
+    return ObjectService.getRoute(this);
   }
 
   getImages({filterAvatar = false}={}) {

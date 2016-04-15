@@ -31,6 +31,17 @@ export class ObjectService {
     }
   }
 
+  static getRoute(obj) {
+    let params = {mainDomain: obj.mainDomain, slug: obj.slug};
+    if (obj.mainDomain === DOMAINS.PLACES) {
+      if (obj.region) {
+        params['region'] = obj.region;
+      }
+    }
+    return ['LayoutObject', params];
+  }
+
+
   navigateTo(obj) {
     this.router.navigateByUrl(ObjectService.getUrl(obj));
   }

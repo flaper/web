@@ -7,7 +7,7 @@ import {PageTopStories} from "./components/pages/home/PageTopStories/PageTopStor
 import {PageTopStoriesLast} from "./components/pages/home/PageTopStoriesLast/PageTopStoriesLast";
 import {PageNews} from "./components/pages/home/PageNews/PageNews";
 import {PageFlapSync} from "./components/pages/flap/PageFlapSync/PageFlapSync";
-import {PageObject} from "./components/pages/object/PageObject/PageObject";
+import {LayoutObject} from "./components/pages/object/LayoutObject/LayoutObject";
 
 export const ROUTES = [
   {path: '/', component: PageLastStories, name: 'Home'},
@@ -21,12 +21,12 @@ export const ROUTES = [
   {path: '/@/:id/...', component: PageUser, name: 'User'},
   {path: '/p/sync/:id', component: PageFlapSync, name: 'FlapSync'},
   {
-    path: '/места/:region/:slug', component: PageObject, name: 'PageObject',
+    path: '/места/:region/:slug/...', component: LayoutObject, name: 'LayoutObject',
     data: {mainDomain: 'места'}
   },
   {
-    path: '/%D0%BC%D0%B5%D1%81%D1%82%D0%B0/:region/:slug', component: PageObject, name: 'PageObject',
+    path: '/%D0%BC%D0%B5%D1%81%D1%82%D0%B0/:region/:slug/...', component: LayoutObject, name: 'LayoutObject',
     data: {mainDomain: 'места'}
   }, //места
-  {path: '/:mainDomain/:slug', component: PageObject, name: 'PageObject'}
+  {path: '/:mainDomain/:slug/...', component: LayoutObject, name: 'LayoutObject'}
 ];
