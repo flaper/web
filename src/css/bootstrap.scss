@@ -1,7 +1,8 @@
 @import "variables_for_bootstrap";
 @import "../../node_modules/bootstrap/scss/bootstrap";
 //override default bootstrap logic with out custom styles
-@import "bootstrap/nav";
-@import "bootstrap/headers";
-@import "bootstrap/container";
 @import "bootstrap/buttons";
+@import "bootstrap/container";
+@import "bootstrap/forms";
+@import "bootstrap/headers";
+@import "bootstrap/nav";

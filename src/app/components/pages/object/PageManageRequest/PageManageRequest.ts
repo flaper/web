@@ -3,6 +3,7 @@ import {FormBuilder, Control, ControlGroup, Validators} from 'angular2/common';
 import {FObject} from "../../../../models/common/FObject";
 import {ScreenService} from "../../../../services/helpers/ScreenService";
 import {LayoutObject} from "../LayoutObject/LayoutObject";
+import {UserService} from "../../../../services/UserService";
 
 @Component({
   selector: 'page-manage-request',
@@ -15,12 +16,13 @@ export class PageManageRequest {
   form:ControlGroup;
   error:string;
 
-  constructor(private fb:FormBuilder) {
+  constructor(private fb:FormBuilder, _user:UserService) {
     this.obj = LayoutObject.Object;
+    let name = _user.currentUser ? _user.currentUser.displayName : '';
     this.form = this.fb.group({
-      name: ['', Validators.required],
+      name: [name, Validators.required],
       position: [''],
-      email: [''],
+      email: ['', Validators.required],
       phone: [''],
     });
   }

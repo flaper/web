@@ -3,7 +3,7 @@
   <div class="has-danger" *ngIf="error">
     <span class="text-help">{{error}}</span>
   </div>
-  <fieldset class="form-group">
+  <fieldset class="form-group" required>
     <label for="name">ФИО</label>
     <input id="name" ngControl="name" type="text" placeholder="ФИО" class="form-control" auto-focus-it name="name">
   </fieldset>
@@ -11,7 +11,7 @@
     <label for="position">Должность</label>
     <input id="position" ngControl="position" type="text" placeholder="Должность" class="form-control" name="position">
   </fieldset>
-  <fieldset class="form-group">
+  <fieldset class="form-group" required>
     <label for="email">Email</label>
     <input id="email" ngControl="email" type="email" placeholder="Email" class="form-control" name="email">
   </fieldset>
@@ -20,5 +20,5 @@
     <input id="phone" ngControl="phone" type="text" placeholder="Телефон" class="form-control" name="phone">
   </fieldset>
 
-  <button type="submit" class="btn btn-primary">Отправить</button>
+  <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Отправить</button>
 </form>

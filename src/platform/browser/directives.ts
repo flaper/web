@@ -7,11 +7,13 @@ import {provide, PLATFORM_DIRECTIVES} from 'angular2/core';
 import {ROUTER_DIRECTIVES} from 'angular2/router';
 import {Autosize} from "../../app/directives/Autosize/Autosize";
 import {LikeComponent} from "../../app/components/like/LikeComponent/LikeComponent";
+import {AutoFocusIt} from "../../app/directives/AutoFocusIt/AutoFocusIt";
 
 // application_directives: directives that are global through out the application
 export const APPLICATION_DIRECTIVES = [
   ...ROUTER_DIRECTIVES,
   Autosize,
+  AutoFocusIt,
   LikeComponent
 ];
 
