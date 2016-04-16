@@ -1,44 +1,65 @@
-<h2 class="text-xs-center">Заявка на управление страницей</h2>
-<form class="form" [ngFormModel]="form" (submit)="onSubmit($event)" *ngIf="!manageRequest">
-  <fieldset class="form-group" required>
-    <label for="name">ФИО</label>
-    <input id="name" ngControl="name" type="text" placeholder="ФИО" class="form-control" auto-focus-it name="name">
-  </fieldset>
-  <fieldset class="form-group">
-    <label for="position">Должность</label>
-    <input id="position" ngControl="position" type="text" placeholder="Должность" class="form-control" name="position">
-  </fieldset>
-  <fieldset class="form-group" required>
-    <label for="email">Email</label>
-    <input id="email" ngControl="email" type="email" placeholder="Email" class="form-control" name="email">
-  </fieldset>
-  <fieldset class="form-group">
-    <label for="phone">Телефон</label>
-    <input id="phone" ngControl="phone" type="text" placeholder="Телефон" class="form-control" name="phone">
-  </fieldset>
+<div class="request-wrapper">
+  <h2 class="text-xs-center">Заявка на управление страницей</h2>
 
-  <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Отправить</button>
-</form>
-<div *ngIf="manageRequest">
-  <table class="table table-striped">
-    <tr>
-      <td>ФИО</td>
-      <td>{{manageRequest.name}}</td>
-    </tr>
-    <tr>
-      <td>Должность</td>
-      <td>{{manageRequest.position}}</td>
-    </tr>
-    <tr>
-      <td>Email</td>
-      <td>{{manageRequest.email}}</td>
-    </tr>
-    <tr>
-      <td>Телефон</td>
-      <td>{{manageRequest.phone}}</td>
-    </tr>
-  </table>
-  <div class="text-xs-center">
-    <button class="btn btn-danger" (click)="onCancel()">Отменить</button>
+  <form class="form" [ngFormModel]="form" (submit)="onSubmit($event)" *ngIf="!manageRequest">
+    <fieldset class="form-group" required>
+      <label for="name">ФИО</label>
+      <input id="name" ngControl="name" type="text" placeholder="ФИО" class="form-control" auto-focus-it name="name">
+    </fieldset>
+    <fieldset class="form-group">
+      <label for="position">Должность</label>
+      <input id="position" ngControl="position" type="text" placeholder="Должность" class="form-control"
+             name="position">
+    </fieldset>
+    <fieldset class="form-group" required>
+      <label for="email">Email</label>
+      <input id="email" ngControl="email" type="email" placeholder="Email" class="form-control" name="email">
+    </fieldset>
+    <fieldset class="form-group">
+      <label for="phone">Телефон</label>
+      <input id="phone" ngControl="phone" type="text" placeholder="Телефон" class="form-control" name="phone">
+    </fieldset>
+
+    <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Отправить</button>
+  </form>
+  <div *ngIf="manageRequest">
+    <table class="table table-striped">
+      <tr>
+        <td>ФИО</td>
+        <td>{{manageRequest.name}}</td>
+      </tr>
+      <tr>
+        <td>Должность</td>
+        <td>{{manageRequest.position}}</td>
+      </tr>
+      <tr>
+        <td>Email</td>
+        <td>{{manageRequest.email}}</td>
+      </tr>
+      <tr>
+        <td>Телефон</td>
+        <td>{{manageRequest.phone}}</td>
+      </tr>
+    </table>
+    <div class="text-xs-center">
+      <button class="btn btn-danger" (click)="onCancel()">Отменить</button>
+    </div>
+  </div>
+</div>
+<div>
+  <div class="jumbotron">
+    <h2 class="display-5 text-xs-center">Новый личный кабинет</h2>
+    <ul class="list">
+      <li>основные возможности <strong>бесплатны навсегда</strong></li>
+      <li>редактирование и защита страницы от изменений</li>
+      <li>уведомления о новых отзывах, фото и других событиях страницы</li>
+      <li>ответы на отзывы, дополнительные проверки авторов отзывов</li>
+      <li>управление логотипом и фотографиями</li>
+      <li>мгновенное добавление других администраторов страницы</li>
+      <li>служба поддержки для организаций</li>
+      <li>и многое другое</li>
+    </ul>
+    <hr class="m-y-2">
+    <p>Часть возможностей еще добавляется и появится в Вашем кабинете автоматически.</p>
   </div>
 </div>

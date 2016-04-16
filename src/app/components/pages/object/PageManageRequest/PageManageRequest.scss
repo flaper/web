@@ -3,6 +3,19 @@
 :host {
   display: block;
   margin-top: 1rem;
+  @media (min-width: map-get($grid-breakpoints, 'lg')) {
+    display: flex;
+    align-items: center;
+    & > * {
+      width: 50%;
+    }
+    .request-wrapper {
+      margin-right: 0.5rem;
+    }
+    .jumbotron {
+      margin-left: 0.5rem;
+    }
+  }
 }
 
 form {
@@ -16,5 +29,17 @@ form {
   border: 1px solid $gray-light;
   td {
     border: none;
+  }
+}
+
+.jumbotron {
+  margin-top: 1rem;
+
+  @media (max-width: map-get($grid-breakpoints, 'xl')-1) {
+    padding: 2rem 1rem;
+  }
+
+  @media (max-width: map-get($grid-breakpoints, 'sm')-1) {
+    padding: 0.5rem;
   }
 }
