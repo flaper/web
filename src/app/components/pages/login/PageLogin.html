@@ -1,15 +1,19 @@
-<div>
-  <div class="container">
-    <div class="alert alert-info text-xs-center" *ngIf="message" [innerHtml]="message">
-    </div>
-    <h1 class="text-xs-center">Вход</h1>
+<div class="absolute-wrapper" [class.has-message]="message">
+  <div class="absolute-container">
+    <div>
+      <div class="container">
+        <div class="alert alert-info text-xs-center" *ngIf="message" [innerHtml]="message">
+        </div>
+        <h1 class="text-xs-center">Вход</h1>
 
-    <div class="login-btns center-block">
+        <div class="login-btns center-block">
 
-      <div *ngFor="#provider of PROVIDERS">
-        <a class="btn btn-block btn-social btn-{{provider.name}}" href="{{provider.authLink}}">
-          <i class="{{provider.icon}}"></i>{{provider.loginTitle}}
-        </a>
+          <div *ngFor="#provider of PROVIDERS">
+            <a class="btn btn-block btn-social btn-{{provider.name}}" href="{{provider.authLink}}">
+              <i class="{{provider.icon}}"></i>{{provider.loginTitle}}
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </div>

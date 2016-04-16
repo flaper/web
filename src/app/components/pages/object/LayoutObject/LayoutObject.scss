@@ -4,13 +4,31 @@ h1 {
   margin-bottom: 0;
 }
 
+.block-avatar {
+  text-align: center;
+}
+
 .avatar {
   margin-top: 0.5rem;
+  max-height: 15rem;
 }
+
+@media (min-width: map-get($grid-breakpoints, 'md')) {
+  .block-header {
+    display: flex;
+    .block-avatar {
+      width: 33%;
+      max-width: 300px;
+      max-height: inherit;
+      align-self: center;
+      margin-right: 1rem;
+    }
+  }
+}
+
 
 @media (max-width: map-get($grid-breakpoints, 'md')-1) {
   .block-avatar {
-    text-align: center;
   }
   .avatar {
     max-height: 15rem;
@@ -30,19 +48,6 @@ h1 {
       }
       align-self: center;
       margin-right: 0.5rem;
-    }
-  }
-}
-
-@media (min-width: map-get($grid-breakpoints, 'md')) {
-  .block-header {
-    display: flex;
-    .block-avatar {
-      width: 33%;
-      max-width: 300px;
-      max-height: inherit;
-      align-self: center;
-      margin-right: 1rem;
     }
   }
 }

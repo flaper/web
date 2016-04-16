@@ -1,4 +1,15 @@
 :host {
+  display: block;
+  height: 100%;
+}
+.absolute-wrapper{
+  display: block;
+  height: 100%;
+  &.has-message {
+    min-height: 30rem;
+  }
+}
+.absolute-container {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -21,7 +32,7 @@
   $local-background: #195592;
   background-color: $local-background;
   border-color: rgba(0, 0, 0, 0.2);
-  &:hover{
+  &:hover {
     background-color: darken($local-background, 6);
   }
 }
