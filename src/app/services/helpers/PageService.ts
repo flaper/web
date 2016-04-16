@@ -2,6 +2,7 @@ import {Injectable} from 'angular2/core';
 import {Router} from 'angular2/router';
 
 import {JwtToken} from "../JwtToken";
+import {PageLogin} from "../../components/pages/login/PageLogin";
 const PAGE_DEFAULT = 'PAGE_DEFAULT';
 const PAGE_BEFORE_LOGIN = '_PAGE_BEFORE_LOGIN';
 
@@ -35,13 +36,14 @@ export class PageService {
     return value;
   }
 
-  public navigateToLogin() {
+  public navigateToLogin(message = null) {
     let path = this.router.currentInstruction.toRootUrl();
     if (!path || path === '/' || (path.indexOf('/Login') > -1)) {
       ls.removeItem(PAGE_BEFORE_LOGIN);
     } else {
       ls.setItem(PAGE_BEFORE_LOGIN, `${path}${window.location.search}`);
     }
+    PageLogin.MESSAGE = message ? message : "";
     this.router.navigate(['/Login']);
   }
 

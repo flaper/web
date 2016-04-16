@@ -43,9 +43,9 @@ export class StoryService {
     return this.changeStatus(subjectId, 'deny');
   }
 
-  private changeStatus(subjectId, action) {
-    if (!subjectId) throw 'Story.changeStatus - subjectId required';
-    let observable = this.api.request('put', `stories/${subjectId}/status/${action}`).publishLast();
+  private changeStatus(id, action) {
+    if (!id) throw 'Story.changeStatus - subjectId required';
+    let observable = this.api.request('put', `stories/${id}/status/${action}`).publishLast();
     observable.connect();
     return observable;
   }

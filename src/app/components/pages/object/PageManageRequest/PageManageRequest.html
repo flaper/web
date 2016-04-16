@@ -1,8 +1,5 @@
 <h2 class="text-xs-center">Заявка на управление страницей</h2>
-<form class="form" [ngFormModel]="form" (submit)="onSubmit($event)">
-  <div class="has-danger" *ngIf="error">
-    <span class="text-help">{{error}}</span>
-  </div>
+<form class="form" [ngFormModel]="form" (submit)="onSubmit($event)" *ngIf="!manageRequest">
   <fieldset class="form-group" required>
     <label for="name">ФИО</label>
     <input id="name" ngControl="name" type="text" placeholder="ФИО" class="form-control" auto-focus-it name="name">
@@ -22,3 +19,26 @@
 
   <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Отправить</button>
 </form>
+<div *ngIf="manageRequest">
+  <table class="table table-striped">
+    <tr>
+      <td>ФИО</td>
+      <td>{{manageRequest.name}}</td>
+    </tr>
+    <tr>
+      <td>Должность</td>
+      <td>{{manageRequest.position}}</td>
+    </tr>
+    <tr>
+      <td>Email</td>
+      <td>{{manageRequest.email}}</td>
+    </tr>
+    <tr>
+      <td>Телефон</td>
+      <td>{{manageRequest.phone}}</td>
+    </tr>
+  </table>
+  <div class="text-xs-center">
+    <button class="btn btn-danger" (click)="onCancel()">Отменить</button>
+  </div>
+</div>

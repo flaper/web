@@ -1,3 +1,5 @@
+@import "../../../../../css/variables";
+
 :host {
   display: block;
   margin-top: 1rem;
@@ -6,4 +8,13 @@
 form {
   max-width: 35rem;
   margin: auto;
+}
+
+.table {
+  margin: 0.5rem auto;
+  max-width: 30rem;
+  border: 1px solid $gray-light;
+  td {
+    border: none;
+  }
 }

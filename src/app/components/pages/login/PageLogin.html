@@ -1,5 +1,7 @@
 <div>
   <div class="container">
+    <div class="alert alert-info text-xs-center" *ngIf="message" [innerHtml]="message">
+    </div>
     <h1 class="text-xs-center">Вход</h1>
 
     <div class="login-btns center-block">
