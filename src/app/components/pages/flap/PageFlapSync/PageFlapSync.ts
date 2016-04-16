@@ -15,10 +15,11 @@ export class PageFlapSync {
 
   constructor(ts:Title, routeParams:RouteParams, flapSyncService:FlapSyncService, private objectService:ObjectService) {
     this.id = routeParams.params['id'];
+    let action = routeParams.params['action'];
     ts.setTitle('Синхронизация объекта');
     flapSyncService.sync(this.id)
       .subscribe(data => {
-        this.objectService.navigateTo(data);
+        this.objectService.navigateTo(data, action);
       })
   }
 }

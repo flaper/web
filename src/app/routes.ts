@@ -20,6 +20,7 @@ export const ROUTES = [
   {path: '/s/:slug/edit', component: PageWriteStory, name: 'WriteStory'},
   {path: '/@/:id/...', component: PageUser, name: 'User'},
   {path: '/p/sync/:id', component: PageFlapSync, name: 'FlapSync'},
+  {path: '/p/sync/:id/:action', component: PageFlapSync, name: 'FlapSync'},
   {
     path: '/места/:region/:slug/...', component: LayoutObject, name: 'LayoutObject',
     data: {mainDomain: 'места'}

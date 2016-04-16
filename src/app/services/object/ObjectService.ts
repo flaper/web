@@ -42,8 +42,12 @@ export class ObjectService {
   }
 
 
-  navigateTo(obj) {
-    this.router.navigateByUrl(ObjectService.getUrl(obj));
+  navigateTo(obj, action = null) {
+    let url = ObjectService.getUrl(obj);
+    if (action) {
+      url += '/' + action;
+    }
+    this.router.navigateByUrl(url);
   }
 }
 
