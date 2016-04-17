@@ -6,6 +6,7 @@ import {LayoutObject} from "../LayoutObject/LayoutObject";
 import {UserService} from "../../../../services/UserService";
 import {MANAGE_REQUEST_SERVICE_PROVIDER, ManageRequestService} from "../../../../services/object/ManageRequestService";
 import {PageService} from "../../../../services/helpers/PageService";
+import {Metrika} from "../../../../services/metrics/Metrika";
 
 @Component({
   selector: 'page-manage-request',
@@ -22,6 +23,7 @@ export class PageManageRequest {
   constructor(private fb:FormBuilder, _user:UserService, private _manageRequest:ManageRequestService,
               _page:PageService) {
     this.obj = LayoutObject.Object;
+    Metrika.setParam('page', 'manageRequest');
     if (!_user.currentUser) {
       _page.navigateToLogin(`Для управления страницей <strong>"${this.obj.title}"</strong>  нужно войти на сайт.`);
       return;
@@ -33,10 +35,7 @@ export class PageManageRequest {
       email: ['', Validators.required],
       phone: [''],
     });
-    this._manageRequest.getBySubjectId(this.obj.id).subscribe(manageRequest => {
-      this.manageRequest = manageRequest;
-      console.log(this.manageRequest);
-    })
+    this._manageRequest.getBySubjectId(this.obj.id).subscribe(manageRequest => this.manageRequest = manageRequest)
   }
 
   onSubmit() {

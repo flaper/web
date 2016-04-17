@@ -3,6 +3,7 @@ import {PAGE_PROVIDER} from './helpers/PageService';
 import {AUTH_SERVICE_PROVIDER} from './AuthService';
 import {ACL_PROVIDER} from '../acl/ACL';
 import {USER_SERVICE_PROVIDER} from './UserService';
+import {METRIKA_PROVIDER} from './metrics/Metrika';
 import {USER_SETTINGS_PROVIDER} from './UserSettings';
 import {OBJECT_SERVICE_PROVIDER} from './object/ObjectService';
 import {LIKE_SERVICE_PROVIDER} from './LikeService';
@@ -20,6 +21,7 @@ export let PROVIDERS:Array<any> = [
   AUTH_SERVICE_PROVIDER,
   ACL_PROVIDER,
   USER_SERVICE_PROVIDER,
+  METRIKA_PROVIDER,
   USER_SETTINGS_PROVIDER,
   OBJECT_SERVICE_PROVIDER,
   LIKE_SERVICE_PROVIDER,

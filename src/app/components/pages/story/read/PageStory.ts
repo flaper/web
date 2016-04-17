@@ -5,6 +5,7 @@ import {StoryComponent} from "../../../story/StoryComponent/StoryComponent";
 import {StoryService} from "../../../../services/story/StoryService";
 import {CommentsAutoList} from "../../../comment/CommentsAutoList/CommentsAutoList";
 import {Title} from "angular2/platform/browser"
+import {Metrika} from "../../../../services/metrics/Metrika";
 
 @Component({
   selector: 'page-story',
@@ -20,6 +21,8 @@ export class PageStory {
     storyService.getBySlug(slug).subscribe(story => {
       this.story = story;
       ts.setTitle(story.title);
+      Metrika.setParam('storyId', story.id);
+      Metrika.setParam('authorId', story.userId);
     });
   }
 }

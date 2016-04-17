@@ -5,6 +5,7 @@ import {ObjectService} from "../../../../services/object/ObjectService";
 import {FObject} from "../../../../models/common/FObject";
 import {PageObjectMain} from "../PageObjectMain/PageObjectMain";
 import {PageManageRequest} from "../PageManageRequest/PageManageRequest";
+import {Metrika} from "../../../../services/metrics/Metrika";
 
 @Component({
   selector: 'lyout-object',
@@ -30,11 +31,8 @@ export class LayoutObject {
         this.obj = fobject;
         LayoutObject.Object = fobject;
         ts.setTitle(fobject.title);
+        Metrika.setParam('objId', fobject.id);
       });
-    router.subscribe(data => {
-      console.log('new route');
-      console.log(data);
-    })
   }
 
   isMain() {
