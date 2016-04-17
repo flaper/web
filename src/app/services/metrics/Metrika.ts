@@ -13,18 +13,20 @@ export class Metrika {
 
   hit(path) {
     let ya = (<any>window).yaCounter34469330;
-    if (this._user.currentUserId) {
-      Metrika.params.userId = this._user.currentUserId;
-      Metrika.params.guest = false;
-    } else {
-      Metrika.params.guest = true;
+    if (ya) {
+      if (this._user.currentUserId) {
+        Metrika.params.userId = this._user.currentUserId;
+        Metrika.params.guest = false;
+      } else {
+        Metrika.params.guest = true;
+      }
+      let data = {title: this.title.getTitle()};
+      data['params'] = Metrika.params;
+      let l = window.location;
+      let url = `${l.protocol}//${l.host}/${path}`;
+      ya.hit(url, data);
+      Metrika.params = {};
     }
-    let data = {title: this.title.getTitle()};
-    data['params'] = Metrika.params;
-    let l = window.location;
-    let url = `${l.protocol}//${l.host}/${path}`;
-    ya.hit(url, data);
-    Metrika.params = {};
   }
 
   static setParam(name, value) {
