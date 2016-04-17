@@ -3,3 +3,4 @@
 User-agent: *
 Disallow: /redirect.php
 Disallow: /s/*/edit
+Disallow: /p/sync
