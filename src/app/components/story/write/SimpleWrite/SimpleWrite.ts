@@ -1,8 +1,8 @@
 /// <reference path="../../../../../../typingsOurs/main.d.ts" />
 
-import {Component, Input, ElementRef} from 'angular2/core';
-import {Router, Location} from 'angular2/router';
-import {FormBuilder, Control, ControlGroup, Validators} from 'angular2/common';
+import {Component, Input, ElementRef} from '@angular/core';
+import {Router} from '@angular/router-deprecated';
+import {Location, FormBuilder, Control, ControlGroup, Validators} from '@angular/common';
 import {Story} from "../../../../models/common/Story";
 import {StoryService} from "../../../../services/story/StoryService";
 import {FormDraft} from "../../../../services/draft/FormDraft";

@@ -1,4 +1,4 @@
-import {Component} from 'angular2/core';
+import {Component} from '@angular/core';
 import {FObject} from "../../../../models/common/FObject";
 import {ScreenService} from "../../../../services/helpers/ScreenService";
 import {LayoutObject} from "../LayoutObject/LayoutObject";

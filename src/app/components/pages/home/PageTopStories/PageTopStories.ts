@@ -1,6 +1,6 @@
-import {Component} from 'angular2/core';
+import {Component} from '@angular/core';
 import {LayoutHome} from "../LayoutHome/LayoutHome";
-import {Title} from "angular2/platform/browser"
+import {Title} from "@angular/platform-browser"
 
 @Component({
   selector: 'page-top-stories',

@@ -1,6 +1,6 @@
 /// <reference path="../../../../typingsOurs/main.d.ts" />
-import {Injectable} from 'angular2/core';
-import {Control, ControlGroup} from 'angular2/common';
+import {Injectable} from '@angular/core';
+import {Control, ControlGroup} from '@angular/common';
 var _mapValues = require('lodash/mapValues');
 
 const KEY_PREFIX = 'FORM_DRAFT_';

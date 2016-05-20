@@ -1,6 +1,6 @@
 /// <reference path="../../../../../typingsOurs/main.d.ts" />
 
-import {Component, ElementRef, EventEmitter, Output} from 'angular2/core';
+import {Component, ElementRef, EventEmitter, Output} from '@angular/core';
 import {IMAGE_UPLOAD_URL} from "../../../services/ImageService";
 import {AuthService} from "../../../services/AuthService";
 import {JwtToken} from "../../../services/JwtToken";

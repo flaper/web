@@ -1,7 +1,7 @@
 /*
  * Providers provided by Angular
  */
-import {bootstrap} from 'angular2/platform/browser';
+import {bootstrap} from '@angular/platform-browser-dynamic';
 /*
  * Platform and Environment
  * our providers/directives/pipes
@@ -9,8 +9,8 @@ import {bootstrap} from 'angular2/platform/browser';
 import {DIRECTIVES, PIPES, PROVIDERS} from './platform/browser';
 import {ENV_PROVIDERS} from './platform/environment';
 
-import {FORM_PROVIDERS} from 'angular2/common';
-import {HTTP_PROVIDERS} from 'angular2/http';
+import {FORM_PROVIDERS} from '@angular/common';
+import {HTTP_PROVIDERS} from '@angular/http';
 
 /*
  * App Component

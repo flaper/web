@@ -1,6 +1,6 @@
-import {Component} from 'angular2/core';
-import {Router, RouteConfig, RouteParams, RouteData} from 'angular2/router';
-import {Title} from "angular2/platform/browser"
+import {Component} from '@angular/core';
+import {Router, RouteConfig, RouteParams, RouteData} from '@angular/router-deprecated';
+import {Title} from "@angular/platform-browser"
 import {ObjectService} from "../../../../services/object/ObjectService";
 import {FObject} from "../../../../models/common/FObject";
 import {PageObjectMain} from "../PageObjectMain/PageObjectMain";

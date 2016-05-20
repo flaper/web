@@ -1,5 +1,5 @@
-import {Injectable} from 'angular2/core';
-import {Http, RequestOptionsArgs, Headers, URLSearchParams} from 'angular2/http';
+import {Injectable} from '@angular/core';
+import {Http, RequestOptionsArgs, Headers, URLSearchParams} from '@angular/http';
 
 import {Config} from '../config/Config';
 import {Url} from "url";

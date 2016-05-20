@@ -1,4 +1,4 @@
-<div *ngFor="#story of stories" class="story-item-container">
+<div *ngFor="let story of stories" class="story-item-container">
   <story-item [story]="story" (commentIt)="onCommentIt($event)">
 
   </story-item>

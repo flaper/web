@@ -1,4 +1,4 @@
-import {Component, Input} from 'angular2/core';
+import {Component, Input} from '@angular/core';
 import {Comment} from "../../../models/common/Comment";
 import {UserLink} from "../../user/UserLink/UserLink";
 import {UserAvatar} from "../../user/UserAvatar/UserAvatar";

@@ -1,5 +1,5 @@
-import {Component} from 'angular2/core';
-import {FormBuilder, Control, ControlGroup, Validators} from 'angular2/common';
+import {Component} from '@angular/core';
+import {FormBuilder, Control, ControlGroup, Validators} from '@angular/common';
 import {FObject} from "../../../../models/common/FObject";
 import {ScreenService} from "../../../../services/helpers/ScreenService";
 import {LayoutObject} from "../LayoutObject/LayoutObject";

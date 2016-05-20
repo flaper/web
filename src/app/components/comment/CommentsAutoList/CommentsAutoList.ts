@@ -1,4 +1,4 @@
-import {Component, Input} from 'angular2/core';
+import {Component, Input} from '@angular/core';
 import {Comment} from "../../../models/common/Comment";
 import {CommentsList} from "../CommentsList/CommentsList";
 import {CommentService} from "../../../services/CommentService";

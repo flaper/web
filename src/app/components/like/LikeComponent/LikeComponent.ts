@@ -1,5 +1,5 @@
 /// <reference path="../../../../../typingsOurs/main.d.ts" />
-import {Component, Input} from 'angular2/core';
+import {Component, Input} from '@angular/core';
 import {ILikable} from "../../../models/common/ILikable";
 import {LikeService} from "../../../services/LikeService";
 import {UserService} from "../../../services/UserService";

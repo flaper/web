@@ -1,10 +1,10 @@
-import {Component} from 'angular2/core';
-import {RouteParams} from 'angular2/router'
+import {Component} from '@angular/core';
+import {RouteParams} from '@angular/router-deprecated'
 import {Story} from "../../../../models/common/Story";
 import {StoryComponent} from "../../../story/StoryComponent/StoryComponent";
 import {StoryService} from "../../../../services/story/StoryService";
 import {CommentsAutoList} from "../../../comment/CommentsAutoList/CommentsAutoList";
-import {Title} from "angular2/platform/browser"
+import {Title} from "@angular/platform-browser"
 import {Metrika} from "../../../../services/metrics/Metrika";
 
 @Component({

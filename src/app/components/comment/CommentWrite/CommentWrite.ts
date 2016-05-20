@@ -1,7 +1,7 @@
 /// <reference path="../../../../../typingsOurs/main.d.ts" />
 
-import {Component, Input, Output, EventEmitter, ElementRef} from 'angular2/core';
-import {FormBuilder, Control, ControlGroup, Validators} from 'angular2/common';
+import {Component, Input, Output, EventEmitter, ElementRef} from '@angular/core';
+import {FormBuilder, Control, ControlGroup, Validators} from '@angular/common';
 import {Comment} from "../../../models/common/Comment";
 import {CommentService} from "../../../services/CommentService";
 import {FormDraft} from "../../../services/draft/FormDraft";

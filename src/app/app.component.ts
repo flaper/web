@@ -1,6 +1,7 @@
-import {Component, ViewEncapsulation} from 'angular2/core';
-import {RouteConfig, Location} from 'angular2/router';
-import {Http} from 'angular2/http';
+import {Component, ViewEncapsulation} from '@angular/core';
+import {RouteConfig} from '@angular/router-deprecated';
+import {Location} from '@angular/common';
+import {Http} from '@angular/http';
 import {PageService} from "./services/helpers/PageService";
 import {UserService} from "./services/UserService";
 

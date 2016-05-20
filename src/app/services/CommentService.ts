@@ -1,4 +1,4 @@
-import {Injectable} from 'angular2/core';
+import {Injectable} from '@angular/core';
 import {ApiService} from "./ApiService";
 import {LikeService} from "./LikeService";
 import {UserService} from "./UserService";

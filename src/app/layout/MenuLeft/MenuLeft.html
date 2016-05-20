@@ -23,7 +23,7 @@
       </span>
       </a>
     </li>
-    <li *ngFor="#item of items" class="nav-item">
+    <li *ngFor="let item of items" class="nav-item">
       <a class="nav-link" [routerLink]="item.route">
       <span class="icon-container text-xs-center">
         <i class="{{item.iconClass}}"></i>

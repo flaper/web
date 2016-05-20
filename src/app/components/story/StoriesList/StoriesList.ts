@@ -1,6 +1,6 @@
 /// <reference path="../../../../../typingsOurs/main.d.ts" />
 
-import {Component, Input} from 'angular2/core';
+import {Component, Input} from '@angular/core';
 import {UserService} from "../../../services/UserService";
 import {Story} from "../../../models/common/Story";
 import {StoryItem} from "../StoryItem/StoryItem";

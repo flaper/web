@@ -1,5 +1,5 @@
-import {Component} from 'angular2/core';
-import {Title} from "angular2/platform/browser"
+import {Component} from '@angular/core';
+import {Title} from "@angular/platform-browser"
 import {StoriesAutoList} from "../../../story/StoriesAutoList/StoriesAutoList";
 import * as moment from 'moment';
 import {StoryBestService} from "../../../../services/story/StoryBestService";

@@ -1,13 +1,13 @@
-import {provide} from 'angular2/core';
+import {provide} from '@angular/core';
 
 // Angular 2
-import {FORM_PROVIDERS} from 'angular2/common';
+import {FORM_PROVIDERS, LocationStrategy, PathLocationStrategy} from '@angular/common';
 
 // Angular 2 Http
-import {HTTP_PROVIDERS} from 'angular2/http';
+import {HTTP_PROVIDERS} from '@angular/http';
 // Angular 2 Router
-import {ROUTER_PROVIDERS, LocationStrategy, PathLocationStrategy} from 'angular2/router';
-import {Title} from "angular2/platform/browser"
+import {ROUTER_PROVIDERS} from '@angular/router-deprecated';
+import {Title} from "@angular/platform-browser"
 
 /*
  * Application Providers/Directives/Pipes

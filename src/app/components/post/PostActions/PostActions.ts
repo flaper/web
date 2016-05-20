@@ -1,4 +1,4 @@
-import {Component, Input, Output, EventEmitter, ElementRef} from 'angular2/core';
+import {Component, Input, Output, EventEmitter, ElementRef} from '@angular/core';
 import {ACL} from "../../../acl/ACL";
 
 @Component({

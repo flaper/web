@@ -2,9 +2,9 @@
  * These are globally available directives in any template
  */
 
-import {provide, PLATFORM_DIRECTIVES} from 'angular2/core';
+import {provide, PLATFORM_DIRECTIVES} from '@angular/core';
 
-import {ROUTER_DIRECTIVES} from 'angular2/router';
+import {ROUTER_DIRECTIVES} from '@angular/router-deprecated';
 import {Autosize} from "../../app/directives/Autosize/Autosize";
 import {LikeComponent} from "../../app/components/like/LikeComponent/LikeComponent";
 import {AutoFocusIt} from "../../app/directives/AutoFocusIt/AutoFocusIt";

@@ -1,4 +1,4 @@
-<stories-list [stories]="stories" *ngFor="#stories of storiesGroup">
+<stories-list [stories]="stories" *ngFor="let stories of storiesGroup">
 
 </stories-list>
 <load-more *ngIf="lastLength === storyService.LIMIT" [loading]="loading" (loadMore)="loadMore()"></load-more>

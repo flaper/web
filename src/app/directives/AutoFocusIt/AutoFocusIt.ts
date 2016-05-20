@@ -1,4 +1,4 @@
-import {ElementRef, Directive} from 'angular2/core';
+import {ElementRef, Directive} from '@angular/core';
 
 @Directive({
   selector: '[auto-focus-it]'

@@ -1,8 +1,8 @@
-import {Injectable} from 'angular2/core';
+import {Injectable} from '@angular/core';
 import {ApiService, API_SERVER_URL} from'./ApiService';
 import * as Rx from 'rxjs';
 import {UrlService} from './UrlService';
-import {Location} from "angular2/router";
+import {Location} from '@angular/common';
 import {User} from "../models/common/User";
 import {PageService} from "./helpers/PageService";
 

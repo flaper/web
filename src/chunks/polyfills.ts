@@ -1,5 +1,5 @@
 // Polyfills
-// (these modules are what are in 'angular2/bundles/angular2-polyfills' so don't use that here)
+// (these modules are what are in '@angular/bundles/angular2-polyfills' so don't use that here)
 
 // import 'ie-shim'; // Internet Explorer
 // import 'es6-shim';

@@ -1,5 +1,5 @@
-import {Component} from 'angular2/core';
-import {RouteConfig, RouteParams} from 'angular2/router';
+import {Component} from '@angular/core';
+import {RouteConfig, RouteParams} from '@angular/router-deprecated';
 import {UserService} from "../../../services/UserService";
 import {User} from "../../../models/common/User";
 import {StoriesAutoList} from "../../story/StoriesAutoList/StoriesAutoList";
@@ -9,7 +9,7 @@ import {UserInfo} from "../../user/UserInfo/UserInfo";
 import {UserStats} from "../../user/UserStats/UserStats";
 import {ACL} from "../../../acl/ACL";
 import {UserSettings} from "../../../services/UserSettings";
-import {Title} from "angular2/platform/browser"
+import {Title} from "@angular/platform-browser"
 
 @Component({
   selector: 'page-user',

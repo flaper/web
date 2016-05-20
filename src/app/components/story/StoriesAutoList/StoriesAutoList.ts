@@ -1,4 +1,4 @@
-import {Component, Input} from 'angular2/core';
+import {Component, Input} from '@angular/core';
 import {Story} from "../../../models/common/Story";
 import {StoriesList} from "../StoriesList/StoriesList";
 import {StoryService} from "../../../services/story/StoryService";

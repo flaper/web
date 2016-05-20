@@ -1,4 +1,4 @@
-import {Injectable} from 'angular2/core';
+import {Injectable} from '@angular/core';
 import {ApiService, API_BASE_URL} from "./ApiService";
 
 export const IMAGE_UPLOAD_URL = `${API_BASE_URL}images`;

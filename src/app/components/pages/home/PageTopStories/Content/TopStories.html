@@ -16,7 +16,7 @@
   <div *ngIf="winners && winners.length && stories" class="winners">
     <h4 class="text-xs-center">Победители прошлой недели:</h4>
 
-    <div *ngFor="#winner of winners">
+    <div *ngFor="let winner of winners">
       <div *ngIf="stories[winner.id]">
         <strong>{{winner.place}}. </strong>
         <a [routerLink]="['/Story', {slug: stories[winner.id].slug}]">

@@ -1,4 +1,4 @@
-import {Component} from 'angular2/core';
+import {Component} from '@angular/core';
 import {StoriesAutoList} from "../../../../story/StoriesAutoList/StoriesAutoList";
 import * as moment from 'moment';
 import {StoryBestService} from "../../../../../services/story/StoryBestService";

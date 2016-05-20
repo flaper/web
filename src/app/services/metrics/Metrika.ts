@@ -1,6 +1,6 @@
-import {Injectable} from 'angular2/core';
-import {Router} from 'angular2/router';
-import {Title} from "angular2/platform/browser"
+import {Injectable} from '@angular/core';
+import {Router} from '@angular/router-deprecated';
+import {Title} from "@angular/platform-browser"
 import {UserService} from "../UserService";
 
 @Injectable()

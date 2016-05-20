@@ -1,4 +1,4 @@
-import {Component} from 'angular2/core';
+import {Component} from '@angular/core';
 import {User} from "../../../models/common/User";
 import {PageUser} from "../../pages/user/PageUser";
 import {UserService} from "../../../services/UserService";

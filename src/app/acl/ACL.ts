@@ -1,4 +1,4 @@
-import {Injectable} from 'angular2/core';
+import {Injectable} from '@angular/core';
 import {UserService} from "../services/UserService";
 var _get = require('lodash/get.js');
 

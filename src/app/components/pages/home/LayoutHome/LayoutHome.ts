@@ -1,5 +1,5 @@
-import {Component, Input} from 'angular2/core';
-import {Router, Instruction, ComponentInstruction} from 'angular2/router';
+import {Component, Input} from '@angular/core';
+import {Router, Instruction, ComponentInstruction} from '@angular/router-deprecated';
 import {LastStories} from "../PageLastStories/Content/LastStories";
 import {TopStories} from "../PageTopStories/Content/TopStories";
 import {News} from "../PageNews/Content/News";
