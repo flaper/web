@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Http, RequestOptionsArgs, Headers, URLSearchParams} from '@angular/http';
 
 import {Config} from '../config/Config';
-import {JwtToken} from "./JwtToken";
+import {JwtToken} from "flaper";
 export const API_SERVER_URL = `http://${Config.api.host}:${Config.api.port}`;
 
 export const API_BASE_URL = `${API_SERVER_URL}/api/`;

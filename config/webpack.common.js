@@ -40,7 +40,7 @@ module.exports = {
   //
   // See: http://webpack.github.io/docs/configuration.html#entry
   entry: {
-    'main.css' : './src/chunks/main.css.ts',
+    'main.css': './src/chunks/main.css.ts',
     'polyfills': './src/chunks/polyfills.ts',
     'global': './src/chunks/global.ts',
     'vendor': './src/chunks/vendor.ts',
@@ -66,8 +66,10 @@ module.exports = {
     root: helpers.root('src'),
 
     // remove other default values
-    modulesDirectories: ['node_modules'],
-
+    modulesDirectories: ['node_modules']
+  },
+  resolveLoader: {
+    fallback: __dirname + '/../node_modules'
   },
   // Options affecting the normal modules.
   //
@@ -171,7 +173,7 @@ module.exports = {
     // See: https://webpack.github.io/docs/list-of-plugins.html#commonschunkplugin
     // See: https://github.com/webpack/docs/wiki/optimization#multi-page-app
     new webpack.optimize.CommonsChunkPlugin({
-      name: helpers.reverse(['polyfills', 'global', 'main.css', 'vendor','angular', 'angular_vendor', 'main']),
+      name: helpers.reverse(['polyfills', 'global', 'main.css', 'vendor', 'angular', 'angular_vendor', 'main']),
       minChunks: Infinity
     }),
 

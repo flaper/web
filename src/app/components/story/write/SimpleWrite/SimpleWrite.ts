@@ -1,5 +1,3 @@
-/// <reference path="../../../../../../typingsOurs/main.d.ts" />
-
 import {Component, Input, ElementRef} from '@angular/core';
 import {Router} from '@angular/router-deprecated';
 import {Location, FormBuilder, Control, ControlGroup, Validators} from '@angular/common';

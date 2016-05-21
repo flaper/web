@@ -2,7 +2,7 @@
   <h4>Социальные сети:</h4>
 
   <div *ngIf="identities !== null">
-    <div *ngFor="#identity of identities">
+    <div *ngFor="let identity of identities">
       <span class="icon-container text-xs-center">
           <i class="{{identity.icon}}"></i>
       </span>
