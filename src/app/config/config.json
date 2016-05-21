@@ -6,5 +6,9 @@
   "debug": {
     "api": false
   },
-  "limit": 20
+  "limit": 20,
+  "ym": {
+    "shopId": 100877,
+    "scid": 34825
+  }
 }

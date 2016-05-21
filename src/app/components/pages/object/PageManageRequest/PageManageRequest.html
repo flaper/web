@@ -23,7 +23,7 @@
     <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Отправить</button>
   </form>
   <div *ngIf="manageRequest">
-    <table class="table table-striped">
+    <table class="table table-striped table-bordered">
       <tr>
         <td>ФИО</td>
         <td>{{manageRequest.name}}</td>
@@ -41,8 +41,12 @@
         <td>{{manageRequest.phone}}</td>
       </tr>
     </table>
-    <div class="text-xs-center">
-      <button class="btn btn-danger" (click)="onCancel()">Отменить</button>
+    <div class="pay-block alert alert-info text-sm-center">
+      <div class="pay-text">Единоразовый сбор за проверку заявки и подключение <strong>100</strong> рублей.</div>
+      <div>
+        <button class="btn btn-primary" (click)="onPay()">Оплатить</button>
+        <button class="btn btn-link" (click)="onCancel()">Отменить</button>
+      </div>
     </div>
   </div>
 </div>

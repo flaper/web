@@ -13,6 +13,7 @@ import {COMMENT_SERVICE_PROVIDER} from './CommentService';
 import {IMAGE_SERVICE_PROVIDER} from './ImageService';
 import {VIEW_SERVICE_PROVIDER} from './ViewService';
 import {ACCOUNT_SERVICE_PROVIDER} from './AccountService';
+import {PAYMENT_SERVICE_PROVIDER} from './payment/PaymentService';
 
 // Include injectables that you want to have globally throughout our app
 export let PROVIDERS:Array<any> = [
@@ -31,4 +32,5 @@ export let PROVIDERS:Array<any> = [
   IMAGE_SERVICE_PROVIDER,
   VIEW_SERVICE_PROVIDER,
   ACCOUNT_SERVICE_PROVIDER,
+  PAYMENT_SERVICE_PROVIDER
 ];
