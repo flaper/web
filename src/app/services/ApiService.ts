@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {Http, RequestOptionsArgs, Headers, URLSearchParams} from '@angular/http';
 
 import {Config} from '../config/Config';
-import {Url} from "url";
 import {JwtToken} from "./JwtToken";
 export const API_SERVER_URL = `http://${Config.api.host}:${Config.api.port}`;
 
