@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {PROVIDERS} from "../../../services/AuthService";
+import {AUTH_PROVIDERS} from "flaper";
 import {Title} from "@angular/platform-browser"
 
 @Component({
@@ -10,7 +10,7 @@ import {Title} from "@angular/platform-browser"
 export class PageLogin {
   static MESSAGE = "";
   message;
-  PROVIDERS = PROVIDERS;
+  PROVIDERS = AUTH_PROVIDERS;
 
   constructor(ts:Title) {
     this.message = PageLogin.MESSAGE;

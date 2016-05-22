@@ -3,7 +3,7 @@ import {RouteConfig} from '@angular/router-deprecated';
 import {Location} from '@angular/common';
 import {Http} from '@angular/http';
 import {PageService} from "./services/helpers/PageService";
-import {UserService} from "./services/UserService";
+import {UserService} from "flaper";
 
 import {MenuLeft} from "./layout/MenuLeft/MenuLeft";
 import {Navbar} from './components/layout/navbar/navbar';

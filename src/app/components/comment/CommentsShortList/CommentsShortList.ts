@@ -3,7 +3,7 @@ import {Comment} from "../../../models/common/Comment";
 import {CommentsList} from "../CommentsList/CommentsList";
 import {CommentService} from "../../../services/CommentService";
 import {CommentWrite} from "../CommentWrite/CommentWrite";
-import {UserService} from "../../../services/UserService";
+import {UserService} from "flaper";
 import {ICommentable} from "../../../models/common/ICommentable"
 
 const MAX_RECENT_SIZE = 4;

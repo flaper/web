@@ -1,7 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {ILikable} from "../../../models/common/ILikable";
 import {LikeService} from "../../../services/LikeService";
-import {UserService} from "../../../services/UserService";
+import {UserService} from "flaper";
 import {PageService} from "../../../services/helpers/PageService";
 
 @Component({

@@ -4,7 +4,7 @@ import {UserLink} from "../../user/UserLink/UserLink";
 import {UserAvatar} from "../../user/UserAvatar/UserAvatar";
 import {PostActions} from "../../post/PostActions/PostActions";
 import {CommentService} from "../../../services/CommentService";
-import {ACL} from "../../../acl/ACL";
+import {ACL} from "flaper";
 import {CommentWrite} from "../CommentWrite/CommentWrite";
 
 @Component({

@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {ApiService} from 'flaper';
 import {LikeService} from "./LikeService";
-import {UserService} from "./UserService";
+import {UserService} from "flaper";
 
 @Injectable()
 export class CommentService {

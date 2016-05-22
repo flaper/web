@@ -4,7 +4,7 @@ import {Comment} from "../../../models/common/Comment";
 import {CommentService} from "../../../services/CommentService";
 import {FormDraft} from "../../../services/draft/FormDraft";
 import {generateEvent} from "../../../libs/common/common";
-import {UserService} from "../../../services/UserService";
+import {UserService} from "flaper";
 import * as Rx from 'rxjs';
 
 @Component({
@@ -64,6 +64,7 @@ export class CommentWrite {
       this.elementRef.nativeElement.querySelector('textarea').focus();
     }
     if (this.commentItObservable) {
+      //noinspection TypeScriptUnresolvedFunction
       this.commentItObservable.subscribe(() => {
         this.elementRef.nativeElement.querySelector('textarea').focus();
       })

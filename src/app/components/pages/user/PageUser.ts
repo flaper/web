@@ -1,13 +1,13 @@
 import {Component} from '@angular/core';
 import {RouteConfig, RouteParams} from '@angular/router-deprecated';
-import {UserService} from "../../../services/UserService";
+import {UserService} from "flaper";
 import {User} from "../../../models/common/User";
 import {StoriesAutoList} from "../../story/StoriesAutoList/StoriesAutoList";
 import {AccountService} from "../../../services/AccountService";
 import {UserStories} from "../../user/UserStories/UserStories";
 import {UserInfo} from "../../user/UserInfo/UserInfo";
 import {UserStats} from "../../user/UserStats/UserStats";
-import {ACL} from "../../../acl/ACL";
+import {ACL} from "flaper";
 import {UserSettings} from "../../../services/UserSettings";
 import {Title} from "@angular/platform-browser"
 

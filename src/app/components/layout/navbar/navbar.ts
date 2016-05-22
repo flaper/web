@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
-import {AuthService} from "../../../services/AuthService";
-import {UserService} from "../../../services/UserService";
+import {AuthService} from "flaper";
+import {UserService} from "flaper";
 import {PageService} from "../../../services/helpers/PageService";
 
 @Component({

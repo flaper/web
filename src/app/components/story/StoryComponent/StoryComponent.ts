@@ -1,7 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {Router} from '@angular/router-deprecated';
 import {Story} from "../../../models/common/Story";
-import {ACL} from "../../../acl/ACL";
+import {ACL} from "flaper";
 import * as moment from 'moment';
 import {UserLink} from "../../user/UserLink/UserLink";
 import {UserAvatar} from "../../user/UserAvatar/UserAvatar";

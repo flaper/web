@@ -3,7 +3,7 @@ import {Comment} from "../../../models/common/Comment";
 import {CommentsList} from "../CommentsList/CommentsList";
 import {CommentService} from "../../../services/CommentService";
 import {CommentWrite} from "../CommentWrite/CommentWrite";
-import {UserService} from "../../../services/UserService";
+import {UserService} from "flaper";
 
 @Component({
   selector: 'comments-auto-list',

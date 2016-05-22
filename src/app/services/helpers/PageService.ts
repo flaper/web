@@ -9,7 +9,7 @@ const PAGE_BEFORE_LOGIN = '_PAGE_BEFORE_LOGIN';
 @Injectable()
 export class PageService {
   constructor(private router:Router) {
-
+    PageService._navigateAfterLogin = this.navigateAfterLogin.bind(this);
   }
 
   public getDefault() {
@@ -56,6 +56,13 @@ export class PageService {
       this.router.navigate([route]);
     }
   }
+
+  private static _navigateAfterLogin = null;
+  public static NavigateAfterLogin = () => {
+    if (PageService._navigateAfterLogin) {
+      PageService._navigateAfterLogin();
+    }
+  };
 }
 
 export let PAGE_PROVIDER = [PageService];

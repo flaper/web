@@ -1,7 +1,15 @@
-/*
- * Providers provided by Angular
- */
 import {bootstrap} from '@angular/platform-browser-dynamic';
+import {API_BASE_URL, API_SERVER_URL} from './app/services/consts/Consts';
+import {Config as LibConfig} from 'flaper';
+import {ComponentResolver} from '@angular/core';
+import {PageService} from "./app/services/helpers/PageService";
+
+LibConfig.Init({
+  API_URL: API_BASE_URL,
+  API_SERVER_URL: API_SERVER_URL,
+  SUCCESS_LOGIN_CALLBACK: PageService.NavigateAfterLogin
+});
+
 /*
  * Platform and Environment
  * our providers/directives/pipes
@@ -19,7 +27,7 @@ import {App, APP_PROVIDERS} from './app/index';
  * Bootstrap our Angular app with a top level component `App` and inject
  * our Services and Providers into Angular's dependency injection
  */
-export function main(initialHmrState?: any): Promise<any> {
+export function main(initialHmrState?:any):Promise<any> {
   return bootstrap(App, [
     ...ENV_PROVIDERS,
     ...PROVIDERS,

@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Router} from '@angular/router-deprecated';
 import {Title} from "@angular/platform-browser"
-import {UserService} from "../UserService";
+import {UserService} from "flaper";
 
 @Injectable()
 export class Metrika {

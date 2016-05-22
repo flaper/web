@@ -1,13 +1,14 @@
 import {Injectable} from '@angular/core';
 import {User} from "../models/common/User";
 import {ApiService} from 'flaper';
-import {UserService} from "./UserService";
+import {UserService} from "flaper";
 import * as Rx from 'rxjs';
 let _forOwn = require('lodash/forOwn');
 
 @Injectable()
 export class UserSettings {
   constructor(private api:ApiService, private userService:UserService) {
+    //noinspection TypeScriptUnresolvedFunction
     this.userService.currentUserObservable.subscribe(user => {
       if (!user) {
         this._my = null;
@@ -34,6 +35,7 @@ export class UserSettings {
     let name = settings.name;
     let o;
     if (this._my) {
+      //noinspection TypeScriptUnresolvedFunction
       o = Rx.Observable.of(this._my);
     } else if (!this._myObservable) {
       o = this.requestMy();
