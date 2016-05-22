@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {User} from "../models/common/User";
 import {AuthService} from "./AuthService";
-import {ApiService} from "./ApiService";
+import {ApiService} from 'flaper';
 import * as Rx from 'rxjs';
 let _uniq = require('lodash/uniq');
 

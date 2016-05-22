@@ -1,4 +1,8 @@
-import {API_SERVICE_PROVIDER} from './ApiService';
+import {provide} from '@angular/core';
+import {Http} from '@angular/http';
+import {ApiService} from 'flaper';
+import {Config} from '../config/Config';
+const API_URL = `http://${Config.api.host}:${Config.api.port}/api/`;
 import {PAGE_PROVIDER} from './helpers/PageService';
 import {AUTH_SERVICE_PROVIDER} from './AuthService';
 import {ACL_PROVIDER} from '../acl/ACL';
@@ -17,7 +21,13 @@ import {PAYMENT_SERVICE_PROVIDER} from './payment/PaymentService';
 
 // Include injectables that you want to have globally throughout our app
 export let PROVIDERS:Array<any> = [
-  API_SERVICE_PROVIDER,
+  //HTTP_PROVIDERS,
+  provide(ApiService, {
+    useFactory: (http:Http) => {
+      return new ApiService(http, API_URL);
+    },
+    deps: [Http]
+  }),
   PAGE_PROVIDER,
   AUTH_SERVICE_PROVIDER,
   ACL_PROVIDER,

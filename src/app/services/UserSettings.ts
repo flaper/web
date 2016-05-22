@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {User} from "../models/common/User";
-import {ApiService} from "./ApiService";
+import {ApiService} from 'flaper';
 import {UserService} from "./UserService";
 import * as Rx from 'rxjs';
 let _forOwn = require('lodash/forOwn');

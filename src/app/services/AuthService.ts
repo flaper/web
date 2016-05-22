@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
-import {ApiService, API_SERVER_URL} from'./ApiService';
+import {API_SERVER_URL} from'./ApiService';
+import {ApiService} from 'flaper';
 import * as Rx from 'rxjs';
 import {UrlService} from './UrlService';
 import {Location} from '@angular/common';

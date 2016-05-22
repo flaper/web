@@ -8,7 +8,7 @@
 
         <div class="login-btns center-block">
 
-          <div *ngFor="#provider of PROVIDERS">
+          <div *ngFor="let provider of PROVIDERS">
             <a class="btn btn-block btn-social btn-{{provider.name}}" href="{{provider.authLink}}">
               <i class="{{provider.icon}}"></i>{{provider.loginTitle}}
             </a>

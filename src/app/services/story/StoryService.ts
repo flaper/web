@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {ApiService} from "./../ApiService";
+import {ApiService} from 'flaper';
 import {LikeService} from "./../LikeService";
 import {Config} from '../../config/Config';
 

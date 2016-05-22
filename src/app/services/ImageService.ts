@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
-import {ApiService, API_BASE_URL} from "./ApiService";
+import {API_BASE_URL} from "./ApiService";
+import {ApiService} from "flaper";
 
 export const IMAGE_UPLOAD_URL = `${API_BASE_URL}images`;
 @Injectable()
