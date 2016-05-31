@@ -1,9 +1,8 @@
-import {CORE_PROVIDERS} from 'flaper';
+import {ALL_PROVIDERS} from 'flaper';
 import {API_BASE_URL} from './consts/Consts';
 import {PAGE_PROVIDER} from './helpers/PageService';
 import {METRIKA_PROVIDER} from './metrics/Metrika';
 import {USER_SETTINGS_PROVIDER} from './UserSettings';
-import {OBJECT_SERVICE_PROVIDER} from './object/ObjectService';
 import {LIKE_SERVICE_PROVIDER} from './LikeService';
 import {STORY_SERVICE_PROVIDER} from './story/StoryService';
 import {STORY_BEST_SERVICE_PROVIDER} from './story/StoryBestService';
@@ -15,11 +14,10 @@ import {PAYMENT_SERVICE_PROVIDER} from './payment/PaymentService';
 
 // Include injectables that you want to have globally throughout our app
 export let PROVIDERS:Array<any> = [
-  CORE_PROVIDERS,
+  ALL_PROVIDERS,
   PAGE_PROVIDER,
   METRIKA_PROVIDER,
   USER_SETTINGS_PROVIDER,
-  OBJECT_SERVICE_PROVIDER,
   LIKE_SERVICE_PROVIDER,
   STORY_SERVICE_PROVIDER,
   STORY_BEST_SERVICE_PROVIDER,

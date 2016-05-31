@@ -1,10 +1,10 @@
 import {Component} from '@angular/core';
 import {FormBuilder, Control, ControlGroup, Validators} from '@angular/common';
-import {FObject} from "../../../../models/common/FObject";
+import {FObject} from "flaper";
 import {ScreenService} from "../../../../services/helpers/ScreenService";
 import {LayoutObject} from "../LayoutObject/LayoutObject";
 import {UserService} from "flaper";
-import {MANAGE_REQUEST_SERVICE_PROVIDER, ManageRequestService} from "../../../../services/object/ManageRequestService";
+import {MANAGE_REQUEST_SERVICE_PROVIDER, ManageRequestService} from "flaper";
 import {PageService} from "../../../../services/helpers/PageService";
 import {Metrika} from "../../../../services/metrics/Metrika";
 import {PaymentService} from "../../../../services/payment/PaymentService";

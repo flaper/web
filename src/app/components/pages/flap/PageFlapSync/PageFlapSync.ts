@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {RouteParams} from '@angular/router-deprecated';
 import {Title} from "@angular/platform-browser"
 import {FlapSyncService, FLAP_SYNC_SERVICE_PROVIDER} from "../../../../services/flap/FlapSyncService";
-import {ObjectService} from "../../../../services/object/ObjectService";
+import {ObjectService} from "flaper";
 
 @Component({
   selector: 'page-flap-sync',
