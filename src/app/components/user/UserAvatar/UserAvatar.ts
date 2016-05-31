@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {UserService} from "flaper";
-import {User} from "../../../models/common/User";
+import {User} from "flaper";
 
 @Component({
   selector: 'user-avatar',

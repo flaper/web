@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {Comment} from "../../../models/common/Comment";
+import {Comment} from "flaper";
 import {UserLink} from "../../user/UserLink/UserLink";
 import {UserAvatar} from "../../user/UserAvatar/UserAvatar";
 import {PostActions} from "../../post/PostActions/PostActions";

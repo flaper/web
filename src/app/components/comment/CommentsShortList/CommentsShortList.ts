@@ -1,10 +1,10 @@
 import {Component, Input} from '@angular/core';
-import {Comment} from "../../../models/common/Comment";
+import {Comment} from "flaper";
 import {CommentsList} from "../CommentsList/CommentsList";
 import {CommentService} from "../../../services/CommentService";
 import {CommentWrite} from "../CommentWrite/CommentWrite";
 import {UserService} from "flaper";
-import {ICommentable} from "../../../models/common/ICommentable"
+import {ICommentable} from "flaper"
 
 const MAX_RECENT_SIZE = 4;
 @Component({

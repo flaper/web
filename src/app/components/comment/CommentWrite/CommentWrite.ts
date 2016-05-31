@@ -1,6 +1,6 @@
 import {Component, Input, Output, EventEmitter, ElementRef} from '@angular/core';
 import {FormBuilder, Control, ControlGroup, Validators} from '@angular/common';
-import {Comment} from "../../../models/common/Comment";
+import {Comment} from "flaper";
 import {CommentService} from "../../../services/CommentService";
 import {FormDraft} from "../../../services/draft/FormDraft";
 import {generateEvent} from "../../../libs/common/common";

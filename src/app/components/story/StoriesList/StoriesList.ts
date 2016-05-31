@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {UserService} from "flaper";
-import {Story} from "../../../models/common/Story";
+import {Story} from "flaper";
 import {StoryItem} from "../StoryItem/StoryItem";
 import {CommentService} from "../../../services/CommentService";
 import {CommentsList} from "../../comment/CommentsList/CommentsList";

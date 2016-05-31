@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {User} from "../../../models/common/User";
+import {User} from "flaper";
 import {PageUser} from "../../pages/user/PageUser";
 import {UserService} from "flaper";
 import {AUTH_PROVIDERS} from "flaper";

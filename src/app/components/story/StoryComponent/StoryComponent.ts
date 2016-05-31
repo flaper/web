@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {Router} from '@angular/router-deprecated';
-import {Story} from "../../../models/common/Story";
+import {Story} from "flaper";
 import {ACL} from "flaper";
 import * as moment from 'moment';
 import {UserLink} from "../../user/UserLink/UserLink";

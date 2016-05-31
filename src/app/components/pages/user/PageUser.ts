@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {RouteConfig, RouteParams} from '@angular/router-deprecated';
 import {UserService} from "flaper";
-import {User} from "../../../models/common/User";
+import {User} from "flaper";
 import {StoriesAutoList} from "../../story/StoriesAutoList/StoriesAutoList";
 import {AccountService} from "../../../services/AccountService";
 import {UserStories} from "../../user/UserStories/UserStories";

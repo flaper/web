@@ -4,7 +4,7 @@ import {FObject} from "flaper";
 import {ScreenService} from "../../../../services/helpers/ScreenService";
 import {LayoutObject} from "../LayoutObject/LayoutObject";
 import {UserService} from "flaper";
-import {MANAGE_REQUEST_SERVICE_PROVIDER, ManageRequestService} from "flaper";
+import {ManageRequestService} from "flaper";
 import {PageService} from "../../../../services/helpers/PageService";
 import {Metrika} from "../../../../services/metrics/Metrika";
 import {PaymentService} from "../../../../services/payment/PaymentService";
@@ -12,7 +12,6 @@ import {PaymentService} from "../../../../services/payment/PaymentService";
 @Component({
   selector: 'page-manage-request',
   template: require('./PageManageRequest.html'),
-  providers: [MANAGE_REQUEST_SERVICE_PROVIDER],
   styles: [require('./PageManageRequest.scss')]
 })
 export class PageManageRequest {

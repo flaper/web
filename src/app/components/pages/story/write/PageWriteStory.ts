@@ -3,7 +3,7 @@ import {Title} from "@angular/platform-browser"
 import {RouteParams} from '@angular/router-deprecated';
 import {UserService} from "flaper";
 import {SimpleWrite} from "../../../story/write/SimpleWrite/SimpleWrite";
-import {Story} from "../../../../models/common/Story";
+import {Story} from "flaper";
 import {StoryService} from "../../../../services/story/StoryService";
 import {PageService} from "../../../../services/helpers/PageService";
 

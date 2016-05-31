@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {User} from "../models/common/User";
+import {User} from "flaper";
 import {ApiService} from 'flaper';
 import {UserService} from "flaper";
 import * as Rx from 'rxjs';
