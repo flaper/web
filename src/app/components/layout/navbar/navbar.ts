@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
-import {AuthService} from "flaper";
-import {UserService} from "flaper";
+import {AuthService, UserService} from "flaper";
 import {PageService} from "../../../services/helpers/PageService";
 
 @Component({
@@ -9,7 +8,7 @@ import {PageService} from "../../../services/helpers/PageService";
   template: require('./navbar.html')
 })
 export class Navbar {
-  constructor(private authService:AuthService, private userService:UserService,
+  constructor(private authService:AuthService, private _user:UserService,
               private pageService:PageService) {
   }
 

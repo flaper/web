@@ -1,7 +1,6 @@
 import {Component, ElementRef} from '@angular/core';
-import {UserService} from "flaper";
-import {PageService} from "../../services/helpers/PageService";
-import {AuthService} from "flaper";
+import {AuthService, UserService} from "flaper";
+import {PageService} from "../../../services/helpers/PageService";
 
 @Component({
   selector: 'menu-left',

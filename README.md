@@ -3,7 +3,7 @@ Based on angular2
 
 ##Install
 install packages  
-```
+```bash
 npm install  
 bower install
 ```

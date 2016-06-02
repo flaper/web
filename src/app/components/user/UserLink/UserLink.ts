@@ -19,6 +19,7 @@ export class UserLink {
   }
 
   ngOnInit() {
+    //noinspection TypeScriptUnresolvedFunction
     this.userService.getById(this.userId).subscribe(user => this.user = user);
   }
 }

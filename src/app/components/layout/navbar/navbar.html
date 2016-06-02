@@ -1,4 +1,4 @@
-<nav class="navbar" [class.has-user]="userService.currentUser">
+<nav class="navbar" [class.has-user]="_user.currentUser">
   <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#mainNavbar">
     &#9776;
   </button>
@@ -6,18 +6,18 @@
     <a class="navbar-brand" (click)="pageService.navigateToDefault()">Флапер</a>
   </span>
   <ul class="nav navbar-nav pull-xs-right">
-    <li class="nav-item" *ngIf="!userService.currentUser">
+    <li class="nav-item" *ngIf="!_user.currentUser">
       <a class="nav-link" (click)="pageService.navigateToLogin()"><i class="fa fa-sign-in"></i> Вход</a>
     </li>
-    <li class="nav-item dropdown" *ngIf="userService.currentUser">
+    <li class="nav-item dropdown" *ngIf="_user.currentUser">
       <a class="nav-link dropdown-toggle nav-user" id="userDropDownMenu" data-toggle="dropdown"
          aria-haspopup="true">
-        <img class="my-avatar" src="{{userService.currentUser.photo}}">
-        <span class="hidden-sm-down me-name">{{userService.currentUser.displayName}}</span>
+        <img class="my-avatar" src="{{_user.currentUser.photo}}">
+        <span class="hidden-sm-down me-name">{{_user.currentUser.displayName}}</span>
       </a>
 
       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropDownMenu">
-        <a class="dropdown-item" [routerLink]="['/User', {id:userService.currentUser.id}]">
+        <a class="dropdown-item" [routerLink]="['/User', {id:_user.currentUser.id}]">
           <i class="fa fa-user"></i> Моя страница
         </a>
 
