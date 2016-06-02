@@ -1,5 +1,6 @@
 import {bootstrap} from '@angular/platform-browser-dynamic';
 import {API_BASE_URL, API_SERVER_URL} from './app/services/consts/Consts';
+import {Config} from './app/config/Config';
 import {Config as LibConfig} from 'flaper';
 import {ComponentResolver} from '@angular/core';
 import {PageService} from "./app/services/helpers/PageService";
@@ -7,6 +8,7 @@ import {PageService} from "./app/services/helpers/PageService";
 LibConfig.Init({
   API_URL: API_BASE_URL,
   API_SERVER_URL: API_SERVER_URL,
+  PAGE_LIMIT: Config.limit,
   SUCCESS_LOGIN_CALLBACK: PageService.NavigateAfterLogin
 });
 
@@ -28,6 +30,7 @@ import {App, APP_PROVIDERS} from './app/index';
  * our Services and Providers into Angular's dependency injection
  */
 export function main(initialHmrState?:any):Promise<any> {
+  //noinspection TypeScriptValidateTypes
   return bootstrap(App, [
     ...ENV_PROVIDERS,
     ...PROVIDERS,

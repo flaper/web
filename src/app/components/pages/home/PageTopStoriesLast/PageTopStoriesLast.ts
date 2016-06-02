@@ -2,8 +2,7 @@ import {Component} from '@angular/core';
 import {Title} from "@angular/platform-browser"
 import {StoriesAutoList} from "../../../story/StoriesAutoList/StoriesAutoList";
 import * as moment from 'moment';
-import {StoryBestService} from "../../../../services/story/StoryBestService";
-import {StoryService} from "../../../../services/story/StoryService";
+import {StoryService, StoryBestService} from "flaper";
 let _keyBy = require('lodash/keyBy');
 
 @Component({

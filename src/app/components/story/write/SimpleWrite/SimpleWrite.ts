@@ -1,8 +1,7 @@
 import {Component, Input, ElementRef} from '@angular/core';
 import {Router} from '@angular/router-deprecated';
 import {Location, FormBuilder, Control, ControlGroup, Validators} from '@angular/common';
-import {Story} from "flaper";
-import {StoryService} from "../../../../services/story/StoryService";
+import {Story, StoryService} from "flaper";
 import {FormDraft} from "../../../../services/draft/FormDraft";
 import {DropzoneComponent} from "../../../image/dropzone/DropzoneComponent";
 import {generateEvent} from "../../../../libs/common/common";

@@ -1,8 +1,7 @@
 import {Component} from '@angular/core';
 import {RouteParams} from '@angular/router-deprecated'
-import {Story} from "flaper";
+import {Story, StoryService} from "flaper";
 import {StoryComponent} from "../../../story/StoryComponent/StoryComponent";
-import {StoryService} from "../../../../services/story/StoryService";
 import {CommentsAutoList} from "../../../comment/CommentsAutoList/CommentsAutoList";
 import {Title} from "@angular/platform-browser"
 import {Metrika} from "../../../../services/metrics/Metrika";

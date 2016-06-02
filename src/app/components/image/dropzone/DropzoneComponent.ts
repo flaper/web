@@ -1,7 +1,5 @@
 import {Component, ElementRef, EventEmitter, Output} from '@angular/core';
-import {IMAGE_UPLOAD_URL} from "../../../services/ImageService";
-import {JwtToken} from "flaper";
-import {Image} from "flaper";
+import {Image, ImageService, JwtToken} from "flaper";
 let Dropzone = require('dropzone');
 
 @Component({
@@ -10,7 +8,7 @@ let Dropzone = require('dropzone');
   template: require('./DropzoneComponent.html')
 })
 export class DropzoneComponent {
-  UPLOAD_URL = IMAGE_UPLOAD_URL;
+  UPLOAD_URL;
   options = {};
 
   @Output()
@@ -18,7 +16,8 @@ export class DropzoneComponent {
 
   dropzone;
 
-  constructor(private elementRef:ElementRef) {
+  constructor(private elementRef:ElementRef, _image:ImageService) {
+    this.UPLOAD_URL = _image.IMAGE_UPLOAD_URL;
     let self = this;
     this.options = {
       dictDefaultMessage: "Загрузить картинки (перетащить или выбрать)",

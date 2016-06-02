@@ -1,14 +1,10 @@
 import {Component, Input} from '@angular/core';
-import {UserService} from "flaper";
-import {Story} from "flaper";
+import {UserService, CommentService, Story, LikeService} from "flaper";
 import {StoryItem} from "../StoryItem/StoryItem";
-import {CommentService} from "../../../services/CommentService";
 import {CommentsList} from "../../comment/CommentsList/CommentsList";
 import {CommentsShortList} from "../../comment/CommentsShortList/CommentsShortList";
 let _forOwn = require('lodash/forOwn');
-import * as Rx from 'rxjs';
-
-import {LikeService} from "../../../services/LikeService";
+import {ReplaySubject} from 'rxjs';
 
 @Component({
   selector: 'stories-list',
@@ -24,13 +20,13 @@ export class StoriesList {
   commentItEvents = {};
   commentItActive = {};
 
-  constructor(private commentService:CommentService, private likeService:LikeService,
+  constructor(private commentService:CommentService, private _like:LikeService,
               private userService:UserService) {
   }
 
   ngOnInit() {
     let usersIds = this.stories.map(story => story.userId);
-    this.stories.forEach(story => this.commentItEvents[story.id] = new Rx.ReplaySubject<boolean>(1));
+    this.stories.forEach(story => this.commentItEvents[story.id] = new ReplaySubject<boolean>(1));
     this.userService.requestIds(usersIds);
     this.commentService.last(this.stories.map(story => story.id))
       .subscribe(groups => {
@@ -43,7 +39,8 @@ export class StoriesList {
             usersIds.push(comment.userId);
           })
         });
-        this.likeService.requestLikesInfo(commentsIds);
+        //noinspection TypeScriptUnresolvedFunction
+        this._like.requestLikesInfo(commentsIds);
         this.userService.requestIds(usersIds);
       });
   }
