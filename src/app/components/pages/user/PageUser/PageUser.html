@@ -29,7 +29,7 @@
       <a class="nav-item nav-link" [routerLink]="['UserInfo']"
          *ngIf="_user.isCurrentUser(user) || acl.isAdmin() || !settings['HIDE_SOCIAL_LINKS']">Инфо</a>
       <a class="nav-item nav-link router-link-active" [routerLink]="['UserStories']">Статьи</a>
-      <a class="nav-item nav-link" [routerLink]="['UserStats']" *ngIf="acl.can('super')">Баллы</a>
+      <a class="nav-item nav-link" [routerLink]="['UserStats']" *ngIf="_user.isCurrentUser(user) || acl.can('super')">Баллы</a>
     </div>
   </nav>
 
