@@ -7,14 +7,16 @@
       <th>Сумма</th>
       <th>Оператор</th>
       <th>Дата</th>
+      <th>Комментарий</th>
       </thead>
       <tbody>
       <tr *ngFor="let t of transactions">
         <td>{{(user.id === t.toId) ? t.amount : -t.amount}}</td>
         <td>
-          <user-link [id]="t.operatorId" *ngIf="t.operatorId != '0' "></user-link>
+          <user-link [id]="t.operatorId" [stats]="false" *ngIf="t.operatorId != '0' "></user-link>
         </td>
         <td>{{t.created | amDateFormat: 'LL'}}</td>
+        <td></td>
       </tr>
       </tbody>
     </table>
