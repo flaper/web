@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {AUTH_PROVIDERS, User, UserService, UserSettings} from "@flaper/angular";
-import {PageUser} from "../../pages/user/PageUser";
+import {PageUser} from "../../pages/user/PageUser/PageUser";
 let _keyBy = require('lodash/keyBy');
 
 class IdentityProvider {

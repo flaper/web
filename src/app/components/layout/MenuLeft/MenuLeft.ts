@@ -11,6 +11,7 @@ export class MenuLeft {
   items = [
     {label: 'Баллы', route: ['/Story', {slug: 'Баллы'}], iconClass: 'fa fa-money'},
     {label: 'Правила', route: ['/Story', {slug: 'Правила'}], iconClass: 'fa fa-info'},
+    {label: 'Флаперы', route: ['/Users'], iconClass: 'fa fa-users'},
     {label: 'О проекте', route: ['/Story', {slug: 'Флапер'}], iconClass: 'fa fa-info-circle'}
   ];
 

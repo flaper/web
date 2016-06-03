@@ -1,0 +1,31 @@
+<div class="container-fluid">
+  <h1 class="text-xs-center">Флаперы</h1>
+
+  <div>
+    <input class="form-control" placeholder="Фильтр" (keyup)="onChange($event)" auto-focus-it>
+  </div>
+  <div class="table-responsive">
+    <table class="table table-sm table-bordered table-striped">
+      <thead>
+      <tr>
+        <th></th>
+        <th>
+          Имя
+        </th>
+        <th><i class="fa fa-book"></i> Статей</th>
+        <th><i class="fa fa-thumbs-o-up"></i> Лайков</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let user of users">
+        <td class="td-avatar"><img src="{{user.photo}}"></td>
+        <td>
+          <a [routerLink]="['/User', {id:user.id}]">{{user.displayName}}</a>
+        </td>
+        <td>{{user.storiesNumber}}</td>
+        <td>{{user.likesNumber}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,6 +1,7 @@
 import {PageLogin} from './components/pages/login/PageLogin';
 import {PageWriteStory} from './components/pages/story/write/PageWriteStory';
-import {PageUser} from './components/pages/user/PageUser';
+import {PageUser} from './components/pages/user/PageUser/PageUser';
+import {PageUsers} from './components/pages/user/PageUsers/PageUsers';
 import {PageStory} from "./components/pages/story/read/PageStory";
 import {PageLastStories} from "./components/pages/home/PageLastStories/PageLastStories";
 import {PageTopStories} from "./components/pages/home/PageTopStories/PageTopStories";
@@ -19,6 +20,7 @@ export const ROUTES = [
   {path: '/s/:slug', component: PageStory, name: 'Story'},
   {path: '/s/:slug/edit', component: PageWriteStory, name: 'WriteStory'},
   {path: '/@/:id/...', component: PageUser, name: 'User'},
+  {path: '/p/flapers', component: PageUsers, name: 'Users'},
   {path: '/p/sync/:id', component: PageFlapSync, name: 'FlapSync'},
   {path: '/p/sync/:id/:action', component: PageFlapSync, name: 'FlapSync'},
   {
