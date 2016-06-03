@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {UserService} from "flaper";
+import {UserService} from "@flaper/angular";
 import {Config} from '../../config/Config';
 
 const SHOP_ID = Config.ym.shopId;

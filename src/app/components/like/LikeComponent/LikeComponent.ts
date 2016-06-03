@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {ILikable, UserService, LikeService} from "flaper";
+import {ILikable, UserService, LikeService} from "@flaper/angular";
 import {PageService} from "../../../services/helpers/PageService";
 
 @Component({

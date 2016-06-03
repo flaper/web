@@ -1,9 +1,9 @@
 import {Component} from '@angular/core';
 import {Title} from "@angular/platform-browser"
 import {RouteParams} from '@angular/router-deprecated';
-import {StoryService, UserService} from "flaper";
+import {StoryService, UserService} from "@flaper/angular";
 import {SimpleWrite} from "../../../story/write/SimpleWrite/SimpleWrite";
-import {Story} from "flaper";
+import {Story} from "@flaper/angular";
 import {PageService} from "../../../../services/helpers/PageService";
 
 @Component({

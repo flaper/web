@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {User} from "flaper";
+import {User} from "@flaper/angular";
 import {PageUser} from "../../pages/user/PageUser";
 import {StoriesAutoList} from "../../story/StoriesAutoList/StoriesAutoList";
 

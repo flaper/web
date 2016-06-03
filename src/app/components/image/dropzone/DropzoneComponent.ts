@@ -1,5 +1,5 @@
 import {Component, ElementRef, EventEmitter, Output} from '@angular/core';
-import {Image, ImageService, JwtToken} from "flaper";
+import {Image, ImageService, JwtToken} from "@flaper/angular";
 let Dropzone = require('dropzone');
 
 @Component({

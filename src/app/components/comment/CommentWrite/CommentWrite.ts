@@ -1,6 +1,6 @@
 import {Component, Input, Output, EventEmitter, ElementRef} from '@angular/core';
 import {FormBuilder, Control, ControlGroup, Validators} from '@angular/common';
-import {Comment, CommentService, UserService} from "flaper";
+import {Comment, CommentService, UserService} from "@flaper/angular";
 import {FormDraft} from "../../../services/draft/FormDraft";
 import {generateEvent} from "../../../libs/common/common";
 import * as Rx from 'rxjs';

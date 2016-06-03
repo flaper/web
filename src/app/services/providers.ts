@@ -1,4 +1,4 @@
-import {ALL_PROVIDERS} from 'flaper';
+import {ALL_PROVIDERS} from '@flaper/angular';
 import {PAGE_PROVIDER} from './helpers/PageService';
 import {METRIKA_PROVIDER} from './metrics/Metrika';
 import {PAYMENT_SERVICE_PROVIDER} from './payment/PaymentService';

@@ -1,5 +1,5 @@
 import {Component, Input, Output, EventEmitter, ElementRef} from '@angular/core';
-import {ACL} from "flaper";
+import {ACL} from "@flaper/angular";
 
 @Component({
   selector: 'post-actions',

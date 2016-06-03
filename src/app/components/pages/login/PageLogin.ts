@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {AUTH_PROVIDERS} from "flaper";
+import {AUTH_PROVIDERS} from "@flaper/angular";
 import {Title} from "@angular/platform-browser"
 
 @Component({

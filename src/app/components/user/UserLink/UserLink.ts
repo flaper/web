@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
-import {UserService} from "flaper";
-import {User} from "flaper";
+import {UserService} from "@flaper/angular";
+import {User} from "@flaper/angular";
 
 @Component({
   selector: 'user-link',

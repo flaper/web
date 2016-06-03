@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Router} from '@angular/router-deprecated';
 
-import {JwtToken} from "flaper";
+import {JwtToken} from "@flaper/angular";
 import {PageLogin} from "../../components/pages/login/PageLogin";
 const PAGE_DEFAULT = 'PAGE_DEFAULT';
 const PAGE_BEFORE_LOGIN = '_PAGE_BEFORE_LOGIN';

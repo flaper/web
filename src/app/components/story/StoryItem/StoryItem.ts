@@ -1,8 +1,8 @@
 import {Component, Input, Output, EventEmitter} from '@angular/core';
-import {Story} from "flaper";
+import {Story} from "@flaper/angular";
 import {UserLink} from "../../user/UserLink/UserLink";
 import {UserAvatar} from "../../user/UserAvatar/UserAvatar";
-import {UserService} from "flaper";
+import {UserService} from "@flaper/angular";
 import {PageService} from "../../../services/helpers/PageService";
 
 @Component({

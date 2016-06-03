@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FObject} from "flaper";
+import {FObject} from "@flaper/angular";
 import {ScreenService} from "../../../../services/helpers/ScreenService";
 import {LayoutObject} from "../LayoutObject/LayoutObject";
 

@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {RouteConfig, RouteParams} from '@angular/router-deprecated';
-import {ACL, AccountService, User, UserService, UserSettings} from "flaper";
+import {ACL, AccountService, User, UserService, UserSettings} from "@flaper/angular";
 import {StoriesAutoList} from "../../story/StoriesAutoList/StoriesAutoList";
 import {UserStories} from "../../user/UserStories/UserStories";
 import {UserInfo} from "../../user/UserInfo/UserInfo";

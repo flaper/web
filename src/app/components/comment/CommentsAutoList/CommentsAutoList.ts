@@ -1,8 +1,8 @@
 import {Component, Input} from '@angular/core';
-import {Comment, CommentService} from "flaper";
+import {Comment, CommentService} from "@flaper/angular";
 import {CommentsList} from "../CommentsList/CommentsList";
 import {CommentWrite} from "../CommentWrite/CommentWrite";
-import {UserService} from "flaper";
+import {UserService} from "@flaper/angular";
 
 @Component({
   selector: 'comments-auto-list',

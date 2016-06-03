@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
 import {Router, RouteConfig, RouteParams, RouteData} from '@angular/router-deprecated';
 import {Title} from "@angular/platform-browser"
-import {ObjectService} from "flaper";
-import {FObject} from "flaper";
+import {ObjectService} from "@flaper/angular";
+import {FObject} from "@flaper/angular";
 import {PageObjectMain} from "../PageObjectMain/PageObjectMain";
 import {PageManageRequest} from "../PageManageRequest/PageManageRequest";
 import {Metrika} from "../../../../services/metrics/Metrika";

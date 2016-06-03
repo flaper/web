@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {Comment} from "flaper";
+import {Comment} from "@flaper/angular";
 import {CommentComponent} from "../CommentComponent/CommentComponent";
 
 @Component({

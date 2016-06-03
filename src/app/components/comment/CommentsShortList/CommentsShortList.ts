@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {Comment, CommentService, UserService, ICommentable} from "flaper";
+import {Comment, CommentService, UserService, ICommentable} from "@flaper/angular";
 import {CommentsList} from "../CommentsList/CommentsList";
 import {CommentWrite} from "../CommentWrite/CommentWrite";
 

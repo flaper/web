@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {Router} from '@angular/router-deprecated';
-import {ACL, Story, StoryService, StoryBestService, ViewService} from "flaper";
+import {ACL, Story, StoryService, StoryBestService, ViewService} from "@flaper/angular";
 import * as moment from 'moment';
 import {UserLink} from "../../user/UserLink/UserLink";
 import {UserAvatar} from "../../user/UserAvatar/UserAvatar";

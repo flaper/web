@@ -1,5 +1,5 @@
 import {Component, ElementRef} from '@angular/core';
-import {AuthService, UserService} from "flaper";
+import {AuthService, UserService} from "@flaper/angular";
 import {PageService} from "../../../services/helpers/PageService";
 
 @Component({

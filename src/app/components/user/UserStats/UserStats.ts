@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
-import {User} from "flaper";
+import {User} from "@flaper/angular";
 import {PageUser} from "../../pages/user/PageUser";
-import {AccountService} from "flaper";
+import {AccountService} from "@flaper/angular";
 import {UserLink} from "../UserLink/UserLink";
 
 @Component({

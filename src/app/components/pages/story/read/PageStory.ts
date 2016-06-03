@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {RouteParams} from '@angular/router-deprecated'
-import {Story, StoryService} from "flaper";
+import {Story, StoryService} from "@flaper/angular";
 import {StoryComponent} from "../../../story/StoryComponent/StoryComponent";
 import {CommentsAutoList} from "../../../comment/CommentsAutoList/CommentsAutoList";
 import {Title} from "@angular/platform-browser"

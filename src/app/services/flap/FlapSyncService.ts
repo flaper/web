@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {ApiService} from 'flaper';
+import {ApiService} from '@flaper/angular';
 
 @Injectable()
 export class FlapSyncService {

@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {AUTH_PROVIDERS, User, UserService, UserSettings} from "flaper";
+import {AUTH_PROVIDERS, User, UserService, UserSettings} from "@flaper/angular";
 import {PageUser} from "../../pages/user/PageUser";
 let _keyBy = require('lodash/keyBy');
 

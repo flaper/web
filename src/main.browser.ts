@@ -1,7 +1,7 @@
 import {bootstrap} from '@angular/platform-browser-dynamic';
 import {API_BASE_URL, API_SERVER_URL} from './app/services/consts/Consts';
 import {Config} from './app/config/Config';
-import {Config as LibConfig} from 'flaper';
+import {Config as LibConfig} from '@flaper/angular';
 import {ComponentResolver} from '@angular/core';
 import {PageService} from "./app/services/helpers/PageService";
 
