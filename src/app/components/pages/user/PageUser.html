@@ -17,6 +17,9 @@
       </div>
       <div *ngIf="amount !== null">
         <span class="text-muted">Баллов:</span> {{amount | fixed}}
+        <button class="btn btn-sm btn-link btn-withdraw" *ngIf="acl.can('super')" (click)="withdraw()"><i class="fa fa-credit-card"></i>
+          <span>Списать</span>
+        </button>
       </div>
     </div>
   </div>
@@ -24,9 +27,9 @@
   <nav class="navbar navbar-light bg-faded" *ngIf="settings">
     <div class="nav navbar-nav">
       <a class="nav-item nav-link" [routerLink]="['UserInfo']"
-         *ngIf="userService.isCurrentUser(user) || acl.isAdmin() || !settings['HIDE_SOCIAL_LINKS']">Инфо</a>
+         *ngIf="_user.isCurrentUser(user) || acl.isAdmin() || !settings['HIDE_SOCIAL_LINKS']">Инфо</a>
       <a class="nav-item nav-link router-link-active" [routerLink]="['UserStories']">Статьи</a>
-      <a class="nav-item nav-link" [routerLink]="['UserStats']" *ngIf="false">Баллы</a>
+      <a class="nav-item nav-link" [routerLink]="['UserStats']" *ngIf="acl.can('super')">Баллы</a>
     </div>
   </nav>
 

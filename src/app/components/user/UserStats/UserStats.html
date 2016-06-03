@@ -1,2 +1,22 @@
-<h2>Статистика</h2>
-<div>Еще нет данных.</div>
+<h2>Операции</h2>
+<div *ngIf="transactions !== null">
+  <div class="alert alert-info" *ngIf="transactions.length === 0">Еще нет операций</div>
+  <div class="table-responsive" *ngIf="transactions.length">
+    <table class="table table-bordered table-striped">
+      <thead>
+      <th>Сумма</th>
+      <th>Оператор</th>
+      <th>Дата</th>
+      </thead>
+      <tbody>
+      <tr *ngFor="let t of transactions">
+        <td>{{(user.id === t.toId) ? t.amount : -t.amount}}</td>
+        <td>
+          <user-link [userId]="t.operatorId" *ngIf="t.operatorId != '0' "></user-link>
+        </td>
+        <td>{{t.created | amDateFormat: 'LL'}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

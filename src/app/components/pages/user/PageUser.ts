@@ -15,7 +15,7 @@ import {Title} from "@angular/platform-browser"
 @RouteConfig([
   {path: '/', name: 'UserStories', component: UserStories, useAsDefault: true},
   {path: '/info', name: 'UserInfo', component: UserInfo},
-  {path: '/stats', name: 'UserStats', component: UserStats}
+  {path: '/stats', name: 'UserStats', component: UserStats},
 ])
 export class PageUser {
   static User:User; // to access from child routes
@@ -23,22 +23,34 @@ export class PageUser {
   amount:number = null;
   settings:Array<any> = null;
 
-  constructor(routeParams:RouteParams, private userService:UserService, private accountService:AccountService,
+  constructor(routeParams:RouteParams, private _user:UserService, private _account:AccountService,
               private userSettings:UserSettings, private acl:ACL, ts:Title) {
     let id = routeParams.params['id'];
     //noinspection TypeScriptUnresolvedFunction
-    this.userService.getById(id).subscribe(user => {
+    this._user.getById(id).subscribe(user => {
       ts.setTitle(user.displayName);
       this.user = user;
       PageUser.User = user;
-      if (this.userService.currentUser) {
-        this.accountService.getAmountById(user.id)
-          .subscribe(amount => this.amount = amount);
-      }
+      this.updateAmount();
       this.userSettings.getByUserId(id)
         .subscribe(settings => {
           this.settings = settings
         })
     });
   }
+
+  updateAmount() {
+    if (this._user.currentUser) {
+      this._account.getAmountById(this.user.id)
+        .subscribe(amount => this.amount = amount);
+    }
+  }
+
+  withdraw() {
+    let amount = +prompt('Сколько баллов списать?');
+    if (amount && amount > 0) {
+      this._account.withdraw(this.user.id, amount).subscribe(() => this.updateAmount())
+    }
+  }
+
 }

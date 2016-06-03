@@ -39,3 +39,12 @@ nav {
     margin-right: 0.2rem;
   }
 }
+
+.btn-withdraw {
+  text-decoration: none;
+  &:hover {
+    span {
+      text-decoration: underline;
+    }
+  }
+}
