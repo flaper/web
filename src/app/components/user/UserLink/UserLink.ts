@@ -8,7 +8,7 @@ import {User} from "@flaper/angular";
 })
 export class UserLink {
   @Input()
-  userId:string;
+  id:string;
 
   @Input()
   hiddenStatsXs:boolean = false;
@@ -20,6 +20,6 @@ export class UserLink {
 
   ngOnInit() {
     //noinspection TypeScriptUnresolvedFunction
-    this.userService.getById(this.userId).subscribe(user => this.user = user);
+    this.userService.getById(this.id).subscribe(user => this.user = user);
   }
 }

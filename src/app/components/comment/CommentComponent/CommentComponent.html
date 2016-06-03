@@ -2,11 +2,11 @@
   <div class="comment-header">
     <div class="media">
       <div class="media-left">
-        <user-avatar [userId]="comment.userId" [size]="avatarSize"></user-avatar>
+        <user-avatar [id]="comment.userId" [size]="avatarSize"></user-avatar>
       </div>
       <div class="media-body">
         <div>
-          <user-link [userId]="comment.userId" hiddenStatsXs="true"></user-link>
+          <user-link [id]="comment.userId" hiddenStatsXs="true"></user-link>
         </div>
         <div class="time">{{comment.created | amTimeAgo}}</div>
       </div>

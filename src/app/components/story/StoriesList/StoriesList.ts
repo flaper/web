@@ -25,7 +25,7 @@ export class StoriesList {
   }
 
   ngOnInit() {
-    let usersIds = this.stories.map(story => story.userId);
+    let usersIds = this.stories.map(story => story.id);
     this.stories.forEach(story => this.commentItEvents[story.id] = new ReplaySubject<boolean>(1));
     this.userService.requestIds(usersIds);
     this.commentService.last(this.stories.map(story => story.id))
@@ -36,7 +36,7 @@ export class StoriesList {
         _forOwn(groups, group => {
           group.forEach(comment => {
             commentsIds.push(comment.id);
-            usersIds.push(comment.userId);
+            usersIds.push(comment.id);
           })
         });
         //noinspection TypeScriptUnresolvedFunction

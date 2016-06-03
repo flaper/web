@@ -13,7 +13,7 @@ export class UserAvatar {
   };
 
   @Input()
-  userId:string;
+  id:string;
 
   @Input()
   size:string;
@@ -27,7 +27,8 @@ export class UserAvatar {
 
   ngOnInit() {
     this.setSizePx();
-    this.userService.getById(this.userId).subscribe(user => this.user = user);
+    //noinspection TypeScriptUnresolvedFunction
+    this.userService.getById(this.id).subscribe(user => this.user = user);
   }
 
   setSizePx() {

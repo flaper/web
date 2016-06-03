@@ -21,7 +21,7 @@ export class PageStory {
       this.story = story;
       ts.setTitle(story.title);
       Metrika.setParam('storyId', story.id);
-      Metrika.setParam('authorId', story.userId);
+      Metrika.setParam('authorId', story.id);
     });
   }
 }
