@@ -32,6 +32,10 @@ declare var Waypoint:{
   Inview: any
 };
 
+declare module '@flaper/consts' {
+  export const TRANSACTIONS_TYPES:any;
+}
+
 declare var ls:{
   setItem: any,
   getItem: any,

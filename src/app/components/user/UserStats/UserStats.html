@@ -16,7 +16,7 @@
           <user-link [id]="t.operatorId" [stats]="false" *ngIf="t.operatorId != '0' "></user-link>
         </td>
         <td>{{t.created | amDateFormat: 'LL'}}</td>
-        <td></td>
+        <td>{{hint(t.type)}}</td>
       </tr>
       </tbody>
     </table>
