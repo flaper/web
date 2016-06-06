@@ -1,5 +1,5 @@
 import {Component, ElementRef} from '@angular/core';
-import {AuthService, UserService} from "@flaper/angular";
+import {AuthService, ObjectService, UserService} from "@flaper/angular";
 import {PageService} from "../../../services/helpers/PageService";
 let _get = require('lodash/get');
 
@@ -16,7 +16,7 @@ export class MenuLeft {
     {label: 'О проекте', route: ['/Story', {slug: 'Флапер'}], iconClass: 'fa fa-info-circle'}
   ];
 
-  constructor(private _user:UserService, private elementRef:ElementRef,
+  constructor(private _user:UserService, private elementRef:ElementRef, private _object: ObjectService,
               private pageService:PageService, private authService:AuthService) {
   }
 
