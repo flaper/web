@@ -6,6 +6,7 @@ import {FObject} from "@flaper/angular";
 import {PageObjectMain} from "../PageObjectMain/PageObjectMain";
 import {PageManageRequest} from "../PageManageRequest/PageManageRequest";
 import {Metrika} from "../../../../services/metrics/Metrika";
+import {PageManage} from "../PageManage/PageManage";
 
 @Component({
   selector: 'lyout-object',
@@ -14,6 +15,7 @@ import {Metrika} from "../../../../services/metrics/Metrika";
 })
 @RouteConfig([
   {path: '/', name: 'Main', component: PageObjectMain, useAsDefault: true},
+  {path: '/manage', name: 'Manage', component: PageManage},
   {path: '/request', name: 'ManageRequest', component: PageManageRequest},
 ])
 export class LayoutObject {
