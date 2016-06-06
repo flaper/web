@@ -2,3 +2,6 @@
 
 </stories-list>
 <load-more *ngIf="lastLength === storyService.LIMIT" [loading]="loading" (loadMore)="loadMore()"></load-more>
+<div class="alert alert-info" *ngIf="storiesGroup.length === 1 && storiesGroup[0].length === 0">
+  Еще нет статей.
+</div>
