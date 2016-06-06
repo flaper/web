@@ -21,7 +21,7 @@ export class PageObjectMain {
   getManageLink() {
     let ifOwner = false;
     if (this._user.currentUser) {
-      ifOwner = this._user.currentUser.extra.getObjects().includes(this.obj.id);
+      ifOwner = this._user.currentUser.extra.getObjects().indexOf(this.obj.id) > -1;
     }
     return [ifOwner ? 'Manage' : 'ManageRequest'];
   }
