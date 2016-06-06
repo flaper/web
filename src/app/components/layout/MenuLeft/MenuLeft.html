@@ -7,13 +7,24 @@
           <small>Флапер</small>
         </a>
         <a class="btn btn-primary btn-sm" [routerLink]="['/CreateStory']">Создать статью</a>
-        <img class="pull-xs-right my-avatar" src="{{userService.currentUser.photo}}"
-             [routerLink]="['/User', {id:userService.currentUser.id}]">
+        <img class="pull-xs-right my-avatar" src="{{_user.currentUser.photo}}"
+             [routerLink]="['/User', {id:_user.currentUser.id}]">
     </span>
   </div>
   <ul class="nav nav-pills nav-stacked mobile-collapsed" id="ml-items">
+    <li class="nav-item" *ngIf="_user.currentUser.extra.hasPremiumSupport()">
+      <a class="nav-link" [routerLink]="['/PremiumSupport']">
+      <span class="icon-container text-xs-center">
+        <i class="fa fa-question">
+        </i>
+      </span>
+      <span class="label">
+         Премиум Поддержка
+      </span>
+      </a>
+    </li>
     <li class="nav-item">
-      <a class="nav-link" [routerLink]="['/User', {id:userService.currentUser.id}]">
+      <a class="nav-link" [routerLink]="['/User', {id:_user.currentUser.id}]">
       <span class="icon-container text-xs-center">
         <i class="fa fa-user">
         </i>

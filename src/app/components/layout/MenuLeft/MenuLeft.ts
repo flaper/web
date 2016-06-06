@@ -1,6 +1,7 @@
 import {Component, ElementRef} from '@angular/core';
 import {AuthService, UserService} from "@flaper/angular";
 import {PageService} from "../../../services/helpers/PageService";
+let _get = require('lodash/get');
 
 @Component({
   selector: 'menu-left',
@@ -15,7 +16,7 @@ export class MenuLeft {
     {label: 'О проекте', route: ['/Story', {slug: 'Флапер'}], iconClass: 'fa fa-info-circle'}
   ];
 
-  constructor(private userService:UserService, private elementRef:ElementRef,
+  constructor(private _user:UserService, private elementRef:ElementRef,
               private pageService:PageService, private authService:AuthService) {
   }
 
@@ -47,5 +48,10 @@ export class MenuLeft {
 
   logout() {
     this.authService.logout();
+  }
+
+  hasPremiumSupport(){
+    let premiumSupport = _get(this._user.currentUser, 'extra.premiumSupport', null);
+    return premiumSupport && premiumSupport > (new Date().toISOString());
   }
 }

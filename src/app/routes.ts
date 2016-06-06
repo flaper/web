@@ -9,6 +9,7 @@ import {PageTopStoriesLast} from "./components/pages/home/PageTopStoriesLast/Pag
 import {PageNews} from "./components/pages/home/PageNews/PageNews";
 import {PageFlapSync} from "./components/pages/flap/PageFlapSync/PageFlapSync";
 import {LayoutObject} from "./components/pages/object/LayoutObject/LayoutObject";
+import {PagePremiumSupport} from "./components/pages/support/PagePremiumSupport/PagePremiumSupport";
 
 export const ROUTES = [
   {path: '/', component: PageLastStories, name: 'Home'},
@@ -21,6 +22,7 @@ export const ROUTES = [
   {path: '/s/:slug/edit', component: PageWriteStory, name: 'WriteStory'},
   {path: '/@/:id/...', component: PageUser, name: 'User'},
   {path: '/p/flapers', component: PageUsers, name: 'Users'},
+  {path: '/p/support', component: PagePremiumSupport, name: 'PremiumSupport'},
   {path: '/p/sync/:id', component: PageFlapSync, name: 'FlapSync'},
   {path: '/p/sync/:id/:action', component: PageFlapSync, name: 'FlapSync'},
   {
