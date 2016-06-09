@@ -58,7 +58,8 @@ export class PageService {
   }
 
   private static _navigateAfterLogin = null;
-  public static NavigateAfterLogin = () => {
+
+  public static NavigateAfterLogin() {
     if (PageService._navigateAfterLogin) {
       PageService._navigateAfterLogin();
     }
