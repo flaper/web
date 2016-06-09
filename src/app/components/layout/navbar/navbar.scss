@@ -1,6 +1,7 @@
 @import "../../../../css/variables";
 
 .navbar {
+  padding-left: 3rem;
   background-color: $brand-secondary;
   border-bottom: 1px solid lighten($brand-secondary, 10);
   &.has-user {

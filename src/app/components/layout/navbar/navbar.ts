@@ -1,9 +1,11 @@
 import {Component} from '@angular/core';
 import {AuthService, UserService} from "@flaper/angular";
 import {PageService} from "../../../services/helpers/PageService";
+import {Github} from "./github/github";
 
 @Component({
   selector: 'navbar',
+  directives: [Github],
   styles: [require('./navbar.scss')],
   template: require('./navbar.html')
 })
