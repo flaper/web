@@ -7,7 +7,8 @@ import {News} from "../PageNews/Content/News";
 @Component({
   selector: 'layout-home',
   directives: [LastStories, TopStories, News],
-  template: require('./LayoutHome.html')
+  template: require('./LayoutHome.html'),
+  styles: [require('./LayoutHome.scss')]
 })
 export class LayoutHome {
   @Input()
