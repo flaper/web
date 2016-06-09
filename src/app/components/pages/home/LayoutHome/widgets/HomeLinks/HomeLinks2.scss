@@ -1,0 +1,22 @@
+:host {
+  @media (max-width: 50rem) {
+    display: none;
+  }
+  margin-top: 1rem;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  a {
+    text-decoration: none;
+    white-space: nowrap;
+    &:hover {
+      span {
+        text-decoration: underline;
+      }
+    }
+  }
+}

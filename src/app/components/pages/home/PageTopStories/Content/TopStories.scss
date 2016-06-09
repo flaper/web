@@ -4,6 +4,7 @@
   @media (min-width: map-get($grid-breakpoints, 'md')) {
     display: flex;
     flex-direction: row-reverse;
+    justify-content: center;
     .right-column {
       width: 300px;
       flex-shrink: 0;
@@ -27,6 +28,7 @@
     justify-content: center;
   }
 }
-.left-column{
-  min-width: 0;//fix word-wrapping for flex child
+
+.left-column {
+  min-width: 0; //fix word-wrapping for flex child
 }

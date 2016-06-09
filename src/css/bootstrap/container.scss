@@ -9,3 +9,7 @@ $container-max-widths-xl: (
   @include make-container();
   @include make-container-max-widths($max-widths: $container-max-widths-xl);
 }
+
+.container-text {
+  max-width: 60rem;
+}
