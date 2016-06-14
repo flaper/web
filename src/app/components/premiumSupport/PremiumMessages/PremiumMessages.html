@@ -8,6 +8,8 @@
       <div class="media-body">
         <div>
           <user-link [id]="m.fromId" hiddenStatsXs="true" *ngIf="m.toId !== m.dialog"></user-link>
+          <span class="pull-xs-right"><i class="fa fa-times" *ngIf="acl.isSuper() || m.fromId === _user.currentUserId"
+                                         (click)="removeMessage(m)"></i></span>
           <strong *ngIf="m.toId === m.dialog">Служба Поддержки</strong>
         </div>
         <div class="time">{{m.created | amTimeAgo}}</div>
