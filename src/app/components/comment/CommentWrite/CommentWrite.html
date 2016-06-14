@@ -1,4 +1,4 @@
-<form class="form" [ngFormModel]="form" (submit)="onSubmit($event)" [class.compact]="compact" [class.active]="active">
+<form class="form" [ngFormModel]="form" (submit)="onSubmit()" [class.compact]="compact" [class.active]="active">
   <div class="input-container">
     <div class="user-avatar hidden-xs-down">
       <img src="{{userService.currentUser.photo}}" class="img-35">

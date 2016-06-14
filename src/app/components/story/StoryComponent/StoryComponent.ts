@@ -2,14 +2,12 @@ import {Component, Input} from '@angular/core';
 import {Router} from '@angular/router-deprecated';
 import {ACL, Story, StoryService, StoryBestService, ViewService} from "@flaper/angular";
 import * as moment from 'moment';
-import {UserLink} from "../../user/UserLink/UserLink";
-import {UserAvatar} from "../../user/UserAvatar/UserAvatar";
 import {PostActions} from "../../post/PostActions/PostActions";
 import {PageService} from "../../../services/helpers/PageService";
 
 @Component({
   selector: 'story',
-  directives: [UserLink, UserAvatar, PostActions],
+  directives: [PostActions],
   styles: [require('./StoryComponent.scss')],
   template: require('./StoryComponent.html')
 })

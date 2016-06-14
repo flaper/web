@@ -1,17 +1,19 @@
-<div class="container">
+<div class="premium-support">
   <h2 class="text-xs-center">Премиум Поддержка</h2>
 
   <div>
     Премиум поддержка доступна до <strong>{{_user.currentUser.extra.premiumSupport | amDateFormat: 'LL'}}</strong>
   </div>
-  <br>
-  <div class="alert alert-info text-xs-center">
-    <div>
-      Скоро. Запуск <strong>13 июня 2016</strong>.
-    </div>
+  <form class="form" [ngFormModel]="form">
+    <fieldset class="form-group">
+      <textarea ngControl="message" class="form-control" placeholder="Ваш вопрос" rows="3" autosize auto-focus-it>
+      </textarea>
+    </fieldset>
+    <button type="submit" (click)="onSubmit()" class="btn btn-primary btn-sm">Отправить</button>
+  </form>
 
-    <div>
-      На данный момент пишите вопросы на email - <a href="mailto:help@flaper.org">help@flaper.org</a>
-    </div>
+  <div *ngIf="messages && messages.length > 0">
+    <hr>
+    <premium-messages [messages]="messages"></premium-messages>
   </div>
 </div>

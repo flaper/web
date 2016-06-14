@@ -1,13 +1,12 @@
 import {Component, Input} from '@angular/core';
 import {ACL, Comment, CommentService} from "@flaper/angular";
-import {UserLink} from "../../user/UserLink/UserLink";
 import {UserAvatar} from "../../user/UserAvatar/UserAvatar";
 import {PostActions} from "../../post/PostActions/PostActions";
 import {CommentWrite} from "../CommentWrite/CommentWrite";
 
 @Component({
   selector: 'comment-component',
-  directives: [UserLink, UserAvatar, PostActions, CommentWrite],
+  directives: [PostActions, CommentWrite],
   styles: [require('./CommentComponent.scss')],
   template: require('./CommentComponent.html')
 })

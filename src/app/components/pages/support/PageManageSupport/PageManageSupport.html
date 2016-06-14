@@ -1,0 +1,35 @@
+<div class="manage-support">
+  <div class="dialogs">
+    <h3 class="text-md-center">Диалоги:</h3>
+
+    <div *ngIf="dialogs">
+      <div *ngFor="let m of dialogs" class="dialog" (click)="selectDialog(m.dialog)"
+           [class.active]="activeDialog === m.dialog">
+        <div class="media">
+          <div class="media-left">
+            <user-avatar [id]="m.fromId" [size]="avatarSize" *ngIf="m.fromId"></user-avatar>
+          </div>
+          <div class="media-body">
+            <div>
+              <div>
+                <user-link [id]="m.fromId" hiddenStatsXs="true" *ngIf="m.fromId" [stats]="false"></user-link>
+              </div>
+              <div class="time">{{m.created | amTimeAgo}}</div>
+            </div>
+            {{m.message.slice(0, 70)}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="selected-dialog">
+    <form class="form" [ngFormModel]="form" *ngIf="form">
+      <fieldset class="form-group">
+      <textarea ngControl="message" class="form-control" placeholder="Сообщение" rows="3" autosize auto-focus-it>
+      </textarea>
+      </fieldset>
+      <button type="submit" (click)="onSubmit()" class="btn btn-primary btn-sm">Отправить</button>
+    </form>
+    <premium-messages [messages]="messages"></premium-messages>
+  </div>
+</div>

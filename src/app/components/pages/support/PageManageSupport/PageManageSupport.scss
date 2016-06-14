@@ -1,0 +1,53 @@
+@import "../../../../../css/variables";
+
+$local-gray: lighten($gray-light, 10%);
+:host {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.manage-support {
+  display: flex;
+  height: 100%;
+}
+
+.dialogs {
+  font-size: 0.9rem;
+  width: 25rem;
+  border-right: 1px solid $local-gray;
+  border-bottom: 1px solid $local-gray;
+  h3 {
+    margin-bottom: 0;
+  }
+}
+
+.selected-dialog {
+  width: 50rem;
+  border-right: 1px solid $local-gray;
+  border-bottom: 1px solid $local-gray;
+  overflow-y: scroll;
+}
+
+.dialog {
+  cursor: pointer;
+  padding: 0.5rem;
+  border-bottom: 1px solid $local-gray;
+  &:first-child {
+    border-top: 1px solid $local-gray;
+  }
+  .media {
+    margin-bottom: 0;
+  }
+  &.active {
+    background-color: $brand-secondary-light;
+  }
+  &:not(.active):hover {
+    background-color: $gray-lightest;
+  }
+}
+
+.form {
+  padding: 0.5rem;
+}

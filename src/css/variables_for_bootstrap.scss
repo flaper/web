@@ -3,6 +3,7 @@ $enable-flex: true;
 
 $brand-primary: lighten(#DC4E00, 10%);
 $brand-secondary: rgb(38, 174, 147);
+$brand-secondary-light: lighten(desaturate($brand-secondary, 20%), 20%);
 //$brand-secondary: rgb(23, 192, 217);
 
 $link-color: #0087cf;

@@ -3,7 +3,7 @@
     <span class="pull-xs-right hidden-xs-down" (click)="toggle()"><i class="fa fa-bars"></i></span>
     <span class="hidden-sm-up">
         <span (click)="toggleSm()"><i class="fa fa-bars"></i></span>
-        <a class="navbar-brand" (click)="pageService.navigateToDefault()">
+        <a class="navbar-brand" (click)="_page.navigateToDefault()">
           <small>Флапер</small>
         </a>
         <a class="btn btn-primary btn-sm" [routerLink]="['/CreateStory']">Создать статью</a>
@@ -12,6 +12,17 @@
     </span>
   </div>
   <ul class="nav nav-pills nav-stacked mobile-collapsed" id="ml-items">
+    <li class="nav-item" *ngIf="acl.isSales()">
+      <a class="nav-link" [routerLink]="['/ManagePremiumSupport']">
+      <span class="icon-container text-xs-center">
+        <i class="fa fa-question-circle">
+        </i>
+      </span>
+      <span class="label">
+         Админка Поддержки
+      </span>
+      </a>
+    </li>
     <li class="nav-item" *ngIf="_user.currentUser.extra.hasPremiumSupport()">
       <a class="nav-link" [routerLink]="['/PremiumSupport']">
       <span class="icon-container text-xs-center">

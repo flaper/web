@@ -1,0 +1,20 @@
+<div class="messages" *ngIf="messages && messages.length > 0">
+  <div *ngFor="let m of messages" class="message">
+    <div class="media">
+      <div class="media-left">
+        <user-avatar [id]="m.fromId" [size]="avatarSize" *ngIf="m.toId !== m.dialog"></user-avatar>
+        <img class="support-avatar" src="/assets/img/user/favicon-96x96.png" *ngIf="m.toId === m.dialog"/>
+      </div>
+      <div class="media-body">
+        <div>
+          <user-link [id]="m.fromId" hiddenStatsXs="true" *ngIf="m.toId !== m.dialog"></user-link>
+          <strong *ngIf="m.toId === m.dialog">Служба Поддержки</strong>
+        </div>
+        <div class="time">{{m.created | amTimeAgo}}</div>
+      </div>
+    </div>
+    <div [innerHTML]="m.messageHTML" class="support-message-content">
+
+    </div>
+  </div>
+</div>

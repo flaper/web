@@ -3,10 +3,8 @@ import {User} from "@flaper/angular";
 import {PageUser} from "../../pages/user/PageUser/PageUser";
 import {AccountService} from "@flaper/angular";
 import {TRANSACTIONS_TYPES} from '@flaper/consts';
-import {UserLink} from "../UserLink/UserLink";
 
 @Component({
-  directives: [UserLink],
   selector: 'page-user-stats',
   template: require('./UserStats.html')
 })

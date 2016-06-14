@@ -1,0 +1,24 @@
+@import "../../../../../css/variables";
+
+:host {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.premium-support {
+  display: block;
+  height: 100%;
+  max-width: 50rem;
+  margin: 0 auto;
+  padding: 1rem;
+  border: 1px solid lighten($gray-light, 10%);
+  border-top: 0;
+  overflow-y: scroll;
+}
+
+textarea {
+  margin-top: 1rem;
+}
