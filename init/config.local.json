@@ -2,5 +2,6 @@
   "api": {
     "host": "api.flaper.org",
     "port": "80"
-  }
+  },
+  "limit": 5
 }
