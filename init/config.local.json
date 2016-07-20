@@ -1,0 +1,6 @@
+{
+  "api": {
+    "host": "api.flaper.org",
+    "port": "80"
+  }
+}
