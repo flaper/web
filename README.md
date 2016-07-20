@@ -12,9 +12,8 @@ install typescript typings
 `typings install`
 
 ##Config
-Adjust  
-[src/app/config/config.local.json](src/app/config/config.local.json)
-
+Create file `src/app/config/config.local.json` with `{}` or adjust if needed
+[src/app/config/config.json](src/app/config/config.json)
 ##Dev server
 
 start the server  
