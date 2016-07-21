@@ -22,7 +22,7 @@ export class SimpleWrite {
   form:ControlGroup;
   error:string;
 
-  constructor(private storyService:StoryService, private fb:FormBuilder, private router:Router,
+  constructor(private _story:StoryService, private fb:FormBuilder, private router:Router,
               private elementRef:ElementRef, private _location:Location) {
   }
 
@@ -56,7 +56,7 @@ export class SimpleWrite {
     if (this.form.valid) {
       let data = this.getStoryData();
       this.error = null;
-      this.storyService.save(data).subscribe((story) => {
+      this._story.save(data).subscribe((story) => {
         FormDraft.remove(this.DRAFT_KEY);
         this.router.navigate(['/Story', {slug: story.slug}])
       }, (e) => {
@@ -83,6 +83,7 @@ export class SimpleWrite {
 
   getStoryData() {
     let data = this.form.value;
+    data.type = 'article';
     if (this.story) {
       data.id = this.story.id;
     }
