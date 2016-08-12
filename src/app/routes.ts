@@ -11,6 +11,7 @@ import {PageFlapSync} from "./components/pages/flap/PageFlapSync/PageFlapSync";
 import {LayoutObject} from "./components/pages/object/LayoutObject/LayoutObject";
 import {PagePremiumSupport} from "./components/pages/support/PagePremiumSupport/PagePremiumSupport";
 import {PageManageSupport} from "./components/pages/support/PageManageSupport/PageManageSupport";
+import {PageNotFound} from "./components/pages/notFound/PageNotFound";
 
 export const ROUTES = [
   {path: '/', component: PageLastStories, name: 'Home'},
@@ -35,5 +36,7 @@ export const ROUTES = [
     path: '/%D0%BC%D0%B5%D1%81%D1%82%D0%B0/:region/:slug/...', component: LayoutObject, name: 'LayoutObjectPlace',
     data: {mainDomain: 'места'}
   }, //места
-  {path: '/:mainDomain/:slug/...', component: LayoutObject, name: 'LayoutObject'}
+  {path: '/:mainDomain/:slug/...', component: LayoutObject, name: 'LayoutObject'},
+  {path: 'not-found', component: PageNotFound, name: 'PageNotFound'},
+  {path: '**', redirectTo: ['PageNotFound']}
 ];
