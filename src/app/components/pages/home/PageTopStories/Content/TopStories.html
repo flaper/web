@@ -10,7 +10,7 @@
       </ul>
     </div>
     <div class="text-xs-right">
-      <a [routerLink]="['/Story', {slug: 'Баллы'}]">Подробнее...</a>
+      <a [routerLink]="['/s', 'Баллы']">Подробнее...</a>
     </div>
   </div>
   <div *ngIf="winners && winners.length && stories" class="winners">
@@ -19,7 +19,7 @@
     <div *ngFor="let winner of winners">
       <div *ngIf="stories[winner.id]">
         <strong>{{winner.place}}. </strong>
-        <a [routerLink]="['/Story', {slug: stories[winner.id].slug}]">
+        <a [routerLink]="['/s', stories[winner.id].slug]">
           <span>{{stories[winner.id].title}}</span>
         </a>
       </div>

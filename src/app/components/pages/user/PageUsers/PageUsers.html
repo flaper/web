@@ -20,7 +20,7 @@
       <tr *ngFor="let user of users">
         <td class="td-avatar"><img src="{{user.photo}}"></td>
         <td>
-          <a [routerLink]="['/User', {id:user.id}]">{{user.displayName}}</a>
+          <a [routerLink]="['/u', user.id]">{{user.displayName}}</a>
         </td>
         <td>{{user.storiesNumber}}</td>
         <td>{{user.likesNumber}}</td>

@@ -8,12 +8,12 @@
       </div>
     </div>
   </div>
-  <a [routerLink]="['/Story', {slug: story.slug}]"><h3>{{story.title}}</h3></a>
+  <a [routerLink]="['/s', story.slug]"><h3>{{story.title}}</h3></a>
 
   <div class="short-inline" *ngIf="story.shortInline" [innerHtml]="story.shortInline">
   </div>
   <div class="read-more">
-    <a [routerLink]="['/Story', {slug: story.slug}]">Читать далее...</a>
+    <a [routerLink]="['/s', story.slug]">Читать далее...</a>
   </div>
 </div>
 <div class="story-item-footer">

@@ -4,7 +4,7 @@
 
 import {provide, PLATFORM_DIRECTIVES} from '@angular/core';
 
-import {ROUTER_DIRECTIVES} from '@angular/router-deprecated';
+import {ROUTER_DIRECTIVES} from '@angular/router';
 import {Autosize} from "../../app/directives/Autosize/Autosize";
 import {LikeComponent} from "../../app/components/like/LikeComponent/LikeComponent";
 import {AutoFocusIt, ObjectLink} from "@flaper/angular";

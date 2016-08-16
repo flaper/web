@@ -1,2 +1,4 @@
-<stories-auto-list [where]="{userId: user.id}">
-</stories-auto-list>
+<div *ngIf="user">
+  <stories-auto-list [where]="{userId: user.id}">
+  </stories-auto-list>
+</div>

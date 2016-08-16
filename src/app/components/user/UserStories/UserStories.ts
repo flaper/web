@@ -12,6 +12,8 @@ export class UserStories {
   user:User;
 
   constructor() {
-    this.user = PageUser.User;
+    PageUser.UserObservable.subscribe(user=> {
+      this.user = user;
+    });
   }
 }

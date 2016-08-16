@@ -10,9 +10,9 @@ let _get = require('lodash/get');
 })
 export class MenuLeft {
   items = [
-    {label: 'Баллы', route: ['/Story', {slug: 'Баллы'}], iconClass: 'fa fa-money'},
-    {label: 'Правила', route: ['/Story', {slug: 'Правила'}], iconClass: 'fa fa-info'},
-    {label: 'О проекте', route: ['/Story', {slug: 'Флапер'}], iconClass: 'fa fa-info-circle'}
+    {label: 'Баллы', route: ['/s', 'Баллы'], iconClass: 'fa fa-money'},
+    {label: 'Правила', route: ['/s', 'Правила'], iconClass: 'fa fa-info'},
+    {label: 'О проекте', route: ['/s', 'Флапер'], iconClass: 'fa fa-info-circle'}
   ];
 
   constructor(private _user:UserService, private acl:ACL, private elementRef:ElementRef, private _object:ObjectService,

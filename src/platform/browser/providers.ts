@@ -6,7 +6,7 @@ import {FORM_PROVIDERS, LocationStrategy, PathLocationStrategy} from '@angular/c
 // Angular 2 Http
 import {HTTP_PROVIDERS} from '@angular/http';
 // Angular 2 Router
-import {ROUTER_PROVIDERS} from '@angular/router-deprecated';
+// import {PR} from '@angular/router';
 import {Title} from "@angular/platform-browser"
 
 /*
@@ -17,8 +17,7 @@ export const APPLICATION_PROVIDERS = [
   Title,
   ...FORM_PROVIDERS,
   ...HTTP_PROVIDERS,
-  ...ROUTER_PROVIDERS,
-  provide(LocationStrategy, {useClass: PathLocationStrategy}),
+  {provide: LocationStrategy, useClass: PathLocationStrategy},
 ];
 
 export const PROVIDERS = [

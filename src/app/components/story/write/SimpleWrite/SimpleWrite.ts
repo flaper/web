@@ -1,5 +1,5 @@
 import {Component, Input, ElementRef} from '@angular/core';
-import {Router} from '@angular/router-deprecated';
+import {Router} from '@angular/router';
 import {Location, FormBuilder, Control, ControlGroup, Validators} from '@angular/common';
 import {Story, StoryService} from "@flaper/angular";
 import {FormDraft} from "../../../../services/draft/FormDraft";
@@ -58,7 +58,7 @@ export class SimpleWrite {
       this.error = null;
       this._story.save(data).subscribe((story) => {
         FormDraft.remove(this.DRAFT_KEY);
-        this.router.navigate(['/Story', {slug: story.slug}])
+        this.router.navigate(['/s', story.slug])
       }, (e) => {
         this.error = e.message;
       })
@@ -97,7 +97,7 @@ export class SimpleWrite {
 
   onCancel() {
     if (this.story) {
-      this.router.navigate(['/Story', {slug: this.story.slug}])
+      this.router.navigate(['/s', this.story.slug]);
     } else {
       this._location.back();
     }

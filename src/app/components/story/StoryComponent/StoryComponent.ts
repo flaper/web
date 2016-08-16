@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {Router} from '@angular/router-deprecated';
+import {Router} from '@angular/router';
 import {ACL, Story, StoryService, StoryBestService, ViewService} from "@flaper/angular";
 import * as moment from 'moment';
 import {PostActions} from "../../post/PostActions/PostActions";

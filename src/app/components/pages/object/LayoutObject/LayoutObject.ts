@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {Router, RouteConfig, RouteParams, RouteData} from '@angular/router-deprecated';
+import {Router,ActivatedRoute} from '@angular/router';
 import {Title} from "@angular/platform-browser"
 import {ObjectService} from "@flaper/angular";
 import {FObject} from "@flaper/angular";
@@ -7,38 +7,42 @@ import {PageObjectMain} from "../PageObjectMain/PageObjectMain";
 import {PageManageRequest} from "../PageManageRequest/PageManageRequest";
 import {Metrika} from "../../../../services/metrics/Metrika";
 import {PageManage} from "../PageManage/PageManage";
+import {ReplaySubject} from "rxjs";
 
 @Component({
   selector: 'lyout-object',
   template: require('./LayoutObject.html'),
   styles: [require('./LayoutObject.scss')]
 })
-@RouteConfig([
-  {path: '/', name: 'Main', component: PageObjectMain, useAsDefault: true},
-  {path: '/manage', name: 'Manage', component: PageManage},
-  {path: '/request', name: 'ManageRequest', component: PageManageRequest},
-])
 export class LayoutObject {
   static Object:FObject;
+  static ObjectObservable;
   obj:FObject;
 
-  constructor(ts:Title, routeParams:RouteParams, _object:ObjectService, data:RouteData,
+  constructor(ts:Title, route:ActivatedRoute, _object:ObjectService,
               private router:Router) {
-    let mainDomain = routeParams.params['mainDomain'];
-    mainDomain = mainDomain ? mainDomain : data.get('mainDomain');
-    let region = routeParams.params['region'];
-    let slug = routeParams.params['slug'];
-    _object.getBySlug({mainDomain, region, slug})
-      .subscribe(fobject => {
-        this.obj = fobject;
-        LayoutObject.Object = fobject;
-        ts.setTitle(fobject.title);
-        Metrika.setParam('objId', fobject.id);
-      });
+    LayoutObject.ObjectObservable = new ReplaySubject<FObject>(1);
+    route.params.subscribe(params => {
+      route.data.subscribe(data => {
+        let mainDomain = params['mainDomain'];
+        mainDomain = mainDomain ? decodeURIComponent(mainDomain) : data['mainDomain'];
+        let region = decodeURIComponent(params['region']);
+        let slug = decodeURIComponent(params['slug']);
+        _object.getBySlug({mainDomain, region, slug})
+          .subscribe(fobject => {
+            this.obj = fobject;
+            LayoutObject.ObjectObservable.next(fobject);
+            LayoutObject.Object = fobject;
+            ts.setTitle(fobject.title);
+            Metrika.setParam('objId', fobject.id);
+          });
+      })
+    })
   }
 
   isMain() {
-    let instruction = this.router.generate(['Main']);
-    return this.router.isRouteActive(instruction);
+    return false;
+    /* let instruction = this.router.generate(['Main']);
+     return this.router.isRouteActive(instruction);*/
   }
 }

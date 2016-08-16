@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {RouteParams} from '@angular/router-deprecated';
+import {ActivatedRoute} from '@angular/router';
 import {LayoutHome} from "../LayoutHome/LayoutHome";
 import {PageService} from "../../../../services/helpers/PageService";
 import {Title} from "@angular/platform-browser"
@@ -10,11 +10,15 @@ import {Title} from "@angular/platform-browser"
   template: require('./PageLastStories.html')
 })
 export class PageLastStories {
-  constructor(routeParams:RouteParams, pageService:PageService, ts:Title) {
+  constructor(route:ActivatedRoute, pageService:PageService, ts:Title) {
     ts.setTitle('Флапер. Последние статьи');
-    let remember = routeParams.get('remember');
-    if (remember) {
-      pageService.setDefault('Home')
-    }
+    /* @todo @stanislav to update after new router
+     route.params.subscribe(params => {
+     let remember = routeParams.get('remember');
+     if (remember) {
+     pageService.setDefault('/')
+     }
+     });
+     */
   }
 }

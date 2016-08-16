@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {RouteParams} from '@angular/router-deprecated'
+import {ActivatedRoute} from '@angular/router'
 import {Story, StoryService} from "@flaper/angular";
 import {StoryComponent} from "../../../story/StoryComponent/StoryComponent";
 import {CommentsAutoList} from "../../../comment/CommentsAutoList/CommentsAutoList";
@@ -15,13 +15,15 @@ import {Metrika} from "../../../../services/metrics/Metrika";
 export class PageStory {
   story:Story;
 
-  constructor(routeParams:RouteParams, storyService:StoryService, ts:Title) {
-    let slug = routeParams.params['slug'];
-    storyService.getBySlug(slug).subscribe(story => {
-      this.story = story;
-      ts.setTitle(story.title);
-      Metrika.setParam('storyId', story.id);
-      Metrika.setParam('authorId', story.id);
+  constructor(route:ActivatedRoute, storyService:StoryService, ts:Title) {
+    route.params.subscribe(params=> {
+      let slug = params['slug'];
+      storyService.getBySlug(slug).subscribe(story => {
+        this.story = story;
+        ts.setTitle(story.title);
+        Metrika.setParam('storyId', story.id);
+        Metrika.setParam('authorId', story.id);
+      });
     });
   }
 }

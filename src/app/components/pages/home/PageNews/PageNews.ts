@@ -9,8 +9,8 @@ import {Title} from "@angular/platform-browser"
   template: require('./PageNews.html')
 })
 export class PageNews {
-  constructor(pageService:PageService, ts: Title) {
+  constructor(pageService:PageService, ts:Title) {
     ts.setTitle('Активные');
-    pageService.setDefault('News')
+    pageService.setDefault('/p/news');
   }
 }

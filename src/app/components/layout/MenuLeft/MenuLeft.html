@@ -8,12 +8,12 @@
         </a>
         <a class="btn btn-primary btn-sm" [routerLink]="['/CreateStory']">Создать статью</a>
         <img class="pull-xs-right my-avatar" src="{{_user.currentUser.photo}}"
-             [routerLink]="['/User', {id:_user.currentUser.id}]">
+             [routerLink]="['/u', _user.currentUser.id]">
     </span>
   </div>
   <ul class="nav nav-pills nav-stacked mobile-collapsed" id="ml-items">
     <li class="nav-item" *ngIf="acl.isSales()">
-      <a class="nav-link" [routerLink]="['/ManagePremiumSupport']">
+      <a class="nav-link" routerLink="/p/manageSupport">
       <span class="icon-container text-xs-center">
         <i class="fa fa-question-circle">
         </i>
@@ -24,7 +24,7 @@
       </a>
     </li>
     <li class="nav-item" *ngIf="_user.currentUser.extra.hasPremiumSupport()">
-      <a class="nav-link" [routerLink]="['/PremiumSupport']">
+      <a class="nav-link" routerLink="/p/support">
       <span class="icon-container text-xs-center">
         <i class="fa fa-question">
         </i>
@@ -46,7 +46,7 @@
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" [routerLink]="['/User', {id:_user.currentUser.id}]">
+      <a class="nav-link" [routerLink]="['/u', _user.currentUser.id]">
       <span class="icon-container text-xs-center">
         <i class="fa fa-user">
         </i>

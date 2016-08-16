@@ -1,5 +1,5 @@
-<div *ngIf="obj" class="container-xl">
-  <div class="block-header">
+<div class="container-xl">
+  <div class="block-header" *ngIf="obj">
     <div class="block-avatar">
       <img class="img-fluid img-thumbnail avatar" src="{{obj.flap.avatar}}">
     </div>
@@ -12,7 +12,7 @@
           <h1 *ngIf="isMain()">{{obj.title}}</h1>
 
           <h1 *ngIf="!isMain()">
-            <a [routerLink]="['Main']">{{obj.title}}</a>
+            <a routerLink="main">{{obj.title}}</a>
           </h1>
 
           <div class="rating-container">

@@ -2,12 +2,9 @@
   <nav class="navbar navbar-light bg-faded">
     <div class="nav navbar-nav">
       <div class="nav-center">
-        <a class="nav-item nav-link" [routerLink]="['Home', {remember: true}]"
-           [class.active]="router.hostComponent.name==='PageLastStories'">Последние</a>
-        <a class="nav-item nav-link" [routerLink]="['News']"
-           [class.active]="router.hostComponent.name==='PageNews'">Активные</a>
-        <a class="nav-item nav-link" [routerLink]="['Top']"
-           [class.active]="router.hostComponent.name==='PageTopStories'">
+        <a class="nav-item nav-link" [routerLink]="['/']">Последние</a>
+        <a class="nav-item nav-link" [routerLink]="['/p/news']">Активные</a>
+        <a class="nav-item nav-link" [routerLink]="['/p/top']">
           <i class="fa fa-trophy"></i>
           Лучшие
         </a>

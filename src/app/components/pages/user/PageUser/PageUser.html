@@ -1,37 +1,41 @@
-<div class="container" *ngIf="user">
-  <div class="user-media">
+<div class="container">
+  <div *ngIf="user">
+
+    <div class="user-media">
    <span class="media-left">
      <img class="media-object img-thumbnail" src="{{user.photoLarge}}" alt="{{user.displayName}}">
    </span>
 
-    <div class="media-body">
-      <h1 class="media-heading">{{user.displayName}}</h1>
+      <div class="media-body">
+        <h1 class="media-heading">{{user.displayName}}</h1>
 
-      <div class="stats">
+        <div class="stats">
         <span class="stories-number" title="Количество статей">
           <i class="fa fa-book"></i> {{user.storiesNumber}}
         </span>
         <span class="likes-number" title="Количество лайков">
           <i class="fa fa-thumbs-o-up"></i> {{user.likesNumber}}
         </span>
-      </div>
-      <div *ngIf="amount !== null">
-        <span class="text-muted">Баллов:</span> {{amount | fixed}}
-        <button class="btn btn-sm btn-link btn-withdraw" *ngIf="acl.can('super')" (click)="withdraw()"><i class="fa fa-credit-card"></i>
-          <span>Списать</span>
-        </button>
+        </div>
+        <div *ngIf="amount !== null">
+          <span class="text-muted">Баллов:</span> {{amount | fixed}}
+          <button class="btn btn-sm btn-link btn-withdraw" *ngIf="acl.can('super')" (click)="withdraw()"><i
+            class="fa fa-credit-card"></i>
+            <span>Списать</span>
+          </button>
+        </div>
       </div>
     </div>
-  </div>
 
-  <nav class="navbar navbar-light bg-faded" *ngIf="settings">
-    <div class="nav navbar-nav">
-      <a class="nav-item nav-link" [routerLink]="['UserInfo']"
-         *ngIf="_user.isCurrentUser(user) || acl.isAdmin() || !settings['HIDE_SOCIAL_LINKS']">Инфо</a>
-      <a class="nav-item nav-link router-link-active" [routerLink]="['UserStories']">Статьи</a>
-      <a class="nav-item nav-link" [routerLink]="['UserStats']" *ngIf="_user.isCurrentUser(user) || acl.can('super')">Баллы</a>
-    </div>
-  </nav>
+    <nav class="navbar navbar-light bg-faded" *ngIf="settings">
+      <div class="nav navbar-nav">
+        <a class="nav-item nav-link" routerLink="info"
+           *ngIf="_user.isCurrentUser(user) || acl.isAdmin() || !settings['HIDE_SOCIAL_LINKS']">Инфо</a>
+        <a class="nav-item nav-link router-link-active" routerLink="articles">Статьи</a>
+        <a class="nav-item nav-link" routerLink="stats" *ngIf="_user.isCurrentUser(user) || acl.can('super')">Баллы</a>
+      </div>
+    </nav>
+  </div>
 
   <router-outlet></router-outlet>
 </div>

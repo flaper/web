@@ -1,42 +1,36 @@
 import {PageLogin} from './components/pages/login/PageLogin';
 import {PageWriteStory} from './components/pages/story/write/PageWriteStory';
-import {PageUser} from './components/pages/user/PageUser/PageUser';
-import {PageUsers} from './components/pages/user/PageUsers/PageUsers';
-import {PageStory} from "./components/pages/story/read/PageStory";
 import {PageLastStories} from "./components/pages/home/PageLastStories/PageLastStories";
+import {PageNews} from "./components/pages/home/PageNews/PageNews";
 import {PageTopStories} from "./components/pages/home/PageTopStories/PageTopStories";
 import {PageTopStoriesLast} from "./components/pages/home/PageTopStoriesLast/PageTopStoriesLast";
-import {PageNews} from "./components/pages/home/PageNews/PageNews";
+import {PageStory} from "./components/pages/story/read/PageStory";
+import {PageNotFound} from "./components/pages/notFound/PageNotFound";
+import {PageUser} from './components/pages/user/PageUser/PageUser';
+import {PageUsers} from './components/pages/user/PageUsers/PageUsers';
+import {UserRoutes} from './components/pages/user/PageUser/UserRoutes';
 import {PageFlapSync} from "./components/pages/flap/PageFlapSync/PageFlapSync";
-import {LayoutObject} from "./components/pages/object/LayoutObject/LayoutObject";
+import {ObjectRoutes} from "./components/pages/object/LayoutObject/ObjectRoutes";
 import {PagePremiumSupport} from "./components/pages/support/PagePremiumSupport/PagePremiumSupport";
 import {PageManageSupport} from "./components/pages/support/PageManageSupport/PageManageSupport";
-import {PageNotFound} from "./components/pages/notFound/PageNotFound";
+import {RouterConfig} from '@angular/router';
 
 export const ROUTES = [
-  {path: '/', component: PageLastStories, name: 'Home'},
-  {path: '/p/news', component: PageNews, name: 'News'},
-  {path: '/p/top', component: PageTopStories, name: 'Top'},
-  {path: '/p/top_last', component: PageTopStoriesLast, name: 'TopLast'},
-  {path: '/p/login', component: PageLogin, name: 'Login'},
-  {path: '/p/create_story', component: PageWriteStory, name: 'CreateStory'},
-  {path: '/s/:slug', component: PageStory, name: 'Story'},
-  {path: '/s/:slug/edit', component: PageWriteStory, name: 'WriteStory'},
-  {path: '/@/:id/...', component: PageUser, name: 'User'},
-  {path: '/p/flapers', component: PageUsers, name: 'Users'},
-  {path: '/p/support', component: PagePremiumSupport, name: 'PremiumSupport'},
-  {path: '/p/manageSupport', component: PageManageSupport, name: 'ManagePremiumSupport'},
-  {path: '/p/sync/:id', component: PageFlapSync, name: 'FlapSync'},
-  {path: '/p/sync/:id/:action', component: PageFlapSync, name: 'FlapSync'},
-  {
-    path: '/места/:region/:slug/...', component: LayoutObject, name: 'LayoutObjectPlace',
-    data: {mainDomain: 'места'}
-  },
-  {
-    path: '/%D0%BC%D0%B5%D1%81%D1%82%D0%B0/:region/:slug/...', component: LayoutObject, name: 'LayoutObjectPlace',
-    data: {mainDomain: 'места'}
-  }, //места
-  {path: '/:mainDomain/:slug/...', component: LayoutObject, name: 'LayoutObject'},
-  {path: 'not-found', component: PageNotFound, name: 'PageNotFound'},
-  {path: '**', redirectTo: ['PageNotFound']}
+  {path: '', component: PageLastStories},
+  {path: 'p/login', component: PageLogin},
+  {path: 'p/news', component: PageNews},
+  {path: 'p/create_story', component: PageWriteStory},
+  {path: 'p/top', component: PageTopStories},
+  {path: 'p/top_last', component: PageTopStoriesLast},
+  {path: 'p/flapers', component: PageUsers},
+  {path: 'p/support', component: PagePremiumSupport},
+  {path: 'p/manageSupport', component: PageManageSupport},
+  {path: 's/:slug', component: PageStory},
+  {path: 's/:slug/edit', component: PageWriteStory},
+  {path: 'p/sync/:id', component: PageFlapSync, name: 'FlapSync'},
+  {path: 'p/sync/:id/:action', component: PageFlapSync, name: 'FlapSync'},
+  UserRoutes,
+  ...ObjectRoutes,
+  {path: '**', component: PageNotFound},
+  {path: 'not-found', component: PageNotFound},
 ];

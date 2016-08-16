@@ -1,5 +1,4 @@
 import {Component, ViewEncapsulation} from '@angular/core';
-import {RouteConfig} from '@angular/router-deprecated';
 import {Location} from '@angular/common';
 import {Http} from '@angular/http';
 import {PageService} from "./services/helpers/PageService";
@@ -18,7 +17,6 @@ import {ROUTES} from './routes';
   encapsulation: ViewEncapsulation.None,
   template: require('./app.html')
 })
-@RouteConfig(ROUTES)
 export class App {
   constructor(pageService:PageService, location:Location,
               private _user:UserService, metrika: Metrika /*ensure to create Metrika instance*/) {

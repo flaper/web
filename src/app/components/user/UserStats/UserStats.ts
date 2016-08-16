@@ -14,18 +14,20 @@ export class UserStats {
   TYPES:any = TRANSACTIONS_TYPES;
 
   constructor(private _account:AccountService) {
-    this.user = PageUser.User;
-    this._account.getTransactions(this.user.id).subscribe(data => {
-      this.transactions = data;
+    PageUser.UserObservable.subscribe(user=> {
+      this.user = user;
+      this._account.getTransactions(this.user.id).subscribe(data => {
+        this.transactions = data;
+      });
     });
   }
 
   hint(type) {
     switch (type) {
       case  this.TYPES['BEST_STORY']:
-            return 'За конкурс "Лучшая статья"';
+        return 'За конкурс "Лучшая статья"';
       default:
-            return '';
+        return '';
     }
   }
 }

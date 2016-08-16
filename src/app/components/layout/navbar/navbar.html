@@ -1,6 +1,6 @@
 <nav class="navbar" [class.has-user]="_user.currentUser">
   <github></github>
-  <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#mainNavbar">
+  <button class="navbao-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#mainNavbar">
     &#9776;
   </button>
   <span class="brand-container">
@@ -31,6 +31,6 @@
   </ul>
 
   <div class="collapse navbar-toggleable-xs" id="mainNavbar">
-    <a class="btn btn-primary btn-sm navbar-btn" [routerLink]="['/CreateStory']">Создать статью</a>
+    <a class="btn btn-primary btn-sm navbar-btn" routerLink="/p/create_story">Создать статью</a>
   </div>
 </nav>

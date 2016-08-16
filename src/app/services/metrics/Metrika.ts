@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Router} from '@angular/router-deprecated';
+import {Router} from '@angular/router';
 import {Title} from "@angular/platform-browser"
 import {UserService} from "@flaper/angular";
 
@@ -8,7 +8,8 @@ export class Metrika {
   static params:any = {};
 
   constructor(private router:Router, private title:Title, private _user:UserService) {
-    router.subscribe((path) => this.hit(path))
+    //@todo fix router
+    // router.subscribe((path) => this.hit(path))
   }
 
   hit(path) {

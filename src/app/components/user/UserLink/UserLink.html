@@ -1,5 +1,5 @@
 <span *ngIf="user">
-<a [routerLink]="['/User', {id:user.id}]">{{user.displayName}}</a>
+<a [routerLink]="['/u', user.id]">{{user.displayName}}</a>
 <small class="stats" [class.hidden-xs-down]="hiddenStatsXs" *ngIf="stats">
   <span class="stories-number" title="Количество статей">
       <i class="fa fa-book">

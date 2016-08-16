@@ -21,20 +21,22 @@ export class UserInfo {
   hideSocialLinks = null;
 
   constructor(private userService:UserService, private userSettings:UserSettings) {
-    this.user = PageUser.User;
-    this.userService.getUserIdentitiesById(this.user.id).subscribe(identities => {
-      this.identities = identities.map(row => {
-        let provider = row['provider'];
-        let map = _keyBy(AUTH_PROVIDERS, 'name');
-        row['providerTitle'] = map[provider] ? map[provider]['publicUrlTitle'] : provider;
-        row['icon'] = map[provider]['icon'];
-        return row;
+    PageUser.UserObservable.subscribe(user=> {
+      this.user = user;
+      this.userService.getUserIdentitiesById(this.user.id).subscribe(identities => {
+        this.identities = identities.map(row => {
+          let provider = row['provider'];
+          let map = _keyBy(AUTH_PROVIDERS, 'name');
+          row['providerTitle'] = map[provider] ? map[provider]['publicUrlTitle'] : provider;
+          row['icon'] = map[provider]['icon'];
+          return row;
+        });
       });
-    });
-    if (this.userService.isCurrentUser(this.user)) {
-      this.userSettings.getMy(UserSettings.SETTINGS.HIDE_SOCIAL_LINKS)
-        .subscribe(value => this.hideSocialLinks = value)
-    }
+      if (this.userService.isCurrentUser(this.user)) {
+        this.userSettings.getMy(UserSettings.SETTINGS.HIDE_SOCIAL_LINKS)
+          .subscribe(value => this.hideSocialLinks = value)
+      }
+    })
   }
 
   hideSocialChanged(event) {

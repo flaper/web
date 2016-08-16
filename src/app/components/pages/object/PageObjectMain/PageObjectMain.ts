@@ -13,9 +13,11 @@ export class PageObjectMain {
   images = [];
 
   constructor(private _user:UserService) {
-    this.obj = LayoutObject.Object;
-    let imagesLimit = ScreenService.isXl() ? 6 : 4;
-    this.images = this.obj.getImages({filterAvatar: true}).slice(0, imagesLimit);
+    LayoutObject.ObjectObservable.subscribe(obj=> {
+      this.obj = obj;
+      let imagesLimit = ScreenService.isXl() ? 6 : 4;
+      this.images = this.obj.getImages({filterAvatar: true}).slice(0, imagesLimit);
+    });
   }
 
   getManageLink() {
@@ -23,6 +25,6 @@ export class PageObjectMain {
     if (this._user.currentUser) {
       ifOwner = this._user.currentUser.extra.getObjects().indexOf(this.obj.id) > -1;
     }
-    return [ifOwner ? 'Manage' : 'ManageRequest'];
+    return ifOwner ? '/p/manageSupport' : 'manageRequest';
   }
 }

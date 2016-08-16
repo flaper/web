@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {RouteParams} from '@angular/router-deprecated';
+import {ActivatedRoute} from '@angular/router';
 import {Title} from "@angular/platform-browser"
 import {FlapSyncService, FLAP_SYNC_SERVICE_PROVIDER} from "../../../../services/flap/FlapSyncService";
 import {ObjectService} from "@flaper/angular";
@@ -13,13 +13,15 @@ import {ObjectService} from "@flaper/angular";
 export class PageFlapSync {
   id:string;
 
-  constructor(ts:Title, routeParams:RouteParams, flapSyncService:FlapSyncService, private objectService:ObjectService) {
-    this.id = routeParams.params['id'];
-    let action = routeParams.params['action'];
-    ts.setTitle('Синхронизация объекта');
-    flapSyncService.sync(this.id)
-      .subscribe(data => {
-        this.objectService.navigateTo(data, action);
-      })
+  constructor(ts:Title, route:ActivatedRoute, flapSyncService:FlapSyncService, private objectService:ObjectService) {
+    route.params.subscribe(params=> {
+      this.id = params['id'];
+      let action = params['action'];
+      ts.setTitle('Синхронизация объекта');
+      flapSyncService.sync(this.id)
+        .subscribe(data => {
+          this.objectService.navigateTo(data, action);
+        })
+    })
   }
 }
