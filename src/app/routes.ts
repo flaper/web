@@ -17,6 +17,7 @@ import {RouterConfig} from '@angular/router';
 
 export const ROUTES = [
   {path: '', component: PageLastStories},
+  {path: 'p/last', component: PageLastStories},
   {path: 'p/login', component: PageLogin},
   {path: 'p/news', component: PageNews},
   {path: 'p/create_story', component: PageWriteStory},

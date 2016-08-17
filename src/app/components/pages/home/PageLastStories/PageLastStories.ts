@@ -12,13 +12,8 @@ import {Title} from "@angular/platform-browser"
 export class PageLastStories {
   constructor(route:ActivatedRoute, pageService:PageService, ts:Title) {
     ts.setTitle('Флапер. Последние статьи');
-    /* @todo @stanislav to update after new router
-     route.params.subscribe(params => {
-     let remember = routeParams.get('remember');
-     if (remember) {
-     pageService.setDefault('/')
-     }
-     });
-     */
+    let remember = route.snapshot.params['remember'];
+    if (remember)
+      pageService.setDefault('/')
   }
 }

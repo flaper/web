@@ -37,15 +37,14 @@ export class PageService {
   }
 
   public navigateToLogin(message = null) {
-    // @todo @stanislav fix after router update
-    /* let path = this.router.currentInstruction.toRootUrl();
-     if (!path || path === '/' || (path.indexOf('/Login') > -1)) {
-     ls.removeItem(PAGE_BEFORE_LOGIN);
-     } else {
-     ls.setItem(PAGE_BEFORE_LOGIN, `${path}${window.location.search}`);
-     }
-     PageLogin.MESSAGE = message ? message : ""; */
-    this.router.navigate(['/p/login']);
+    let path = this.router.url;
+    if (!path || path === '/' || (path.indexOf('/login') > -1)) {
+      ls.removeItem(PAGE_BEFORE_LOGIN);
+    } else {
+      ls.setItem(PAGE_BEFORE_LOGIN, `${path}${window.location.search}`);
+    }
+    PageLogin.MESSAGE = message ? message : "";
+    this.router.navigateByUrl('/p/login');
   }
 
   public navigateAfterLogin() {

@@ -20,20 +20,22 @@ export class PageManageRequest {
 
   constructor(private fb:FormBuilder, _user:UserService, private _manageRequest:ManageRequestService,
               _page:PageService, private _payment:PaymentService) {
-    this.obj = LayoutObject.Object;
-    Metrika.setParam('page', 'manageRequest');
-    if (!_user.currentUser) {
-      _page.navigateToLogin(`Для управления страницей <strong>"${this.obj.title}"</strong>  нужно войти на сайт.`);
-      return;
-    }
-    let name = _user.currentUser ? _user.currentUser.displayName : '';
-    this.form = this.fb.group({
-      name: [name, Validators.required],
-      position: [''],
-      email: ['', Validators.required],
-      phone: [''],
+    LayoutObject.ObjectObservable.subscribe(obj => {
+      this.obj = obj;
+      Metrika.setParam('page', 'manageRequest');
+      if (!_user.currentUser) {
+        _page.navigateToLogin(`Для управления страницей <strong>"${this.obj.title}"</strong>  нужно войти на сайт.`);
+        return;
+      }
+      let name = _user.currentUser ? _user.currentUser.displayName : '';
+      this.form = this.fb.group({
+        name: [name, Validators.required],
+        position: [''],
+        email: ['', Validators.required],
+        phone: [''],
+      });
+      this._manageRequest.getBySubjectId(this.obj.id).subscribe(manageRequest => this.manageRequest = manageRequest)
     });
-    this._manageRequest.getBySubjectId(this.obj.id).subscribe(manageRequest => this.manageRequest = manageRequest)
   }
 
   onSubmit() {

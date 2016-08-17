@@ -1,4 +1,4 @@
-<div class="request-wrapper">
+<div class="request-wrapper" *ngIf="form">
   <h2 class="text-xs-center">Заявка на управление страницей</h2>
 
   <form class="form" [ngFormModel]="form" (submit)="onSubmit($event)" *ngIf="!manageRequest">
@@ -65,7 +65,7 @@
     </ul>
     <hr class="m-y-2">
     <p>Часть возможностей еще добавляется и появится в Вашем кабинете автоматически.
-      <a [routerLink]="['/Story', {slug: 'Услуги'}]">Подробнее</a>
+      <a routerLink="/s/Услуги">Подробнее</a>
     </p>
   </div>
 </div>
