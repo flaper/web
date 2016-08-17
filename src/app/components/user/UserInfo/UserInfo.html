@@ -1,18 +1,31 @@
-<div>
-  <h4>Социальные сети:</h4>
+<div *ngIf="user">
+  <div>
+    <h4>Социальные сети:</h4>
 
-  <div *ngIf="identities !== null">
-    <div *ngFor="let identity of identities">
+    <div *ngIf="identities !== null">
+      <div *ngFor="let identity of identities">
       <span class="icon-container text-xs-center">
           <i class="{{identity.icon}}"></i>
       </span>
-      <a href="{{identity.url}}" target="_blank">{{identity.displayName}}</a>
+        <a href="{{identity.url}}" target="_blank">{{identity.displayName}}</a>
+      </div>
+    </div>
+    <div *ngIf="_user.isCurrentUser(user) && hideSocialLinks !== null">
+      <label>
+        <input [ngModel]="hideSocialLinks" type="checkbox" (change)="hideSocialChanged($event)"> Скрыть соц. сети от
+        других пользователей
+        (только администраторы будут видеть)
+      </label>
     </div>
   </div>
-  <div *ngIf="userService.isCurrentUser(user) && hideSocialLinks !== null">
-    <label>
-      <input [ngModel]="hideSocialLinks" type="checkbox" (change)="hideSocialChanged($event)"> Скрыть соц. сети от других пользователей
-      (только администраторы будут видеть)
-    </label>
+  <div *ngIf="user.extra&&user.extra.objects&&user.extra.objects.length">
+    <br>
+    <h4>Компании:</h4>
+
+    <div *ngFor="let objectId of user.extra.objects">
+      <a [routerLink]="_object.getRouteById(objectId)" *ngIf="_object.$getById(objectId)">
+        {{_object.$getById(objectId).title}}
+      </a>
+    </div>
   </div>
 </div>

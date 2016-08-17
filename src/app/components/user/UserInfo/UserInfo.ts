@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {AUTH_PROVIDERS, User, UserService, UserSettings} from "@flaper/angular";
+import {AUTH_PROVIDERS, User, UserService, UserSettings, ACL, ObjectService} from "@flaper/angular";
 import {PageUser} from "../../pages/user/PageUser/PageUser";
 let _keyBy = require('lodash/keyBy');
 
@@ -20,10 +20,17 @@ export class UserInfo {
   identities:Array<IdentityProvider> = null;
   hideSocialLinks = null;
 
-  constructor(private userService:UserService, private userSettings:UserSettings) {
+  constructor(private _user:UserService, private userSettings:UserSettings, private acl:ACL,
+              private _object:ObjectService) {
     PageUser.UserObservable.subscribe(user=> {
+      if (this.user && this.user.id == user.id) {
+        return;
+      }
       this.user = user;
-      this.userService.getUserIdentitiesById(this.user.id).subscribe(identities => {
+      if (this.acl.isSuper()) {
+        this._user.requestUserExtra(user.id);
+      }
+      this._user.getUserIdentitiesById(this.user.id).subscribe(identities => {
         this.identities = identities.map(row => {
           let provider = row['provider'];
           let map = _keyBy(AUTH_PROVIDERS, 'name');
@@ -32,7 +39,7 @@ export class UserInfo {
           return row;
         });
       });
-      if (this.userService.isCurrentUser(this.user)) {
+      if (this._user.isCurrentUser(this.user)) {
         this.userSettings.getMy(UserSettings.SETTINGS.HIDE_SOCIAL_LINKS)
           .subscribe(value => this.hideSocialLinks = value)
       }
