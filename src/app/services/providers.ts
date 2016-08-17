@@ -6,6 +6,7 @@ import {provideRouter} from '@angular/router';
 import {ROUTES} from '../routes';
 
 // Include injectables that you want to have globally throughout our app
+//noinspection TypeScriptValidateTypes
 export let PROVIDERS:Array<any> = [
   ALL_PROVIDERS,
   provideRouter(ROUTES),

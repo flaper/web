@@ -14,13 +14,13 @@
 </div>
 <div class="container-fluid">
   <div [ngSwitch]="page">
-    <template ngSwitchWhen="lastStories">
+    <template ngSwitchCase="lastStories">
       <last-stories></last-stories>
     </template>
-    <template ngSwitchWhen="topStories">
+    <template ngSwitchCase="topStories">
       <top-stories></top-stories>
     </template>
-    <template ngSwitchWhen="news">
+    <template ngSwitchCase="news">
       <news></news>
     </template>
     <template ngSwitchDefault>

@@ -20,21 +20,20 @@ export class PageUser {
   constructor(route:ActivatedRoute, private _user:UserService, private _account:AccountService,
               private userSettings:UserSettings, private acl:ACL, ts:Title) {
     PageUser.UserObservable = new ReplaySubject<User>(1);
-    route.params.subscribe(params => {
-      let id = params['id'];
-      //noinspection TypeScriptUnresolvedFunction
-      this._user.getById(id).subscribe(user => {
-        ts.setTitle(user.displayName);
-        this.user = user;
-        PageUser.User = user;
-        PageUser.UserObservable.next(user);
-        this.updateAmount();
-        this.userSettings.getByUserId(id)
-          .subscribe(settings => {
-            this.settings = settings
-          })
-      });
-    })
+    let params = route.snapshot.params;
+    let id = params['id'];
+    //noinspection TypeScriptUnresolvedFunction
+    this._user.getById(id).subscribe(user => {
+      ts.setTitle(user.displayName);
+      this.user = user;
+      PageUser.User = user;
+      PageUser.UserObservable.next(user);
+      this.updateAmount();
+      this.userSettings.getByUserId(id)
+        .subscribe(settings => {
+          this.settings = settings
+        })
+    });
   }
 
   updateAmount() {

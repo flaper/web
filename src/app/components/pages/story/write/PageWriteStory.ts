@@ -22,17 +22,16 @@ export class PageWriteStory {
       pageService.navigateToLogin();
       return;
     } else {
-      route.params.subscribe(params => {
-        let slug = params['slug'];
-        let title = slug ? 'Редактировать статью' : 'Создать статью';
-        ts.setTitle(title);
-        this.newStory = !slug;
-        if (slug) {
-          storyService.getBySlug(slug).subscribe(story => {
-            this.story = story;
-          });
-        }
-      })
+      let params = route.snapshot.params;
+      let slug = params['slug'];
+      let title = slug ? 'Редактировать статью' : 'Создать статью';
+      ts.setTitle(title);
+      this.newStory = !slug;
+      if (slug) {
+        storyService.getBySlug(slug).subscribe(story => {
+          this.story = story;
+        });
+      }
     }
   }
 }

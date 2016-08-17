@@ -14,14 +14,13 @@ export class PageFlapSync {
   id:string;
 
   constructor(ts:Title, route:ActivatedRoute, flapSyncService:FlapSyncService, private objectService:ObjectService) {
-    route.params.subscribe(params=> {
-      this.id = params['id'];
-      let action = params['action'];
-      ts.setTitle('Синхронизация объекта');
-      flapSyncService.sync(this.id)
-        .subscribe(data => {
-          this.objectService.navigateTo(data, action);
-        })
-    })
+    let params = route.snapshot.params;
+    this.id = params['id'];
+    let action = params['action'];
+    ts.setTitle('Синхронизация объекта');
+    flapSyncService.sync(this.id)
+      .subscribe(data => {
+        this.objectService.navigateTo(data, action);
+      })
   }
 }

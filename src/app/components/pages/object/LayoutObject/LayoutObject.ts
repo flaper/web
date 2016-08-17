@@ -22,22 +22,20 @@ export class LayoutObject {
   constructor(ts:Title, route:ActivatedRoute, _object:ObjectService,
               private router:Router) {
     LayoutObject.ObjectObservable = new ReplaySubject<FObject>(1);
-    route.params.subscribe(params => {
-      route.data.subscribe(data => {
-        let mainDomain = params['mainDomain'];
-        mainDomain = mainDomain ? decodeURIComponent(mainDomain) : data['mainDomain'];
-        let region = decodeURIComponent(params['region']);
-        let slug = decodeURIComponent(params['slug']);
-        _object.getBySlug({mainDomain, region, slug})
-          .subscribe(fobject => {
-            this.obj = fobject;
-            LayoutObject.ObjectObservable.next(fobject);
-            LayoutObject.Object = fobject;
-            ts.setTitle(fobject.title);
-            Metrika.setParam('objId', fobject.id);
-          });
-      })
-    })
+    let params = route.snapshot.params;
+    let data = route.snapshot.data;
+    let mainDomain = params['mainDomain'];
+    mainDomain = mainDomain ? decodeURIComponent(mainDomain) : data['mainDomain'];
+    let region = decodeURIComponent(params['region']);
+    let slug = decodeURIComponent(params['slug']);
+    _object.getBySlug({mainDomain, region, slug})
+      .subscribe(fobject => {
+        this.obj = fobject;
+        LayoutObject.ObjectObservable.next(fobject);
+        LayoutObject.Object = fobject;
+        ts.setTitle(fobject.title);
+        Metrika.setParam('objId', fobject.id);
+      });
   }
 
   isMain() {

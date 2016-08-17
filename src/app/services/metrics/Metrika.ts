@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Router} from '@angular/router';
+import {Router, NavigationStart} from '@angular/router';
 import {Title} from "@angular/platform-browser"
 import {UserService} from "@flaper/angular";
 
@@ -8,8 +8,10 @@ export class Metrika {
   static params:any = {};
 
   constructor(private router:Router, private title:Title, private _user:UserService) {
-    //@todo fix router
-    // router.subscribe((path) => this.hit(path))
+    router.events.subscribe(event => {
+      if (event instanceof NavigationStart)
+        this.hit(event.url);
+    });
   }
 
   hit(path) {

@@ -5,8 +5,6 @@ import {FORM_PROVIDERS, LocationStrategy, PathLocationStrategy} from '@angular/c
 
 // Angular 2 Http
 import {HTTP_PROVIDERS} from '@angular/http';
-// Angular 2 Router
-// import {PR} from '@angular/router';
 import {Title} from "@angular/platform-browser"
 
 /*
