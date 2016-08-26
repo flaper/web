@@ -18,7 +18,7 @@ export class SimpleWrite {
   @Input()
   story:Story;
   newStory:boolean;
-
+  submitInProgress:boolean = false;
   form:ControlGroup;
   error:string;
 
@@ -53,14 +53,20 @@ export class SimpleWrite {
   }
 
   onSubmit(event) {
+    if (this.submitInProgress) {
+      return false;
+    }
     if (this.form.valid) {
       let data = this.getStoryData();
       this.error = null;
+      this.submitInProgress = true;
       this._story.save(data).subscribe((story) => {
         FormDraft.remove(this.DRAFT_KEY);
         this.router.navigate(['/s', story.slug])
+        this.submitInProgress = false;
       }, (e) => {
         this.error = e.message;
+        this.submitInProgress = false;
       })
     } else {
       if (!this.form.controls['title'].valid) {

@@ -37,13 +37,13 @@ export class StoriesAutoList {
   loadStoriesGroup() {
     this.loading = true; // to help change detector to see change later to false
     this.storyService.get({where: this.where, order: this.order, skip: this.skip}).subscribe((stories) => {
+      this.storiesGroup = [];
       this.storiesGroup.push(stories);
       this.lastLength = stories.length;
       this.loading = false;
     })
   }
   ngOnChanges(changes: {[propKey: string]: SimpleChange}) {
-    this.storiesGroup = [];
     this.loadStoriesGroup();
   }
 }
