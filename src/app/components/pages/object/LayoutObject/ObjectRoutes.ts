@@ -16,8 +16,10 @@ export const ObjectRoutes =
       data: {mainDomain: 'места'}, children
     },
     {
+      // тоже 'места'
       path: '%D0%BC%D0%B5%D1%81%D1%82%D0%B0/:region/:slug', component: LayoutObject,
       data: {mainDomain: 'места'}, children
-    }, //места
+    },
+    // остальные домены
     {path: ':mainDomain/:slug', component: LayoutObject, children},
   ];
