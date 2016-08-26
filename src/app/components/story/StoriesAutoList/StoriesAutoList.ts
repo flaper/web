@@ -23,27 +23,32 @@ export class StoriesAutoList {
   }
 
   ngOnInit() {
-    this.loadStoriesGroup();
+    this.loadStoriesGroup(true);
   }
 
 
   loadMore() {
+    console.log('loading more');
     this.skip += this.storyService.LIMIT;
-    this.loadStoriesGroup();
+    this.loadStoriesGroup(false);
   }
 
   loading = false;
 
-  loadStoriesGroup() {
+  loadStoriesGroup(isInitial:boolean) {
+
     this.loading = true; // to help change detector to see change later to false
     this.storyService.get({where: this.where, order: this.order, skip: this.skip}).subscribe((stories) => {
-      this.storiesGroup = [];
+      if (isInitial) {
+        this.storiesGroup = [];
+      }
       this.storiesGroup.push(stories);
       this.lastLength = stories.length;
       this.loading = false;
     })
   }
+
   ngOnChanges(changes: {[propKey: string]: SimpleChange}) {
-    this.loadStoriesGroup();
+    this.loadStoriesGroup(true);
   }
 }
