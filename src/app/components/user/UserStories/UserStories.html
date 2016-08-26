@@ -1,4 +1,16 @@
 <div *ngIf="user">
-  <stories-auto-list [where]="{userId: user.id}">
+  <ul class="status-type-selector">
+    <li *ngIf="isVisible('all')">
+      <button type="button" name="button" [ngClass]="{active: isActive('active')}" (click)="showStories('active')">Активные</button>
+    </li>
+    <li *ngIf="isVisible('all')">
+      <button type="button" name="button" [ngClass]="{active: isActive('denied')}" (click)="showStories('denied')">Отклонённые</button>
+    </li>
+    <li *ngIf="isVisible('self')">
+      <button type="button" name="button" [ngClass]="{active: isActive('deleted')}" (click)="showStories('deleted')">Удалённые</button>
+    </li>
+  </ul>
+
+  <stories-auto-list [where]="{userId: user.id,status: storyStatus}">
   </stories-auto-list>
 </div>

@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, SimpleChange} from '@angular/core';
 import {Story, StoryService} from "@flaper/angular";
 import {StoriesList} from "../StoriesList/StoriesList";
 import {LoadMore} from "../../common/LoadMore/LoadMore";
@@ -41,5 +41,9 @@ export class StoriesAutoList {
       this.lastLength = stories.length;
       this.loading = false;
     })
+  }
+  ngOnChanges(changes: {[propKey: string]: SimpleChange}) {
+    this.storiesGroup = [];
+    this.loadStoriesGroup();
   }
 }
