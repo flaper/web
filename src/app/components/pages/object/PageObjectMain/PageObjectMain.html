@@ -10,10 +10,10 @@
       Редактировать
     </button>
   </div>
+  <image-gallery [currentImage]="currentImage" (stateUpdated)="stateChanged($event)" [images]='obj.getImages()'></image-gallery>
   <div *ngIf="images.length > 0" class="images hidden-sm-down">
     <div *ngFor="let image of images">
-      <img class="img-thumbnail" src="{{image | flapImage}}">
+      <img (click)="openGallery(image)" class="img-thumbnail" src="{{image | flapImage}}">
     </div>
   </div>
 </div>
-

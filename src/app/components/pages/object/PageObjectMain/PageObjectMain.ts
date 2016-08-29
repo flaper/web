@@ -2,15 +2,17 @@ import {Component} from '@angular/core';
 import {FObject, UserService} from "@flaper/angular";
 import {ScreenService} from "../../../../services/helpers/ScreenService";
 import {LayoutObject} from "../LayoutObject/LayoutObject";
-
+import {GalleryComponent} from "../../../image/gallery/GalleryComponent";
 @Component({
   selector: 'page-object-main',
+  directives: [GalleryComponent],
   template: require('./PageObjectMain.html'),
   styles: [require('./PageObjectMain.scss')]
 })
 export class PageObjectMain {
   obj:FObject;
   images = [];
+  currentImage = null; //current image id for gallery
 
   constructor(private _user:UserService) {
     LayoutObject.ObjectObservable.subscribe(obj=> {
@@ -27,4 +29,12 @@ export class PageObjectMain {
     }
     return ifOwner ? '/p/manageSupport' : 'manageRequest';
   }
+  stateChanged(image:number) {
+    this.currentImage = image;
+  }
+  openGallery(image) {
+    this.currentImage = image;
+    console.log(this.currentImage,image);
+  }
+
 }

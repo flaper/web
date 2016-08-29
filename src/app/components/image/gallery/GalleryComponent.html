@@ -1,0 +1,18 @@
+<div class='modal-overlay' [ngClass]="{hidden: !isVisible()}">
+  <i class='modal-close-icon fa fa-close' (click)='close()'>
+  </i>
+  <div class='gallery-container'>
+    <section class='image-section'>
+      <div class='image-control image-control--left' (click)="previous()">
+         <i><</i>
+       </div>
+      <div class="image-container">
+        <img src="{{currentImage | flapImage}}" alt="image" />
+      </div>
+      <div class='image-control image-control--right' (click)="next()">
+         <i>></i>
+       </div>
+    </section>
+    <section class='comment-section'></section>
+  </div>
+</div>
