@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FObject, UserService} from "@flaper/angular";
 import {ScreenService} from "../../../../services/helpers/ScreenService";
 import {LayoutObject} from "../LayoutObject/LayoutObject";
-import {GalleryComponent} from "../../../image/gallery/GalleryComponent";
+import {GalleryComponent} from "../../../image/gallery/GalleryComponent/GalleryComponent";
 @Component({
   selector: 'page-object-main',
   directives: [GalleryComponent],
@@ -29,12 +29,15 @@ export class PageObjectMain {
     }
     return ifOwner ? '/p/manageSupport' : 'manageRequest';
   }
+
+  //gallery state change event listener
   stateChanged(image:number) {
     this.currentImage = image;
   }
+
+  //set gallery current image
   openGallery(image) {
     this.currentImage = image;
-    console.log(this.currentImage,image);
   }
 
 }

@@ -35,3 +35,5 @@
   <div id="mobile-story-share"
        data-services="viber,whatsapp,vkontakte,odnoklassniki,moimir,facebook,gplus,twitter"></div>
 </div>
+
+<image-gallery [currentImage]="currentImage" (stateUpdated)="stateChanged($event)" [images]='story.images'></image-gallery>

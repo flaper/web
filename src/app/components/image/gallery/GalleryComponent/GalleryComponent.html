@@ -1,0 +1,27 @@
+<div class='modal-overlay' [ngClass]="{hidden: !isVisible()}">
+  <i class='modal-close-icon fa fa-close' (click)='close()'>
+  </i>
+  <div class='container-fluid'>
+    <div class='row'>
+      <section class='col-xs-9'>
+        <div class='row'>
+          <div class='image-control image-control--left' (click)="previous()">
+             <i><</i>
+           </div>
+          <div class="image-container">
+            <img src="{{_currentImage.src}}" *ngIf='_currentImage' alt="image" />
+            <div class='image-like-container'>
+              <like  [subject]="_currentImage" *ngIf='!oldLinks && _currentImage' [iconMode]="true"></like>
+            </div>
+          </div>
+          <div class='image-control image-control--right' (click)="next()">
+             <i>></i>
+           </div>
+         </div>
+      </section>
+      <section class='comment-section col-xs-3'>
+        <comments-auto-list *ngIf='_currentImage && !oldLinks' [subjectId] = "_currentImage.id"> </comments-auto-list>
+      </section>
+    </div>
+  </div>
+</div>

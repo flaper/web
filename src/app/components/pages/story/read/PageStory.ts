@@ -20,6 +20,7 @@ export class PageStory {
     let slug = params['slug'];
     storyService.getBySlug(slug).subscribe(story => {
       this.story = story;
+      console.log(story);
       ts.setTitle(story.title);
       Metrika.setParam('storyId', story.id);
       Metrika.setParam('authorId', story.id);
