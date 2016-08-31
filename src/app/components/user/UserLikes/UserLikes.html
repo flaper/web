@@ -1,0 +1,27 @@
+<div class="btn-group" role="group">
+  <button (click)="findForMe()" type="button" id="meId" class="btn btn-info btn-sm navbar-btn">
+    <span *ngIf="it_forMe">Меня оценили</span>
+    <span *ngIf="!it_forMe">Я оценил(-а)</span>
+  </button>
+  <!-- <button (click)="findMe()" type="button" id="fromMeId" [ngClass]="{'active': !it_forMe}"  class="btn btn-info btn-sm navbar-btn ">Я оценил(-а)</button> -->
+</div>
+<br/>
+<div class="btn-group" role="group">
+  <button (click)="findStories()" type="button" id="storyId" [ngClass]="{'active': subjectType == 'Story'}"  class="btn btn-info btn-sm navbar-btn">Статьи</button>
+  <button (click)="findComments()" type="button" id="commentId" [ngClass]="{'active': subjectType == 'Comment'}" class="btn btn-info btn-sm navbar-btn">Комментарии</button>
+</div>
+<div class="alert alert-info" *ngIf="fanbase.length === 0">Еще нет лайков</div>
+<div *ngIf="fanbase.length">
+  <div class="fanbase" *ngFor="let fb of fanbase">
+    <a [routerLink]="['/s', fb.stories.slug]"><h5>{{fb.stories.title}}</h5></a>
+    <div class="story-item-header">
+      <div class="media">
+        <user-avatar [id]="fb.fans.id" class="media-left"></user-avatar>
+        <div class="media-body">
+          <user-link [id]="fb.fans.id"></user-link>
+          <div class="time">{{fb.created | amTimeAgo}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
