@@ -65,3 +65,26 @@
     margin-left: 0;
   }
 }
+.likes{
+  color:#0087cf;
+  font-size:1.7rem;
+
+  &, &:hover, &:visited, &:active, &:focus {
+    text-decoration: none;
+  }
+  .fa-heart{
+    display: none;
+  }
+  .fa-heart-o{
+    display: inline;
+  }
+}
+.likes:hover{
+  cursor:pointer;
+  .fa-heart{
+    display: inline;
+  }
+  .fa-heart-o{
+    display: none;
+  }
+}
