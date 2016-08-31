@@ -37,4 +37,9 @@ export class CommentsAutoList {
       this.wasLoaded = true;
     })
   }
+  ngOnChanges(changes) {
+    if (changes.subjectId) {
+      this.reloadComments();
+    }
+  }
 }
