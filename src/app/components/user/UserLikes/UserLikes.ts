@@ -13,11 +13,18 @@ export class UserLikes{
   fanbase = [];
   subjectType = "Story";
   it_forMe    = false;
+
+  loading = false;
+  limit = 20;
+  pages:number;
+  current_page:number;
+  offset:number;
   constructor(private like:LikeService, private _user:UserService, private story:StoryService, private comment:CommentService){
     PageUser.UserObservable.subscribe(user=> {
       this.user = user;
       this.it_forMe = this._user.isCurrentUser(this.user);
-      this.getLikes(this.getWhere(this.it_forMe));
+      this.getPages();
+      // this.getLikes(this.getWhere(this.it_forMe));
     });
   }
 
@@ -31,26 +38,39 @@ export class UserLikes{
 
   findStories(){
     this.subjectType = "Story";
-    this.getLikes(this.getWhere(this.it_forMe));
+    this.getPages();
   }
 
   findComments(){
     this.subjectType = "Comment";
-    this.getLikes(this.getWhere(this.it_forMe));
+    this.getPages();
   }
 
   findForMe(){
     this.it_forMe = !this.it_forMe;
-    this.getLikes(this.getWhere(this.it_forMe));
+    this.getPages();
   }
 
-  findMe(){
-    this.it_forMe = !this.it_forMe;
+  getPages(){
+    this.like.count(this.getWhere(this.it_forMe)).subscribe(count=>{
+      this.pages = count % this.limit;
+      if (((count / this.limit) - this.pages)>0) this.pages++;
+      if (this.pages > 0) this.current_page = 1;
+      this.offset = 0;
+      this.getLikes(this.getWhere(this.it_forMe));
+    });
+  }
+
+  turnPage(page){
+    this.current_page = page;
+    this.offset = (this.current_page -1) * 20;
     this.getLikes(this.getWhere(this.it_forMe));
+    window.scrollTo(0, 0);
   }
 
   getLikes(where){
-    this.like.getLikesHistory(where).subscribe(likes =>{
+    this.loading = false;
+    this.like.getLikesHistory(where, this.limit, this.offset).subscribe(likes =>{
       this.getFlapers(likes);
     });
   }
@@ -71,7 +91,7 @@ export class UserLikes{
   getStories(subjectIds,likes,fans){
     switch(this.subjectType){
       case 'Comment':{
-        let filter = {where: {id: {inq:subjectIds} }, limit: 20, fields: {id:true, subjectId:true}};
+        let filter = {where: {id: {inq:subjectIds} }, limit: this.limit, fields: {id:true, subjectId:true}};
         this.comment.get(filter).subscribe(comments => {
           let ids = [];
           comments.map(comment => {
@@ -84,7 +104,7 @@ export class UserLikes{
             });
             like['subjectId'] = newId[0]['subjectId'];
           });
-          let filter = {where: {id: {inq:ids} }, limit: 20, fields: {id:true, title:true, slug:true}};
+          let filter = {where: {id: {inq:ids} }, limit: this.limit, fields: {id:true, title:true, slug:true}};
           this.story.get(filter).subscribe(stories =>{
             this.findFanbase(likes,fans,stories);
           });
@@ -92,7 +112,7 @@ export class UserLikes{
         break;
       }
       default:{
-        let filter = {where: {id: {inq:subjectIds} }, limit: 20, fields: {id:true, title:true, slug:true}};
+        let filter = {where: {id: {inq:subjectIds} }, limit: this.limit, fields: {id:true, title:true, slug:true}};
         this.story.get(filter).subscribe(stories =>{
           this.findFanbase(likes,fans,stories);
         });
@@ -105,6 +125,7 @@ export class UserLikes{
   // Метод вызывающий это всё, возможно LIKES
   // Метод собирающий FANBASE
   findFanbase(likes,fans,stories){
+    this.loading = true;
     this.fanbase = [];
     likes.map(like =>{
       let fansOne = fans.filter(fan => {
