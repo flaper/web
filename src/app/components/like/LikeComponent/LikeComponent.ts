@@ -42,4 +42,11 @@ export class LikeComponent {
         })
     }
   }
+  ngOnChanges(changes) {
+    if (changes.subject) {
+      this.requestMyLike();
+      //noinspection TypeScriptUnresolvedFunction
+      this._user.currentUserObservable.subscribe(() => this.requestMyLike());
+    }
+  }
 }
