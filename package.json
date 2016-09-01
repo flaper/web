@@ -65,7 +65,7 @@
     "angular2-moment": "^0.7.0",
     "autoprefixer-loader": "^3.2.0",
     "autosize": "^3.0.15",
-    "bootstrap": "twbs/bootstrap#v4.0.0-alpha.2",
+    "bootstrap": "^4.0.0-alpha.3",
     "core-js": "^2.2.2",
     "dropzone": "^4.2.0",
     "lodash": "^4.12.0",
