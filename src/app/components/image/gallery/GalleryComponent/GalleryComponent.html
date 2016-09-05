@@ -20,7 +20,7 @@
          </div>
       </section>
       <section class='comment-section col-xs-3'>
-        <comments-auto-list *ngIf='_currentImage && !oldLinks' [subjectId] = "_currentImage.id"> </comments-auto-list>
+        <comments-auto-list *ngIf='_currentImage && !oldLinks' auto-focus-it [subjectId] = "_currentImage.id"> </comments-auto-list>
       </section>
     </div>
   </div>

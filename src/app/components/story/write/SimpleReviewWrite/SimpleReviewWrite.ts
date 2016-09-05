@@ -1,14 +1,14 @@
 import {Component, Input, ElementRef} from '@angular/core';
 import {Router} from '@angular/router';
 import {Location, FormBuilder, Control, ControlGroup, Validators} from '@angular/common';
-import {Story, StoryService,FObject} from "@flaper/angular";
+import {Story, StoryService} from "@flaper/angular";
 import {FormDraft} from "../../../../services/draft/FormDraft";
 import {DropzoneComponent} from "../../../image/dropzone/DropzoneComponent";
 import {generateEvent} from "../../../../libs/common/common";
-import {RatingBar} from "../../../common/Rating/RatingBar/RatingBar";
+
 @Component({
   selector: 'simple-write',
-  directives: [DropzoneComponent,RatingBar],
+  directives: [DropzoneComponent],
   styles: [require('./SimpleWrite.scss')],
   template: require('./SimpleWrite.html')
 })
@@ -17,13 +17,7 @@ export class SimpleWrite {
 
   @Input()
   story:Story;
-  @Input('type')
-  type:string;
-  @Input('object')
-  object:FObject;
   newStory:boolean;
-  rating:number = 1;
-  isReview:boolean;
   submitInProgress:boolean = false;
   form:ControlGroup;
   error:string;
@@ -35,10 +29,11 @@ export class SimpleWrite {
   ngOnInit() {
     this.newStory = !this.story;
     this.DRAFT_KEY = this.story ? `${this.DRAFT_KEY}_${this.story.id}` : this.DRAFT_KEY;
+
     let title = this.story ? this.story.title : '';
     let content = this.story ? this.story.content : '';
     this.form = this.fb.group({
-      title: [],
+      title: [title, Validators.required],
       content: [content, Validators.required]
     });
     //apply local changed only after 'updated' date
@@ -56,6 +51,7 @@ export class SimpleWrite {
   valueChanged(values) {
     FormDraft.save(this.DRAFT_KEY, values);
   }
+
   onSubmit(event) {
     if (this.submitInProgress) {
       return false;
@@ -79,15 +75,7 @@ export class SimpleWrite {
       }
     }
   }
-  ratingChanged(event) {
-    this.rating = event;
-  }
-  ngOnChanges(changes) {
-    if(changes.type) {
-      this.type = changes.type.currentValue;
-      this.isReview = (this.type === 'review');
-    }
-  }
+
   newImage(image) {
     let control = <Control> this.form.controls['content'];
     let value = control.value;
@@ -101,20 +89,9 @@ export class SimpleWrite {
 
   getStoryData() {
     let data = this.form.value;
-
-    if (this.isReview) {
-      data.rating = this.rating;
-    }
-    if (this.object) {
-      data.objectId = this.object.id;
-    }
-    console.log(data);
+    data.type = 'article';
     if (this.story) {
       data.id = this.story.id;
-      data.type = this.story.type;
-    }
-    else {
-      data.type = this.type;
     }
     return data;
   }

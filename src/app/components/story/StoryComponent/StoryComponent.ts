@@ -5,9 +5,11 @@ import * as moment from 'moment';
 import {PostActions} from "../../post/PostActions/PostActions";
 import {PageService} from "../../../services/helpers/PageService";
 import {GalleryComponent} from "../../image/gallery/GalleryComponent/GalleryComponent";
+import {RatingBar} from "../../common/Rating/RatingBar/RatingBar";
+
 @Component({
   selector: 'story',
-  directives: [PostActions,GalleryComponent],
+  directives: [PostActions,GalleryComponent,RatingBar],
   styles: [require('./StoryComponent.scss')],
   template: require('./StoryComponent.html')
 })

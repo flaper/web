@@ -2,12 +2,14 @@ import {LayoutObject} from "./LayoutObject";
 import {PageObjectMain} from "../PageObjectMain/PageObjectMain";
 import {PageManage} from "../PageManage/PageManage";
 import {PageManageRequest} from "../PageManageRequest/PageManageRequest";
+import {PageReview} from "../PageReview/PageReview";
 
 const children = [
   {path: '', component: PageObjectMain},
   {path: 'main', component: PageObjectMain},
   {path: 'manage', component: PageManage},
   {path: 'request', component: PageManageRequest},
+  {path: 'review', component: PageReview},
 ];
 export const ObjectRoutes =
   [

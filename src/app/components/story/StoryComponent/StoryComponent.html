@@ -21,7 +21,9 @@
   </div>
 </div>
 <h1>{{story.title}}</h1>
-
+<div class='row flex-items-xs-right' *ngIf="story.type==='review'">
+  <rating class='pull-right' [display]="true" [numeric]="true" [rating]="story.rating"></rating>
+</div>
 <div [innerHtml]="story.contentHTML" class="contentHTML">
 </div>
 <div class="story-footer">

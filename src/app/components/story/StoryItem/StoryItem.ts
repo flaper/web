@@ -2,9 +2,11 @@ import {Component, Input, Output, EventEmitter} from '@angular/core';
 import {Story} from "@flaper/angular";
 import {UserService} from "@flaper/angular";
 import {PageService} from "../../../services/helpers/PageService";
+import {RatingBar} from "../../common/Rating/RatingBar/RatingBar";
 
 @Component({
   selector: 'story-item',
+  directives: [RatingBar],
   styles: [require('./StoryItem.scss')],
   template: require('./StoryItem.html')
 })
