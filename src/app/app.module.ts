@@ -2,7 +2,7 @@ import { NgModule, ApplicationRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 // import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule} from '@angular/forms';
+import { ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
 
@@ -59,6 +59,12 @@ import {StoryComponent} from "./components/story/StoryComponent/StoryComponent";
 import {GalleryComponent} from "./components/image/gallery/GalleryComponent/GalleryComponent";
 import {PageFlapSync} from "./components/pages/flap/PageFlapSync/PageFlapSync";
 import {UserInfo} from "./components/user/UserInfo/UserInfo";
+import {UserStats} from "./components/user/UserStats/UserStats";
+import {UserStories} from "./components/user/UserStories/UserStories";
+import {UserLikes} from "./components/user/UserLikes/UserLikes";
+import {PageObjectMain} from "./components/pages/object/PageObjectMain/PageObjectMain";
+import {PageReview} from "./components/pages/object/PageReview/PageReview";
+import {PageNotFound} from "./components/pages/notFound/PageNotFound";
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -77,10 +83,11 @@ const APP_PROVIDERS = [
     StoriesList, SimpleWrite, SimpleReviewWrite, PageManageSupport, PageManageRequest, PageManage, LoadMore, StoryItem,
     CommentsShortList, CommentsAutoList, CommentsList, CommentComponent, RatingBar, DropzoneComponent, PremiumMessages,
     CommentWrite, PostActions, PageLogin, PageNews, PageWriteStory, PagePremiumSupport, PageStory, StoryComponent,
-    GalleryComponent, PageFlapSync, UserInfo
+    GalleryComponent, PageFlapSync, UserInfo, UserStats, UserStories, UserLikes, PageObjectMain, PageReview,
+    PageNotFound
   ],
   imports: [ // import Angular's modules
-    BrowserModule,
+    BrowserModule, FormsModule,
     ReactiveFormsModule,
     HttpModule,
     RouterModule.forRoot(ROUTES, {useHash: false})
