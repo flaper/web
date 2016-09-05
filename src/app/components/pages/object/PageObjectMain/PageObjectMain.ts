@@ -3,9 +3,11 @@ import {FObject, UserService} from "@flaper/angular";
 import {ScreenService} from "../../../../services/helpers/ScreenService";
 import {LayoutObject} from "../LayoutObject/LayoutObject";
 import {GalleryComponent} from "../../../image/gallery/GalleryComponent/GalleryComponent";
+import {StoriesAutoList} from "../../../story/StoriesAutoList/StoriesAutoList";
+
 @Component({
   selector: 'page-object-main',
-  directives: [GalleryComponent],
+  directives: [GalleryComponent, StoriesAutoList],
   template: require('./PageObjectMain.html'),
   styles: [require('./PageObjectMain.scss')]
 })
