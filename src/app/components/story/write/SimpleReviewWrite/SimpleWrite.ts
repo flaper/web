@@ -1,6 +1,7 @@
 import {Component, Input, ElementRef} from '@angular/core';
 import {Router} from '@angular/router';
-import {Location, FormBuilder, Control, ControlGroup, Validators} from '@angular/common';
+import {Location} from '@angular/common';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Story, StoryService} from "@flaper/angular";
 import {SimpleWrite} from '../SimpleWrite/SimpleWrite';
 import {DropzoneComponent} from "../../../image/dropzone/DropzoneComponent";
@@ -8,7 +9,7 @@ import {generateEvent} from "../../../../libs/common/common";
 
 @Component({
   selector: 'simple-review-write',
-  directives: [DropzoneComponent],
+  entryComponents: [DropzoneComponent],
   styles: [require('../SimpleWrite/SimpleWrite.scss')],
   template: require('../SimpleWrite/SimpleWrite.html')
 })

@@ -1,6 +1,7 @@
 import {Component, Input, ElementRef} from '@angular/core';
 import {Router} from '@angular/router';
-import {Location, FormBuilder, Control, ControlGroup, Validators} from '@angular/common';
+import {Location} from '@angular/common';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Story, StoryService} from "@flaper/angular";
 import {FormDraft} from "../../../../services/draft/FormDraft";
 import {DropzoneComponent} from "../../../image/dropzone/DropzoneComponent";
@@ -8,7 +9,7 @@ import {generateEvent} from "../../../../libs/common/common";
 
 @Component({
   selector: 'simple-write',
-  directives: [DropzoneComponent],
+  entryComponents: [DropzoneComponent],
   styles: [require('./SimpleWrite.scss')],
   template: require('./SimpleWrite.html')
 })
@@ -19,7 +20,7 @@ export class SimpleWrite {
   story:Story;
   newStory:boolean;
   submitInProgress:boolean = false;
-  form:ControlGroup;
+  form:FormGroup;
   error:string;
 
   constructor(private _story:StoryService, private fb:FormBuilder, private router:Router,
@@ -77,13 +78,13 @@ export class SimpleWrite {
   }
 
   newImage(image) {
-    let control = <Control> this.form.controls['content'];
+    let control = <FormControl> this.form.controls['content'];
     let value = control.value;
     if (value.length && value[value.length - 1] !== '\n') {
       value += "\n";
     }
     value += `![](${image.id})`;
-    control.updateValue(value, {onlySelf: false, emitEvent: true});
+    control.setValue(value, {onlySelf: false, emitEvent: true});
     this._autosizeUpdate();
   }
 

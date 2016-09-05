@@ -6,7 +6,7 @@ import {RatingBar} from "../../common/Rating/RatingBar/RatingBar";
 
 @Component({
   selector: 'story-item',
-  directives: [RatingBar],
+  entryComponents: [RatingBar],
   styles: [require('./StoryItem.scss')],
   template: require('./StoryItem.html')
 })

@@ -8,7 +8,7 @@ import {Metrika} from "../../../../services/metrics/Metrika";
 
 @Component({
   selector: 'page-story',
-  directives: [StoryComponent, CommentsAutoList],
+  entryComponents: [StoryComponent, CommentsAutoList],
   styles: [require('./PageStory.scss')],
   template: require('./PageStory.html')
 })

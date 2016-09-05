@@ -1,7 +1,7 @@
 <div class="request-wrapper" *ngIf="form">
   <h2 class="text-xs-center">Заявка на управление страницей</h2>
 
-  <form class="form" [ngFormModel]="form" (submit)="onSubmit($event)" *ngIf="!manageRequest">
+  <form class="form" [formGroup]="form" (submit)="onSubmit($event)" *ngIf="!manageRequest">
     <fieldset class="form-group" required>
       <label for="name">ФИО</label>
       <input id="name" ngControl="name" type="text" placeholder="ФИО" class="form-control" auto-focus-it name="name">

@@ -9,7 +9,7 @@ import {RatingBar} from "../../common/Rating/RatingBar/RatingBar";
 
 @Component({
   selector: 'story',
-  directives: [PostActions,GalleryComponent,RatingBar],
+  entryComponents: [PostActions,GalleryComponent,RatingBar],
   styles: [require('./StoryComponent.scss')],
   template: require('./StoryComponent.html')
 })

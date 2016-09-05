@@ -4,7 +4,7 @@
   <div>
     Премиум поддержка доступна до <strong>{{_user.currentUser.extra.premiumSupport | amDateFormat: 'LL'}}</strong>
   </div>
-  <form class="form" [ngFormModel]="form">
+  <form class="form" [formGroup]="form">
     <fieldset class="form-group">
       <textarea ngControl="message" class="form-control" placeholder="Ваш вопрос" rows="3" autosize auto-focus-it>
       </textarea>

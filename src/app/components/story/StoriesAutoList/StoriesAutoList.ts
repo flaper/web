@@ -5,7 +5,7 @@ import {LoadMore} from "../../common/LoadMore/LoadMore";
 
 @Component({
   selector: 'stories-auto-list',
-  directives: [StoriesList, LoadMore],
+  entryComponents: [StoriesList, LoadMore],
   styles: [require('./StoriesAutoList.scss')],
   template: require('./StoriesAutoList.html')
 })

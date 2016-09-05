@@ -5,7 +5,7 @@ import {StoriesAutoList} from "../../story/StoriesAutoList/StoriesAutoList";
 
 @Component({
   selector: 'page-user-stories',
-  directives: [StoriesAutoList],
+  entryComponents: [StoriesAutoList],
   styles: [require('./UserStories.scss')],
   template: require('./UserStories.html')
 })

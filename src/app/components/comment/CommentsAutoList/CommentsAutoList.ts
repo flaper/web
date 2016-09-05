@@ -6,7 +6,7 @@ import {UserService} from "@flaper/angular";
 
 @Component({
   selector: 'comments-auto-list',
-  directives: [CommentsList, CommentWrite],
+  entryComponents: [CommentsList, CommentWrite],
   styles: [require('./CommentsAutoList.scss')],
   template: require('./CommentsAutoList.html')
 })

@@ -6,7 +6,7 @@ import {SimpleWrite} from "../../../story/write/SimpleWrite/SimpleWrite";
 
 @Component({
   selector: 'page-review',
-  directives: [SimpleWrite],
+  entryComponents: [SimpleWrite],
   template: require('./PageReview.html'),
   styles: [require('./PageReview.scss')]
 })

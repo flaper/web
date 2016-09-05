@@ -8,7 +8,7 @@ import {PageService} from "../../../../services/helpers/PageService";
 
 @Component({
   selector: 'page-write-story',
-  directives: [SimpleWrite],
+  entryComponents: [SimpleWrite],
   styles: [require('./PageWriteStory.scss')],
   template: require('./PageWriteStory.html')
 })

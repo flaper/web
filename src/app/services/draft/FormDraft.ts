@@ -1,6 +1,5 @@
-/// <reference path="../../../../typingsOurs/main.d.ts" />
 import {Injectable} from '@angular/core';
-import {Control, ControlGroup} from '@angular/common';
+import {FormControl, FormGroup} from '@angular/forms';
 var _mapValues = require('lodash/mapValues');
 
 const KEY_PREFIX = 'FORM_DRAFT_';
@@ -28,16 +27,16 @@ export class FormDraft {
     }
   }
 
-  static load(key, form:ControlGroup, minDate = new Date(0)) {
+  static load(key, form:FormGroup, minDate = new Date(0)) {
     FormDraft.requireKey(key);
     minDate = minDate ? minDate : new Date(0);
 
     let data = this._safeLoad(`${KEY_PREFIX}${key}`, minDate);
     Object.keys(data).forEach((key) => {
       let value = data[key];
-      let control = <Control> form.controls[key];
+      let control = <FormControl> form.controls[key];
       if (value && control) {
-        control.updateValue(value, {});
+        control.setValue(value, {});
       }
     })
   }

@@ -1,6 +1,7 @@
 import {Component, Input, ElementRef} from '@angular/core';
 import {Router} from '@angular/router';
-import {Location, FormBuilder, Control, ControlGroup, Validators} from '@angular/common';
+import {Location} from '@angular/common';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Story, StoryService,FObject} from "@flaper/angular";
 import {FormDraft} from "../../../../services/draft/FormDraft";
 import {DropzoneComponent} from "../../../image/dropzone/DropzoneComponent";
@@ -8,7 +9,7 @@ import {generateEvent} from "../../../../libs/common/common";
 import {RatingBar} from "../../../common/Rating/RatingBar/RatingBar";
 @Component({
   selector: 'simple-write',
-  directives: [DropzoneComponent,RatingBar],
+  entryComponents: [DropzoneComponent, RatingBar],
   styles: [require('./SimpleWrite.scss')],
   template: require('./SimpleWrite.html')
 })
@@ -25,7 +26,7 @@ export class SimpleWrite {
   rating:number = 1;
   isReview:boolean;
   submitInProgress:boolean = false;
-  form:ControlGroup;
+  form:FormGroup;
   error:string;
 
   constructor(private _story:StoryService, private fb:FormBuilder, private router:Router,
@@ -56,6 +57,7 @@ export class SimpleWrite {
   valueChanged(values) {
     FormDraft.save(this.DRAFT_KEY, values);
   }
+
   onSubmit(event) {
     if (this.submitInProgress) {
       return false;
@@ -79,23 +81,26 @@ export class SimpleWrite {
       }
     }
   }
+
   ratingChanged(event) {
     this.rating = event;
   }
+
   ngOnChanges(changes) {
-    if(changes.type) {
+    if (changes.type) {
       this.type = changes.type.currentValue;
       this.isReview = (this.type === 'review');
     }
   }
+
   newImage(image) {
-    let control = <Control> this.form.controls['content'];
+    let control = <FormControl> this.form.controls['content'];
     let value = control.value;
     if (value.length && value[value.length - 1] !== '\n') {
       value += "\n";
     }
     value += `![](${image.id})`;
-    control.updateValue(value, {onlySelf: false, emitEvent: true});
+    control.setValue(value, {onlySelf: false, emitEvent: true});
     this._autosizeUpdate();
   }
 

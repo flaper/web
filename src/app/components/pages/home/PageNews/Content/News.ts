@@ -4,7 +4,7 @@ import {HomeLinks} from "../../LayoutHome/widgets/HomeLinks/HomeLinks";
 
 @Component({
   selector: 'news',
-  directives: [StoriesAutoList, HomeLinks],
+  entryComponents: [StoriesAutoList, HomeLinks],
   template: require('./News.html'),
   styles: [require('./News.scss')]
 })

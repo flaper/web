@@ -8,7 +8,7 @@ import {ReplaySubject} from 'rxjs';
 
 @Component({
   selector: 'stories-list',
-  directives: [StoryItem, CommentsShortList],
+  entryComponents: [StoryItem, CommentsShortList],
   styles: [require('./StoriesList.scss')],
   template: require('./StoriesList.html')
 })

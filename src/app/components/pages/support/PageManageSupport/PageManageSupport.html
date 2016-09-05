@@ -23,7 +23,7 @@
     </div>
   </div>
   <div class="selected-dialog">
-    <form class="form" [ngFormModel]="form" *ngIf="form">
+    <form class="form" [formGroup]="form" *ngIf="form">
       <fieldset class="form-group">
       <textarea ngControl="message" class="form-control" placeholder="Сообщение" rows="3" autosize auto-focus-it>
       </textarea>
