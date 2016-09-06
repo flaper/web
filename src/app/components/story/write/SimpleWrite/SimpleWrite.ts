@@ -28,7 +28,7 @@ export class SimpleWrite {
   submitInProgress:boolean = false;
   form:FormGroup;
   error:string;
-
+  contentLength:number;
   constructor(private _story:StoryService, private fb:FormBuilder, private router:Router,
               private elementRef:ElementRef, private _location:Location) {
   }
@@ -38,8 +38,9 @@ export class SimpleWrite {
     this.DRAFT_KEY = this.story ? `${this.DRAFT_KEY}_${this.story.id}` : this.DRAFT_KEY;
     let title = this.story ? this.story.title : '';
     let content = this.story ? this.story.content : '';
+
     this.form = this.fb.group({
-      title: [],
+      title: [title],
       content: [content, Validators.required]
     });
     //apply local changed only after 'updated' date
@@ -51,10 +52,12 @@ export class SimpleWrite {
   }
 
   ngAfterViewInit() {
+    this.contentLength = this.form.controls['content'].value.replace(/[ ]+/ig,"").length;
     this._autosizeUpdate();
   }
 
   valueChanged(values) {
+    this.contentLength = values.content.replace(/[ ]+/ig,"").length;
     FormDraft.save(this.DRAFT_KEY, values);
   }
 
@@ -89,8 +92,8 @@ export class SimpleWrite {
   ngOnChanges(changes) {
     if (changes.type) {
       this.type = changes.type.currentValue;
-      this.isReview = (this.type === 'review');
     }
+    this.isReview = (this.type === 'review');
   }
 
   newImage(image) {
@@ -113,7 +116,6 @@ export class SimpleWrite {
     if (this.object) {
       data.objectId = this.object.id;
     }
-    console.log(data);
     if (this.story) {
       data.id = this.story.id;
       data.type = this.story.type;

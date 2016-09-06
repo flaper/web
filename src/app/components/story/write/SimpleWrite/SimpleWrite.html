@@ -5,19 +5,21 @@
     </div>
     <fieldset class="form-group" required>
       <label for="title">Заголовок</label>
-      <input id="title" ngControl="title" type="text" placeholder="Заголовок" class="form-control" auto-focus-it
+      <input id="title" formControlName="title" type="text" placeholder="Заголовок" class="form-control" auto-focus-it
              name="title">
     </fieldset>
-    <fieldset class="form-group" *ngIf="isReview || story.rating">
+    <fieldset class="form-group" *ngIf="isReview || (story && story.rating)">
       Оценка:
       <rating [numeric]="true" [rating]="story && story.rating || 0" (changed)="ratingChanged($event)"></rating>
     </fieldset>
     <fieldset class="form-group">
-      <textarea ngControl="content" placeholder="Текст статьи (поддерживается markdown). Минимум 1000 символов."
+      <textarea formControlName="content" placeholder="Текст статьи (поддерживается markdown). Минимум 1000 символов."
                 class="form-control" rows="5"
                 autosize></textarea>
     </fieldset>
-
+    <div class='e-content-length pull-right'>
+      {{contentLength}} символов
+    </div>
     <button type="submit" class="btn btn-primary">{{newStory ? 'Создать' : 'Сохранить'}}</button>
     <button type="button" class="btn btn-link" (click)="onCancel()">Отменить
     </button>
