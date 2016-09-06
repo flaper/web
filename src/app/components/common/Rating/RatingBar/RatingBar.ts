@@ -14,7 +14,7 @@ export class RatingBar {
   @Input() rating:number;
   @Output() changed = new EventEmitter();
   constructor() {
-    this.rating = 1;
+    this.rating = 0;
   }
   ratings:number[] = [1,2,3,4,5,6,7,8,9,10].reverse();
   isActive(val:number):boolean {
@@ -27,7 +27,6 @@ export class RatingBar {
   }
   ngOnChanges(changes) {
     if (changes.rating) {
-      console.log(changes.rating);
       this.setRating(parseInt(changes.rating.currentValue));
     }
   }

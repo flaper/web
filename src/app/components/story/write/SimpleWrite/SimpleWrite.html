@@ -9,7 +9,8 @@
              name="title">
     </fieldset>
     <fieldset class="form-group" *ngIf="isReview || story.rating">
-      <rating [numeric]="true" [rating]="story && story.rating || 1" (changed)="ratingChanged($event)"></rating>
+      Оценка:
+      <rating [numeric]="true" [rating]="story && story.rating || 0" (changed)="ratingChanged($event)"></rating>
     </fieldset>
     <fieldset class="form-group">
       <textarea ngControl="content" placeholder="Текст статьи (поддерживается markdown). Минимум 1000 символов."

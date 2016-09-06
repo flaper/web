@@ -44,6 +44,14 @@
   @for $i from 1 through 10 {
     &__bar:nth-child(#{$i}) {
       transition: background-color .1s ease;
+      &.c-rating-bar__bar--active {
+        color:white;
+        @include generateColor($i,10);
+        & ~ li {
+          @include generateColor($i,10);
+        }
+      }
+      
       &:not(.c-rating-bar__bar--inactive):hover{
         @include generateColor($i,10);
         color: white;
@@ -52,13 +60,7 @@
         }
       }
 
-      &.c-rating-bar__bar--active {
-        color:white;
-        @include generateColor($i,10);
-        & ~ li {
-          @include generateColor($i,10);
-        }
-      }
+
     }
   }
 
