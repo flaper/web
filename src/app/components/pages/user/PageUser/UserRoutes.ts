@@ -1,7 +1,8 @@
 import {UserStories} from "../../../user/UserStories/UserStories";
 import {UserInfo} from "../../../user/UserInfo/UserInfo";
 import {UserStats} from "../../../user/UserStats/UserStats";
-import {UserLikes} from "../../../user/UserLikes/UserLikes";
+import {UserLike} from "../../../user/UserLikes/UserLike/UserLike";
+import {UserFavorite} from "../../../user/UserLikes/UserFavorite/UserFavorite";
 import {PageUser} from "./PageUser";
 
 export const UserRoutes =
@@ -13,6 +14,7 @@ export const UserRoutes =
     {path: 'stats', component: UserStats},
     {path: '', component: UserStories},
     {path: 'articles', component: UserStories},
-    {path: 'likes', component: UserLikes},
+    {path: 'like', component: UserLike},
+    {path: 'favorite', component: UserFavorite},
   ]
 };

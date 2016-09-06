@@ -1,11 +1,36 @@
 .btn-group{
   margin-top: 1rem;
 }
-button:focus, button:target{
+.no-out{
   outline: none;
 }
-.fanbase, .alert-info{
+
+
+
+.fanbase{
+  max-width: 500px;
+  border: 1px solid rgba(0, 0, 0, 0.4);;
+  border-radius: 4px;
+  position: relative;
+  .fanbase-header, .fanbase-who, .fanbase-content{
+    padding: 0.5rem 1rem;
+    // padding: 1rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);;
+  }
+  .fanbase-header .heart{
+    position: absolute;
+    right: 1rem;
+    color: #0087cf;
+  }
+  .fanbase-footer{
+    padding: 0.5rem 1rem;
+  }
+  .fanbase-who, .fanbase-footer{
+    .media{
+      margin-bottom: 0;
+    }
+  }
+}
+.m-t-1{
   margin-top: 1rem;
 }
-
-
