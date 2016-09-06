@@ -5,7 +5,9 @@
       <div class="media-body">
         <user-link [id]="story.userId"></user-link>
         <div class="time">{{story.created | amTimeAgo}}</div>
-        Оценка: <rating [display]="true" [numeric]="true" [rating]="story.rating" *ngIf="story.type==='review'"></rating>
+        <div *ngIf="story.type==='review'">
+          Оценка: <rating [display]="true" [numeric]="true" [rating]="story.rating" ></rating>
+        </div>
       </div>
     </div>
   </div>
