@@ -7,7 +7,7 @@ import {StoriesAutoList} from "../../../story/StoriesAutoList/StoriesAutoList";
 
 @Component({
   selector: 'page-object-main',
-  directives: [GalleryComponent, StoriesAutoList],
+  entryComponents: [GalleryComponent, StoriesAutoList],
   template: require('./PageObjectMain.html'),
   styles: [require('./PageObjectMain.scss')]
 })

@@ -1,5 +1,5 @@
 <div>
-  <form class="form" [ngFormModel]="form" (submit)="onSubmit($event)">
+  <form class="form" [formGroup]="form" (submit)="onSubmit($event)">
     <div class="has-danger" *ngIf="error">
       <span class="text-help">{{error}}</span>
     </div>

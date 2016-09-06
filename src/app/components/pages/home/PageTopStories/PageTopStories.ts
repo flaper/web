@@ -4,7 +4,7 @@ import {Title} from "@angular/platform-browser"
 
 @Component({
   selector: 'page-top-stories',
-  directives: [LayoutHome],
+  entryComponents: [LayoutHome],
   template: require('./PageTopStories.html')
 })
 export class PageTopStories {

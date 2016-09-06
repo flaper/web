@@ -13,7 +13,6 @@ import {PageFlapSync} from "./components/pages/flap/PageFlapSync/PageFlapSync";
 import {ObjectRoutes} from "./components/pages/object/LayoutObject/ObjectRoutes";
 import {PagePremiumSupport} from "./components/pages/support/PagePremiumSupport/PagePremiumSupport";
 import {PageManageSupport} from "./components/pages/support/PageManageSupport/PageManageSupport";
-import {RouterConfig} from '@angular/router';
 
 export const ROUTES = [
   {path: '', component: PageLastStories},

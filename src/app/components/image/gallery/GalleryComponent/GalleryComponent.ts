@@ -5,8 +5,8 @@ import {LikeComponent} from "../../../like/LikeComponent/LikeComponent";
 
 @Component({
   selector: 'image-gallery',
-  inputs: ['state','images'],
-  directives: [CommentsAutoList,LikeComponent],
+  inputs: ['state'],
+  entryComponents: [CommentsAutoList,LikeComponent],
   template: require('./GalleryComponent.html'),
   styles: [require('./GalleryComponent.scss')]
 })

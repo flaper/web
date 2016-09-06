@@ -4,7 +4,7 @@ import {HomeLinks} from "../../LayoutHome/widgets/HomeLinks/HomeLinks";
 
 @Component({
   selector: 'last-stories',
-  directives: [StoriesAutoList, HomeLinks],
+  entryComponents: [StoriesAutoList, HomeLinks],
   template: require('./LastStories.html'),
   styles: [require('./LastStories.scss')]
 })
