@@ -102,18 +102,17 @@ export class UserLikes{
 
   getMixContent(ids,likes,fans){
     let contents = {};
-    let filter = {};
-    filter = {where: {id: {inq:ids['commentIds']} }, limit: this.limit, fields: {id:true, subjectId:true, shortInline:true, subjectType:true}};
+    let filter = {where: {id: {inq:ids['commentIds']} }, limit: this.limit, fields: {id:true, subjectId:true, shortInline:true, subjectType:true}};
     this.comment.get(filter).subscribe(comments => {
       contents['comments'] = comments;
       let subIds = [];
       comments.map(comment => {
         subIds.push(comment['subjectId']);
       });
-      filter = {where: {id: {inq:subIds} }, limit: this.limit, fields: {id:true, slug:true}};
+      let filter = {where: {id: {inq:subIds} }, limit: this.limit, fields: {id:true, slug:true}};
       this.story.get(filter).subscribe(subStories =>{
         contents['subStories'] = subStories;
-        filter = {where: {id: {inq:ids['storyIds']} }, limit: this.limit, fields: {id:true, title:true, slug:true, shortText:true}};
+        let filter = {where: {id: {inq:ids['storyIds']} }, limit: this.limit, fields: {id:true, title:true, slug:true, shortText:true}};
         this.story.get(filter).subscribe(stories =>{
           contents['stories'] = stories;
           this.findFanbase(likes,fans, contents);
@@ -124,10 +123,9 @@ export class UserLikes{
 
   getContents(subjectIds,likes,fans){
     let contents = {};
-    let filter = {};
     switch(this.subjectTypes[0]){
       case 'Comment':
-        filter = {where: {id: {inq:subjectIds} }, limit: this.limit, fields: {id:true, subjectId:true, shortInline:true, subjectType:true}};
+        let filter = {where: {id: {inq:subjectIds} }, limit: this.limit, fields: {id:true, subjectId:true, shortInline:true, subjectType:true}};
         this.comment.get(filter).subscribe(comments => {
           contents['comments'] = comments;
           let ids = [];
@@ -142,7 +140,7 @@ export class UserLikes{
         });
         break;
       default:
-        filter = {where: {id: {inq:subjectIds} }, limit: this.limit, fields: {id:true, title:true, slug:true, shortText:true}};
+        let filter = {where: {id: {inq:subjectIds} }, limit: this.limit, fields: {id:true, title:true, slug:true, shortText:true}};
         this.story.get(filter).subscribe(stories =>{
           contents['stories'] = stories;
           this.findFanbase(likes,fans, contents);
