@@ -125,8 +125,8 @@ export class UserLikes{
     let contents = {};
     switch(this.subjectTypes[0]){
       case 'Comment':
-        let filter = {where: {id: {inq:subjectIds} }, limit: this.limit, fields: {id:true, subjectId:true, shortInline:true, subjectType:true}};
-        this.comment.get(filter).subscribe(comments => {
+        let filter1 = {where: {id: {inq:subjectIds} }, limit: this.limit, fields: {id:true, subjectId:true, shortInline:true, subjectType:true}};
+        this.comment.get(filter1).subscribe(comments => {
           contents['comments'] = comments;
           let ids = [];
           comments.map(comment => {
@@ -140,8 +140,8 @@ export class UserLikes{
         });
         break;
       default:
-        let filter = {where: {id: {inq:subjectIds} }, limit: this.limit, fields: {id:true, title:true, slug:true, shortText:true}};
-        this.story.get(filter).subscribe(stories =>{
+        let filter2 = {where: {id: {inq:subjectIds} }, limit: this.limit, fields: {id:true, title:true, slug:true, shortText:true}};
+        this.story.get(filter2).subscribe(stories =>{
           contents['stories'] = stories;
           this.findFanbase(likes,fans, contents);
         });
