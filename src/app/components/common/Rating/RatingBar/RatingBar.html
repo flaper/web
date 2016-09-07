@@ -1,0 +1,5 @@
+<ul class='c-rating-bar'>
+  <li class='c-rating-bar__bar' (click)="setRating(rating)" [ngClass]="{'c-rating-bar__bar--active': isActive(rating),'c-rating-bar__bar--inactive': display}" *ngFor="let rating of ratings">
+    {{numeric ? rating : ''}}
+  </li>
+</ul>

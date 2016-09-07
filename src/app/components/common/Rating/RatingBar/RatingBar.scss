@@ -1,0 +1,68 @@
+.c-rating-bar {
+  display: flex;
+  width: 200px;
+  height: 32px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  flex-direction: row-reverse;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+
+  &__bar {
+    display: inline-block;
+    width: 20px;
+    height: 30px;
+    background: #fff;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    cursor: pointer;
+    color: transparent;
+    text-align: center;
+    line-height: 30px;
+  }
+  //creating gradient bars
+
+
+  @mixin generateColor($i,$steps) {
+    $r1 : 66;
+    $g1 : 182;
+    $b1 : 255;
+    $r2 : 255;
+    $g2 : 204;
+    $b2 : 54;
+    $dr : ($r1 - $r2) / ($steps - 1);
+    $dg : ($g1 - $g2) / ($steps - 1);
+    $db : ($b1 - $b2) / ($steps - 1);
+    $red: round($r2 + ( ( $i - 1 ) * $dr ));
+    $green: round($g2 + (( $i - 1 ) * $dg ));
+    $blue: round($b2 + (( $i - 1 ) * $db ));
+    background-color: rgb($red, $green, $blue);
+  }
+  @for $i from 1 through 10 {
+    &__bar:nth-child(#{$i}) {
+      transition: background-color .1s ease;
+      &.c-rating-bar__bar--active {
+        color:white;
+        @include generateColor($i,10);
+        & ~ li {
+          @include generateColor($i,10);
+        }
+      }
+      
+      &:not(.c-rating-bar__bar--inactive):hover{
+        @include generateColor($i,10);
+        color: white;
+        & ~ li {
+          @include generateColor($i,10);
+        }
+      }
+
+
+    }
+  }
+
+
+}

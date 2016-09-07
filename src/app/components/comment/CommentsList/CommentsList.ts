@@ -4,8 +4,7 @@ import {CommentComponent} from "../CommentComponent/CommentComponent";
 
 @Component({
   selector: 'comments-list',
-  directives: [CommentComponent],
-  pipes: [],
+  entryComponents: [CommentComponent],
   styles: [require('./CommentsList.scss')],
   template: require('./CommentsList.html')
 })

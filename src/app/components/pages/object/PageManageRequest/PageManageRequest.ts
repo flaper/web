@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormBuilder, Control, ControlGroup, Validators} from '@angular/common';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {FObject, UserService, ManageRequestService} from "@flaper/angular";
 import {ScreenService} from "../../../../services/helpers/ScreenService";
 import {LayoutObject} from "../LayoutObject/LayoutObject";
@@ -16,7 +16,7 @@ export class PageManageRequest {
   obj:FObject;
 
   manageRequest:any;
-  form:ControlGroup;
+  form:FormGroup;
 
   constructor(private fb:FormBuilder, _user:UserService, private _manageRequest:ManageRequestService,
               _page:PageService, private _payment:PaymentService) {

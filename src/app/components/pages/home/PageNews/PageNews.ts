@@ -5,7 +5,7 @@ import {Title} from "@angular/platform-browser"
 
 @Component({
   selector: 'page-news',
-  directives: [LayoutHome],
+  entryComponents: [LayoutHome],
   template: require('./PageNews.html')
 })
 export class PageNews {

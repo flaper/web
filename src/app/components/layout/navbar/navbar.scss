@@ -23,6 +23,7 @@
 
 .navbar-brand {
   float: none;
+  color: #0087cf!important;
 }
 
 @media (min-width: map-get($grid-breakpoints, 'sm')) {
@@ -33,6 +34,8 @@
 }
 
 .navbar-btn.btn-sm {
+  line-height: 1.5;
+  padding: 0.25rem 0.75rem;
   margin-top: 3px;
   margin-bottom: 3px;
 }

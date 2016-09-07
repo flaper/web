@@ -6,7 +6,7 @@ import {Title} from "@angular/platform-browser"
 
 @Component({
   selector: 'page-top-stories',
-  directives: [LayoutHome],
+  entryComponents: [LayoutHome],
   template: require('./PageLastStories.html')
 })
 export class PageLastStories {

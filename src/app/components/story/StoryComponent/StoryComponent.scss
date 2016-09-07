@@ -25,4 +25,9 @@
     display: flex;
     justify-content: center;
   }
+  .contentHTML {
+    & img {
+      cursor: pointer;
+    }
+  }
 }

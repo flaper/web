@@ -1,17 +1,17 @@
 import {Component, ElementRef} from '@angular/core';
 import {UserService, PremiumSupport} from "@flaper/angular";
-import {FormBuilder, Control, ControlGroup, Validators} from '@angular/common';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {PageService} from "../../../../services/helpers/PageService";
 import {PremiumMessages} from "../../../premiumSupport/PremiumMessages/PremiumMessages";
 
 @Component({
   selector: 'page-manage-support',
-  directives: [PremiumMessages],
+  entryComponents: [PremiumMessages],
   template: require('./PageManageSupport.html'),
   styles: [require('./PageManageSupport.scss')]
 })
 export class PageManageSupport {
-  form:ControlGroup;
+  form:FormGroup;
   dialogs = [];
 
   activeDialog = null;
@@ -59,8 +59,8 @@ export class PageManageSupport {
   }
 
   clearForm() {
-    let control = <Control> this.form.controls['message'];
-    control.updateValue('', {});
+    let control = <FormControl> this.form.controls['message'];
+    control.setValue('', {});
   }
 
   requestDialog() {

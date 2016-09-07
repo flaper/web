@@ -6,7 +6,7 @@ let _keyBy = require('lodash/keyBy');
 
 @Component({
   selector: 'top-stories',
-  directives: [StoriesAutoList],
+  entryComponents: [StoriesAutoList],
   styles: [require('./TopStories.scss')],
   template: require('./TopStories.html')
 })

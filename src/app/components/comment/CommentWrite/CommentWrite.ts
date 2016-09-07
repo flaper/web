@@ -1,5 +1,5 @@
 import {Component, Input, Output, EventEmitter, ElementRef} from '@angular/core';
-import {FormBuilder, Control, ControlGroup, Validators} from '@angular/common';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Comment, CommentService, UserService} from "@flaper/angular";
 import {FormDraft} from "../../../services/draft/FormDraft";
 import {generateEvent} from "../../../libs/common/common";
@@ -37,7 +37,7 @@ export class CommentWrite {
   disabled:boolean = false;
 
   active:boolean = false;
-  form:ControlGroup;
+  form:FormGroup;
 
   constructor(private commentService:CommentService, private fb:FormBuilder, private elementRef:ElementRef,
               private  userService:UserService) {
@@ -78,9 +78,10 @@ export class CommentWrite {
   }
 
   onSubmit(event) {
-    if(this.disabled) {
+    if (this.disabled) {
       return false;
-    };
+    }
+    ;
     if (this.form.valid) {
       let data = this.getCommentData();
       this.disabled = true;
@@ -117,8 +118,8 @@ export class CommentWrite {
   }
 
   clearForm() {
-    let control = <Control> this.form.controls['content'];
-    control.updateValue('', {});
+    let control = <FormControl> this.form.controls['content'];
+    control.setValue('', {});
     FormDraft.remove(this.DRAFT_KEY);
     this._autosizeUpdate();
   }

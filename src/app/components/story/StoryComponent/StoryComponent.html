@@ -21,7 +21,10 @@
   </div>
 </div>
 <h1>{{story.title}}</h1>
-
+<div class='text-xs-left' *ngIf="story.type==='review'">
+  Оценка:
+  <rating [display]="true" [numeric]="true" [rating]="story.rating"></rating>
+</div>
 <div [innerHtml]="story.contentHTML" class="contentHTML">
 </div>
 <div class="story-footer">
@@ -35,3 +38,5 @@
   <div id="mobile-story-share"
        data-services="viber,whatsapp,vkontakte,odnoklassniki,moimir,facebook,gplus,twitter"></div>
 </div>
+
+<image-gallery [currentImage]="currentImage" (stateUpdated)="stateChanged($event)" [images]='story.images'></image-gallery>

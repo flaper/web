@@ -6,7 +6,7 @@ import {CommentWrite} from "../CommentWrite/CommentWrite";
 const MAX_RECENT_SIZE = 4;
 @Component({
   selector: 'comments-short-list',
-  directives: [CommentsList, CommentWrite],
+  entryComponents: [CommentsList, CommentWrite],
   styles: [require('./CommentsShortList.scss')],
   template: require('./CommentsShortList.html')
 })

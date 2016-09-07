@@ -4,10 +4,12 @@ import {ACL, Story, StoryService, StoryBestService, ViewService} from "@flaper/a
 import * as moment from 'moment';
 import {PostActions} from "../../post/PostActions/PostActions";
 import {PageService} from "../../../services/helpers/PageService";
+import {GalleryComponent} from "../../image/gallery/GalleryComponent/GalleryComponent";
+import {RatingBar} from "../../common/Rating/RatingBar/RatingBar";
 
 @Component({
   selector: 'story',
-  directives: [PostActions],
+  entryComponents: [PostActions,GalleryComponent,RatingBar],
   styles: [require('./StoryComponent.scss')],
   template: require('./StoryComponent.html')
 })
@@ -16,6 +18,8 @@ export class StoryComponent {
   story:Story;
 
   private _moment;
+  private initialized:Boolean = false;
+  currentImage:string = null; //current image link / gallery state
   private actions = [
     {name: 'deny', title: 'Отклонить', icon: 'fa-ban', acl: 'Story.deny'},
     {name: 'delete', title: 'Удалить', acl: 'Story.delete'},
@@ -30,13 +34,15 @@ export class StoryComponent {
   ngOnInit() {
     this.viewService.post(this.story.id);
   }
-
   private _yaShare = null;
 
   ngAfterViewInit() {
     let mobile = window.innerWidth < 500;
     let id = mobile ? 'mobile-story-share' : 'story-share';
-
+    if (!this.initialized) {
+      this.initImageClickEvents();
+      this.initialized = true;
+    }
     this._yaShare = Ya.share2(id,
       {
         content: {
@@ -49,12 +55,25 @@ export class StoryComponent {
         }
       });
   }
-
   ngOnDestroy() {
     if (this._yaShare) {
       this._yaShare.destroy();
       this._yaShare = null;
     }
+  }
+  openGallery(index) {
+    this.currentImage = this.story.images[index];
+  }
+  initImageClickEvents() {
+    let storyImages = document.getElementsByClassName('contentHTML')[0].getElementsByTagName('img');
+    [].forEach.call(storyImages,
+      (element) => {
+        let id = element.src.replace(/[http].*\/([a-z0-9]{2})\/([a-z0-9]{2})\/([a-z0-9]+)_middle.*/i,'$1$2$3');
+        element.onclick = (e) => {
+          this.currentImage = id;
+        }
+      }
+    );
   }
 
   showChangedTime() {
@@ -68,6 +87,10 @@ export class StoryComponent {
 
     return ifSignificant && ifSomeTimePassed &&
       this._moment(this.story.created).fromNow() !== this._moment(this.story.updated).fromNow()
+  }
+  //gallery state watcher
+  stateChanged(image) {
+    this.currentImage = image;
   }
 
   actionEvent(event) {

@@ -2,7 +2,6 @@
  * These are globally available pipes in any template
  */
 
-import {provide, PLATFORM_PIPES} from '@angular/core';
 import {FixedPipe} from "../../app/pipes/FixedPipe";
 import {FlapImagePipe} from "../../app/pipes/FlapImagePipe";
 import {TimeAgoPipe} from "angular2-moment/TimeAgoPipe";
@@ -14,8 +13,4 @@ export const APPLICATION_PIPES = [
   TimeAgoPipe,
   DateFormatPipe,
   FlapImagePipe
-];
-
-export const PIPES = [
-  {provide: PLATFORM_PIPES, useValue: APPLICATION_PIPES, multi: true}
 ];

@@ -6,7 +6,7 @@ import {CommentWrite} from "../CommentWrite/CommentWrite";
 
 @Component({
   selector: 'comment-component',
-  directives: [PostActions, CommentWrite],
+  entryComponents: [PostActions, CommentWrite],
   styles: [require('./CommentComponent.scss')],
   template: require('./CommentComponent.html')
 })

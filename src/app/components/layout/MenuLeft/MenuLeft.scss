@@ -78,9 +78,22 @@ $local-border: 1px solid lighten($brand-secondary, 10);
       .nav-link {
         color: #fff;
         white-space: nowrap; //not take 2 lines while toggling
+        overflow: hidden;
         .icon-container {
           display: inline-block;
           width: 1rem;
+        }
+        .label {
+          display: inline-block;
+          padding: .25em .4em;
+          font-size: 75%;
+          font-weight: 700;
+          line-height: 1;
+          color: #fff;
+          text-align: center;
+          white-space: nowrap;
+          vertical-align: baseline;
+          border-radius: .25rem;
         }
         &.nav-user {
           font-size: 1.1rem;

@@ -33,6 +33,16 @@
         <div *ngIf="obj.fields.phones">
           <span class="text-muted">Телефоны:</span> {{obj.fields.phones.join('; ')}}
         </div>
+        <div>
+          <span class="text-muted">ID:</span> {{obj.id}}
+          <span *ngIf="obj.flap&&obj.flap.id">
+          | <span class="text-muted">Флап ID:</span> <a
+            href="http://xn--80avnr.xn--p1ai/%D0%BC%D0%BE%D1%81%D0%BA%D0%B2%D0%B0/%D0%BF%D0%BE%D0%B8%D1%81%D0%BA/{{obj.flap.id}}"
+            target="_blank">
+            {{obj.flap.id}}
+          </a>
+          </span>
+        </div>
       </div>
     </div>
   </div>

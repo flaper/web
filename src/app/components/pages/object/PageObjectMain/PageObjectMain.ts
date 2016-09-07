@@ -2,10 +2,12 @@ import {Component} from '@angular/core';
 import {FObject, UserService} from "@flaper/angular";
 import {ScreenService} from "../../../../services/helpers/ScreenService";
 import {LayoutObject} from "../LayoutObject/LayoutObject";
-import {GalleryComponent} from "../../../image/gallery/GalleryComponent";
+import {GalleryComponent} from "../../../image/gallery/GalleryComponent/GalleryComponent";
+import {StoriesAutoList} from "../../../story/StoriesAutoList/StoriesAutoList";
+
 @Component({
   selector: 'page-object-main',
-  directives: [GalleryComponent],
+  entryComponents: [GalleryComponent, StoriesAutoList],
   template: require('./PageObjectMain.html'),
   styles: [require('./PageObjectMain.scss')]
 })
@@ -21,7 +23,6 @@ export class PageObjectMain {
       this.images = this.obj.getImages({filterAvatar: true}).slice(0, imagesLimit);
     });
   }
-
   getManageLink() {
     let ifOwner = false;
     if (this._user.currentUser) {
@@ -29,12 +30,15 @@ export class PageObjectMain {
     }
     return ifOwner ? '/p/manageSupport' : 'manageRequest';
   }
+
+  //gallery state change event listener
   stateChanged(image:number) {
     this.currentImage = image;
   }
+
+  //set gallery current image
   openGallery(image) {
     this.currentImage = image;
-    console.log(this.currentImage,image);
   }
 
 }

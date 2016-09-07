@@ -13,13 +13,13 @@ import {ROUTES} from './routes';
 
 @Component({
   selector: 'app',
-  directives: [Navbar, Footer, MenuLeft],
+  entryComponents: [Navbar, Footer, MenuLeft],
   encapsulation: ViewEncapsulation.None,
   template: require('./app.html')
 })
 export class App {
   constructor(pageService:PageService, location:Location,
-              private _user:UserService, metrika: Metrika /*ensure to create Metrika instance*/) {
+              private _user:UserService, metrika:Metrika /*ensure to create Metrika instance*/) {
     let path = location.path();
     if (!path || path === '/') {
       pageService.navigateToDefault();

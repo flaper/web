@@ -6,7 +6,7 @@ import {UserService} from "@flaper/angular";
 
 @Component({
   selector: 'comments-auto-list',
-  directives: [CommentsList, CommentWrite],
+  entryComponents: [CommentsList, CommentWrite],
   styles: [require('./CommentsAutoList.scss')],
   template: require('./CommentsAutoList.html')
 })
@@ -36,5 +36,10 @@ export class CommentsAutoList {
       this.comments = comments;
       this.wasLoaded = true;
     })
+  }
+  ngOnChanges(changes) {
+    if (changes.subjectId) {
+      this.reloadComments();
+    }
   }
 }

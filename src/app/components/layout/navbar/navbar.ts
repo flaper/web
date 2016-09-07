@@ -5,7 +5,7 @@ import {Github} from "./github/github";
 
 @Component({
   selector: 'navbar',
-  directives: [Github],
+  entryComponents: [Github],
   styles: [require('./navbar.scss')],
   template: require('./navbar.html')
 })

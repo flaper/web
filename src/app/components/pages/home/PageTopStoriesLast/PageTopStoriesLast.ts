@@ -7,7 +7,7 @@ let _keyBy = require('lodash/keyBy');
 
 @Component({
   selector: 'page-top-stories-last',
-  directives: [StoriesAutoList],
+  entryComponents: [StoriesAutoList],
   template: require('./PageTopStoriesLast.html')
 })
 export class PageTopStoriesLast {
