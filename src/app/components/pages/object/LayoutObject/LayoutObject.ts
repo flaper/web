@@ -10,7 +10,7 @@ import {PageManage} from "../PageManage/PageManage";
 import {ReplaySubject} from "rxjs";
 
 @Component({
-  selector: 'lyout-object',
+  selector: 'layout-object',
   template: require('./LayoutObject.html'),
   styles: [require('./LayoutObject.scss')]
 })
