@@ -1,6 +1,6 @@
 import {Component,Injectable} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {User, UserService, LikeService, StoryService,CommentService} from "@flaper/angular";
+import {User, UserService, LikeService, StoryService,CommentService,ImageService} from "@flaper/angular";
 import {PageUser} from "../../pages/user/PageUser/PageUser";
 
 @Component({
@@ -21,7 +21,12 @@ export class UserLikes{
   pages:number;
   current_page:number;
   offset:number;
-  constructor(route:ActivatedRoute,private like:LikeService, private _user:UserService, private story:StoryService, private comment:CommentService){
+  constructor(route:ActivatedRoute,
+              private like:LikeService,
+              private _user:UserService,
+              private story:StoryService,
+              private comment:CommentService,
+              private image:ImageService){
     PageUser.UserObservable.subscribe(user=> {
       this.user = user;
       this.it_forMe = route.snapshot.url[0]['path'] === 'like';
@@ -190,7 +195,6 @@ export class UserLikes{
       if (data['fan']&&data['author']&&dataContent) list = {created: like['created'],type: like['subjectType'], fan:  data['fan'], author:  data['author'], content: data['content']};
       else list = undefined;
       this.fanbase.push(list);
-      console.log("PAGE = "+this.current_page+"\n"+"FB = "+JSON.stringify(list))
     });
 
   }
