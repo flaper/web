@@ -12,6 +12,15 @@ declare var ls:{
   hasItem: any,
   removeItem: any
 };
+
+declare module "autosize" {
+  var autosize:any;
+  export = autosize;
+}
+
+
+// FROM AngularClass
+
 // support NodeJS modules without type definitions
 // declare module '*' ;
 
