@@ -16,13 +16,14 @@ export class PageStory {
   story:Story;
 
   constructor(route:ActivatedRoute, storyService:StoryService, ts:Title) {
-    let params = route.snapshot.params;
-    let slug = params['slug'];
-    storyService.getBySlug(slug).subscribe(story => {
-      this.story = story;
-      ts.setTitle(story.title);
-      Metrika.setParam('storyId', story.id);
-      Metrika.setParam('authorId', story.id);
+    route.params.subscribe(params=> {
+      let slug = params['slug'];
+      storyService.getBySlug(slug).subscribe(story => {
+        this.story = story;
+        ts.setTitle(story.title);
+        Metrika.setParam('storyId', story.id);
+        Metrika.setParam('authorId', story.id);
+      });
     });
   }
 }

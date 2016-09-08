@@ -19,7 +19,7 @@ export class CommentsAutoList {
   //at least one time comments were loaded
   wasLoaded:boolean = false;
 
-  constructor(private commentService:CommentService, private userService:UserService) {
+  constructor(private commentService:CommentService, private _user:UserService) {
   }
 
   ngOnInit() {
@@ -37,6 +37,7 @@ export class CommentsAutoList {
       this.wasLoaded = true;
     })
   }
+
   ngOnChanges(changes) {
     if (changes.subjectId) {
       this.reloadComments();
