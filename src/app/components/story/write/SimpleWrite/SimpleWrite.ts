@@ -7,7 +7,6 @@ import {FormDraft} from "../../../../services/draft/FormDraft";
 import {DropzoneComponent} from "../../../image/dropzone/DropzoneComponent";
 import {generateEvent} from "../../../../libs/common/common";
 import {RatingBar} from "../../../common/Rating/RatingBar/RatingBar";
-import {FlaperMark} from '../../../../libs/markdown/markdown';
 @Component({
   selector: 'simple-write',
   entryComponents: [DropzoneComponent, RatingBar],
@@ -86,8 +85,7 @@ export class SimpleWrite {
       }
     }
   }
-  renderMarkdown() {
-  }
+
   ratingChanged(event) {
     this.rating = event;
     if (this.story) {
