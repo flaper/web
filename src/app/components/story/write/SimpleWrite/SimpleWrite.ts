@@ -29,6 +29,7 @@ export class SimpleWrite {
   form:FormGroup;
   error:string;
   contentLength:number;
+  preview:boolean = false;
   renderer:any = null;
   constructor(private _story:StoryService, private fb:FormBuilder, private router:Router,
               private elementRef:ElementRef, private _location:Location) {
@@ -62,6 +63,15 @@ export class SimpleWrite {
     FormDraft.save(this.DRAFT_KEY, values);
   }
 
+  togglePreview() {
+    if (!this.renderer)
+      this.renderer = require('marked');
+    this.preview = !this.preview;
+  }
+  getPreviewText() {
+    if (!this.renderer) return '';
+    return this.renderer(this.form.controls['content'].value);
+  }
   onSubmit(event) {
     if (this.submitInProgress) {
       return false;
