@@ -10,7 +10,7 @@
     </fieldset>
     <fieldset class="form-group" *ngIf="isReview || (story && story.rating)">
       Оценка:
-      <rating [numeric]="true" [rating]="story && story.rating || 0" (changed)="ratingChanged($event)"></rating>
+      <rating [numeric]="true" [rating]="story && story.rating ? story.rating : 0" (changed)="ratingChanged($event)"></rating>
     </fieldset>
     <fieldset class="form-group">
       <textarea formControlName="content" placeholder="Текст статьи (поддерживается markdown). Минимум 1000 символов."
@@ -18,7 +18,7 @@
                 autosize></textarea>
     </fieldset>
     <div class='e-content-length pull-right'>
-      {{contentLength}} символов
+      <span [ngClass]="{valid:contentLength >= (type==='review'?256:1000),invalid: contentLength < (type==='review'?256:1000) }">{{contentLength}}</span>/{{type==='review'?256:1000}} символов
     </div>
     <button type="submit" class="btn btn-primary">{{newStory ? 'Создать' : 'Сохранить'}}</button>
     <button type="button" class="btn btn-link" (click)="onCancel()">Отменить

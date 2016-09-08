@@ -81,7 +81,7 @@ export class CommentWrite {
     if (this.disabled) {
       return false;
     }
-    ;
+    console.log(this.form);
     if (this.form.valid) {
       let data = this.getCommentData();
       this.disabled = true;

@@ -7,6 +7,7 @@ import {FormDraft} from "../../../../services/draft/FormDraft";
 import {DropzoneComponent} from "../../../image/dropzone/DropzoneComponent";
 import {generateEvent} from "../../../../libs/common/common";
 import {RatingBar} from "../../../common/Rating/RatingBar/RatingBar";
+import {FlaperMark} from '../../../../libs/markdown/markdown';
 @Component({
   selector: 'simple-write',
   entryComponents: [DropzoneComponent, RatingBar],
@@ -29,6 +30,7 @@ export class SimpleWrite {
   form:FormGroup;
   error:string;
   contentLength:number;
+  renderer:any = null;
   constructor(private _story:StoryService, private fb:FormBuilder, private router:Router,
               private elementRef:ElementRef, private _location:Location) {
   }
@@ -51,7 +53,7 @@ export class SimpleWrite {
     this.form.valueChanges.subscribe(values => this.valueChanged(values));
   }
 
-  ngAfterViewInit() {
+  ngAfterContentInit() {
     this.contentLength = this.form.controls['content'].value.replace(/[ ]+/ig,"").length;
     this._autosizeUpdate();
   }
@@ -84,9 +86,13 @@ export class SimpleWrite {
       }
     }
   }
-
+  renderMarkdown() {
+  }
   ratingChanged(event) {
     this.rating = event;
+    if (this.story) {
+      this.story.rating = this.rating;
+    }
   }
 
   ngOnChanges(changes) {
@@ -109,7 +115,6 @@ export class SimpleWrite {
 
   getStoryData() {
     let data = this.form.value;
-
     if (this.isReview) {
       data.rating = this.rating;
     }
@@ -118,11 +123,8 @@ export class SimpleWrite {
     }
     if (this.story) {
       data.id = this.story.id;
-      data.type = this.story.type;
     }
-    else {
-      data.type = this.type;
-    }
+    data.type = this.type;
     return data;
   }
 
