@@ -6,7 +6,7 @@
         <a class="navbar-brand" (click)="_page.navigateToDefault()">
           <small>Флапер</small>
         </a>
-        <a class="btn btn-primary btn-sm" [routerLink]="['/CreateStory']">Создать статью</a>
+        <a class="btn btn-primary btn-sm" routerLink="/p/create_story">Создать статью</a>
         <img class="pull-xs-right my-avatar" src="{{_user.currentUser.photo}}"
              [routerLink]="['/u', _user.currentUser.id]">
     </span>
