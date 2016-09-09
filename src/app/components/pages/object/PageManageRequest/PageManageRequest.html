@@ -4,7 +4,8 @@
   <form class="form" [formGroup]="form" (submit)="onSubmit($event)" *ngIf="!manageRequest">
     <fieldset class="form-group" required>
       <label for="name">ФИО</label>
-      <input id="name" formControlName="name" type="text" placeholder="ФИО" class="form-control" auto-focus-it name="name">
+      <input id="name" formControlName="name" type="text" placeholder="ФИО" class="form-control" auto-focus-it
+             name="name">
     </fieldset>
     <fieldset class="form-group">
       <label for="position">Должность</label>
@@ -42,11 +43,19 @@
       </tr>
     </table>
     <div class="pay-block alert alert-info text-sm-center">
-      <div class="pay-text">Единоразовый сбор за проверку заявки и подключение <strong>100</strong> рублей.</div>
+      <div class="pay-text">Единоразовый сбор за проверку заявки и подключение <strong>200</strong> рублей.
+        <br/>
+      </div>
       <div>
         <button class="btn btn-primary" (click)="onPay()">Оплатить</button>
         <button class="btn btn-link" (click)="onCancel()">Отменить</button>
       </div>
+    </div>
+    <div class="text-xs-center">
+      <small class="text-muted">
+        Cпециальная дисконтная цена в <strong>200 рублей</strong> действует до <strong>15 октября 2016</strong> на время миграции личного кабинета с флап.рф.
+        Обычная цена составляет <strong>450 рублей</strong>.
+      </small>
     </div>
   </div>
 </div>
