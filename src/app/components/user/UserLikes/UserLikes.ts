@@ -13,6 +13,7 @@ export class UserLikes{
   user: User;
   fanbase = [];
   subjectTypes = ["Story","Comment"];
+  contents = {};
   type:string;
   it_forMe    = false;
 
@@ -87,7 +88,6 @@ export class UserLikes{
     let ids = {};
     ids['userIds'] = [];
     ids['subjectIds'] = [];
-    ids['subjectUserIds'] = [];
     ids['contentIds'] = {};
     ids['contentIds']['storyIds'] = [];
     ids['contentIds']['commentIds'] = [];
@@ -127,31 +127,40 @@ export class UserLikes{
   }
 
   getContents(subjectIds,likes,fans){
-    let contents = {};
     switch(this.subjectTypes[0]){
       case 'Comment':
-        let filter1 = {where: {id: {inq:subjectIds} }, limit: this.limit, fields: {id:true, subjectId:true, shortInline:true, subjectType:true}};
-        this.comment.get(filter1).subscribe(comments => {
-          contents['comments'] = comments;
-          let ids = [];
-          comments.map(comment => {
-            ids.push(comment['subjectId']);
-          });
-          let filter = {where: {id: {inq:ids} }, limit: this.limit, fields: {id:true, title:true, slug:true}};
-          this.story.get(filter).subscribe(stories =>{
-            contents['subStories'] = stories;
-            this.findFanbase(likes,fans, contents);
-          });
-        });
+        this.getComments(likes,fans, subjectIds)
         break;
       default:
-        let filter2 = {where: {id: {inq:subjectIds} }, limit: this.limit, fields: {id:true, title:true, slug:true, shortText:true}};
-        this.story.get(filter2).subscribe(stories =>{
-          contents['stories'] = stories;
-          this.findFanbase(likes,fans, contents);
-        });
+        this.getStories(likes,fans, subjectIds)
         break;
     }
+  }
+
+  getStories(likes, fans, ids){
+    let contents = {};
+    let filter = {where: {id: {inq:ids} }, limit: this.limit, fields: {id:true, title:true, slug:true, shortText:true}};
+    this.story.get(filter).subscribe(stories =>{
+      contents['stories'] = stories;
+      this.findFanbase(likes,fans, contents);
+    });
+  }
+
+  getComments(likes, fans, ids){
+    let contents = {};
+    let filter1 = {where: {id: {inq:ids} }, limit: this.limit, fields: {id:true, subjectId:true, shortInline:true, subjectType:true}};
+    this.comment.get(filter1).subscribe(comments => {
+      contents['comments'] = comments;
+      let subIds = [];
+      comments.map(comment => {
+        subIds.push(comment['subjectId']);
+      });
+      let filter = {where: {id: {inq:subIds} }, limit: this.limit, fields: {id:true, title:true, slug:true}};
+      this.story.get(filter).subscribe(stories =>{
+        contents['subStories'] = stories;
+        this.findFanbase(likes,fans, contents);
+      });
+    });
   }
 
   findFanbase(likes, fans, contents){
