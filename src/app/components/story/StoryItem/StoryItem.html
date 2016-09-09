@@ -6,7 +6,7 @@
         <user-link [id]="story.userId"></user-link>
         <div class="time">{{story.created | amTimeAgo}}</div>
         <div *ngIf="story.type==='review'">
-          Оценка: <rating [display]="true" [numeric]="true" [rating]="story.rating" ></rating>
+          <rating [display]="true" [numeric]="true" [rating]="story.rating" ></rating>
         </div>
       </div>
     </div>
