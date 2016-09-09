@@ -6,3 +6,26 @@ p{
   margin: 0.3rem 0 0;
   white-space: pre-line;
 }
+.invalid {
+  color: rgb(210, 62, 62);
+}
+.valid {
+  color: rgb(67, 158, 71);
+}
+.hidden {
+  display: none;
+}
+.contentHTML {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.25;
+  color: #000;
+  background-color: #fff;
+  background-image: none;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 0.25rem;
+  min-height: 7.4rem;
+}

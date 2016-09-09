@@ -24,6 +24,9 @@
 .navbar-brand {
   float: none;
   color: #0087cf!important;
+  &:hover {
+    color: #005583!important;
+  }
 }
 
 @media (min-width: map-get($grid-breakpoints, 'sm')) {
@@ -51,6 +54,10 @@
   }
   .me-name {
     margin-left: 0.15rem;
+    color: #0087cf!important;
+    &:hover {
+      color: #005583!important;
+    }
   }
 }
 

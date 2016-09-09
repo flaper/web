@@ -29,6 +29,8 @@ export class SimpleWrite {
   form:FormGroup;
   error:string;
   contentLength:number;
+  preview:boolean = false;
+  renderer:any = null;
   constructor(private _story:StoryService, private fb:FormBuilder, private router:Router,
               private elementRef:ElementRef, private _location:Location) {
   }
@@ -51,7 +53,7 @@ export class SimpleWrite {
     this.form.valueChanges.subscribe(values => this.valueChanged(values));
   }
 
-  ngAfterViewInit() {
+  ngAfterContentInit() {
     this.contentLength = this.form.controls['content'].value.replace(/[ ]+/ig,"").length;
     this._autosizeUpdate();
   }
@@ -61,6 +63,15 @@ export class SimpleWrite {
     FormDraft.save(this.DRAFT_KEY, values);
   }
 
+  togglePreview() {
+    if (!this.renderer)
+      this.renderer = require('marked');
+    this.preview = !this.preview;
+  }
+  getPreviewText() {
+    if (!this.renderer) return '';
+    return this.renderer(this.form.controls['content'].value);
+  }
   onSubmit(event) {
     if (this.submitInProgress) {
       return false;
@@ -87,6 +98,9 @@ export class SimpleWrite {
 
   ratingChanged(event) {
     this.rating = event;
+    if (this.story) {
+      this.story.rating = this.rating;
+    }
   }
 
   ngOnChanges(changes) {
@@ -109,7 +123,6 @@ export class SimpleWrite {
 
   getStoryData() {
     let data = this.form.value;
-
     if (this.isReview) {
       data.rating = this.rating;
     }
@@ -118,11 +131,8 @@ export class SimpleWrite {
     }
     if (this.story) {
       data.id = this.story.id;
-      data.type = this.story.type;
     }
-    else {
-      data.type = this.type;
-    }
+    data.type = this.type;
     return data;
   }
 
