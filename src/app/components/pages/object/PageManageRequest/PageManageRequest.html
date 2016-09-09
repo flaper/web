@@ -4,20 +4,20 @@
   <form class="form" [formGroup]="form" (submit)="onSubmit($event)" *ngIf="!manageRequest">
     <fieldset class="form-group" required>
       <label for="name">ФИО</label>
-      <input id="name" ngControl="name" type="text" placeholder="ФИО" class="form-control" auto-focus-it name="name">
+      <input id="name" formControlName="name" type="text" placeholder="ФИО" class="form-control" auto-focus-it name="name">
     </fieldset>
     <fieldset class="form-group">
       <label for="position">Должность</label>
-      <input id="position" ngControl="position" type="text" placeholder="Должность" class="form-control"
+      <input id="position" formControlName="position" type="text" placeholder="Должность" class="form-control"
              name="position">
     </fieldset>
     <fieldset class="form-group" required>
       <label for="email">Email</label>
-      <input id="email" ngControl="email" type="email" placeholder="Email" class="form-control" name="email">
+      <input id="email" formControlName="email" type="email" placeholder="Email" class="form-control" name="email">
     </fieldset>
     <fieldset class="form-group">
       <label for="phone">Телефон</label>
-      <input id="phone" ngControl="phone" type="text" placeholder="Телефон" class="form-control" name="phone">
+      <input id="phone" formControlName="phone" type="text" placeholder="Телефон" class="form-control" name="phone">
     </fieldset>
 
     <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Отправить</button>
