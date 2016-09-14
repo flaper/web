@@ -56,7 +56,7 @@ export class PageManageRequest {
   }
 
   onPay() {
-    let data = {sum: 100};
+    let data = {sum: 200};
     if (this.manageRequest) {
       if (this.manageRequest.email) {
         data["cps_email"] = this.manageRequest.email;

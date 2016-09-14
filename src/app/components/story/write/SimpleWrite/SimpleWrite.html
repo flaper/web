@@ -12,7 +12,7 @@
       <rating [numeric]="true" [rating]="story && story.rating ? story.rating : 0" (changed)="ratingChanged($event)"></rating>
     </fieldset>
 
-    <button type='button' class='btn' (click)="togglePreview()">
+    <button type='button' class='btn' (click)="togglePreview()" *ngIf="false">
       <i class='fa' [ngClass]="{'fa-pencil':preview, 'fa-eye':!preview}"></i> {{preview ? "Редактировать" : "Предпросмотр"}}
     </button>
 

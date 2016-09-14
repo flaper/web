@@ -1,27 +1,70 @@
 <div class="btn-group" role="group">
-  <button (click)="findForMe()" type="button" id="meId" class="btn btn-info btn-sm navbar-btn">
-    <span *ngIf="it_forMe">Меня оценили</span>
-    <span *ngIf="!it_forMe">Я оценил(-а)</span>
-  </button>
-  <!-- <button (click)="findMe()" type="button" id="fromMeId" [ngClass]="{'active': !it_forMe}"  class="btn btn-info btn-sm navbar-btn ">Я оценил(-а)</button> -->
+  <button (click)="findAll()" type="button" id="storyId" [ngClass]="{'active': subjectTypes.length > 1 }"  class="btn btn-info btn-sm navbar-btn no-out">Все</button>
+  <button (click)="findStories()" type="button" id="storyId" [ngClass]="{'active': type == 'Story'}"  class="btn btn-info btn-sm navbar-btn no-out">Статьи</button>
+  <button (click)="findComments()" type="button" id="commentId" [ngClass]="{'active': type == 'Comment'}" class="btn btn-info btn-sm navbar-btn no-out">Комментарии</button>
 </div>
-<br/>
-<div class="btn-group" role="group">
-  <button (click)="findStories()" type="button" id="storyId" [ngClass]="{'active': subjectType == 'Story'}"  class="btn btn-info btn-sm navbar-btn">Статьи</button>
-  <button (click)="findComments()" type="button" id="commentId" [ngClass]="{'active': subjectType == 'Comment'}" class="btn btn-info btn-sm navbar-btn">Комментарии</button>
+<div class="alert alert-info m-t-1" *ngIf="(fanbase.length === 0) && loading">Еще нет лайков</div>
+<div *ngIf="!loading" class="text-xs-center m-t-1">
+  <img src="/assets/img/loading.gif">
 </div>
-<div class="alert alert-info" *ngIf="fanbase.length === 0">Еще нет лайков</div>
-<div *ngIf="fanbase.length">
-  <div class="fanbase" *ngFor="let fb of fanbase">
-    <a [routerLink]="['/s', fb.stories.slug]"><h5>{{fb.stories.title}}</h5></a>
-    <div class="story-item-header">
-      <div class="media">
-        <user-avatar [id]="fb.fans.id" class="media-left"></user-avatar>
-        <div class="media-body">
-          <user-link [id]="fb.fans.id"></user-link>
-          <div class="time">{{fb.created | amTimeAgo}}</div>
+<div *ngIf="loading">
+  <div *ngFor="let fb of fanbase">
+    <div class="fanbase m-t-1" *ngIf="fb">
+      <div class="fanbase-header">
+        <i class="time">{{fb.created | amTimeAgo}}</i>
+        <span class="heart"><i class="fa fa-heart-o"></i></span>
+      </div>
+      <div class="fanbase-who">
+        <div class="media">
+          <user-avatar [id]="fb.fan.id" class="media-left"></user-avatar>
+          <div class="media-body">
+            <user-link [id]="fb.fan.id"></user-link>
+            <div class="time">
+              Оценил(-а)
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="fanbase-content">
+        <div [ngSwitch]="fb.type">
+          <div *ngSwitchCase="'Story'">
+            <a [routerLink]="['/s', fb.content.story.slug]"><h5>{{fb.content.story.title}}</h5></a>
+            <p>{{fb.content.story.shortText}}</p>
+          </div>
+          <div *ngSwitchCase="'Comment'">
+            <p>{{fb.content.comment.shortInline}}</p>
+          </div>
+
+        </div>
+      </div>
+      <div class="fanbase-footer">
+        <div class="media">
+          <user-avatar [id]="fb.author.id" class="media-left"></user-avatar>
+          <div class="media-body">
+            <user-link [id]="fb.author.id"></user-link>
+             <div [ngSwitch]="fb.type">
+              <div *ngSwitchCase="'Story'" class="time">
+                Aвтор
+                <span><a [routerLink]="['/s', fb.content.story.slug]">статьи</a></span>
+              </div>
+               <div *ngSwitchCase="'Comment'" class="time">
+                Aвтор комментария к
+                <span><a [routerLink]="['/s', fb.content.subStory.slug]">статьe</a></span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
+  <div *ngIf="pages > 1" role="group" class="m-t-1">
+    <button (click)="turnPage(current_page-1)" [disabled]="current_page == 1" class="btn btn-info btn-sm no-out">
+      <span>Предыдущая</span>
+    </button>
+    <span>{{current_page}}/{{pages}}</span>
+    <button (click)="turnPage(current_page+1)" [disabled]="current_page == pages" class="btn btn-info btn-sm no-out">
+      <span>Следующая</span>
+    </button>
+  </div>
 </div>
+
