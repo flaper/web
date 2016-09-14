@@ -1,0 +1,28 @@
+.visible {
+  opacity: 1!important;
+}
+.scroll-button {
+  position: fixed;
+  display: block;
+  opacity: 0;
+  width: 50px;
+  height: 50px;
+  padding: 10px;
+  bottom: 0px;
+  right: 5vw;
+  cursor: pointer;
+  transition: all .3s ease;
+  text-align: center;
+  line-height: 1;
+}
+.scroll-button:hover {
+  background: #ddd;
+}
+.symbol {
+  vertical-align: middle;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  font-size: 40px;
+  font-weight: 800;
+}
