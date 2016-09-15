@@ -86,7 +86,7 @@ const APP_PROVIDERS = [
     StoriesList, SimpleWrite, SimpleReviewWrite, PageManageSupport, PageManageRequest, PageManage, LoadMore, StoryItem,
     CommentsShortList, CommentsAutoList, CommentsList, CommentComponent, RatingBar, DropzoneComponent, PremiumMessages,
     CommentWrite, PostActions, PageLogin, PageNews, PageWriteStory, PagePremiumSupport, PageStory, StoryComponent,
-    GalleryComponent, PageFlapSync, UserInfo, UserStats, UserStories, UserLikes, UserLike, UserFavorite, PageObjectMain, PageReview,
+    GalleryComponent, PageFlapSync, UserInfo, UserStats, UserStories,UserFavorite,UserLike, UserLikes, PageObjectMain, PageReview,
     PageNotFound
   ],
   imports: [ // import Angular's modules
