@@ -18,11 +18,14 @@ $background-color : #26ae93;
   display: block;
   position: fixed;
   right: 25px;
-  top: 25px;
+  top: 15px;
   color: white;
   font-style: normal;
   cursor: pointer;
   z-index: 5;
+  & span {
+    font-family: Roboto;
+  }
 }
 .gallery-container {
   height: 100vh;
@@ -94,5 +97,9 @@ $background-color : #26ae93;
 }
 .comment-section {
   background: rgba(232,232,232,1);
+  padding-top: 15px;
   height: 100vh;
+}
+like {
+  font-size: 2rem;
 }
