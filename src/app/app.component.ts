@@ -5,6 +5,7 @@ import {PageService} from "./services/helpers/PageService";
 import {UserService} from "@flaper/angular";
 
 import {Scroller} from "./components/layout/Scroller/Scroller";
+import {Curtain} from "./components/layout/Curtain/Curtain";
 import {MenuLeft} from "./components/layout/MenuLeft/MenuLeft";
 import {Navbar} from './components/layout/navbar/navbar';
 import {Footer} from "./components/layout/footer/footer";
@@ -15,11 +16,15 @@ import {ROUTES} from './routes';
 
 @Component({
   selector: 'app',
-  entryComponents: [Navbar, Footer, MenuLeft, Scroller],
+  entryComponents: [Navbar, Footer, MenuLeft, Scroller,Curtain],
   encapsulation: ViewEncapsulation.None,
   template: require('./app.html')
 })
 export class App {
+  curtain:boolean = true;
+  ngAfterViewChecked() {
+    this.curtain = false;
+  }
   constructor(pageService:PageService, location:Location,
               private _user:UserService, metrika:Metrika /*ensure to create Metrika instance*/) {
     let path = location.path();

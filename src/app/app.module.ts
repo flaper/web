@@ -19,6 +19,7 @@ import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import {MenuLeft} from "./components/layout/MenuLeft/MenuLeft";
 import {Footer} from "./components/layout/footer/footer";
 import {Navbar} from "./components/layout/navbar/navbar";
+import {Curtain} from "./components/layout/Curtain/Curtain";
 import {Scroller} from "./components/layout/Scroller/Scroller";
 import {ObjectLink, AutoFocusIt} from '@flaper/angular';
 import {PageUsers} from "./components/pages/user/PageUsers/PageUsers";
@@ -81,7 +82,7 @@ const APP_PROVIDERS = [
   bootstrap: [App],
   declarations: [
     ...APPLICATION_DIRECTIVES, ...APPLICATION_PIPES,
-    App, MenuLeft, Footer, Navbar, Scroller, ObjectLink, PageUsers, PageUser, AutoFocusIt, News, StoriesAutoList, HomeLinks,
+    App, MenuLeft, Footer, Navbar, Scroller,Curtain, ObjectLink, PageUsers, PageUser, AutoFocusIt, News, StoriesAutoList, HomeLinks,
     Github, PageLastStories, LayoutHome, LayoutObject, LastStories, TopStories, PageTopStories, PageTopStoriesLast,
     StoriesList, SimpleWrite, SimpleReviewWrite, PageManageSupport, PageManageRequest, PageManage, LoadMore, StoryItem,
     CommentsShortList, CommentsAutoList, CommentsList, CommentComponent, RatingBar, DropzoneComponent, PremiumMessages,
