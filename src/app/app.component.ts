@@ -22,7 +22,7 @@ import {ROUTES} from './routes';
 })
 export class App {
   curtain:boolean = true;
-  ngAfterViewChecked() {
+  ngAfterContentInit() {
     this.curtain = false;
   }
   constructor(pageService:PageService, location:Location,
