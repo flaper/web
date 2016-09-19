@@ -23,15 +23,15 @@ export class PageObjectMain {
       this.images = this.obj.getImages({filterAvatar: true}).slice(0, imagesLimit);
     });
   }
-  getReviewLink() {
-    return "/"+([this.obj.mainDomain, this.obj.region, this.obj.slug,'review'].join('/'));
+  getLink(name) {
+    return "/"+([this.obj.mainDomain, this.obj.region, this.obj.slug,'-'+name].join('/'));
   }
   getManageLink() {
     let ifOwner = false;
     if (this._user.currentUser) {
       ifOwner = this._user.currentUser.extra.getObjects().indexOf(this.obj.id) > -1;
     }
-    return ifOwner ? '/p/manageSupport' : "/"+([this.obj.mainDomain, this.obj.region, this.obj.slug,'manageRequest'].join('/'));
+    return ifOwner ? '/p/manageSupport' : this.getLink('manageRequest');
   }
 
   //gallery state change event listener

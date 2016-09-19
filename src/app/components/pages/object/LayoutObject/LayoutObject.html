@@ -12,7 +12,7 @@
           <h1 *ngIf="isMain()">{{obj.title}}</h1>
 
           <h1 *ngIf="!isMain()">
-            <a routerLink="main">{{obj.title}}</a>
+            <a routerLink="-main">{{obj.title}}</a>
           </h1>
 
           <div class="rating-container">
@@ -48,4 +48,3 @@
   </div>
   <router-outlet></router-outlet>
 </div>
-
