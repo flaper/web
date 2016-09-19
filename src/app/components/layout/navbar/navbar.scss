@@ -10,6 +10,12 @@
       //xs
       display: none;
     }
+    .navbar-brand {
+      color: #0087cf;
+      &:hover {
+        color: #005583;
+      }
+    }
   }
   &:not(.has-user) {
     .navbar-brand {
@@ -23,10 +29,6 @@
 
 .navbar-brand {
   float: none;
-  color: #0087cf!important;
-  &:hover {
-    color: #005583!important;
-  }
 }
 
 @media (min-width: map-get($grid-breakpoints, 'sm')) {
