@@ -16,7 +16,6 @@ export class PageStory {
   story:Story;
 
   constructor(route:ActivatedRoute, storyService:StoryService, ts:Title) {
-    console.log(route);
     route.params.subscribe(params=> {
       let slug = params['reviewSlug'] ? params['reviewSlug'] : params['slug'];
       storyService.getBySlug(slug).subscribe(story => {

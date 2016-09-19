@@ -11,7 +11,17 @@
       </div>
     </div>
   </div>
-  <a [routerLink]="getRouterLink()"><h3>{{story.title}}</h3></a>
+  <div *ngIf="isReview()">
+    <h3>
+      <small>Про</small>
+      <a [routerLink]="getRouterLink()"> {{objectName}}</a>
+      <br>
+      <h4>{{story.title}}</h4>
+    </h3>
+  </div>
+  <div *ngIf="!isReview()">
+    <a [routerLink]="getRouterLink()"><h3>{{story.title}}</h3></a>
+  </div>
 
   <div class="short-inline" *ngIf="story.shortInline" [innerHtml]="story.shortInline">
   </div>

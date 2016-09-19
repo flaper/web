@@ -27,7 +27,7 @@ export class StoriesList {
   ngOnInit() {
     let usersIds = this.stories.map(story => story.id),
         objectIds = this.stories.map(story => story.objectId).filter(id => !!id);
-    // this.objectService.requestIds(objectIds);
+    this.objectService.requestIds(objectIds);
     this.stories.forEach(story => this.commentItEvents[story.id] = new ReplaySubject<boolean>(1));
     this.userService.requestIds(usersIds);
     this.commentService.last(this.stories.map(story => story.id))
