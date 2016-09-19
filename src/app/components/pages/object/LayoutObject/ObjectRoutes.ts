@@ -3,13 +3,14 @@ import {PageObjectMain} from "../PageObjectMain/PageObjectMain";
 import {PageManage} from "../PageManage/PageManage";
 import {PageManageRequest} from "../PageManageRequest/PageManageRequest";
 import {PageReview} from "../PageReview/PageReview";
-
+import {PageStory} from "../../story/read/PageStory";
 const children = [
   {path: '', component: PageObjectMain},
   {path: 'main', component: PageObjectMain},
   {path: 'manage', component: PageManage},
   {path: 'request', component: PageManageRequest},
   {path: 'review', component: PageReview},
+  {path: ':reviewSlug', component: PageStory}
 ];
 export const ObjectRoutes =
   [

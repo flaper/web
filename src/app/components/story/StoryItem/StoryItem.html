@@ -11,12 +11,12 @@
       </div>
     </div>
   </div>
-  <a [routerLink]="['/s', story.slug]"><h3>{{story.title}}</h3></a>
+  <a [routerLink]="getRouterLink()"><h3>{{story.title}}</h3></a>
 
   <div class="short-inline" *ngIf="story.shortInline" [innerHtml]="story.shortInline">
   </div>
   <div class="read-more">
-    <a [routerLink]="['/s', story.slug]">Читать далее...</a>
+    <a [routerLink]="getRouterLink()">Читать далее...</a>
   </div>
 </div>
 <div class="story-item-footer">

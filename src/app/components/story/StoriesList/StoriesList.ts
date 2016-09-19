@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {UserService, CommentService, Story, LikeService} from "@flaper/angular";
+import {UserService, CommentService, Story, LikeService, ObjectService} from "@flaper/angular";
 import {StoryItem} from "../StoryItem/StoryItem";
 import {CommentsList} from "../../comment/CommentsList/CommentsList";
 import {CommentsShortList} from "../../comment/CommentsShortList/CommentsShortList";
@@ -21,11 +21,13 @@ export class StoriesList {
   commentItActive = {};
 
   constructor(private commentService:CommentService, private _like:LikeService,
-              private userService:UserService) {
+              private userService:UserService, private objectService:ObjectService) {
   }
 
   ngOnInit() {
-    let usersIds = this.stories.map(story => story.id);
+    let usersIds = this.stories.map(story => story.id),
+        objectIds = this.stories.map(story => story.objectId).filter(id => !!id);
+    // this.objectService.requestIds(objectIds);
     this.stories.forEach(story => this.commentItEvents[story.id] = new ReplaySubject<boolean>(1));
     this.userService.requestIds(usersIds);
     this.commentService.last(this.stories.map(story => story.id))
@@ -44,7 +46,9 @@ export class StoriesList {
         this.userService.requestIds(usersIds);
       });
   }
-
+  getObject(id:string) {
+    return this.objectService.getById(id);
+  }
   onCommentIt(id) {
     this.commentItActive[id] = true;
     this.commentItEvents[id].next(true);
