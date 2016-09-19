@@ -21,7 +21,7 @@ export class StoryItem {
   }
   ngOnInit() {
     if (this.story.objectId)
-      this.objectService.getById(this.story.objectId).subscribe(object => this.path = [object.mainDomain,object.region,object.slug]);
+      this.objectService.getById(this.story.objectId).subscribe(object => this.path = ['/',object.mainDomain,object.region,object.slug].filter(item => !!item));
   }
   getRouterLink() {
     return [...this.path, this.story.slug];
