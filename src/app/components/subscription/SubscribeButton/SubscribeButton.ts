@@ -19,9 +19,18 @@ export class SubscribeButton {
   }
   ngOnInit() {
     this._subscriptions.requestInfo([this.targetId]);
-    this._subscriptions.ifHasObservable(this.targetId).subscribe(sub => this.state = !!sub);
+    this._subscriptions.ifHasObservable(this.targetId).subscribe(sub => {
+      this.state = !!sub;
+    });
   }
   toggle() {
-    this._subscriptions.toggle(this.targetId).subscribe(data => console.log(data));
+    this._subscriptions.toggle(this.targetId)
+    .subscribe(
+      data => {
+      },
+      err => {
+        this.state = false;
+      }
+    )
   }
 }
