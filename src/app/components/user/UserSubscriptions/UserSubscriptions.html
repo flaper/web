@@ -1,0 +1,11 @@
+<div *ngIf="user">
+  <ul class="type-selector">
+    <li>
+      <button type="button" name="button" [ngClass]="{active: isActive('subscribers')}" (click)="show('subscribers')">Подписчики</button>
+    </li>
+    <li>
+      <button type="button" name="button" [ngClass]="{active: isActive('subscriptions')}" (click)="show('subscriptions')">Подписки</button>
+    </li>
+  </ul>
+  <subscription-auto-list [where]="query" [displayType]="page"></subscription-auto-list>
+</div>

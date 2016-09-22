@@ -1,0 +1,4 @@
+<button class='btn btn-default subscribe-button' (click)="toggle()" [ngClass]="{active: state}">
+  <i class="fa fa-group"></i>
+  {{iconMode ? "" : state ? "Отписаться" : "Подписаться"}}
+</button>

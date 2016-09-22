@@ -8,9 +8,11 @@ import {PageManageRequest} from "../PageManageRequest/PageManageRequest";
 import {Metrika} from "../../../../services/metrics/Metrika";
 import {PageManage} from "../PageManage/PageManage";
 import {ReplaySubject} from "rxjs";
+import {SubscribeButton} from "../../../subscription/SubscribeButton/SubscribeButton";
 
 @Component({
   selector: 'layout-object',
+  entryComponents: [SubscribeButton],
   template: require('./LayoutObject.html'),
   styles: [require('./LayoutObject.scss')]
 })

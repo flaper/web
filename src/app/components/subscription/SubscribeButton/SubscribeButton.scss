@@ -1,0 +1,21 @@
+.subscribe-button {
+  transition: all .3s ease;
+  & i {
+    color: #333;
+  }
+  &.active, &:hover {
+    background: #64ceaa;
+    border-color: #144d11;
+    & i {
+      color: #eef;
+    }
+  }
+  &.active:hover {
+    background: #ff6510;
+    border-color: #740d0d;
+    color: #eee;
+    & i {
+      color: #2e2e2f;
+    }
+  }
+}

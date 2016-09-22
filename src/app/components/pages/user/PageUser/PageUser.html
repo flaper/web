@@ -8,7 +8,7 @@
 
       <div class="media-body">
         <h1 class="media-heading">{{user.displayName}}</h1>
-
+        <subscribe [targetId]="user.id" *ngIf="!isCurrent()"></subscribe>
         <div class="stats">
         <span class="stories-number" title="Количество статей">
           <i class="fa fa-book"></i> {{user.storiesNumber}}
@@ -35,6 +35,7 @@
         <a class="nav-item nav-link" routerLink="articles" routerLinkActive="active">Статьи</a>
         <a class="nav-item nav-link" routerLink="stats" *ngIf="_user.isCurrentUser(user) || acl.can('super')" routerLinkActive="active">Баллы</a>
         <a class="nav-item nav-link" routerLink="like" routerLinkActive="active">Лайки</a>
+        <a class="nav-item nav-link" routerLink="subscription" routerLinkActive="subscription">Подписки</a>
         <a class="nav-item nav-link" routerLink="favorite" routerLinkActive="active">Избранное</a>
       </div>
     </nav>
@@ -42,4 +43,3 @@
 
   <router-outlet></router-outlet>
 </div>
-

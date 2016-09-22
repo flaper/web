@@ -14,7 +14,7 @@
           <h1 *ngIf="!isMain()">
             <a routerLink="-main">{{obj.title}}</a>
           </h1>
-
+          <subscribe [targetId]="obj.id"></subscribe>
           <div class="rating-container">
             <div class="big-star">
               {{obj.flap.rating | fixed : 1}}

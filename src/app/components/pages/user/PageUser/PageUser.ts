@@ -4,9 +4,11 @@ import {ACL, AccountService, User, UserService, UserSettings} from "@flaper/angu
 import {StoriesAutoList} from "../../../story/StoriesAutoList/StoriesAutoList";
 import {Title} from "@angular/platform-browser"
 import {ReplaySubject} from 'rxjs';
+import {SubscribeButton} from "../../../subscription/SubscribeButton/SubscribeButton";
 
 @Component({
   selector: 'page-user',
+  entryComponents: [SubscribeButton],
   styles: [require('./PageUser.scss')],
   template: require('./PageUser.html')
 })
@@ -43,7 +45,9 @@ export class PageUser {
         .subscribe(amount => this.amount = amount);
     }
   }
-
+  isCurrent() {
+    return this._user.currentUser.id === this.user.id;
+  }
   withdraw() {
     let amount = +prompt('Сколько баллов списать?');
     if (amount && amount > 0) {

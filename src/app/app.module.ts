@@ -43,6 +43,10 @@ import {PageManageRequest} from "./components/pages/object/PageManageRequest/Pag
 import {PageManage} from "./components/pages/object/PageManage/PageManage";
 import {LoadMore} from "./components/common/LoadMore/LoadMore";
 import {StoryItem} from "./components/story/StoryItem/StoryItem";
+import {SubscribeButton} from "./components/subscription/SubscribeButton/SubscribeButton";
+import {SubscriptionAutoList} from "./components/subscription/SubscriptionAutoList/SubscriptionAutoList";
+import {SubscriptionList} from "./components/subscription/SubscriptionList/SubscriptionList";
+import {SubscriptionItem} from "./components/subscription/SubscriptionItem/SubscriptionItem";
 import {CommentsShortList} from "./components/comment/CommentsShortList/CommentsShortList";
 import {CommentsAutoList} from "./components/comment/CommentsAutoList/CommentsAutoList";
 import {CommentsList} from "./components/comment/CommentsList/CommentsList";
@@ -64,6 +68,7 @@ import {UserInfo} from "./components/user/UserInfo/UserInfo";
 import {UserStats} from "./components/user/UserStats/UserStats";
 import {UserStories} from "./components/user/UserStories/UserStories";
 import {UserLikes} from "./components/user/UserLikes/UserLikes";
+import {UserSubscriptions} from "./components/user/UserSubscriptions/UserSubscriptions";
 import {UserLike} from "./components/user/UserLikes/UserLike/UserLike";
 import {UserFavorite} from "./components/user/UserLikes/UserFavorite/UserFavorite";
 import {PageObjectMain} from "./components/pages/object/PageObjectMain/PageObjectMain";
@@ -85,9 +90,9 @@ const APP_PROVIDERS = [
     App, MenuLeft, Footer, Navbar, Scroller,Curtain, ObjectLink, PageUsers, PageUser, AutoFocusIt, News, StoriesAutoList, HomeLinks,
     Github, PageLastStories, LayoutHome, LayoutObject, LastStories, TopStories, PageTopStories, PageTopStoriesLast,
     StoriesList, SimpleWrite, SimpleReviewWrite, PageManageSupport, PageManageRequest, PageManage, LoadMore, StoryItem,
-    CommentsShortList, CommentsAutoList, CommentsList, CommentComponent, RatingBar, DropzoneComponent, PremiumMessages,
+    CommentsShortList, CommentsAutoList, CommentsList, CommentComponent, SubscribeButton,SubscriptionList,SubscriptionItem,SubscriptionAutoList, RatingBar, DropzoneComponent, PremiumMessages,
     CommentWrite, PostActions, PageLogin, PageNews, PageWriteStory, PagePremiumSupport, PageStory, StoryComponent,
-    GalleryComponent, PageFlapSync, UserInfo, UserStats, UserStories,UserFavorite,UserLike, UserLikes, PageObjectMain, PageReview,
+    GalleryComponent, PageFlapSync, UserInfo, UserStats, UserStories,UserFavorite,UserLike,UserSubscriptions, UserLikes, PageObjectMain, PageReview,
     PageNotFound
   ],
   imports: [ // import Angular's modules
