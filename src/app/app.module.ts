@@ -28,6 +28,7 @@ import {Github} from "./components/layout/navbar/github/github";
 import {PageLastStories} from "./components/pages/home/PageLastStories/PageLastStories";
 import {LayoutHome} from "./components/pages/home/LayoutHome/LayoutHome";
 import {LayoutObject} from "./components/pages/object/LayoutObject/LayoutObject";
+import {ObjectSearch} from "./components/pages/object/ObjectSearch/ObjectSearch";
 import {LastStories} from "./components/pages/home/PageLastStories/Content/LastStories";
 import {TopStories} from "./components/pages/home/PageTopStories/Content/TopStories";
 import {PageTopStories} from "./components/pages/home/PageTopStories/PageTopStories";
@@ -51,6 +52,7 @@ import {CommentsShortList} from "./components/comment/CommentsShortList/Comments
 import {CommentsAutoList} from "./components/comment/CommentsAutoList/CommentsAutoList";
 import {CommentsList} from "./components/comment/CommentsList/CommentsList";
 import {CommentComponent} from "./components/comment/CommentComponent/CommentComponent";
+import {ObjectList} from "./components/object/ObjectList/ObjectList";
 import {RatingBar} from "./components/common/Rating/RatingBar/RatingBar";
 import {DropzoneComponent} from "./components/image/dropzone/DropzoneComponent";
 import {PremiumMessages} from "./components/premiumSupport/PremiumMessages/PremiumMessages";
@@ -88,7 +90,7 @@ const APP_PROVIDERS = [
   declarations: [
     ...APPLICATION_DIRECTIVES, ...APPLICATION_PIPES,
     App, MenuLeft, Footer, Navbar, Scroller,Curtain, ObjectLink, PageUsers, PageUser, AutoFocusIt, News, StoriesAutoList, HomeLinks,
-    Github, PageLastStories, LayoutHome, LayoutObject, LastStories, TopStories, PageTopStories, PageTopStoriesLast,
+    Github, PageLastStories, LayoutHome, LayoutObject,ObjectSearch, LastStories, TopStories, PageTopStories, PageTopStoriesLast,ObjectList ,
     StoriesList, SimpleWrite, SimpleReviewWrite, PageManageSupport, PageManageRequest, PageManage, LoadMore, StoryItem,
     CommentsShortList, CommentsAutoList, CommentsList, CommentComponent, SubscribeButton,SubscriptionList,SubscriptionItem,SubscriptionAutoList, RatingBar, DropzoneComponent, PremiumMessages,
     CommentWrite, PostActions, PageLogin, PageNews, PageWriteStory, PagePremiumSupport, PageStory, StoryComponent,

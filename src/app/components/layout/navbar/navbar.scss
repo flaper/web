@@ -1,5 +1,7 @@
 @import "../../../../css/variables";
-
+.search-input {
+  z-index: 0;
+}
 .navbar {
   padding-left: 3rem;
   background-color: $brand-secondary;

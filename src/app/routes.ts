@@ -11,6 +11,7 @@ import {PageUsers} from './components/pages/user/PageUsers/PageUsers';
 import {UserRoutes} from './components/pages/user/PageUser/UserRoutes';
 import {PageFlapSync} from "./components/pages/flap/PageFlapSync/PageFlapSync";
 import {ObjectRoutes} from "./components/pages/object/LayoutObject/ObjectRoutes";
+import {ObjectSearch} from "./components/pages/object/ObjectSearch/ObjectSearch";
 import {PagePremiumSupport} from "./components/pages/support/PagePremiumSupport/PagePremiumSupport";
 import {PageManageSupport} from "./components/pages/support/PageManageSupport/PageManageSupport";
 
@@ -27,6 +28,8 @@ export const ROUTES = [
   {path: 'p/manageSupport', component: PageManageSupport},
   {path: 's/:slug', component: PageStory},
   {path: 's/:slug/edit', component: PageWriteStory},
+  {path: 'o/:text', component: ObjectSearch},
+  {path: 'o/:text/:page', component: ObjectSearch},
   {path: 'p/sync/:id', component: PageFlapSync, name: 'FlapSync'},
   {path: 'p/sync/:id/:action', component: PageFlapSync, name: 'FlapSync'},
   UserRoutes,

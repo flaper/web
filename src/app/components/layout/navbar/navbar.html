@@ -1,6 +1,6 @@
 <nav class="navbar" [class.has-user]="_user.currentUser">
   <github></github>
-  <button class="navbao-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#mainNavbar">
+  <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#mainNavbar">
     &#9776;
   </button>
   <span class="brand-container">
@@ -36,6 +36,14 @@
   </ul>
 
   <div class="collapse navbar-toggleable-xs" id="mainNavbar">
-    <a class="btn btn-primary btn-sm navbar-btn" routerLink="/p/create_story">Создать статью</a>
+    <a class="btn btn-primary btn-sm navbar-btn pull-left" routerLink="/p/create_story">Создать статью</a>
+    <form class='col-xs-8 pull-left' [formGroup]="form" (submit)="onSubmit($event)">
+      <div class="input-group">
+        <span class="input-group-btn">
+          <button type="submit" class="btn btn-primary">Искать</button>
+        </span>
+        <input type="text" formControlName="searchText" name="searchText" class="form-control search-input" placeholder="Поиск объектов...">
+      </div>
+    </form>
   </div>
 </nav>
