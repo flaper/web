@@ -7,6 +7,7 @@ import {FormDraft} from "../../../../services/draft/FormDraft";
 import {DropzoneComponent} from "../../../image/dropzone/DropzoneComponent";
 import {generateEvent} from "../../../../libs/common/common";
 import {RatingBar} from "../../../common/Rating/RatingBar/RatingBar";
+import {Sanitize} from "@flaper/markdown";
 @Component({
   selector: 'simple-write',
   entryComponents: [DropzoneComponent, RatingBar],
@@ -54,23 +55,25 @@ export class SimpleWrite {
   }
 
   ngAfterContentInit() {
-    this.contentLength = this.form.controls['content'].value.replace(/[ ]+/ig,"").length;
+    this.contentLength = Sanitize.symbolsNumber(this.form.controls['content'].value);
     this._autosizeUpdate();
   }
 
   valueChanged(values) {
-    this.contentLength = values.content.replace(/[ ]+/ig,"").length;
+    this.contentLength = Sanitize.symbolsNumber(this.form.controls['content'].value)
     FormDraft.save(this.DRAFT_KEY, values);
   }
 
   togglePreview() {
-    if (!this.renderer)
-      this.renderer = require('marked');
+    if (!this.renderer) {
+      let Markdown = require('@flaper/markdown').FlaperMark;
+      this.renderer = Markdown;
+    }
     this.preview = !this.preview;
   }
   getPreviewText() {
     if (!this.renderer) return '';
-    return this.renderer(this.form.controls['content'].value);
+    return this.renderer.toHTML(this.form.controls['content'].value);
   }
   onSubmit(event) {
     if (this.submitInProgress) {
