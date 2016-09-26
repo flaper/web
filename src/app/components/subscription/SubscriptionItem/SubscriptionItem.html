@@ -1,16 +1,21 @@
 <div class='row'>
-  <div class='col-xs-1'>
-    <img class='avatar' [src]="avatar"/>
+  <div class="col-xs-1">
+    <subscribe [targetId]="subjectId" [iconMode]="true"></subscribe>
   </div>
   <div class='col-xs-1'>
-    <!-- {{(user ? user : object) | json}} -->
+    <img class='avatar' [src]="avatar"/>
   </div>
   <div class='col-xs-8'>
     <a [routerLink]="getRouterLink()">
       <h4 class='sub-title'>{{displayName}}</h4>
     </a>
-  </div>
-  <div class="col-xs-2">
-    <subscribe [targetId]="subjectId" [iconMode]="true"></subscribe>
+    <span *ngIf="user">
+      <span class="counter" titile='Количество статей'>
+        <i class="fa fa-book"></i> {{user.storiesNumber}}
+      </span>
+      <span class="counter" titile='Количество лайков'>
+        <i class="fa fa-thumbs-o-up"></i> {{user.likesNumber}}
+      </span>
+    </span>
   </div>
 </div>
