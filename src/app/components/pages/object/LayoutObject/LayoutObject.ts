@@ -20,7 +20,7 @@ export class LayoutObject {
   static Object:FObject;
   static ObjectObservable;
   obj:FObject;
-
+  permissions:string[];
   constructor(ts:Title, route:ActivatedRoute, _object:ObjectService,
               private router:Router) {
     LayoutObject.ObjectObservable = new ReplaySubject<FObject>(1);
@@ -36,6 +36,8 @@ export class LayoutObject {
           LayoutObject.ObjectObservable.next(fobject);
           LayoutObject.Object = fobject;
           ts.setTitle(fobject.title);
+          _object.getPermissions(fobject.id)
+            .subscribe( data => this.permissions = data);
           Metrika.setParam('objId', fobject.id);
         });
     });

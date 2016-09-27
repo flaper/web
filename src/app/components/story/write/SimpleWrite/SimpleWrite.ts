@@ -8,6 +8,7 @@ import {DropzoneComponent} from "../../../image/dropzone/DropzoneComponent";
 import {generateEvent} from "../../../../libs/common/common";
 import {RatingBar} from "../../../common/Rating/RatingBar/RatingBar";
 import {Sanitize} from "@flaper/markdown";
+
 @Component({
   selector: 'simple-write',
   entryComponents: [DropzoneComponent, RatingBar],
