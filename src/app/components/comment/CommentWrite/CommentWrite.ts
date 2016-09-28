@@ -145,6 +145,9 @@ export class CommentWrite {
     if (this.comment) {
       data.id = this.comment.id;
     }
+    if (this.comment) {
+      data.isAnswer = this.canAnswerAsOwner();
+    }
     return data;
   }
 
