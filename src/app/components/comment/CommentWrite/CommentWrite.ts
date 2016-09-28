@@ -1,10 +1,10 @@
 import {Component, Input, Output, EventEmitter, ElementRef} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {Comment, CommentService, UserService} from "@flaper/angular";
+import {Comment, CommentService, UserService, ObjectService} from "@flaper/angular";
 import {FormDraft} from "../../../services/draft/FormDraft";
 import {generateEvent} from "../../../libs/common/common";
 import * as Rx from 'rxjs';
-
+import {OBJECT_PERMISSIONS} from '@flaper/consts';
 @Component({
   selector: 'comment-write',
   styles: [require('./CommentWrite.scss')],
@@ -35,11 +35,12 @@ export class CommentWrite {
 
   newComment:boolean;
   disabled:boolean = false;
-
+  userPermissions:string[] = [];
   active:boolean = false;
   form:FormGroup;
 
-  constructor(private commentService:CommentService, private fb:FormBuilder, private elementRef:ElementRef,
+  constructor(private commentService:CommentService, private fb:FormBuilder,
+              private elementRef:ElementRef, private objectService:ObjectService,
               private  userService:UserService) {
   }
 
@@ -56,15 +57,20 @@ export class CommentWrite {
     let sinceDate = this.comment ? this.comment.updated : null;
     FormDraft.load(this.DRAFT_KEY, this.form, sinceDate);
 
+    this.objectService.getPermissions(this.subjectId)
+      .subscribe(permissions => this.userPermissions = permissions);
+
     //to preserve this
     this.form.valueChanges.subscribe(values => this.valueChanged(values));
     if (!this.newComment) {
-      this.elementRef.nativeElement.querySelector('textarea').focus();
+      let textField = this.elementRef.nativeElement.querySelector('textarea');
+        textField && textField.focus();
     }
     if (this.commentItObservable) {
       //noinspection TypeScriptUnresolvedFunction
       this.commentItObservable.subscribe(() => {
-        this.elementRef.nativeElement.querySelector('textarea').focus();
+        let textField = this.elementRef.nativeElement.querySelector('textarea');
+          textField && textField.focus();
       })
     }
   }
@@ -106,6 +112,16 @@ export class CommentWrite {
       this._lastOnBlurId = null;
       this.active = false
     }, 100);
+  }
+
+  isOwner() {
+    return this.userPermissions.some(permission => permission === OBJECT_PERMISSIONS.OWNER);
+  }
+  canAnswerAsOwner() {
+    return this.isOwner() && this.userPermissions.some(permission => permission === OBJECT_PERMISSIONS.ANSWER);
+  }
+  isVisible() {
+    return !(this.isOwner() && !this.canAnswerAsOwner());
   }
 
   onFocus() {
