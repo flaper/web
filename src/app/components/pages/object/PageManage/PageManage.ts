@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FObject, UserService} from "@flaper/angular";
+import {FObject, UserService, User} from "@flaper/angular";
 
 @Component({
   selector: 'page-manage',
@@ -8,7 +8,10 @@ import {FObject, UserService} from "@flaper/angular";
 })
 export class PageManage {
   obj:FObject;
-
+  foundUsers:User[] = [];
   constructor(private _user:UserService) {
+  }
+  whenFound(event) {
+    console.log(event);
   }
 }

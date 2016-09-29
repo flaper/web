@@ -4,4 +4,6 @@
   <div class="alert alert-info">
     Поддержка компаний осуществляется через почту <a href="mailto:help@flaper.org">help@flaper.org</a>
   </div>
+  <user-search (found)="whenFound($event)"></user-search>
+  <user-list [users]="foundUsers"></user-list>
 </div>

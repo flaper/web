@@ -68,6 +68,8 @@ import {GalleryComponent} from "./components/image/gallery/GalleryComponent/Gall
 import {PageFlapSync} from "./components/pages/flap/PageFlapSync/PageFlapSync";
 import {UserInfo} from "./components/user/UserInfo/UserInfo";
 import {UserStats} from "./components/user/UserStats/UserStats";
+import {UserSearch} from "./components/user/UserSearch/UserSearch";
+import {UserList} from "./components/user/UserList/UserList";
 import {UserStories} from "./components/user/UserStories/UserStories";
 import {UserLikes} from "./components/user/UserLikes/UserLikes";
 import {UserSubscriptions} from "./components/user/UserSubscriptions/UserSubscriptions";
@@ -94,7 +96,7 @@ const APP_PROVIDERS = [
     StoriesList, SimpleWrite, SimpleReviewWrite, PageManageSupport, PageManageRequest, PageManage, LoadMore, StoryItem,
     CommentsShortList, CommentsAutoList, CommentsList, CommentComponent, SubscribeButton,SubscriptionList,SubscriptionItem,SubscriptionAutoList, RatingBar, DropzoneComponent, PremiumMessages,
     CommentWrite, PostActions, PageLogin, PageNews, PageWriteStory, PagePremiumSupport, PageStory, StoryComponent,
-    GalleryComponent, PageFlapSync, UserInfo, UserStats, UserStories,UserFavorite,UserLike,UserSubscriptions, UserLikes, PageObjectMain, PageReview,
+    GalleryComponent, PageFlapSync, UserInfo, UserStats, UserList, UserSearch, UserStories,UserFavorite,UserLike,UserSubscriptions, UserLikes, PageObjectMain, PageReview,
     PageNotFound
   ],
   imports: [ // import Angular's modules
