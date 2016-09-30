@@ -16,6 +16,7 @@ export class UserSearch {
   constructor(private _users:UserService, private fb:FormBuilder) {
 
   }
+
   ngOnInit() {
     let searchText = "";
     this.form = this.fb.group({
@@ -28,8 +29,10 @@ export class UserSearch {
         sanitizedText = searchText.replace('/[^A-Za-zА-Яа-я!@#$,\. 0-9]/ig',""),
         isId = /[0-9a-f]{24}/.test(searchText);
     if (searchText.length === 0) return false;
-    let where = isId ? {id : searchText} : {displayName:{like:sanitizedText}} ;
-    this._users.get({where:where}).subscribe(users => {
+    let where = isId ? {id : searchText} : {displayName:{like:sanitizedText}},
+        order = "storiesNumber DESC, likesNumber DESC";
+
+    this._users.get({where,order}).subscribe(users => {
       // this.users = users;
       this.usersFound.emit(users);
     })

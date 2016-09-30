@@ -1,9 +1,34 @@
 <div>
   <h2 class="text-xs-center">Управление страницей</h2>
-
+  <h3>Модераторы:</h3>
+  <ul>
+    <li *ngFor="let user of moderators">{{user.displayName}}</li>
+  </ul>
   <div class="alert alert-info">
     Поддержка компаний осуществляется через почту <a href="mailto:help@flaper.org">help@flaper.org</a>
   </div>
-  <user-search (found)="whenFound($event)"></user-search>
-  <user-list [users]="foundUsers"></user-list>
+  <user-search (usersFound)="whenFound($event)" class="col-xs-4"></user-search>
+  <div class="row" *ngFor="let user of foundUsers">
+    <div class="col-lg-1 col-md-1 col-xs-2 col-sm-2">
+      <img class="avatar" [src]="user.photo" alt="{{user.displayName}}" />
+    </div>
+    <div class="col-lg-2 col-md-2 col-xs-4 col-sm-4">
+      <button type="button" name="button" (click)="addAsModerator(user)" class="btn">
+        <i class="fa fa-group"></i>
+        Сделать модератором
+      </button>
+    </div>
+    <div class="col-lg-1 col-md-1 col-xs-2 col-sm-2">
+      <span class="counter" titile='Количество статей'>
+        <i class="fa fa-book"></i> {{user.storiesNumber}}
+      </span>
+      <span class="counter" titile='Количество лайков'>
+        <i class="fa fa-thumbs-o-up"></i> {{user.likesNumber}}
+      </span>
+    </div>
+    <div class="col-lg-8 col-lg-8 col-sm-4 col-xs-4">
+      {{user.displayName}}
+    </div>
+  </div>
+
 </div>

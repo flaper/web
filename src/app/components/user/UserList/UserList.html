@@ -1,6 +1,6 @@
 <div class="row" *ngFor="let user of users">
   <div class="col-lg-1 col-md-1 col-xs-2 col-sm-2">
-    <img [src]="user.photo" alt="{{user.displayName}}" />
+    <img class="avatar" [src]="user.photo" alt="{{user.displayName}}" />
   </div>
   <div class="col-lg-1 col-md-1 col-xs-2 col-sm-2">
     <span class="counter" titile='Количество статей'>

@@ -12,7 +12,6 @@ import {SubscribeButton} from "../../../subscription/SubscribeButton/SubscribeBu
 
 @Component({
   selector: 'layout-object',
-  entryComponents: [SubscribeButton],
   template: require('./LayoutObject.html'),
   styles: [require('./LayoutObject.scss')]
 })
