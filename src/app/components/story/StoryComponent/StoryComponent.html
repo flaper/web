@@ -26,6 +26,10 @@
 </div>
 <div [innerHtml]="story.contentHTML" class="contentHTML">
 </div>
+<div class="answer alert alert-success" *ngIf="story.answer">
+  <h4>Ответ владельца:</h4>
+  {{story.answer.contentHTML}}
+</div>
 <div class="story-footer">
   <like [subject]="story" [iconMode]="true"></like>
   <div id="story-share" data-services="vkontakte,odnoklassniki,moimir,facebook,gplus,twitter,viber,whatsapp"></div>
