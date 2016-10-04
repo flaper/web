@@ -25,6 +25,9 @@
 
   <div class="short-inline" *ngIf="story.shortInline" [innerHtml]="story.shortInline">
   </div>
+  <div class="answer" *ngIf="story.answer">
+    <span class="heading">Ответ: </span>{{story.answer.contentHTML}}
+  </div>
   <div class="read-more">
     <a [routerLink]="getRouterLink()">Читать далее...</a>
   </div>

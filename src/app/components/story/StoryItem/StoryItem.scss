@@ -44,3 +44,11 @@ h3 {
 .read-more {
   margin-top: 0.3rem;
 }
+.answer {
+  color: #23562d;
+  & span.heading {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #2a7b39;
+  }
+}
