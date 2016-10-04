@@ -1,8 +1,12 @@
 <div>
   <h2 class="text-xs-center">Управление страницей</h2>
   <h3>Модераторы:</h3>
-  <ul>
-    <li *ngFor="let user of moderators">{{user.displayName}}</li>
+  <ul class="mod-list">
+    <li *ngFor="let user of moderators">
+      <img [src]="user.photo" alt="Аватар" class="avatar" />
+      <a [routerLink]='["/u",user.id]'>{{user.displayName}}</a>
+      <button type="button" class="btn" (click)="removeFromModerators(user)">Удалить из модераторов</button>
+    </li>
   </ul>
   <div class="alert alert-info">
     Поддержка компаний осуществляется через почту <a href="mailto:help@flaper.org">help@flaper.org</a>
@@ -14,7 +18,7 @@
     </div>
     <div class="col-lg-2 col-md-2 col-xs-4 col-sm-4">
       <button type="button" name="button" (click)="addAsModerator(user)" class="btn">
-        <i class="fa fa-group"></i>
+        <i class="fa fa-flash"></i>
         Сделать модератором
       </button>
     </div>

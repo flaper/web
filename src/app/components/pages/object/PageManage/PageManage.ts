@@ -23,23 +23,29 @@ export class PageManage {
                   _object.getBySlug({mainDomain, region, slug})
                     .subscribe(fobject => {
                       this.obj = fobject;
-                      let userQuery = {
-                        where : {
-                          flapIds: {inq: [this.obj.id]}
-                        }
-                      };
-                      _user.get(userQuery).subscribe(users => {
-                        this.moderators = users;
-                        console.log(users);
-                      });
+                      this.getModList(this.obj.id);
                     });
                 });
   }
   ngOnInit() {
   }
-  addAsModerator(user) {
-    this._user.addRightsForObject(user.id, this.obj.id).subscribe(data => console.log(data));
+  getModList(objectId) {
+    this._object.getOwners(objectId).subscribe(owners => {
+      this._user.requestIds(owners);
+      this.moderators = [];
+      owners.forEach(owner => this._user.getById(owner).subscribe( user => this.moderators.push(user)));
+    });
   }
+
+  addAsModerator(user) {
+    this._user.addRightsForObject(user.id, this.obj.id).subscribe(data => this.getModList(this.obj.id));
+  }
+
+  removeFromModerators(user) {
+    console.log(user.id, this.obj.id);
+    this._user.removeRightsForObject(user.id, this.obj.id).subscribe(data => this.getModList(this.obj.id));
+  }
+
   whenFound(users) {
     this.foundUsers = users;
   }
