@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
-import {Story, StoryService} from "@flaper/angular";
+import {Story, StoryService, User, UserService} from "@flaper/angular";
 // import {DomSanitizer} from "@angular/browser-platform";
 import * as Diff from "text-diff";
 
@@ -12,19 +12,24 @@ import * as Diff from "text-diff";
 
 export class PageStoryChanges {
   history = [];
+  dictionary = require('./i18n.json');
   diff;
-  constructor(private storyService:StoryService, private route:ActivatedRoute) {
+  constructor(private storyService:StoryService, private route:ActivatedRoute,
+              private userService:UserService) {
     route.params.subscribe(params => {
       let {id} = params;
       storyService.getAudit(id).subscribe(data => {
         for (let i = 0; i < data.length - 1 ; i++) {
-          this.history.push({new : data[i], old : data[i+1]});
+          userService.getById(data[i].userId).subscribe( user => {
+            this.history.push({user: user ,new : data[i], old : data[i+1]});
+          })
         }
       });
     });
     this.diff= new Diff();
   }
-
+  ngOnInit() {
+  }
   getFields(record) {
     // let oldFields = Object.keys(record.old.fields),
     //     newFields = Object.keys(record.new.fields),
@@ -38,7 +43,11 @@ export class PageStoryChanges {
           oldValue = difference.filter(item => item[0] !== 1).map(item => item[0] === -1 ? `<span class='text-danger'>${item[1]}</span>` : item[1] ).join("");
           newValue = difference.filter(item => item[0] !== -1).map(item => item[0] === 1 ? `<span class='text-success'>${item[1]}</span>` : item[1] ).join("");
         }
-        return {key:field, oldValue : oldValue, newValue: newValue};
+        return {key:field, oldValue : this.t(oldValue), newValue: this.t(newValue)};
       } );
+  }
+
+  t(text) {
+    return this.dictionary[text] ? this.dictionary[text] : text;
   }
 }

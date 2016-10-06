@@ -4,9 +4,12 @@
     <h4>
       {{record.new.created | date:"dd.MM.yyyy"}}
     </h4>
+    <a [routerLink]="['/u',record.user.id]">
+      {{record.user.displayName}}
+    </a>
     <ul class='changes-list'>
       <li class='change-record' *ngFor="let change of getFields(record)">
-        <label>{{change.key}}</label>
+        <label>{{t(change.key)}}</label>
         <!-- <div class="not-changed-field" *ngIf="!change.oldValue || !change.newValue">
           <div class="change-value" [innerHTML]="change.oldValue">
           </div>
