@@ -70,6 +70,7 @@ export class StoryComponent {
     [].forEach.call(storyImages,
       (element) => {
         let id = element.src.replace(/[http].*\/([a-z0-9]{2})\/([a-z0-9]{2})\/([a-z0-9]+)_middle.*/i,'$1$2$3');
+        element.style.cursor = "pointer";
         element.onclick = (e) => {
           this.currentImage = id;
         }
