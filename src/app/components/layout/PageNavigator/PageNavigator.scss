@@ -1,0 +1,10 @@
+.page-link {
+  &.active {
+    background: lightblue;
+    color: white;
+  }
+}
+nav {
+  text-align: center;
+  width: 100%;
+}

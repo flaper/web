@@ -1,27 +1,5 @@
 <div class="container">
-  <nav aria-label="Page navigation" *ngIf="pages > 1">
-    <ul class="pagination">
-
-      <li class="page-item">
-        <a class="page-link" [routerLink]="getRouterLink('previous')" aria-label="Previous">
-          <span aria-hidden="true">&laquo;</span>
-          <span class="sr-only">Previous</span>
-        </a>
-      </li>
-
-      <li class="page-item" *ngFor="let page of getPagination()">
-        <a class="page-link" [ngClass]="{active : currentPage + 1 === page}" [routerLink]="getRouterLink(page)">{{page}}</a>
-      </li>
-
-      <li class="page-item">
-        <a class="page-link" [routerLink]="getRouterLink('next')" aria-label="Next">
-          <span aria-hidden="true">&raquo;</span>
-          <span class="sr-only">Next</span>
-        </a>
-      </li>
-
-    </ul>
-  </nav>
+  <page-navigator [baseURL]="['/o',searchText]" [currentPage]="currentPage" [pageCount]="pages"></page-navigator>
 
   <div class="alert alert-info" *ngIf="objects.length===0">Не найдено объектов, удовлетворяющих запросу</div>
   <object-list [objects]="objects">

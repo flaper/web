@@ -1,7 +1,14 @@
+nav {
+  text-align: center;
+  width: 100%;
+}
+
 .changes-list {
   list-style: none;
   width: 100%;
   padding: 0.5rem;
+  margin: 0;
+
   & .change-record {
     label {
       width: 100%;
@@ -9,24 +16,29 @@
       text-align: center;
       font-size: 1.15rem;
     }
+
     & .not-changed-field {
       text-align: center;
       font-size: 0.9rem;
       font-weight: 400;
     }
+
     & .changed-field {
       display: flex;
+
       & .change-value {
         vertical-align: top;
         width: calc(50% - 2px);
-        border: 0px;
+        border: 0;
         box-sizing: border-box;
         display: inline-block;
         font-size: 0.9rem;
         padding: 0.5rem;
+
         &:first-of-type {
           border-right: 1px solid lightblue;
         }
+
         &:last-of-type {
           border-left: 1px solid lightblue;
         }
@@ -34,12 +46,20 @@
     }
   }
 }
+
 .history-item {
   width: 80%;
   border: 1px solid lightblue;
   border-radius: 5px;
   padding: 1rem;
   margin-bottom: 20px;
+}
+
+.page-link {
+  &.active {
+    background: lightblue;
+    color: white;
+  }
 }
 
 .history-list {

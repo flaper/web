@@ -1,11 +1,15 @@
 <h2 class="text-xs-center">История изменений</h2>
+
+
+<page-navigator [baseURL]="['/p','storyChanges',storyId]" [currentPage]="currentPage" [pageCount]="pages"></page-navigator>
+
 <div class="alert alert-info" *ngIf="history.length === 0">
   В запись изменения не вносились.
 </div>
 <div class="history-list" *ngIf="history.length > 0">
   <div class="history-item" *ngFor="let record of history">
     <h6>
-      {{record.new.created | date:"dd.MM.yyyy"}}
+      {{record.new.created | date:"dd.MM.yyyy HH:mm"}}
     </h6>
     <a [routerLink]="['/u',record.user.id]">
       {{record.user.displayName}}
@@ -13,12 +17,6 @@
     <ul class='changes-list'>
       <li class='change-record' *ngFor="let change of getFields(record)">
         <label>{{t(change.key)}}</label>
-        <!-- <div class="not-changed-field" *ngIf="!change.oldValue || !change.newValue">
-          <div class="change-value" [innerHTML]="change.oldValue">
-          </div>
-          <div class="change-value" [innerHTML]="change.newValue">
-          </div>
-        </div> -->
         <div class="changed-field">
           <div class="change-value" [innerHTML]="change.oldValue">
           </div>

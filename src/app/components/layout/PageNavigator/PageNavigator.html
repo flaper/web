@@ -1,0 +1,23 @@
+<nav aria-label="Page navigation" *ngIf="pageCount > 1">
+  <ul class="pagination">
+
+    <li class="page-item">
+      <a class="page-link" [routerLink]="getRouterLink('previous')" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+        <span class="sr-only">Previous</span>
+      </a>
+    </li>
+
+    <li class="page-item" *ngFor="let page of getPagination()">
+      <a class="page-link" [ngClass]="{active : currentPage === page}" [routerLink]="getRouterLink(page)">{{page}}</a>
+    </li>
+
+    <li class="page-item">
+      <a class="page-link" [routerLink]="getRouterLink('next')" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+        <span class="sr-only">Next</span>
+      </a>
+    </li>
+
+  </ul>
+</nav>

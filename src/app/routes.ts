@@ -28,6 +28,7 @@ export const ROUTES = [
   {path: 'p/support', component: PagePremiumSupport},
   {path: 'p/manageSupport', component: PageManageSupport},
   {path: 'p/storyChanges/:id', component: PageStoryChanges},
+  {path: 'p/storyChanges/:id/:page', component: PageStoryChanges},
   {path: 's/:slug', component: PageStory},
   {path: 's/:slug/edit', component: PageWriteStory},
   {path: 'o/:text', component: ObjectSearch},

@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {FObject, ObjectService} from '@flaper/angular';
 import {Router,ActivatedRoute} from '@angular/router';
+import {PageNavigator} from "../../../layout/PageNavigator/PageNavigator";
 // import {ObjectList} from '../../object/ObjectList/ObjectList';
 @Component({
   selector: 'object-search',
@@ -10,7 +11,7 @@ import {Router,ActivatedRoute} from '@angular/router';
 
 export class ObjectSearch {
   objects:FObject[] = [];
-  currentPage:number = 0;
+  currentPage:number = 1;
   count:number = 0;
   pageSize:number = 10;
   pages:number = 0;
@@ -18,7 +19,7 @@ export class ObjectSearch {
   constructor(private _objects:ObjectService, private route:ActivatedRoute) {
     route.params.subscribe(params=> {
       let data = route.snapshot.data,
-          page:number = parseInt(params['page']);
+          page:number = parseInt(params['page']) || 1;
       this.searchText = decodeURIComponent(params['text']) || "";
       let query = {or: [
           {region:{like:this.searchText}},
