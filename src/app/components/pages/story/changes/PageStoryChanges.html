@@ -1,5 +1,8 @@
 <h2 class="text-xs-center">История изменений</h2>
-<div class="history-list">
+<div class="alert alert-info" *ngIf="history.length === 0">
+  В запись изменения не вносились.
+</div>
+<div class="history-list" *ngIf="history.length > 0">
   <div class="history-item" *ngFor="let record of history">
     <h6>
       {{record.new.created | date:"dd.MM.yyyy"}}
