@@ -18,7 +18,7 @@ export class PageStoryChanges {
   minimumDiffLength: number = 100;
   currentPage: number = 1;
   pageSize: number = 1;
-  pages: number = 3;
+  pages: number = 0;
   diff;
   constructor(private storyService: StoryService, private route: ActivatedRoute,
     private userService: UserService) {
