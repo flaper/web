@@ -63,6 +63,7 @@ import {PageNews} from "./components/pages/home/PageNews/PageNews";
 import {PageWriteStory} from "./components/pages/story/write/PageWriteStory";
 import {PagePremiumSupport} from "./components/pages/support/PagePremiumSupport/PagePremiumSupport";
 import {PageStory} from "./components/pages/story/read/PageStory";
+import {PageStoryChanges} from "./components/pages/story/changes/PageStoryChanges";
 import {StoryComponent} from "./components/story/StoryComponent/StoryComponent";
 import {GalleryComponent} from "./components/image/gallery/GalleryComponent/GalleryComponent";
 import {PageFlapSync} from "./components/pages/flap/PageFlapSync/PageFlapSync";
@@ -95,7 +96,7 @@ const APP_PROVIDERS = [
     Github, PageLastStories, LayoutHome, LayoutObject,ObjectSearch, LastStories, TopStories, PageTopStories, PageTopStoriesLast,ObjectList ,
     StoriesList, SimpleWrite, SimpleReviewWrite, PageManageSupport, PageManageRequest, PageManage, LoadMore, StoryItem,
     CommentsShortList, CommentsAutoList, CommentsList, CommentComponent, SubscribeButton,SubscriptionList,SubscriptionItem,SubscriptionAutoList, RatingBar, DropzoneComponent, PremiumMessages,
-    CommentWrite, PostActions, PageLogin, PageNews, PageWriteStory, PagePremiumSupport, PageStory, StoryComponent,
+    CommentWrite, PostActions, PageLogin, PageNews, PageWriteStory, PagePremiumSupport, PageStory, PageStoryChanges, StoryComponent,
     GalleryComponent, PageFlapSync, UserInfo, UserStats, UserList, UserSearch, UserStories,UserFavorite,UserLike,UserSubscriptions, UserLikes, PageObjectMain, PageReview,
     PageNotFound
   ],

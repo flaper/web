@@ -5,6 +5,7 @@ import {PageNews} from "./components/pages/home/PageNews/PageNews";
 import {PageTopStories} from "./components/pages/home/PageTopStories/PageTopStories";
 import {PageTopStoriesLast} from "./components/pages/home/PageTopStoriesLast/PageTopStoriesLast";
 import {PageStory} from "./components/pages/story/read/PageStory";
+import {PageStoryChanges} from "./components/pages/story/changes/PageStoryChanges";
 import {PageNotFound} from "./components/pages/notFound/PageNotFound";
 import {PageUser} from './components/pages/user/PageUser/PageUser';
 import {PageUsers} from './components/pages/user/PageUsers/PageUsers';
@@ -26,6 +27,7 @@ export const ROUTES = [
   {path: 'p/flapers', component: PageUsers},
   {path: 'p/support', component: PagePremiumSupport},
   {path: 'p/manageSupport', component: PageManageSupport},
+  {path: 'p/storyChanges/:id', component: PageStoryChanges},
   {path: 's/:slug', component: PageStory},
   {path: 's/:slug/edit', component: PageWriteStory},
   {path: 'o/:text', component: ObjectSearch},

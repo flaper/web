@@ -1,0 +1,19 @@
+<h2 class="text-xs-center">История изменений</h2>
+<div class="history-list">
+  <div class="history-item" *ngFor="let record of history">
+    <ul class='changes-list'>
+      <li class='change-record' *ngFor="let change of getFields(record)">
+        <label>{{change.key}}</label>
+        <div class="not-changed-field" *ngIf="!change.oldValue || !change.newValue">
+          {{change.newValue ? change.newValue : change.oldValue}}
+        </div>
+        <div class="changed-field" *ngIf="change.oldValue && change.newValue">
+          <div class="change-value" [innerHTML]="change.oldValue">
+          </div>
+          <div class="change-value" [innerHTML]="change.newValue">
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

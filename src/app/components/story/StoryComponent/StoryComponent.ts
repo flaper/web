@@ -23,6 +23,7 @@ export class StoryComponent {
   private actions = [
     {name: 'deny', title: 'Отклонить', icon: 'fa-ban', acl: 'Story.deny'},
     {name: 'delete', title: 'Удалить', acl: 'Story.delete'},
+    {name: 'changes', title: 'История изменений', icon: 'fa-list', acl: 'super'},
     {name: 'best', title: 'Победитель', icon: 'fa-trophy', acl: 'super'},
   ];
 
@@ -104,6 +105,9 @@ export class StoryComponent {
         this.storyService.deny(this.story.id).subscribe(() => {
           this.pageService.navigateToDefault();
         });
+        break;
+      case 'changes' :
+        this.router.navigate(['/p','storyChanges',this.story.id]);
         break;
       case 'best':
         let place = window.prompt('Какой место должен занять отзыв?', '');
