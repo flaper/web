@@ -1,5 +1,7 @@
 .changes-list {
   list-style: none;
+  width: 100%;
+  padding: 0.5rem;
   & .change-record {
     label {
       width: 100%;
@@ -34,13 +36,14 @@
 }
 .history-item {
   width: 80%;
-  display: flex;
   border: 1px solid lightblue;
   border-radius: 5px;
   padding: 1rem;
+  margin-bottom: 20px;
 }
 
 .history-list {
   justify-content: center;
+  flex-wrap: wrap;
   display: flex;
 }

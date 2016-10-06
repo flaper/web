@@ -26,16 +26,17 @@ export class PageStoryChanges {
   }
 
   getFields(record) {
-    let oldFields = Object.keys(record.old.fields),
-        newFields = Object.keys(record.new.fields),
-        fields = oldFields.filter(field => newFields.indexOf(field) == -1).concat(newFields).filter(field => record.old.fields[field] || record.new.fields[field]);
+    // let oldFields = Object.keys(record.old.fields),
+    //     newFields = Object.keys(record.new.fields),
+    //     fields = oldFields.filter(field => newFields.indexOf(field) == -1).concat(newFields).filter(field => record.old.fields[field] || record.new.fields[field]);
+    let fields = Object.keys(record.new.fields);
     return fields.map( field => {
         let oldValue = record.old.fields[field],
             newValue = record.new.fields[field];
         if (oldValue && newValue) {
           let difference = this.diff.main(oldValue, newValue);
-          oldValue = difference.filter(item => item[0] !== 1).map(item => item[0] === -1 ? `<span class='text-danger'>${item[1]}</span>` : item[1] ).join();
-          newValue = difference.filter(item => item[0] !== -1).map(item => item[0] === 1 ? `<span class='text-success'>${item[1]}</span>` : item[1] ).join();
+          oldValue = difference.filter(item => item[0] !== 1).map(item => item[0] === -1 ? `<span class='text-danger'>${item[1]}</span>` : item[1] ).join("");
+          newValue = difference.filter(item => item[0] !== -1).map(item => item[0] === 1 ? `<span class='text-success'>${item[1]}</span>` : item[1] ).join("");
         }
         return {key:field, oldValue : oldValue, newValue: newValue};
       } );
