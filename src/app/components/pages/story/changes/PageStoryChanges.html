@@ -1,9 +1,9 @@
 <h2 class="text-xs-center">История изменений</h2>
 <div class="history-list">
   <div class="history-item" *ngFor="let record of history">
-    <h4>
+    <h6>
       {{record.new.created | date:"dd.MM.yyyy"}}
-    </h4>
+    </h6>
     <a [routerLink]="['/u',record.user.id]">
       {{record.user.displayName}}
     </a>
