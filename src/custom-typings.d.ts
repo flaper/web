@@ -2,7 +2,7 @@ declare var Ya:{
   share2: any
 };
 
-declare var $:any;
+declare var $:cssSelectorHelper;
 
 declare module '@flaper/consts' {
   export const TRANSACTIONS_TYPES:any;
@@ -117,4 +117,3 @@ interface NodeModule extends WebpackModule {
 }
 interface Global extends GlobalEnvironment {
 }
-

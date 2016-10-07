@@ -45,7 +45,8 @@ export class PageUser {
         .subscribe(amount => this.amount = amount);
     }
   }
-  isCurrent() {
+  isHidden() {
+    if (!this._user.currentUser) return true;
     return this._user.currentUser.id === this.user.id;
   }
   withdraw() {

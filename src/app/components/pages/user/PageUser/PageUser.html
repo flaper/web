@@ -8,7 +8,7 @@
 
       <div class="media-body">
         <h1 class="media-heading">{{user.displayName}}</h1>
-        <subscribe [targetId]="user.id" *ngIf="!isCurrent()"></subscribe>
+        <subscribe [targetId]="user.id" *ngIf="!isHidden()"></subscribe>
         <div class="stats">
         <span class="stories-number" title="Количество статей">
           <i class="fa fa-book"></i> {{user.storiesNumber}}
