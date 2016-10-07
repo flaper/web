@@ -2,7 +2,7 @@ declare var Ya:{
   share2: any
 };
 
-declare var $:cssSelectorHelper;
+declare var $:any;
 
 declare module '@flaper/consts' {
   export const TRANSACTIONS_TYPES:any;
