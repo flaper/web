@@ -4,6 +4,14 @@ declare var Ya:{
 
 declare module '@flaper/consts' {
   export const TRANSACTIONS_TYPES:any;
+  export const OBJECT_PERMISSIONS:any;
+}
+
+declare module '@flaper/markdown' {
+  export const Sanitize: any;
+}
+
+declare module 'text-diff' {
 }
 
 declare var ls:{
