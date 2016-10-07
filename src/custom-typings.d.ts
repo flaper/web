@@ -14,6 +14,8 @@ declare module '@flaper/markdown' {
 }
 
 declare module 'text-diff' {
+  var diff: any;
+  export = diff;
 }
 
 declare var ls:{
