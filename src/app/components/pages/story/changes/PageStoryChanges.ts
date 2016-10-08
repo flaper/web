@@ -28,8 +28,8 @@ export class PageStoryChanges {
       this.storyId = id;
       this.currentPage = parseInt(page) || 0;       // 0 = 1st page if page is not set
 
-      let query = {offset: this.currentPage * this.pageSize, limit: this.pageSize + 1, order: 'created DESC'}, //building query for pagination
-        filter = {filter: JSON.stringify(query)};       // wrapping query into filter object
+      //obuilding query for pagination
+      let filter = {offset: this.currentPage * this.pageSize, limit: this.pageSize + 1, order: 'created DESC'};
       this.history = [];
       _story.getAudit(id, filter).subscribe(data => {  //requesting changes
         for (let i = 0; i < data.length - 1; i++) {
