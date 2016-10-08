@@ -59,7 +59,7 @@
     "@angular/router": "3.0.0-rc.2",
     "@angularclass/hmr": "^1.0.1",
     "@angularclass/hmr-loader": "^1.0.1",
-    "@flaper/angular": "^0.6.4",
+    "@flaper/angular": "^0.7.0",
     "@flaper/consts": "^0.2.3",
     "@flaper/markdown": "^1.1.2",
     "angular2-moment": "^1.0.0-beta.1",
