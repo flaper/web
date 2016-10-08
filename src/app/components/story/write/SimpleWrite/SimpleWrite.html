@@ -12,10 +12,6 @@
       <rating [numeric]="true" [rating]="story && story.rating ? story.rating : 0" (changed)="ratingChanged($event)"></rating>
     </fieldset>
 
-    <button type='button' class='btn' (click)="togglePreview()">
-      <i class='fa' [ngClass]="{'fa-pencil':preview, 'fa-eye':!preview}"></i> {{preview ? "Редактировать" : "Предпросмотр"}}
-    </button>
-
     <fieldset class="form-group">
       <textarea formControlName="content" [ngClass]='{hidden:preview}' placeholder="Текст статьи (поддерживается markdown). Минимум 1000 символов." class="form-control" rows="5" autosize></textarea>
       <div class='contentHTML' *ngIf="preview" [innerHTML]='getPreviewText()'>
@@ -26,6 +22,9 @@
     </div>
     <button type="submit" class="btn btn-primary">{{newStory ? 'Создать' : 'Сохранить'}}</button>
     <button type="button" class="btn btn-link" (click)="onCancel()">Отменить
+    </button>
+    <button type='button' class='btn btn-info' (click)="togglePreview()">
+      <i class='fa' [ngClass]="{'fa-pencil':preview, 'fa-eye':!preview}"></i> {{preview ? "Редактировать" : "Предпросмотр"}}
     </button>
   </form>
   <dropzone (newImage)="newImage($event)"></dropzone>
