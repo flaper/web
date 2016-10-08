@@ -13,14 +13,14 @@ import {ObjectService} from "@flaper/angular";
 export class PageFlapSync {
   id:string;
 
-  constructor(ts:Title, route:ActivatedRoute, flapSyncService:FlapSyncService, private objectService:ObjectService) {
+  constructor(ts:Title, route:ActivatedRoute, _flapSync:FlapSyncService, private _object:ObjectService) {
     let params = route.snapshot.params;
     this.id = params['id'];
     let action = params['action'];
     ts.setTitle('Синхронизация объекта');
-    flapSyncService.sync(this.id)
+    _flapSync.sync(this.id)
       .subscribe(data => {
-        this.objectService.navigateTo(data, action);
+        this._object.navigateTo(data, action);
       })
   }
 }
