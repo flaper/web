@@ -22,7 +22,7 @@ export class PageStoryChanges {
   diff;
 
   constructor(private _story:StoryService, private route:ActivatedRoute,
-              private userService:UserService) {
+              private _user:UserService) {
     route.params.subscribe(params => {
       let {id, page} = params;     //story id & page number
       this.storyId = id;
@@ -33,7 +33,7 @@ export class PageStoryChanges {
       this.history = [];
       _story.getAudit(id, filter).subscribe(data => {  //requesting changes
         for (let i = 0; i < data.length - 1; i++) {
-          userService.getById(data[i].userId).subscribe(user => {
+          _user.getById(data[i].userId).subscribe(user => {
             this.history.push({user: user, new: data[i], old: data[i + 1]});
           })
         }
