@@ -20,7 +20,7 @@ export class PageStoryChanges {
   pageSize: number = 1;
   pages: number = 0;
   diff;
-  constructor(private storyService: StoryService, private route: ActivatedRoute,
+  constructor(private _story: StoryService, private route: ActivatedRoute,
     private userService: UserService) {
     route.params.subscribe(params => {
       let {id, page} = params;     //story id & page number
@@ -30,7 +30,7 @@ export class PageStoryChanges {
       let query = { offset: this.currentPage * this.pageSize, limit: this.pageSize + 1 }, //building query for pagination
         filter = { filter: JSON.stringify(query) };       // wrapping query into filter object
       this.history = [];
-      storyService.getAudit(id, filter).subscribe(data => {  //requesting changes
+      _story.getAudit(id, filter).subscribe(data => {  //requesting changes
         for (let i = 0; i < data.length - 1; i++) {
           userService.getById(data[i].userId).subscribe(user => {
             this.history.push({ user: user, new: data[i], old: data[i + 1] });
