@@ -17,7 +17,7 @@ export class PageStoryChanges {
   dictionary = require('./i18n.json');
   minimumDiffLength:number = 100;
   currentPage:number = 1;
-  pageSize:number = 1;
+  pageSize:number = 10;
   pages:number = 0;
   diff;
 
@@ -28,7 +28,7 @@ export class PageStoryChanges {
       this.storyId = id;
       this.currentPage = parseInt(page) || 0;       // 0 = 1st page if page is not set
 
-      let query = {offset: this.currentPage * this.pageSize, limit: this.pageSize + 1}, //building query for pagination
+      let query = {offset: this.currentPage * this.pageSize, limit: this.pageSize + 1, order: 'created DESC'}, //building query for pagination
         filter = {filter: JSON.stringify(query)};       // wrapping query into filter object
       this.history = [];
       _story.getAudit(id, filter).subscribe(data => {  //requesting changes
