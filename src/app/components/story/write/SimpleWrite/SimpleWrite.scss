@@ -2,19 +2,29 @@
   margin-top: 1rem;
 }
 
-p{
+p {
   margin: 0.3rem 0 0;
   white-space: pre-line;
 }
+
 .invalid {
   color: rgb(210, 62, 62);
 }
+
 .valid {
   color: rgb(67, 158, 71);
 }
+
 .hidden {
   display: none;
 }
+
+.title-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
 .contentHTML {
   display: block;
   width: 100%;
@@ -29,6 +39,7 @@ p{
   border-radius: 0.25rem;
   min-height: 7.4rem;
 }
+
 .tip-list {
   list-style: none;
 }

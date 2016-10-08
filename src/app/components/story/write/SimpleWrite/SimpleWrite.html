@@ -3,28 +3,42 @@
     <div class="has-danger" *ngIf="error">
       <span class="text-help">{{error}}</span>
     </div>
-    <fieldset class="form-group" required>
+    <div class="title-group">
       <label for="title">Заголовок</label>
-      <input id="title" formControlName="title" type="text" placeholder="Заголовок" class="form-control" auto-focus-it name="title">
+      <button type='button' class='btn btn-info' (click)="togglePreview()">
+        <i class='fa' [ngClass]="{'fa-pencil':preview, 'fa-eye':!preview}"></i> {{preview ? "Редактировать" :
+        "Предпросмотр"}}
+      </button>
+    </div>
+    <fieldset class="form-group" required>
+      <input id="title" formControlName="title" type="text" placeholder="Заголовок" class="form-control" auto-focus-it
+             name="title">
     </fieldset>
     <fieldset class="form-group" *ngIf="isReview || (story && story.rating)">
       Оценка:
-      <rating [numeric]="true" [rating]="story && story.rating ? story.rating : 0" (changed)="ratingChanged($event)"></rating>
+      <rating [numeric]="true" [rating]="story && story.rating ? story.rating : 0"
+              (changed)="ratingChanged($event)"></rating>
     </fieldset>
 
     <fieldset class="form-group">
-      <textarea formControlName="content" [ngClass]='{hidden:preview}' placeholder="Текст статьи (поддерживается markdown). Минимум 1000 символов." class="form-control" rows="5" autosize></textarea>
+      <textarea formControlName="content" [ngClass]='{hidden:preview}'
+                placeholder="Текст статьи (поддерживается markdown). Минимум 1000 символов." class="form-control"
+                rows="5" autosize></textarea>
+
       <div class='contentHTML' *ngIf="preview" [innerHTML]='getPreviewText()'>
       </div>
     </fieldset>
     <div class='e-content-length pull-right'>
-      <span [ngClass]="{valid:contentLength >= (type==='review'?256:1000),invalid: contentLength < (type==='review'?256:1000) }">{{contentLength}}</span>/{{type==='review'?256:1000}} символов
+      <span
+        [ngClass]="{valid:contentLength >= (type==='review'?256:1000),invalid: contentLength < (type==='review'?256:1000) }">{{contentLength}}</span>/{{type==='review'?256:1000}}
+      символов
     </div>
     <button type="submit" class="btn btn-primary">{{newStory ? 'Создать' : 'Сохранить'}}</button>
     <button type="button" class="btn btn-link" (click)="onCancel()">Отменить
     </button>
-    <button type='button' class='btn btn-info' (click)="togglePreview()">
-      <i class='fa' [ngClass]="{'fa-pencil':preview, 'fa-eye':!preview}"></i> {{preview ? "Редактировать" : "Предпросмотр"}}
+    <button type='button' class='btn btn-info hidden-sm-down' (click)="togglePreview()" *ngIf="contentLength>600">
+      <i class='fa' [ngClass]="{'fa-pencil':preview, 'fa-eye':!preview}"></i> {{preview ? "Редактировать" :
+      "Предпросмотр"}}
     </button>
   </form>
   <dropzone (newImage)="newImage($event)"></dropzone>
