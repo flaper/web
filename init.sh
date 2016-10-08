@@ -2,5 +2,4 @@
 #script to init project
 npm install
 bower install
-typings install
 cp ./init/config.local.json  ./src/app/config/config.local.json
