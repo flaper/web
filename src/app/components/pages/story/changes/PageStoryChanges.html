@@ -1,20 +1,42 @@
-<h2 class="text-xs-center">История изменений</h2>
+<h2 class="text-xs-center">
+  <small >
+    <a [ngClass]="{disabled:currentPage === 0}" (click)="previousPage()"> < предыдущие </a>
+  </small>
+  История изменений
+  <small>
+    <a [ngClass]="{disabled:currentPage === pages - 1}" (click)="nextPage()"> следующие > </a>
+  </small>
+</h2>
 
 
-<page-navigator [baseURL]="['/p','storyChanges',storyId]" [currentPage]="currentPage" [pageCount]="pages"></page-navigator>
+<!-- <page-navigator [baseURL]="['/p','storyChanges',storyId]" [currentPage]="currentPage" [pageCount]="pages"></page-navigator> -->
 
 <div class="alert alert-info" *ngIf="history.length === 0">
   В запись изменения не вносились.
 </div>
 <div class="history-list" *ngIf="history.length > 0">
-  <div class="history-item" *ngFor="let record of history">
+  <div class="history-item" *ngFor="let record of getRecords()">
     <h6>
-      {{record.current.created | date:"dd.MM.yyyy HH:mm"}}
+      {{record.created | date:"dd.MM.yyyy HH:mm"}}
     </h6>
     <a [routerLink]="['/u',record.user.id]">
       {{record.user.displayName}}
     </a>
     <ul class='changes-list'>
+      <li class='change-record'>
+        <div class="changed-field">
+          <div class="change-value text-xs-center" >
+            <h5>
+              Старое значение
+            </h5>
+          </div>
+          <div class="change-value text-xs-center" >
+            <h5>
+              Новое значение
+            </h5>
+          </div>
+        </div>
+      </li>
       <li class='change-record' *ngFor="let change of getFields(record)">
         <label>{{t(change.key)}}</label>
         <div class="changed-field">

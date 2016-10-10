@@ -16,8 +16,8 @@ export class PageStoryChanges {
   history = [];
   dictionary = require('./i18n.json');
   minimumDiffLength:number = 100;
-  currentPage:number = 1;
-  pageSize:number = 10;
+  currentPage:number = 0;
+  pageSize:number = 2;
   pages:number = 0;
   diff;
 
@@ -29,12 +29,24 @@ export class PageStoryChanges {
       this.currentPage = parseInt(page) || 0;       // 0 = 1st page if page is not set
 
       // building query for pagination
-      let filter = {offset: this.currentPage * this.pageSize, limit: this.pageSize + 1, order: 'created DESC'};
+      let filter = {order: 'created DESC'};
       this.history = [];
-      _story.getAudit(id, filter).subscribe(data => {  //requesting changes
-        for (let i = 0; i < data.length - 1; i++) {
+      _story.getAudit(id).subscribe(data => {  //requesting changes
+        let presentFields = {};
+        for (let i = 0; i < data.length; i++) {
           _user.getById(data[i].userId).subscribe(user => {
-            this.history.push({user: user, current: data[i], old: data[i + 1]});
+            let dataObject = data[i];
+            for (let field in dataObject.fields) {
+              if (!presentFields[field]) presentFields[field] = [];
+              dataObject.fields[field] = {currentValue: dataObject.fields[field], oldValue: presentFields[field].length > 0 ? presentFields[field][presentFields[field].length - 1] : null};
+              presentFields[field].push(dataObject.fields[field].currentValue);
+            }
+            dataObject.user = user;
+            this.history.push(dataObject);
+            if (i === data.length - 1)  {
+              this.history.reverse();
+              this.pages = Math.floor(this.history.length / this.pageSize);
+            }
           })
         }
       });
@@ -44,15 +56,26 @@ export class PageStoryChanges {
 
   ngOnInit() {
   }
-
+  nextPage() {
+    if (this.currentPage === this.pages -1) return;
+    this.currentPage++;
+  }
+  previousPage() {
+    if (this.currentPage === 0) return;
+    this.currentPage--;
+  }
+  getRecords()  {
+    let offset = this.currentPage * this.pageSize;
+    return this.history.slice(offset, offset + this.pageSize);
+  }
   getFields(record) {
     // let oldFields = Object.keys(record.old.fields),
     //     newFields = Object.keys(record.current.fields),
     //     fields = oldFields.filter(field => newFields.indexOf(field) == -1).concat(newFields).filter(field => record.old.fields[field] || record.current.fields[field]);
-    let fields = Object.keys(record.current.fields);
+    let fields = Object.keys(record.fields);
     return fields.map(field => {
-      let oldValue = record.old.fields[field],
-        currentValue = record.current.fields[field];
+      let oldValue = record.fields[field].oldValue,
+        currentValue = record.fields[field].currentValue;
       if (oldValue && currentValue && (oldValue.length >= this.minimumDiffLength || currentValue.length >= this.minimumDiffLength)) {
         let difference = this.diff.main(oldValue, currentValue);
         oldValue = difference.filter(item => item[0] !== 1).map(item => item[0] === -1 ? `<span class='text-danger'>${item[1]}</span>` : item[1]).join("");
@@ -64,20 +87,5 @@ export class PageStoryChanges {
 
   t(text) {
     return this.dictionary[text] ? this.dictionary[text] : text;
-  }
-
-  getPagination() {
-    return [this.currentPage - 2, this.currentPage - 1, this.currentPage, this.currentPage + 1, this.currentPage + 2].filter(page => page > 0 && page <= this.pages);
-  }
-
-  getRouterLink(page:any) {
-    switch (page) {
-      case 'previous':
-        return ['/p', 'storyChanges', this.storyId, (this.currentPage === 0 ? 0 : this.currentPage - 1)];
-      case 'next':
-        return ['/p', 'storyChanges', this.storyId, (this.currentPage === this.pages - 1 ? this.pages - 1 : this.currentPage + 1)];
-      default:
-        return ['/p', 'storyChanges', this.storyId, page];
-    }
   }
 }

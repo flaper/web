@@ -2,7 +2,9 @@ nav {
   text-align: center;
   width: 100%;
 }
-
+a.disabled, a.disabled:hover {
+  color: #bbb;
+}
 .changes-list {
   list-style: none;
   width: 100%;
