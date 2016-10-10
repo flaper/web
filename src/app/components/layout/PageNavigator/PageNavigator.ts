@@ -25,9 +25,9 @@ export class PageNavigator {
   getRouterLink(page:any)  {
     switch(page) {
       case 'previous' :
-        return  this.baseURL.concat((this.currentPage === 0 ? 0 : this.currentPage - 1));
+        return  this.baseURL.concat((this.currentPage <= 1 ? 1 : this.currentPage - 1));
       case 'next' :
-        return  this.baseURL.concat((this.currentPage === this.pageCount - 1 ? this.pageCount - 1 : this.currentPage + 1));
+        return  this.baseURL.concat((this.currentPage >= this.pageCount ? this.pageCount : this.currentPage + 1));
       default :
         return  this.baseURL.concat(page);
     }
