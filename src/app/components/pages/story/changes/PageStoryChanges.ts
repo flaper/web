@@ -34,7 +34,7 @@ export class PageStoryChanges {
       _story.getAudit(id, filter).subscribe(data => {  //requesting changes
         for (let i = 0; i < data.length - 1; i++) {
           _user.getById(data[i].userId).subscribe(user => {
-            this.history.push({user: user, new: data[i], old: data[i + 1]});
+            this.history.push({user: user, current: data[i], old: data[i + 1]});
           })
         }
       });
@@ -47,18 +47,18 @@ export class PageStoryChanges {
 
   getFields(record) {
     // let oldFields = Object.keys(record.old.fields),
-    //     newFields = Object.keys(record.new.fields),
-    //     fields = oldFields.filter(field => newFields.indexOf(field) == -1).concat(newFields).filter(field => record.old.fields[field] || record.new.fields[field]);
-    let fields = Object.keys(record.new.fields);
+    //     newFields = Object.keys(record.current.fields),
+    //     fields = oldFields.filter(field => newFields.indexOf(field) == -1).concat(newFields).filter(field => record.old.fields[field] || record.current.fields[field]);
+    let fields = Object.keys(record.current.fields);
     return fields.map(field => {
       let oldValue = record.old.fields[field],
-        newValue = record.new.fields[field];
-      if (oldValue && newValue && (oldValue.length >= this.minimumDiffLength || newValue.length >= this.minimumDiffLength)) {
-        let difference = this.diff.main(oldValue, newValue);
+        currentValue = record.current.fields[field];
+      if (oldValue && currentValue && (oldValue.length >= this.minimumDiffLength || currentValue.length >= this.minimumDiffLength)) {
+        let difference = this.diff.main(oldValue, currentValue);
         oldValue = difference.filter(item => item[0] !== 1).map(item => item[0] === -1 ? `<span class='text-danger'>${item[1]}</span>` : item[1]).join("");
-        newValue = difference.filter(item => item[0] !== -1).map(item => item[0] === 1 ? `<span class='text-success'>${item[1]}</span>` : item[1]).join("");
+        currentValue = difference.filter(item => item[0] !== -1).map(item => item[0] === 1 ? `<span class='text-success'>${item[1]}</span>` : item[1]).join("");
       }
-      return {key: field, oldValue: this.t(oldValue), newValue: this.t(newValue)};
+      return {key: field, oldValue: this.t(oldValue), currentValue: this.t(currentValue)};
     });
   }
 

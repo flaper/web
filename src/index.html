@@ -24,7 +24,6 @@
   <link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon/favicon-96x96.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
   <link rel="manifest" href="/assets/favicon/manifest.json">
-  <link rel="stylesheet" href="startup.css" media="screen" title="no title" charset="utf-8">
   <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="msapplication-TileImage" content="/assets/favicon/ms-icon-144x144.png">
   <meta name="theme-color" content="#fffff">
@@ -35,7 +34,27 @@
   <link rel="stylesheet" href="/assets/bower/bootstrap-social/bootstrap-social.css">
   <link rel="stylesheet" href="/assets/bower/dropzone/dist/min/basic.min.css">
   <link rel="stylesheet" href="/assets/bower/dropzone/dist/min/dropzone.min.css">
+  <style media="screen">
+  .preload {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .preload-text {
+    display: flex;
+    animation: rotate 2s infinite;
+    font-size: 80px;
+    font-weight: 800;
+    color: #0087cf;
+  }
+  @keyframes rotate {
+    from { transform: rotate(0deg) }
+    to { transform: rotate(360deg) }
+  }
 
+  </style>
 </head>
 <body>
 
