@@ -33,7 +33,8 @@ export class Navbar {
   }
   handleSearchClick() {
     if (!this.form.controls['searchText'].value) {
-      document.querySelector('input[name="searchText"]').focus();
+      let navbar = document.getElementById('mainNavbar');
+      navbar.querySelector('input[name="searchText"]').focus();
     }
   }
   handleBlur(){

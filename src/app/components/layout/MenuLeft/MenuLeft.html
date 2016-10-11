@@ -1,12 +1,22 @@
 <div class="ml" [class.ml-toggle]="hasToggle()">
   <div class="ml-header">
     <span class="pull-xs-right hidden-xs-down" (click)="toggle()"><i class="fa fa-bars"></i></span>
-    <span class="hidden-sm-up">
+    <span class="hidden-sm-up" id="alterNavbar">
         <span (click)="toggleSm()"><i class="fa fa-bars"></i></span>
         <a class="navbar-brand" (click)="_page.navigateToDefault()">
           <small>Флап</small>
         </a>
-        <a class="btn btn-primary btn-sm" routerLink="/p/create_story">Создать статью</a>
+        <a class="btn btn-primary btn-sm navbar-btn" routerLink="/p/create_story">Создать статью</a>
+        <form class='search-form' [formGroup]="form" (submit)="onSubmit($event)">
+          <div class="input-group input-group-sm">
+            <span class="input-group-btn">
+              <button type="submit" class="btn" (click)="handleSearchClick()">
+                <i class="fa fa-search"></i>
+              </button>
+            </span>
+            <input type="text" formControlName="searchText" name="searchText" class="form-control input-sm search-input" placeholder="Поиск объектов..."(focus)="handleFocus()" (blur)="handleBlur()">
+          </div>
+        </form>
         <img class="pull-xs-right my-avatar" src="{{_user.currentUser.photo}}"
              [routerLink]="['/u', _user.currentUser.id]">
     </span>
