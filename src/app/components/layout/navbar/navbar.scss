@@ -43,6 +43,7 @@
 
 .navbar-btn.btn-sm {
   line-height: 1.5;
+  transition: all .3s ease;
   padding: 0.25rem 0.75rem;
   margin-top: 3px;
   margin-bottom: 3px;
@@ -101,5 +102,42 @@
   }
   .fa-heart-o{
     display: none;
+  }
+}
+.search-form {
+  margin-left: 15px;
+  transition: all .3s ease;
+  .search-input {
+    transition: all .3s ease;
+  }
+}
+#mainNavbar {
+  @media (max-width: 834px) {
+    &.search-active {
+      .navbar-btn {
+        width: 0px;
+        border: none;
+        padding-right: 0;
+        padding-left: 0;
+      }
+    }
+    &:not(.search-active) {
+      .input-group-btn {
+        .btn {
+          border-radius: 0.25rem;
+        }
+      }
+      .search-input {
+        flex: 0;
+        width: 0px;
+        border: none;
+        background: #ddddd;
+        padding-left: 0px;
+        padding-right: 0px;
+      }
+      .search-form {
+        width: 50px;
+      }
+    }
   }
 }

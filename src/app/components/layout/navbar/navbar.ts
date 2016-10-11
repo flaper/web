@@ -31,4 +31,19 @@ export class Navbar {
   logout() {
     this.authService.logout();
   }
+  handleSearchClick() {
+    if (!this.form.controls['searchText'].value) {
+      document.querySelector('input[name="searchText"]').focus();
+    }
+  }
+  handleBlur(){
+    if (!this.form.controls['searchText'].value) {
+      let navbar = document.getElementById('mainNavbar');
+      navbar.classList.remove('search-active');
+    }
+  }
+  handleFocus() {
+    let navbar = document.getElementById('mainNavbar');
+    navbar.classList.add('search-active');
+  }
 }
