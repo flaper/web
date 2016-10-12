@@ -69,7 +69,7 @@ export class MenuLeft {
   }
   handleSearchClick() {
     if (!this.form.controls['searchText'].value) {
-      let navbar = document.getElementById('alterNavbar');
+      let navbar:any = document.getElementById('alterNavbar');
         navbar.querySelector('input[name="searchText"]').focus();
     }
   }

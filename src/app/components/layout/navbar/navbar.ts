@@ -33,7 +33,7 @@ export class Navbar {
   }
   handleSearchClick() {
     if (!this.form.controls['searchText'].value) {
-      let navbar = document.getElementById('mainNavbar');
+      let navbar:any = document.getElementById('mainNavbar');
       navbar.querySelector('input[name="searchText"]').focus();
     }
   }
