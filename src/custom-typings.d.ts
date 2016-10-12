@@ -4,9 +4,6 @@ declare var Ya:{
 
 declare var $:any;
 
-declare module '@flaper/markdown' {
-  export const Sanitize: any;
-}
 
 declare module 'text-diff' {
   var diff: any;
