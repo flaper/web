@@ -139,7 +139,31 @@ $local-border: 1px solid lighten($brand-secondary, 10);
   display: inline-block;
   vertical-align: middle;
 }
-
+.navbar-btn {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  z-index: 20;
+  line-height: 34px;
+  min-width: 0;
+  width: 34px;
+  height: 34px;
+  text-align: center;
+  color: white;
+  font-size: 1.35rem;
+  vertical-align: middle;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
+  border-radius: 50%;
+  background-clip: padding-box;
+  overflow: hidden;
+  -webkit-transition: all .3s cubic-bezier(.55,0,.55,.2);
+  transition: all .3s cubic-bezier(.55,0,.55,.2);
+  -webkit-transition-property: background-color,box-shadow,-webkit-transform;
+  transition-property: background-color,box-shadow,-webkit-transform;
+  transition-property: background-color,box-shadow,transform;
+  transition-property: background-color,box-shadow,transform,-webkit-transform;
+  background: #ff6510;
+}
 #alterNavbar {
   .search-form {
     max-width: 50%;
