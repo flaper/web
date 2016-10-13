@@ -36,7 +36,9 @@
   </ul>
 
   <div class="collapse navbar-toggleable-xs" id="mainNavbar">
-    <a class="btn btn-primary btn-sm navbar-btn pull-left" routerLink="/p/create_story">Создать статью</a>
+    <a class="navbar-btn" routerLink="/p/create_story">
+      <i class="fa fa-plus"></i>
+    </a>
     <form class='pull-left search-form' [formGroup]="form" (submit)="onSubmit($event)">
       <div class="input-group">
         <span class="input-group-btn">
