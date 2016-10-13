@@ -27,6 +27,16 @@
     .nav-link {
       color: #fff;
     }
+    .navbar-btn {
+      bottom: 15px;
+      right: 15px;
+      z-index: 20;
+      line-height: 34px;
+      min-width: 0;
+      width: 34px;
+      height: 34px;
+      font-size: 1.35rem;
+    }
   }
 }
 
