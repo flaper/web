@@ -23,12 +23,16 @@ export class PageWriteStory {
       return;
     } else {
       let params = route.snapshot.params;
-      let slug = params['slug'];
+      let slug = params['reviewSlug'] ? params['reviewSlug'] : params['slug'],
+          beforeSlug = params['reviewSlug']
+          ? window.location.pathname.split('/').filter(val => !!val && val != slug).slice(0,3).join("/")
+          : "" ;
+      beforeSlug = decodeURIComponent(beforeSlug);
       let title = slug ? 'Редактировать статью' : 'Создать статью';
       ts.setTitle(title);
       this.newStory = !slug;
       if (slug) {
-        storyService.getBySlug(slug).subscribe(story => {
+        storyService.getBySlug(slug,beforeSlug).subscribe(story => {
           this.story = story;
         });
       }

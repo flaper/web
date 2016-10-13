@@ -1,6 +1,6 @@
 import {Component, Input, Output, EventEmitter} from '@angular/core';
 import {Story,FObject} from "@flaper/angular";
-import {UserService,ObjectService} from "@flaper/angular";
+import {UserService,ObjectService,StoryService} from "@flaper/angular";
 import {PageService} from "../../../services/helpers/PageService";
 import {RatingBar} from "../../common/Rating/RatingBar/RatingBar";
 

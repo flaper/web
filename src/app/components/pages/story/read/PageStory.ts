@@ -17,8 +17,12 @@ export class PageStory {
 
   constructor(route:ActivatedRoute, storyService:StoryService, ts:Title) {
     route.params.subscribe(params=> {
-      let slug = params['reviewSlug'] ? params['reviewSlug'] : params['slug'];
-      storyService.getBySlug(slug).subscribe(story => {
+      let slug = params['reviewSlug'] ? params['reviewSlug'] : params['slug'],
+          beforeSlug = params['reviewSlug']
+          ? window.location.pathname.split('/').filter(val => !!val && val != slug).slice(0,3).join("/")
+          : "" ;
+      beforeSlug = decodeURIComponent(beforeSlug);
+      storyService.getBySlug(slug,beforeSlug).subscribe(story => {
         this.story = story;
         ts.setTitle(story.title);
         Metrika.setParam('storyId', story.id);

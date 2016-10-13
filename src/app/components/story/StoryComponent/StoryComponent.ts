@@ -16,7 +16,7 @@ import {RatingBar} from "../../common/Rating/RatingBar/RatingBar";
 export class StoryComponent {
   @Input()
   story:Story;
-
+  storyLink:any[] = [];
   private _moment;
   private initialized:Boolean = false;
   currentImage:string = null; //current image link / gallery state
@@ -34,6 +34,7 @@ export class StoryComponent {
 
   ngOnInit() {
     this.viewService.post(this.story.id);
+    this.storyService.getBaseLink(this.story).subscribe(link => this.storyLink=link);
   }
   private _yaShare = null;
 
@@ -94,7 +95,9 @@ export class StoryComponent {
   stateChanged(image) {
     this.currentImage = image;
   }
-
+  getEditLink() {
+    return this.storyLink.concat("edit");
+  }
   actionEvent(event) {
     switch (event) {
       case 'delete':

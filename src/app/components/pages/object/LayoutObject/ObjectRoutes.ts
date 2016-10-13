@@ -4,6 +4,7 @@ import {PageManage} from "../PageManage/PageManage";
 import {PageManageRequest} from "../PageManageRequest/PageManageRequest";
 import {PageReview} from "../PageReview/PageReview";
 import {PageStory} from "../../story/read/PageStory";
+import {PageWriteStory} from "../../story/write/PageWriteStory";
 const children = [
   {path: '', component: PageObjectMain},
   {path: '-main', component: PageObjectMain},
@@ -12,6 +13,7 @@ const children = [
   {path: '-request', component: PageManageRequest},
   {path: '-review', component: PageReview},
   {path: ':reviewSlug', component: PageStory}
+  {path: ':reviewSlug/edit', component: PageWriteStory}
 ];
 export const ObjectRoutes =
   [
