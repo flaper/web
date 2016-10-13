@@ -12,7 +12,7 @@ const children = [
   {path: '-manageRequest', component: PageManage},
   {path: '-request', component: PageManageRequest},
   {path: '-review', component: PageReview},
-  {path: ':reviewSlug', component: PageStory}
+  {path: ':reviewSlug', component: PageStory},
   {path: ':reviewSlug/edit', component: PageWriteStory}
 ];
 export const ObjectRoutes =
