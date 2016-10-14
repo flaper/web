@@ -3,9 +3,33 @@
   z-index: 0;
 }
 .navbar {
-  padding-left: 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
   background-color: $brand-secondary;
   border-bottom: 1px solid lighten($brand-secondary, 10);
+  .brand-container {
+    .navbar-brand {
+      .brand-long {
+        display: inline;
+      }
+      .brand-short {
+        display: none;
+      }
+      &.shortened {
+        .brand-long {
+          display: none;
+        }
+        .brand-short {
+          display: inline;
+        }
+      }
+    }
+  }
+
+
+  //если пользователь авторизован --
   &.has-user {
     background-color: white;
     @media (max-width: map-get($grid-breakpoints, 'sm')-1) {
@@ -20,6 +44,7 @@
       }
     }
   }
+  //если пользователь не авторизован --
   &:not(.has-user) {
     .navbar-brand {
       color: #fff;
@@ -27,19 +52,9 @@
     .nav-link {
       color: #fff;
     }
-    @media (max-width: map-get($grid-breakpoints, 'sm')-1) {
-      .navbar-btn {
-        bottom: 15px;
-        right: 15px;
-        z-index: 20;
-        line-height: 34px;
-        min-width: 0;
-        width: 34px;
-        height: 34px;
-        font-size: 1.35rem;
-      }
-    }
-
+  }
+  &:after {
+    display: none;
   }
 }
 
@@ -121,12 +136,6 @@
 #mainNavbar {
   @media (max-width: 834px) {
     &.search-active {
-      .navbar-btn {
-        width: 0px;
-        border: none;
-        padding-right: 0;
-        padding-left: 0;
-      }
     }
     &:not(.search-active) {
       .input-group-btn {

@@ -2,10 +2,31 @@
   <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#mainNavbar">
     &#9776;
   </button>
-  <span class="brand-container">
-    <a class="navbar-brand" (click)="pageService.navigateToDefault()">Флап</a>
-  </span>
-  <ul class="nav navbar-nav pull-xs-right">
+
+  <div class="brand-container">
+    <a class="navbar-brand" (click)="pageService.navigateToDefault()">
+      <span class="brand-long">Флап</span>
+      <span class="brand-short">Ф</span>
+    </a>
+  </div>
+
+
+
+  <div class="navbar-toggleable-xs" id="mainNavbar">
+    <form class='pull-left search-form' [formGroup]="form" (submit)="onSubmit($event)">
+      <div class="input-group">
+        <span class="input-group-btn">
+          <button type="submit" class="btn" (click)="handleSearchClick()">
+            <i class="fa fa-search"></i>
+          </button>
+        </span>
+        <input type="text" formControlName="searchText" name="searchText" class="form-control search-input" placeholder="Поиск объектов..."(focus)="handleFocus()" (blur)="handleBlur()">
+      </div>
+    </form>
+  </div>
+
+
+  <ul class="nav navbar-nav">
     <li class="nav-item" *ngIf="!_user.currentUser">
       <a class="nav-link" (click)="pageService.navigateToLogin()"><i class="fa fa-sign-in"></i> Вход</a>
     </li>
@@ -33,17 +54,4 @@
       </div>
     </li>
   </ul>
-
-  <div class="navbar-toggleable-xs" id="mainNavbar">
-    <form class='pull-left search-form' [formGroup]="form" (submit)="onSubmit($event)">
-      <div class="input-group">
-        <span class="input-group-btn">
-          <button type="submit" class="btn" (click)="handleSearchClick()">
-            <i class="fa fa-search"></i>
-          </button>
-        </span>
-        <input type="text" formControlName="searchText" name="searchText" class="form-control search-input" placeholder="Поиск объектов..."(focus)="handleFocus()" (blur)="handleBlur()">
-      </div>
-    </form>
-  </div>
 </nav>
