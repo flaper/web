@@ -1,16 +1,27 @@
 <h2 class="text-xs-center">
   <small >
-    <a [ngClass]="{disabled:currentPage === 0}" (click)="previousPage()"> < предыдущие </a>
+    <a [ngClass]="{disabled:currentPage === 0}" (click)="previousPage()"> &laquo; </a>
   </small>
   История изменений
   <small>
-    <a [ngClass]="{disabled:currentPage === pages - 1}" (click)="nextPage()"> следующие > </a>
+    <a [ngClass]="{disabled:currentPage === pages - 1}" (click)="nextPage()"> &raquo; </a>
   </small>
 </h2>
 
+  <div class="changed-field">
+    <div class="change-value text-xs-center" >
+      <h5>
+        Старое значение
+      </h5>
+    </div>
+    <div class="change-value text-xs-center" >
+      <h5>
+        Новое значение
+      </h5>
+    </div>
+  </div>
 
 <!-- <page-navigator [baseURL]="['/p','storyChanges',storyId]" [currentPage]="currentPage" [pageCount]="pages"></page-navigator> -->
-
 <div class="alert alert-info" *ngIf="history.length === 0">
   В запись изменения не вносились.
 </div>
@@ -23,20 +34,6 @@
       {{record.user.displayName}}
     </a>
     <ul class='changes-list'>
-      <li class='change-record'>
-        <div class="changed-field">
-          <div class="change-value text-xs-center" >
-            <h5>
-              Старое значение
-            </h5>
-          </div>
-          <div class="change-value text-xs-center" >
-            <h5>
-              Новое значение
-            </h5>
-          </div>
-        </div>
-      </li>
       <li class='change-record' *ngFor="let change of getFields(record)">
         <label>{{t(change.key)}}</label>
         <div class="changed-field">

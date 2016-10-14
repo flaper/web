@@ -3,11 +3,9 @@ import {AuthService, UserService} from "@flaper/angular";
 import {PageService} from "../../../services/helpers/PageService";
 import {Router} from "@angular/router";
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {Github} from "./github/github";
 
 @Component({
   selector: 'navbar',
-  entryComponents: [Github],
   styles: [require('./navbar.scss')],
   template: require('./navbar.html')
 })

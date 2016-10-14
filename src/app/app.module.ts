@@ -38,6 +38,7 @@ import {StoriesAutoList} from "./components/story/StoriesAutoList/StoriesAutoLis
 import {HomeLinks} from "./components/pages/home/LayoutHome/widgets/HomeLinks/HomeLinks";
 import {StoriesList} from "./components/story/StoriesList/StoriesList";
 import {SimpleWrite} from "./components/story/write/SimpleWrite/SimpleWrite";
+import {WriteStoryButton} from "./components/story/write/WriteStoryButton/WriteStoryButton";
 import {PageManageSupport} from "./components/pages/support/PageManageSupport/PageManageSupport";
 import {PageManageRequest} from "./components/pages/object/PageManageRequest/PageManageRequest";
 import {PageManage} from "./components/pages/object/PageManage/PageManage";
@@ -93,7 +94,7 @@ const APP_PROVIDERS = [
     ...APPLICATION_DIRECTIVES, ...APPLICATION_PIPES,
     App, MenuLeft, Footer, Navbar, Curtain, ObjectLink, PageUsers, PageUser, AutoFocusIt, News, StoriesAutoList, HomeLinks,
     Github, PageLastStories, LayoutHome, LayoutObject,ObjectSearch, LastStories, TopStories, PageTopStories, PageTopStoriesLast,ObjectList ,
-    StoriesList, SimpleWrite, PageManageSupport, PageManageRequest, PageManage, LoadMore, StoryItem,
+    StoriesList, SimpleWrite,WriteStoryButton, PageManageSupport, PageManageRequest, PageManage, LoadMore, StoryItem,
     CommentsShortList, CommentsAutoList, CommentsList, CommentComponent, SubscribeButton,SubscriptionList,SubscriptionItem,SubscriptionAutoList, RatingBar, DropzoneComponent, PremiumMessages,
     CommentWrite, PostActions, PageLogin, PageNews, PageWriteStory, PagePremiumSupport,PageNavigator, PageStory, PageStoryChanges, StoryComponent,
     GalleryComponent, PageFlapSync, UserInfo, UserStats, UserList, UserSearch, UserStories,UserFavorite,UserLike,UserSubscriptions, UserLikes, PageObjectMain, PageReview,

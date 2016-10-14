@@ -9,8 +9,7 @@ import {MenuLeft} from "./components/layout/MenuLeft/MenuLeft";
 import {Navbar} from './components/layout/navbar/navbar';
 import {Footer} from "./components/layout/footer/footer";
 import {Metrika} from "./services/metrics/Metrika";
-
-
+import {WriteStoryButton} from "./components/story/write/WriteStoryButton/WriteStoryButton";
 import {ROUTES} from './routes';
 
 @Component({

@@ -54,38 +54,6 @@
   }
 }
 
-.navbar-btn {
-  position: fixed;
-  bottom: 25px;
-  right: 25px;
-  z-index: 20;
-  line-height: 56px;
-  min-width: 0;
-  width: 56px;
-  height: 56px;
-  text-align: center;
-  color: white;
-  font-size: 2rem;
-  vertical-align: middle;
-  box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
-  border-radius: 50%;
-  background-clip: padding-box;
-  overflow: hidden;
-  -webkit-transition: all .3s cubic-bezier(.55,0,.55,.2);
-  transition: all .3s cubic-bezier(.55,0,.55,.2);
-  -webkit-transition-property: background-color,box-shadow,-webkit-transform;
-  transition-property: background-color,box-shadow,-webkit-transform;
-  transition-property: background-color,box-shadow,transform;
-  transition-property: background-color,box-shadow,transform,-webkit-transform;
-  background: $brand-primary;
-  .navbar-btn-plus {
-    padding: 0px;
-  }
-  &:hover {
-    background: darken($brand-primary,10);
-  }
-}
-
 .nav-user {
   padding: 0;
   .my-avatar {
