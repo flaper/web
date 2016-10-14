@@ -53,6 +53,7 @@ import {CommentsAutoList} from "./components/comment/CommentsAutoList/CommentsAu
 import {CommentsList} from "./components/comment/CommentsList/CommentsList";
 import {CommentComponent} from "./components/comment/CommentComponent/CommentComponent";
 import {ObjectList} from "./components/object/ObjectList/ObjectList";
+import {ObjectSearchForm} from "./components/object/ObjectSearchForm/ObjectSearchForm";
 import {RatingBar} from "./components/common/Rating/RatingBar/RatingBar";
 import {DropzoneComponent} from "./components/image/dropzone/DropzoneComponent";
 import {PremiumMessages} from "./components/premiumSupport/PremiumMessages/PremiumMessages";
@@ -93,7 +94,7 @@ const APP_PROVIDERS = [
   declarations: [
     ...APPLICATION_DIRECTIVES, ...APPLICATION_PIPES,
     App, MenuLeft, Footer, Navbar, Curtain, ObjectLink, PageUsers, PageUser, AutoFocusIt, News, StoriesAutoList, HomeLinks,
-    Github, PageLastStories, LayoutHome, LayoutObject,ObjectSearch, LastStories, TopStories, PageTopStories, PageTopStoriesLast,ObjectList ,
+    Github, PageLastStories, LayoutHome, LayoutObject,ObjectSearch,ObjectSearchForm, LastStories, TopStories, PageTopStories, PageTopStoriesLast,ObjectList ,
     StoriesList, SimpleWrite,WriteStoryButton, PageManageSupport, PageManageRequest, PageManage, LoadMore, StoryItem,
     CommentsShortList, CommentsAutoList, CommentsList, CommentComponent, SubscribeButton,SubscriptionList,SubscriptionItem,SubscriptionAutoList, RatingBar, DropzoneComponent, PremiumMessages,
     CommentWrite, PostActions, PageLogin, PageNews, PageWriteStory, PagePremiumSupport,PageNavigator, PageStory, PageStoryChanges, StoryComponent,

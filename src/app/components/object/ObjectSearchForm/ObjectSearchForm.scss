@@ -1,0 +1,29 @@
+.search-form {
+  margin-left: 15px;
+  transition: all .3s ease;
+  .search-input {
+    transition: all .3s ease;
+  }
+}
+@media (max-width: 834px) {
+  &.search-active {
+  }
+  &:not(.search-active) {
+    .input-group-btn {
+      .btn {
+        border-radius: 0.25rem;
+      }
+    }
+    .search-input {
+      flex: 0;
+      width: 0px;
+      border: none;
+      background: #ddddd;
+      padding-left: 0px;
+      padding-right: 0px;
+    }
+    .search-form {
+      width: 50px;
+    }
+  }
+}

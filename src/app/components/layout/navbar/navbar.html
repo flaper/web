@@ -10,21 +10,7 @@
     </a>
   </div>
 
-
-
-  <div class="navbar-toggleable-xs" id="mainNavbar">
-    <form class='pull-left search-form' [formGroup]="form" (submit)="onSubmit($event)">
-      <div class="input-group">
-        <span class="input-group-btn">
-          <button type="submit" class="btn" (click)="handleSearchClick()">
-            <i class="fa fa-search"></i>
-          </button>
-        </span>
-        <input type="text" formControlName="searchText" name="searchText" class="form-control search-input" placeholder="Поиск объектов..."(focus)="handleFocus()" (blur)="handleBlur()">
-      </div>
-    </form>
-  </div>
-
+  <object-search-form></object-search-form>
 
   <ul class="nav navbar-nav">
     <li class="nav-item" *ngIf="!_user.currentUser">
