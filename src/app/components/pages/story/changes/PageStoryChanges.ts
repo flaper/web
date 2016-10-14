@@ -78,8 +78,8 @@ export class PageStoryChanges {
         currentValue = record.fields[field].currentValue;
       if (oldValue && currentValue && (oldValue.length >= this.minimumDiffLength || currentValue.length >= this.minimumDiffLength)) {
         let difference = this.diff.main(oldValue, currentValue);
-        oldValue = difference.filter(item => item[0] !== 1).map(item => item[0] === -1 ? `<span class='text-danger'>${item[1]}</span>` : item[1]).join("");
-        currentValue = difference.filter(item => item[0] !== -1).map(item => item[0] === 1 ? `<span class='text-success'>${item[1]}</span>` : item[1]).join("");
+        oldValue = difference.filter(item => item[0] !== 1).map(item => item[0] === -1 ? `<strong class='text-danger'>${item[1]}</strong>` : item[1]).join("");
+        currentValue = difference.filter(item => item[0] !== -1).map(item => item[0] === 1 ? `<strong class='text-success'>${item[1]}</strong>` : item[1]).join("");
       }
       return {key: field, oldValue: this.t(oldValue), currentValue: this.t(currentValue)};
     });

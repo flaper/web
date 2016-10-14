@@ -27,16 +27,19 @@
     .nav-link {
       color: #fff;
     }
-    .navbar-btn {
-      bottom: 15px;
-      right: 15px;
-      z-index: 20;
-      line-height: 34px;
-      min-width: 0;
-      width: 34px;
-      height: 34px;
-      font-size: 1.35rem;
+    @media (max-width: map-get($grid-breakpoints, 'sm')-1) {
+      .navbar-btn {
+        bottom: 15px;
+        right: 15px;
+        z-index: 20;
+        line-height: 34px;
+        min-width: 0;
+        width: 34px;
+        height: 34px;
+        font-size: 1.35rem;
+      }
     }
+
   }
 }
 
@@ -74,7 +77,13 @@
   transition-property: background-color,box-shadow,-webkit-transform;
   transition-property: background-color,box-shadow,transform;
   transition-property: background-color,box-shadow,transform,-webkit-transform;
-  background: #ff6510;
+  background: $brand-primary;
+  .navbar-btn-plus {
+    padding: 0px;
+  }
+  &:hover {
+    background: darken($brand-primary,10);
+  }
 }
 
 .nav-user {

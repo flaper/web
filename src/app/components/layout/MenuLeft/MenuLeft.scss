@@ -144,13 +144,13 @@ $local-border: 1px solid lighten($brand-secondary, 10);
   bottom: 15px;
   right: 15px;
   z-index: 20;
-  line-height: 34px;
   min-width: 0;
-  width: 34px;
-  height: 34px;
+  line-height: 56px;
+  width: 56px;
+  height: 56px;
+  font-size: 2rem;
   text-align: center;
   color: white;
-  font-size: 1.35rem;
   vertical-align: middle;
   box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
   border-radius: 50%;
@@ -169,6 +169,12 @@ $local-border: 1px solid lighten($brand-secondary, 10);
     max-width: 50%;
   }
   @media (max-width: 546px) {
+    .navbar-btn {
+      line-height: 34px;
+      width: 34px;
+      height: 34px;
+      font-size: 1.25rem;
+    }
     &.search-active {
       .navbar-btn {
         width: 0px;
