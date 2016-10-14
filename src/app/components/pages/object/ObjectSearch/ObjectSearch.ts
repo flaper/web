@@ -21,11 +21,12 @@ export class ObjectSearch {
       let data = route.snapshot.data,
           page:number = parseInt(params['page']) || 1;
       this.searchText = decodeURIComponent(params['text']) || "";
-      let query = {or: [
+      let query =  {or: [
           {region:{like:this.searchText}},
           {title:{like:this.searchText}},
           {mainDomain:{like:this.searchText}}
-        ]};
+        ]},
+        order = this.searchText === "" ? "created DESC" : "";
       if (page) this.currentPage = page;
       else this.currentPage = 0;
       _objects.count(query)
@@ -33,7 +34,7 @@ export class ObjectSearch {
           this.count = data.count;
           this.pages = Math.ceil(this.count / this.pageSize);
         })
-      _objects.search(this.searchText,this.currentPage)
+      _objects.search(this.searchText,this.currentPage,order)
         .subscribe(objects => {
           this.objects = objects;
         });

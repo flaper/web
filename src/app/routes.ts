@@ -32,6 +32,7 @@ export const ROUTES = [
   {path: 's/:slug', component: PageStory},
   {path: 's/:slug/edit', component: PageWriteStory},
   {path: 'o/:text', component: ObjectSearch},
+  {path: 'o', component: ObjectSearch},
   {path: 'o/:text/:page', component: ObjectSearch},
   {path: 'p/sync/:id', component: PageFlapSync, name: 'FlapSync'},
   {path: 'p/sync/:id/:action', component: PageFlapSync, name: 'FlapSync'},
