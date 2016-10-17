@@ -42,22 +42,32 @@ $local-border: 1px solid lighten($brand-secondary, 10);
   border-radius: $value / 2;
   cursor: pointer;
 }
-
+.ml-container {
+  width: $local-menu-max-width;
+  top:0;
+  bottom: 0;
+  background-color: $brand-secondary;
+}
 .ml {
+  position: fixed;
   .ml-header {
-    height: 3.563rem;
-    padding-top: 1.4rem;
-    padding-right: 1rem;
+    height: 3.5rem;
+    display: flex;
     font-size: 1rem;
-    .fa-bars {
-      color: #fff;
-      padding: 0.5rem 0.55rem 0.4rem;
-      border-radius: 0.2rem;
-      border: $local-border;
-      cursor: pointer;
-      transition: $transition-all;
-      &:hover {
-        background-color: darken($brand-secondary, 7);
+    align-items: center;
+    background-color: #fff;
+    justify-content: center;
+    width: calc(100% + 1px);
+    font-size: 1rem;
+    .brand-container {
+      text-align: center;
+      .navbar-brand {
+        color: $brand-primary!important;
+        font-size: 1.7rem;
+        font-weight: 800;
+        .brand-short {
+          display: none;
+        }
       }
     }
   }
