@@ -44,7 +44,7 @@ export class SimpleWrite {
     let title = this.story ? this.story.title : '';
     let content = this.story ? this.story.content : '';
     if (this.story) {
-      this._story.getBaseLink(this.story).subscribe(link => this.storyLink = link);
+      this._story.getBaseLink(this.story).subscribe(link => console.log(this.storyLink = link) );
     }
     this.form = this.fb.group({
       title: [title],
@@ -89,8 +89,16 @@ export class SimpleWrite {
       this.submitInProgress = true;
       this._story.save(data).subscribe((story) => {
         FormDraft.remove(this.DRAFT_KEY);
-        this.router.navigate(this.storyLink)
-        this.submitInProgress = false;
+        if (this.storyLink && this.storyLink.length > 0) {
+          this.router.navigate(this.storyLink);
+          this.submitInProgress = false;
+        }
+        else {
+          this._story.getBaseLink(story).subscribe(link => {
+            this.router.navigate(link)
+            this.submitInProgress = false;
+          });
+        }
       }, (e) => {
         this.error = e.message;
         this.submitInProgress = false;
