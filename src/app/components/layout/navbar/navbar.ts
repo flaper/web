@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {AuthService, UserService} from "@flaper/angular";
 import {PageService} from "../../../services/helpers/PageService";
-import {Router} from "@angular/router";
+import {Router,ActivatedRoute} from "@angular/router";
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {ObjectSearchForm} from "../../object/ObjectSearchForm/ObjectSearchForm";
 @Component({
@@ -11,10 +11,15 @@ import {ObjectSearchForm} from "../../object/ObjectSearchForm/ObjectSearchForm";
 })
 export class Navbar {
   constructor(private authService:AuthService, private _user:UserService,
-              private pageService:PageService, private router:Router) {
+              private pageService:PageService, private router:Router,
+              private route:ActivatedRoute) {
   }
 
   logout() {
     this.authService.logout();
+  }
+  searchFormVisible() {
+    let path = window.location.pathname.split("/").filter(val => !!val);
+    return path[0] != "o";
   }
 }

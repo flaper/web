@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {FObject, ObjectService} from '@flaper/angular';
 import {Router,ActivatedRoute} from '@angular/router';
 import {PageNavigator} from "../../../layout/PageNavigator/PageNavigator";
+import {ObjectSearchForm} from "../../../object/ObjectSearchForm/ObjectSearchForm";
 // import {ObjectList} from '../../object/ObjectList/ObjectList';
 @Component({
   selector: 'object-search',

@@ -1,6 +1,8 @@
 <div class="container">
   <page-navigator [baseURL]="['/o',searchText]" [currentPage]="currentPage" [pageCount]="pages"></page-navigator>
-
+  <div class="form-container">
+    <object-search-form></object-search-form>
+  </div>
   <div class="alert alert-info" *ngIf="objects.length===0">Не найдено объектов, удовлетворяющих запросу</div>
   <object-list [objects]="objects">
   </object-list>
