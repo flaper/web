@@ -38,13 +38,13 @@
     }
   }
 
-  @media (max-width: map-get($grid-breakpoints, 'sm')-1) {
+  @media (max-width: 990px) {
     background-color: $brand-secondary;
     a:not(.dropdown-item) {
       color: #fff;
     }
   }
-  @media (min-width: map-get($grid-breakpoints, 'sm')) {
+  @media (min-width: 991px) {
     .navbar-brand {
       font-weight: bold;
     }
@@ -102,10 +102,9 @@
   float: left;
   margin-right: 0.4rem;
 }
-
-@media (max-width: map-get($grid-breakpoints, 'md')-1px) {
-  .navbar-nav .nav-item.hidden-sm-down + .nav-item {
-    margin-left: 0;
+.mobile-only {
+  @media (min-width: 991px) {
+    display: none;
   }
 }
 

@@ -3,7 +3,11 @@
 $local-menu-min-width: 4rem;
 $local-menu-max-width: 12rem;
 $local-border: 1px solid lighten($brand-secondary, 10);
-
+.logo {
+  max-width: 3rem;
+  max-height: 2.5rem;
+  display: inline;
+}
 @mixin big-left-collapsed {
   width: $local-menu-min-width;
   .ml-header {
@@ -47,6 +51,9 @@ $local-border: 1px solid lighten($brand-secondary, 10);
   top:0;
   bottom: 0;
   background-color: $brand-secondary;
+  @media (max-width: 990px) {
+    display: none;
+  }
 }
 .ml {
   position: fixed;
