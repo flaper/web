@@ -1,15 +1,25 @@
 @import "../../../../css/variables";
-.search-input {
-  z-index: 0;
-}
+
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   background-color: $brand-secondary;
   border-bottom: 1px solid lighten($brand-secondary, 10);
+  .navbar-section {
+    align-items: center;
+    display: flex;
+    &.user-controls {
+      flex: 3;
+      justify-content: flex-end;
+    }
+    &.main-controls {
+      flex: 5;
+      justify-content: flex-start;
+    }
+  }
   .brand-container {
+    min-width: 70px;
     .navbar-brand {
       .brand-long {
         display: inline;
@@ -28,46 +38,43 @@
     }
   }
 
-
-  //если пользователь авторизован --
-  &.has-user {
-    background-color: white;
-    @media (max-width: map-get($grid-breakpoints, 'sm')-1) {
-      //xs
-      display: none;
+  @media (max-width: map-get($grid-breakpoints, 'sm')-1) {
+    background-color: $brand-secondary;
+    a:not(.dropdown-item) {
+      color: #fff;
     }
-
+  }
+  @media (min-width: map-get($grid-breakpoints, 'sm')) {
     .navbar-brand {
-      color: #0087cf;
-      &:hover {
-        color: #005583;
+      font-weight: bold;
+    }
+    //если пользователь авторизован --
+    &.has-user {
+      background-color: white;
+      .navbar-brand {
+        color: #0087cf;
+        &:hover {
+          color: #005583;
+        }
+      }
+    }
+    //если пользователь не авторизован --
+    &:not(.has-user) {
+      .navbar-brand, .nav-link {
+        color: #fff;
       }
     }
   }
-  //если пользователь не авторизован --
-  &:not(.has-user) {
-    .navbar-brand {
-      color: #fff;
-    }
-    .nav-link {
-      color: #fff;
-    }
-  }
+
+
+
   &:after {
     display: none;
   }
 }
 
-.navbar-brand {
-  float: none;
-}
 
-@media (min-width: map-get($grid-breakpoints, 'sm')) {
-  .navbar-brand {
-    float: left;
-    font-weight: bold;
-  }
-}
+
 
 .nav-user {
   padding: 0;
@@ -101,6 +108,8 @@
     margin-left: 0;
   }
 }
+
+
 .likes{
   color:#0087cf;
   font-size:1.7rem;
@@ -122,38 +131,5 @@
   }
   .fa-heart-o{
     display: none;
-  }
-}
-
-.search-form {
-  margin-left: 15px;
-  transition: all .3s ease;
-  .search-input {
-    transition: all .3s ease;
-  }
-}
-
-#mainNavbar {
-  @media (max-width: 834px) {
-    &.search-active {
-    }
-    &:not(.search-active) {
-      .input-group-btn {
-        .btn {
-          border-radius: 0.25rem;
-        }
-      }
-      .search-input {
-        flex: 0;
-        width: 0px;
-        border: none;
-        background: #ddddd;
-        padding-left: 0px;
-        padding-right: 0px;
-      }
-      .search-form {
-        width: 50px;
-      }
-    }
   }
 }

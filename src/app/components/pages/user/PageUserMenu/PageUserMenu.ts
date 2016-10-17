@@ -1,21 +1,22 @@
 import {Component, ElementRef} from '@angular/core';
 import {ACL, AuthService, ObjectService, UserService} from "@flaper/angular";
-import {PageService} from "../../../services/helpers/PageService";
+import {PageService} from "../../../../services/helpers/PageService";
 import {Router} from "@angular/router";
 let _get = require('lodash/get');
 
 @Component({
-  selector: 'menu-left',
-  styles: [require('./MenuLeft.scss')],
-  template: require('./MenuLeft.html')
+  selector: "page-user-menu",
+  styles: [require("./PageUserMenu.scss")],
+  template: require("./PageUserMenu.html")
 })
-export class MenuLeft {
+
+export class PageUserMenu {
+
   items = [
     {label: 'Баллы', route: ['/s', 'Баллы'], iconClass: 'fa fa-money'},
     {label: 'Правила', route: ['/s', 'Правила'], iconClass: 'fa fa-info'},
     {label: 'О проекте', route: ['/s', 'Флапер'], iconClass: 'fa fa-info-circle'}
   ];
-
   constructor(private _user:UserService, private acl:ACL, private elementRef:ElementRef, private _object:ObjectService,
               private _page:PageService, private auth:AuthService, private router:Router) {
   }

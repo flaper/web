@@ -1,43 +1,45 @@
 <nav class="navbar" [class.has-user]="_user.currentUser">
-  <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#mainNavbar">
-    &#9776;
-  </button>
-
-  <div class="brand-container">
-    <a class="navbar-brand" (click)="pageService.navigateToDefault()">
-      <span class="brand-long">Флап</span>
-      <span class="brand-short">Ф</span>
+  <div class="navbar-section main-controls">
+    <a class="navbar-toggler hidden-sm-up" [routerLink]="['/p','menu']">
+      &#9776;
     </a>
+    <div class="brand-container">
+      <a class="navbar-brand" (click)="pageService.navigateToDefault()">
+        <span class="brand-long">Флап</span>
+        <span class="brand-short">Ф</span>
+      </a>
+    </div>
+    <object-search-form></object-search-form>
   </div>
 
-  <object-search-form></object-search-form>
-
-  <ul class="nav navbar-nav">
-    <li class="nav-item" *ngIf="!_user.currentUser">
-      <a class="nav-link" (click)="pageService.navigateToLogin()"><i class="fa fa-sign-in"></i> Вход</a>
-    </li>
-    <li class="nav-item" *ngIf="_user.currentUser">
-      <a [routerLink]="['/u', _user.currentUser.id, 'like']" title="История лайков" class="likes">
-        <i class="fa fa-heart"></i>
-        <i class="fa fa-heart-o"></i>
-      </a>
-    </li>
-    <li class="nav-item dropdown" *ngIf="_user.currentUser">
-      <a class="nav-link dropdown-toggle nav-user" id="userDropDownMenu" data-toggle="dropdown"
-         aria-haspopup="true">
-        <img class="my-avatar" src="{{_user.currentUser.photo}}">
-        <span class="hidden-sm-down me-name">{{_user.currentUser.displayName}}</span>
-      </a>
-      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropDownMenu">
-        <a class="dropdown-item" [routerLink]="['/u', _user.currentUser.id]">
-          <i class="fa fa-user"></i> Моя страница
+  <div class="navbar-section user-controls">
+    <ul class="nav navbar-nav">
+      <li class="nav-item" *ngIf="!_user.currentUser">
+        <a class="nav-link" (click)="pageService.navigateToLogin()"><i class="fa fa-sign-in"></i> Вход</a>
+      </li>
+      <li class="nav-item" *ngIf="_user.currentUser">
+        <a [routerLink]="['/u', _user.currentUser.id, 'like']" title="История лайков" class="likes">
+          <i class="fa fa-heart"></i>
+          <i class="fa fa-heart-o"></i>
         </a>
-
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" (click)="logout()">
-          <i class="fa fa-sign-out"></i> Выход
+      </li>
+      <li class="nav-item dropdown" *ngIf="_user.currentUser">
+        <a class="nav-link dropdown-toggle nav-user" id="userDropDownMenu" data-toggle="dropdown"
+           aria-haspopup="true">
+          <img class="my-avatar" src="{{_user.currentUser.photo}}">
+          <span class="hidden-sm-down me-name">{{_user.currentUser.displayName}}</span>
         </a>
-      </div>
-    </li>
-  </ul>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropDownMenu">
+          <a class="dropdown-item" [routerLink]="['/u', _user.currentUser.id]">
+            <i class="fa fa-user"></i> Моя страница
+          </a>
+
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" (click)="logout()">
+            <i class="fa fa-sign-out"></i> Выход
+          </a>
+        </div>
+      </li>
+    </ul>
+  </div>
 </nav>

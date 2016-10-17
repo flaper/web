@@ -8,6 +8,7 @@ import {PageStory} from "./components/pages/story/read/PageStory";
 import {PageStoryChanges} from "./components/pages/story/changes/PageStoryChanges";
 import {PageNotFound} from "./components/pages/notFound/PageNotFound";
 import {PageUser} from './components/pages/user/PageUser/PageUser';
+import {PageUserMenu} from './components/pages/user/PageUserMenu/PageUserMenu';
 import {PageUsers} from './components/pages/user/PageUsers/PageUsers';
 import {UserRoutes} from './components/pages/user/PageUser/UserRoutes';
 import {PageFlapSync} from "./components/pages/flap/PageFlapSync/PageFlapSync";
@@ -19,6 +20,7 @@ import {PageManageSupport} from "./components/pages/support/PageManageSupport/Pa
 export const ROUTES = [
   {path: '', component: PageLastStories},
   {path: 'p/last', component: PageLastStories},
+  {path: 'p/menu', component: PageUserMenu},
   {path: 'p/login', component: PageLogin},
   {path: 'p/news', component: PageNews},
   {path: 'p/create_story', component: PageWriteStory},

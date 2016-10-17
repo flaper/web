@@ -24,6 +24,7 @@ import {PageNavigator} from "./components/layout/PageNavigator/PageNavigator";
 import {ObjectLink, AutoFocusIt} from '@flaper/angular';
 import {PageUsers} from "./components/pages/user/PageUsers/PageUsers";
 import {PageUser} from "./components/pages/user/PageUser/PageUser";
+import {PageUserMenu} from "./components/pages/user/PageUserMenu/PageUserMenu";
 import {Github} from "./components/layout/navbar/github/github";
 import {PageLastStories} from "./components/pages/home/PageLastStories/PageLastStories";
 import {LayoutHome} from "./components/pages/home/LayoutHome/LayoutHome";
@@ -93,7 +94,7 @@ const APP_PROVIDERS = [
   bootstrap: [App],
   declarations: [
     ...APPLICATION_DIRECTIVES, ...APPLICATION_PIPES,
-    App, MenuLeft, Footer, Navbar, Curtain, ObjectLink, PageUsers, PageUser, AutoFocusIt, News, StoriesAutoList, HomeLinks,
+    App, MenuLeft, Footer, Navbar, Curtain, ObjectLink, PageUsers, PageUser, PageUserMenu, AutoFocusIt, News, StoriesAutoList, HomeLinks,
     Github, PageLastStories, LayoutHome, LayoutObject,ObjectSearch,ObjectSearchForm, LastStories, TopStories, PageTopStories, PageTopStoriesLast,ObjectList ,
     StoriesList, SimpleWrite,WriteStoryButton, PageManageSupport, PageManageRequest, PageManage, LoadMore, StoryItem,
     CommentsShortList, CommentsAutoList, CommentsList, CommentComponent, SubscribeButton,SubscriptionList,SubscriptionItem,SubscriptionAutoList, RatingBar, DropzoneComponent, PremiumMessages,
