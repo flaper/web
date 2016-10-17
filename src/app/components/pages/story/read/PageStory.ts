@@ -17,9 +17,13 @@ export class PageStory {
 
   constructor(route:ActivatedRoute, storyService:StoryService, ts:Title) {
     route.params.subscribe(params=> {
-      let slug = params['reviewSlug'] ? params['reviewSlug'] : params['slug'],
+      let slug = (params['reviewSlug'] ? params['reviewSlug'] : params['slug']),
+          restrictedValues= [null,undefined,"",slug],
           beforeSlug = params['reviewSlug']
-          ? window.location.pathname.split('/').filter(val => !!val && val != slug).slice(0,3).join("/")
+          ? window.location.pathname.split('/')
+          .map(val => decodeURIComponent(val))
+          .filter(val => restrictedValues.indexOf(val) === -1)
+          .slice(0,3).join("/")
           : "" ;
       beforeSlug = decodeURIComponent(beforeSlug);
       storyService.getBySlug(slug,beforeSlug).subscribe(story => {

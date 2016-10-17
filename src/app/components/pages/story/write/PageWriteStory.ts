@@ -22,12 +22,14 @@ export class PageWriteStory {
       pageService.navigateToLogin();
       return;
     } else {
-      let params = route.snapshot.params;
-      let slug = params['reviewSlug'] ? params['reviewSlug'] : params['slug'],
+      let params = route.snapshot.params,
+          slug = params['reviewSlug'] ? params['reviewSlug'] : params['slug'],
+          restrictedValues= [null,undefined,"","edit",slug],
           beforeSlug = params['reviewSlug']
-          ? window.location.pathname.split('/').filter(val => !!val && val != slug).slice(0,3).join("/")
+          ? window.location.pathname.split('/')
+          .map (val => decodeURIComponent(val))
+          .filter(val => restrictedValues.indexOf(val) === -1).slice(0,3).join("/")
           : "" ;
-      beforeSlug = decodeURIComponent(beforeSlug);
       let title = slug ? 'Редактировать статью' : 'Создать статью';
       ts.setTitle(title);
       this.newStory = !slug;
