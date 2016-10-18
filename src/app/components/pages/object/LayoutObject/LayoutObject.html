@@ -17,11 +17,11 @@
           <subscribe [targetId]="obj.id"></subscribe>
           <div class="rating-container">
             <div class="big-star">
-              {{obj.flap.rating | fixed : 1}}
+              {{obj.getRating() | fixed : 1}}
             </div>
             <div>
-              Рейтинг: <strong>{{obj.flap.rating | fixed : 1}}</strong>/10 | Отзывы:
-              <strong>{{obj.flap.reviewsNumber}}</strong>
+              Рейтинг: <strong>{{obj.getRating() | fixed : 1}}</strong>/10 | Отзывы:
+              <strong>{{obj.getReviewsNumber()}}</strong>
             </div>
           </div>
         </div>
