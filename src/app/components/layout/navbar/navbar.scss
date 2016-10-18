@@ -40,7 +40,7 @@
 
   @media (max-width: 990px) {
     background-color: $brand-secondary;
-    a:not(.dropdown-item) {
+    a:not(.dropdown-item),a:not(.dropdown-item) > span {
       color: #fff;
     }
   }
@@ -87,9 +87,9 @@
   }
   .me-name {
     margin-left: 0.15rem;
-    color: #0087cf!important;
+    color: #0087cf;
     &:hover {
-      color: #005583!important;
+      color: #005583;
     }
   }
 }

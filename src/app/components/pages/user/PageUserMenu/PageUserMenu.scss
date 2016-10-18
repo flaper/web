@@ -1,0 +1,22 @@
+.nav-item {
+  border-bottom: 1px solid #26ae93;
+  margin-top: 0;
+  i {
+    transition: all .5s ease;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    line-height: 1.75rem;
+    vertical-align: middle;
+    background-color: transparent;
+  }
+  &:hover {
+    i {
+      background-color: #26ae93;
+      color: white;
+      &:before {
+        vertical-align: middle;
+      }
+    }
+  }
+}
