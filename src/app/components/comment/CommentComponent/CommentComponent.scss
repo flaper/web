@@ -19,6 +19,12 @@
   }
   .media {
     margin-bottom: 0;
+    flex: 1;
+    width: 100%;
+    .media-body {
+      flex: 1;
+      width: 100%;
+    }
   }
   .media-left {
     padding-right: 6px;
