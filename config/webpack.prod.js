@@ -7,6 +7,9 @@ var commonConfig = require('./webpack.common.js'); //The settings that are commo
  */
 var ProvidePlugin = require('webpack/lib/ProvidePlugin');
 var DefinePlugin = require('webpack/lib/DefinePlugin');
+var IgnorePlugin = require('webpack/lib/IgnorePlugin');
+var LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
+var NormalModuleReplacementPlugin = require('webpack/lib/NormalModuleReplacementPlugin');
 var DedupePlugin = require('webpack/lib/optimize/DedupePlugin');
 var UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
 var CompressionPlugin = require('compression-webpack-plugin');
@@ -18,18 +21,16 @@ var WebpackMd5Hash = require('webpack-md5-hash');
 const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
 const HOST = process.env.HOST || 'localhost';
 const PORT = process.env.PORT || 8080;
-const METADATA = webpackMerge(commonConfig.metadata, {
+const METADATA = webpackMerge(commonConfig({env:ENV}).metadata, {
   host: HOST,
   port: PORT,
   ENV: ENV,
   HMR: false
 });
 
-module.exports = webpackMerge(commonConfig, {
-  // Switch loaders to debug mode.
-  //
-  // See: http://webpack.github.io/docs/configuration.html#debug
-  debug: false,
+module.exports = (env) => {
+  return webpackMerge(commonConfig({env:ENV}), {
+
 
   // Developer tool to enhance debugging
   //
@@ -84,7 +85,7 @@ module.exports = webpackMerge(commonConfig, {
     //
     // See: https://webpack.github.io/docs/list-of-plugins.html#defineplugin
     // See: https://github.com/webpack/docs/wiki/optimization#deduplication
-    new DedupePlugin(),
+    // new DedupePlugin(),
 
     // Plugin: DefinePlugin
     // Description: Define free variables.
@@ -191,7 +192,17 @@ module.exports = webpackMerge(commonConfig, {
       }, //prod
       comments: false //prod
     }),
+      /**
+      * Plugin: NormalModuleReplacementPlugin
+      * Description: Replace resources that matches resourceRegExp with newResource
+      *
+      * See: http://webpack.github.io/docs/list-of-plugins.html#normalmodulereplacementplugin
+      */
 
+     new NormalModuleReplacementPlugin(
+       /angular2-hmr/,
+       helpers.root('config/modules/angular2-hmr-prod.js')
+     ),
     // Plugin: CompressionPlugin
     // Description: Prepares compressed versions of assets to serve
     // them with Content-Encoding
@@ -200,34 +211,37 @@ module.exports = webpackMerge(commonConfig, {
     new CompressionPlugin({
       regExp: /\.css$|\.html$|\.js$|\.map$/,
       threshold: 2 * 1024
-    })
+    }),
+    new LoaderOptionsPlugin({
+      debug:false,
+      options: {
+        // Static analysis linter for TypeScript advanced options configuration
+        // Description: An extensible linter for the TypeScript language.
+        //
+        // See: https://github.com/wbuchwalter/tslint-loader
+        tslint: {
+          emitErrors: true,
+          failOnHint: true,
+          resourcePath: 'src'
+        },
 
+        htmlLoader: {
+          minimize: true,
+          removeAttributeQuotes: false,
+          caseSensitive: true,
+          customAttrSurround: [
+            [/#/, /(?:)/],
+            [/\*/, /(?:)/],
+            [/\[?\(?/, /(?:)/]
+          ],
+          customAttrAssign: [/\)?\]?=/]
+        },
+      }
+    })
   ],
 
-  // Static analysis linter for TypeScript advanced options configuration
-  // Description: An extensible linter for the TypeScript language.
-  //
-  // See: https://github.com/wbuchwalter/tslint-loader
-  tslint: {
-    emitErrors: true,
-    failOnHint: true,
-    resourcePath: 'src'
-  },
-
-  htmlLoader: {
-    minimize: true,
-    removeAttributeQuotes: false,
-    caseSensitive: true,
-    customAttrSurround: [
-      [/#/, /(?:)/],
-      [/\*/, /(?:)/],
-      [/\[?\(?/, /(?:)/]
-    ],
-    customAttrAssign: [/\)?\]?=/]
-  },
-
   node: {
-    global: 'window',
+    global: true,
     crypto: 'empty',
     process: false,
     module: false,
@@ -235,3 +249,4 @@ module.exports = webpackMerge(commonConfig, {
     setImmediate: false
   }
 });
+}

@@ -4,10 +4,14 @@ var path = require('path');
 // Helper functions
 var _root = path.resolve(__dirname, '..');
 
-console.log('root directory:', root());
+// console.log('root directory:', root());
 
 function hasProcessFlag(flag) {
   return process.argv.join('').indexOf(flag) > -1;
+}
+
+function isWebpackDevServer() {
+  return process.argv[1] && !! (/webpack-dev-server/.exec(process.argv[1]))
 }
 
 function root(args) {
@@ -58,3 +62,4 @@ exports.rootNode = rootNode;
 exports.prependExt = prependExt;
 exports.prepend = prependExt;
 exports.packageSort = packageSort;
+exports.isWebpackDevServer = isWebpackDevServer;
