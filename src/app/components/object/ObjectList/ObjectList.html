@@ -3,7 +3,11 @@
     <div class='col-xs-3'>
       <img class='avatar' [src]="object.flap.avatar ? object.flap.avatar : '/assets/img/no-image.png'"/>
     </div>
-    <div class='col-xs-8'>
+    <div class='col-xs-2'>
+      Рейтинг: <strong>{{asFObject(object).getRating() | fixed : 1}}</strong>/10 <br> Отзывы:
+      <strong>{{asFObject(object).getReviewsNumber()}}</strong>
+    </div>
+    <div class='col-xs-6'>
       <a [routerLink]="getRouterLink(object)">
         <h4 class='object-title'>{{object.title}}</h4>
       </a>

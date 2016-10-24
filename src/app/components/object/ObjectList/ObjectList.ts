@@ -13,6 +13,9 @@ export class ObjectList {
   constructor(){
 
   }
+  asFObject(object) {
+    return new FObject({init:object});
+  }
   getRouterLink(object) {
     return object ? ['/',object.mainDomain, object.region, object.slug,'-main'].filter(item => !!item) : []
   }
