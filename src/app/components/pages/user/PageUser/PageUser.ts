@@ -39,7 +39,6 @@ export class PageUser {
     })
   }
   isPointsVisible() {
-    console.log(this._user.currentUser);
     let rule1 = this.amount !== null,
         isAdmin = this._user.currentUser.roles.indexOf('super') != -1,
         rule2 = this.settings ? this.settings.HIDE_POINTS ? this._user.isCurrentUser(this.user) || isAdmin : true : false;
