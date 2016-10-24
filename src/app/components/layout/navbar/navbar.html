@@ -1,6 +1,6 @@
 <nav class="navbar" [class.has-user]="_user.currentUser">
   <div class="navbar-section main-controls">
-    <a class="navbar-toggler mobile-only" [routerLink]="['/p','menu']">
+    <a class="navbar-toggler mobile-only" (click)="onMenuPress()">
       &#9776;
     </a>
     <div class="brand-container mobile-only">
