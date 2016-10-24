@@ -19,6 +19,7 @@ import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import {MenuLeft} from "./components/layout/MenuLeft/MenuLeft";
 import {Footer} from "./components/layout/footer/footer";
 import {Navbar} from "./components/layout/navbar/navbar";
+// import {ModalHost} from "./components/layout/ModalHost/ModalHost";
 import {Curtain} from "./components/layout/Curtain/Curtain";
 import {PageNavigator} from "./components/layout/PageNavigator/PageNavigator";
 import {ObjectLink, AutoFocusIt} from '@flaper/angular';
@@ -82,6 +83,9 @@ import {PageObjectMain} from "./components/pages/object/PageObjectMain/PageObjec
 import {PageReview} from "./components/pages/object/PageReview/PageReview";
 import {PageNotFound} from "./components/pages/notFound/PageNotFound";
 
+import {ModalModule} from "angular2-modal";
+import { BootstrapModalModule } from 'angular2-modal/plugins/bootstrap';
+
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS
@@ -104,6 +108,8 @@ const APP_PROVIDERS = [
   ],
   imports: [ // import Angular's modules
     BrowserModule, FormsModule,
+    ModalModule.forRoot(),
+    BootstrapModalModule,
     ReactiveFormsModule,
     HttpModule,
     RouterModule.forRoot(ROUTES, {useHash: false})

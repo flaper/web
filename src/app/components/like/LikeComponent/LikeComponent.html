@@ -1,6 +1,7 @@
-<span (click)="toggleLike()" class="like" [class.active]="ifIHaveLike" [class.icon-mode]="iconMode">
-  <i class="fa fa-heart-o"></i><i class="fa fa-heart"></i>
-  <small class="text-like" *ngIf="!iconMode">Нравится
+<span class="like" [class.active]="ifIHaveLike" [class.icon-mode]="iconMode">
+  <i class="fa fa-heart-o" (click)="toggleLike()" ></i>
+  <i class="fa fa-heart" (click)="toggleLike()"></i>
+  <small class="text-like" *ngIf="!iconMode" (click)="showPopup()">Нравится
     <span *ngIf="subject.likesNumber">({{subject.likesNumber}})</span></small>
   <span *ngIf="iconMode">{{subject.likesNumber}}</span>
 </span>

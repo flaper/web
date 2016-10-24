@@ -1,7 +1,8 @@
 import {Component, Input} from '@angular/core';
 import {ILikable, UserService, LikeService} from "@flaper/angular";
 import {PageService} from "../../../services/helpers/PageService";
-
+import {PopupService} from "../../../services/popup/PopupService";
+import {Navbar} from "../../layout/navbar/navbar";
 @Component({
   selector: 'like',
   template: require('./LikeComponent.html')
@@ -15,7 +16,7 @@ export class LikeComponent {
 
   private ifIHaveLike = false;
 
-  constructor(private _like:LikeService, private _user:UserService, private pageService:PageService) {
+  constructor(private _like:LikeService, private _user:UserService, private _page:PageService, private _popup:PopupService) {
 
   }
 
@@ -31,10 +32,12 @@ export class LikeComponent {
         .subscribe(ifIHaveLike => this.ifIHaveLike = ifIHaveLike)
     }
   }
-
+  showPopup() {
+    this._popup.openPopup("like","<navbar></navbar>");
+  }
   toggleLike() {
     if (!this._user.currentUser) {
-      this.pageService.navigateToLogin();
+      this._page.navigateToLogin();
     } else if (this._user.currentUserId !== this.subject.userId) {
       this._like.toggle(this.subject.id)
         .subscribe((response) => {
