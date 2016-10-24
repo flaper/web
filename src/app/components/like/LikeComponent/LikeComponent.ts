@@ -3,9 +3,13 @@ import {ILikable, UserService, LikeService} from "@flaper/angular";
 import {PageService} from "../../../services/helpers/PageService";
 import {PopupService} from "../../../services/popup/PopupService";
 import {Navbar} from "../../layout/navbar/navbar";
+import {LikeListModal} from "../LikeListModal/LikeListModal";
+
+
 @Component({
   selector: 'like',
-  template: require('./LikeComponent.html')
+  template: require('./LikeComponent.html'),
+  entryComponents: [LikeListModal]
 })
 export class LikeComponent {
   @Input()
@@ -33,7 +37,7 @@ export class LikeComponent {
     }
   }
   showPopup() {
-    this._popup.openPopup("like","<navbar></navbar>");
+    this._popup.openCustom(LikeListModal,{isBlocking:false, subjectId:this.subject.id});
   }
   toggleLike() {
     if (!this._user.currentUser) {

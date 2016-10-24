@@ -1,0 +1,19 @@
+.user-list {
+  list-style: none;
+  margin: 10px;
+  &__item {
+    width: 100%;
+  }
+}
+
+.user-photo {
+  max-width: 150px;
+  max-height: 150px;
+}
+.close-button {
+  float: right;
+  border: none;
+  padding: 1rem;
+  background: transparent;
+  outline: none;
+}

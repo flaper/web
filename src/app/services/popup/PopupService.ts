@@ -18,8 +18,7 @@ export class PopupService{
         .open();
   }
   openCustom(ComponentRef:any,parameters:any = {}) {
-    let config = overlayConfigFactory(parameters, BSModalContext);
-    this.host.open(ComponentRef, config);
+    this.host.open(ComponentRef, overlayConfigFactory(parameters, BSModalContext));
   }
 }
 

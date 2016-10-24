@@ -82,7 +82,7 @@ import {UserFavorite} from "./components/user/UserLikes/UserFavorite/UserFavorit
 import {PageObjectMain} from "./components/pages/object/PageObjectMain/PageObjectMain";
 import {PageReview} from "./components/pages/object/PageReview/PageReview";
 import {PageNotFound} from "./components/pages/notFound/PageNotFound";
-
+import {LikeListModal} from "./components/like/LikeListModal/LikeListModal";
 import {ModalModule} from "angular2-modal";
 import { BootstrapModalModule } from 'angular2-modal/plugins/bootstrap';
 
@@ -96,6 +96,7 @@ const APP_PROVIDERS = [
  */
 @NgModule({
   bootstrap: [App],
+  entryComponents: [LikeListModal],
   declarations: [
     ...APPLICATION_DIRECTIVES, ...APPLICATION_PIPES,
     App, MenuLeft, Footer, Navbar, Curtain, ObjectLink, PageUsers, PageUser, PageUserMenu, AutoFocusIt, News, StoriesAutoList, HomeLinks,
@@ -104,7 +105,7 @@ const APP_PROVIDERS = [
     CommentsShortList, CommentsAutoList, CommentsList, CommentComponent, SubscribeButton,SubscriptionList,SubscriptionItem,SubscriptionAutoList, RatingBar, DropzoneComponent, PremiumMessages,
     CommentWrite, PostActions, PageLogin, PageNews, PageWriteStory, PagePremiumSupport,PageNavigator, PageStory, PageStoryChanges, StoryComponent,
     GalleryComponent, PageFlapSync, UserInfo, UserStats, UserList, UserSearch, UserStories,UserFavorite,UserLike,UserSubscriptions, UserLikes, PageObjectMain, PageReview,
-    PageNotFound
+    PageNotFound, LikeListModal
   ],
   imports: [ // import Angular's modules
     BrowserModule, FormsModule,
