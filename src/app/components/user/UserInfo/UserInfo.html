@@ -14,10 +14,22 @@
       <label>
         <input [ngModel]="hideSocialLinks" type="checkbox" (change)="hideSocialChanged($event)" > Скрыть соц. сети от
         других пользователей
-        (только администраторы будут видеть)
+        (Доступны к просмотру только администраторам)
       </label>
     </div>
   </div>
+
+  <div *ngIf="_user.isCurrentUser(user)">
+    <h4>Баллы:</h4>
+    <div>
+      <label>
+        <input [ngModel]="hidePoints" type="checkbox" (change)="hidePointsChanged($event)" > Скрыть ваши баллы от
+        других пользователей
+        (Доступны к просмотру только администраторам)
+      </label>
+    </div>
+  </div>
+
   <div *ngIf="user.extra&&user.extra.objects&&user.extra.objects.length">
     <br>
     <h4>Компании:</h4>

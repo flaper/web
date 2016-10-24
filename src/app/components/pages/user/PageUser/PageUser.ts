@@ -17,7 +17,7 @@ export class PageUser {
   static UserObservable:ReplaySubject<User>; // to access from child routes
   user:User;
   amount:number = null;
-  settings:Array<any> = null;
+  settings:any = null;
 
   constructor(route:ActivatedRoute, private _user:UserService, private _account:AccountService,
               private userSettings:UserSettings, private acl:ACL, ts:Title) {
@@ -38,7 +38,13 @@ export class PageUser {
       });
     })
   }
-
+  isPointsVisible() {
+    console.log(this._user.currentUser);
+    let rule1 = this.amount !== null,
+        isAdmin = this._user.currentUser.roles.indexOf('super') != -1,
+        rule2 = this.settings ? this.settings.HIDE_POINTS ? this._user.isCurrentUser(this.user) || isAdmin : true : false;
+    return rule1 && rule2;
+  }
   updateAmount() {
     if (this._user.currentUser) {
       this._account.getAmountById(this.user.id)

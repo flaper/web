@@ -17,7 +17,7 @@
           <i class="fa fa-thumbs-o-up"></i> {{user.likesNumber}}
         </span>
         </div>
-        <div *ngIf="amount !== null">
+        <div *ngIf="isPointsVisible()">
           <span class="text-muted">Баллов:</span> {{amount | fixed}}
           <button class="btn btn-sm btn-link btn-withdraw" *ngIf="acl.can('super')" (click)="withdraw()"><i
             class="fa fa-credit-card"></i>

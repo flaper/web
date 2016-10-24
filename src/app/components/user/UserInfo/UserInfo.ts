@@ -19,6 +19,7 @@ export class UserInfo {
   user:User;
   identities:Array<IdentityProvider> = null;
   hideSocialLinks = null;
+  hidePoints = null;
 
   constructor(private _user:UserService, private userSettings:UserSettings, private acl:ACL,
               private _object:ObjectService) {
@@ -42,11 +43,16 @@ export class UserInfo {
       if (this._user.isCurrentUser(this.user)) {
         this.userSettings.getMy(UserSettings.SETTINGS.HIDE_SOCIAL_LINKS)
           .subscribe(value => this.hideSocialLinks = value)
+        this.userSettings.getMy(UserSettings.SETTINGS.HIDE_POINTS)
+          .subscribe(value => this.hidePoints = value)
       }
     })
   }
 
   hideSocialChanged(event) {
     this.userSettings.setMy(UserSettings.SETTINGS.HIDE_SOCIAL_LINKS, event.target.checked);
+  }
+  hidePointsChanged(event) {
+    this.userSettings.setMy(UserSettings.SETTINGS.HIDE_POINTS, event.target.checked);
   }
 }
