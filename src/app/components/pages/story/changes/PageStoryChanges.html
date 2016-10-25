@@ -1,22 +1,22 @@
 <h2 class="text-xs-center">
-  <small >
-    <a [ngClass]="{disabled:currentPage === 0}" (click)="previousPage()"> &laquo; </a>
+  <small class="navigate-link">
+    <a  [ngClass]="{disabled:currentPage === 0}" (click)="previousPage()"> &laquo; </a>
   </small>
   История изменений
-  <small>
-    <a [ngClass]="{disabled:currentPage === pages - 1}" (click)="nextPage()"> &raquo; </a>
+  <small class="navigate-link">
+    <a  [ngClass]="{disabled:currentPage === pages - 1}" (click)="nextPage()"> &raquo; </a>
   </small>
 </h2>
 
-  <div class="changed-field">
-    <div class="change-value text-xs-center" >
+  <div class="change-heading">
+    <div class="change-heading__title text-xs-center" >
       <h5>
-        Старое значение
+        Старое
       </h5>
     </div>
-    <div class="change-value text-xs-center" >
+    <div class="change-heading__title text-xs-center" >
       <h5>
-        Новое значение
+        Новое
       </h5>
     </div>
   </div>

@@ -74,8 +74,8 @@ export class PageStoryChanges {
     //     fields = oldFields.filter(field => newFields.indexOf(field) == -1).concat(newFields).filter(field => record.old.fields[field] || record.current.fields[field]);
     let fields = Object.keys(record.fields);
     return fields.map(field => {
-      let oldValue = record.fields[field].oldValue,
-        currentValue = record.fields[field].currentValue;
+      let oldValue = record.fields[field].oldValue.replace(/\n/g,"<br>"),
+        currentValue = record.fields[field].currentValue.replace(/\n/g,"<br>");
       if (oldValue && currentValue && (oldValue.length >= this.minimumDiffLength || currentValue.length >= this.minimumDiffLength)) {
         let difference = this.diff.main(oldValue, currentValue);
         oldValue = difference.filter(item => item[0] !== 1).map(item => item[0] === -1 ? `<strong class='text-danger'>${item[1]}</strong>` : item[1]).join("");
