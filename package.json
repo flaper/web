@@ -63,6 +63,7 @@
     "@flaper/angular": "^0.8.0",
     "@flaper/consts": "^0.2.3",
     "@flaper/markdown": "^1.1.2",
+    "angular2-modal": "^2.0.1",
     "angular2-moment": "^1.0.0-beta.1",
     "autoprefixer-loader": "^3.2.0",
     "autosize": "^3.0.15",
