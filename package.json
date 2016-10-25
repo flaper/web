@@ -1,6 +1,6 @@
 {
   "name": "flaper-web",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "description": "Flaper website",
   "repository": {
     "type": "git",
@@ -64,7 +64,7 @@
     "@flaper/consts": "^0.2.3",
     "@flaper/markdown": "^1.1.2",
     "angular2-modal": "^2.0.1",
-    "angular2-moment": "^1.0.0-beta.1",
+    "angular2-moment": "^1.0.0-beta.6",
     "autoprefixer-loader": "^3.2.0",
     "autosize": "^3.0.15",
     "bootstrap": "^4.0.0-alpha.4",
