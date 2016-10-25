@@ -18,6 +18,7 @@ export class GalleryComponent {
 
   @HostListener('window:keydown', ['$event'])
     processHotkeys(e) {
+      if (!this._currentImage) return;
       switch (e.key) {
         case 'Escape' :
             this.close();
