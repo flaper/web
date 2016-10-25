@@ -5,10 +5,11 @@ var helpers = require('./helpers');
  * Webpack Plugins
  */
 
-var CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
-var CopyWebpackPlugin = require('copy-webpack-plugin');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
+const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
+const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
 
 /**
  * Webpack Constants
@@ -150,6 +151,19 @@ module.exports = (options) => {
         name: helpers.reverse(['polyfills', 'global', 'main.css', 'vendor', 'angular', 'angular_vendor', 'main']),
         minChunks: Infinity
       }),
+
+      /**
+       * Plugin: ContextReplacementPlugin
+       * Description: Provides context to Angular's use of System.import
+       *
+       * See: https://webpack.github.io/docs/list-of-plugins.html#contextreplacementplugin
+       * See: https://github.com/angular/angular/issues/11580
+       */
+      new ContextReplacementPlugin(
+        // The (\\|\/) piece accounts for path separators in *nix and Windows
+        /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
+        helpers.root('src') // location of your src
+      ),
 
       // Plugin: CopyWebpackPlugin
       // Description: Copy files and directories in webpack.
