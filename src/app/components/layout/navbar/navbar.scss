@@ -51,6 +51,11 @@
     //если пользователь авторизован --
     &.has-user {
       background-color: white;
+      .brand-container {
+        @media (min-width: 991px) {
+          display: none;
+        }
+      }
       .navbar-brand {
         color: #0087cf;
         &:hover {
