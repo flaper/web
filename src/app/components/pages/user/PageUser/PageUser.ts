@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {ACL, AccountService, User, UserService, UserSettings} from "@flaper/angular";
-import {StoriesAutoList} from "../../../story/StoriesAutoList/StoriesAutoList";
 import {Title} from "@angular/platform-browser"
 import {ReplaySubject} from 'rxjs';
 import {SubscribeButton} from "../../../subscription/SubscribeButton/SubscribeButton";
