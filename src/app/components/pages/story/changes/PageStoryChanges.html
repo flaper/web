@@ -1,14 +1,14 @@
 <h2 class="text-xs-center">
   <small class="navigate-link">
-    <a  [ngClass]="{disabled:currentPage === 0}" (click)="previousPage()"> &laquo; </a>
+    <a  [ngClass]="{disabled:currentPage <= 0}" (click)="previousPage()"> &laquo; </a>
   </small>
   История изменений
   <small class="navigate-link">
-    <a  [ngClass]="{disabled:currentPage === pages - 1}" (click)="nextPage()"> &raquo; </a>
+    <a  [ngClass]="{disabled:currentPage >= pages - 1}" (click)="nextPage()"> &raquo; </a>
   </small>
 </h2>
 
-  <div class="change-heading">
+  <div class="change-heading" *ngIf="history.length != 0">
     <div class="change-heading__title text-xs-center" >
       <h5>
         Старое

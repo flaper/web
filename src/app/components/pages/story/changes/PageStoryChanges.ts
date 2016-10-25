@@ -17,7 +17,7 @@ export class PageStoryChanges {
   dictionary = require('./i18n.json');
   minimumDiffLength:number = 100;
   currentPage:number = 0;
-  pageSize:number = 2;
+  pageSize:number = 10;
   pages:number = 0;
   diff;
 
