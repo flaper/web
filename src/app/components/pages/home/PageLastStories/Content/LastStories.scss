@@ -2,11 +2,3 @@
   display: flex;
   justify-content: flex-start;;
 }
-.stories-container {
-  @media (max-width: 50rem) {
-    max-width: 100%;
-  }
-  @media (min-width: 50.01rem) {
-    max-width: 80%;
-  }
-}
