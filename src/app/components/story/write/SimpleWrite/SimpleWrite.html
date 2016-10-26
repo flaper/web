@@ -28,6 +28,15 @@
       <div class='contentHTML' *ngIf="preview" [innerHTML]='getPreviewText()'>
       </div>
     </fieldset>
+    <div>
+      <label for="tags">Тэги</label>
+      <input class='form-control' placeholder="Не больше 3 тэгов, разделенных запятыми" [(ngModel)]="tagline" [ngModelOptions]="{standalone: true}" type="text" name="tags" (keyup)="processTags($event)" [disabled]="tags.length === MAX_TAGS">
+      <h3 class='tagline' *ngIf="tags">
+        <span class='tag tag-default' *ngFor="let tag of tags" (click)="removeTag(tag)">
+            {{tag}}
+        </span>
+      </h3>
+    </div>
     <div class='e-content-length pull-right'>
       <span
         [ngClass]="{valid:contentLength >= (type==='review'?256:1000),invalid: contentLength < (type==='review'?256:1000) }">{{contentLength}}</span>/{{type==='review'?256:1000}}

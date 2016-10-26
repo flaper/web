@@ -18,7 +18,12 @@ p {
 .hidden {
   display: none;
 }
-
+.tagline {
+  .tag {
+    margin: 0 5px;
+    cursor: pointer;
+  }
+}
 .title-group {
   display: flex;
   justify-content: space-between;

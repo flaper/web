@@ -30,10 +30,13 @@ export class SimpleWrite {
   submitInProgress:boolean = false;
   form:FormGroup;
   error:string;
+  tagline:string;
+  tags:string[] =[];
   contentLength:number;
   preview:boolean = false;
   renderer:any = null;
   storyLink:any[] = [];
+  MAX_TAGS:number = 3;
   constructor(private _story:StoryService, private fb:FormBuilder, private router:Router,
               private elementRef:ElementRef, private _location:Location) {
   }
@@ -45,6 +48,7 @@ export class SimpleWrite {
     let content = this.story ? this.story.content : '';
     if (this.story) {
       this._story.getBaseLink(this.story).subscribe(link => this.storyLink = link );
+      this.tags = this.story.tags || [];
     }
     this.form = this.fb.group({
       title: [title],
@@ -135,6 +139,25 @@ export class SimpleWrite {
     control.setValue(value, {onlySelf: false, emitEvent: true});
     this._autosizeUpdate();
   }
+  removeTag(value) {
+    this.tags = this.tags.filter(tag => tag != value);
+  }
+  processTags(event) {
+    if (this.tags.length >= this.MAX_TAGS) {
+      this.tagline = "";
+    }
+    let line = this.tagline ? this.tagline.split(/[,\.]/) : [""];
+    if (line.length <= 1) return;
+
+    if (this.tags.length != this.MAX_TAGS) {
+        let newTag = "";
+        newTag = line[0].replace(/[^А-Яа-яЁёA-Za-z0-9\-]/g,"");
+        if (newTag.length > 0) {
+          this.tags.push(newTag);
+        }
+        this.tagline = line[1];
+    }
+  }
 
   getStoryData() {
     let data = this.form.value;
@@ -147,6 +170,7 @@ export class SimpleWrite {
     if (this.story) {
       data.id = this.story.id;
     }
+    data.tags = this.tags;
     data.type = this.type;
     return data;
   }
