@@ -1,0 +1,6 @@
+<div class="container container-text">
+  <h2 class="text-xs-center">Статьи по тэгу {{tag}}</h2>
+  <stories-auto-list order="likesNumber DESC" [where]="where" *ngIf="where">
+
+  </stories-auto-list>
+</div>

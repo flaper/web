@@ -22,7 +22,10 @@
   <div *ngIf="!isReview()">
     <a [routerLink]="getRouterLink()"><h3>{{story.title}}</h3></a>
   </div>
-
+  <div *ngIf="story.tags" class='tagline'>
+    <label>Тэги:</label>
+    <a [routerLink]="['/t',tag]" class="tag tag-default" *ngFor="let tag of story.tags">{{tag}}</a>
+  </div>
   <div class="short-inline" *ngIf="story.shortInline" [innerHtml]="story.shortInline">
   </div>
   <div class="answer" *ngIf="story.answer">

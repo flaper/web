@@ -16,7 +16,11 @@ h3 {
 .short-inline {
   white-space: pre-line;
 }
-
+.tagline{
+  .tag {
+    margin: 0 3px;
+  }
+}
 .story-item-footer {
   margin-top: 0.3rem;
   padding: 0.3rem 0.5rem;

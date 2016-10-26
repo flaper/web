@@ -66,6 +66,7 @@ import {PageNews} from "./components/pages/home/PageNews/PageNews";
 import {PageWriteStory} from "./components/pages/story/write/PageWriteStory";
 import {PagePremiumSupport} from "./components/pages/support/PagePremiumSupport/PagePremiumSupport";
 import {PageStory} from "./components/pages/story/read/PageStory";
+import {TagStoryPage} from "./components/pages/story/tags/TagStoryPage";
 import {PageStoryChanges} from "./components/pages/story/changes/PageStoryChanges";
 import {StoryComponent} from "./components/story/StoryComponent/StoryComponent";
 import {GalleryComponent} from "./components/image/gallery/GalleryComponent/GalleryComponent";
@@ -105,7 +106,7 @@ const APP_PROVIDERS = [
     CommentsShortList, CommentsAutoList, CommentsList, CommentComponent, SubscribeButton,SubscriptionList,SubscriptionItem,SubscriptionAutoList, RatingBar, DropzoneComponent, PremiumMessages,
     CommentWrite, PostActions, PageLogin, PageNews, PageWriteStory, PagePremiumSupport,PageNavigator, PageStory, PageStoryChanges, StoryComponent,
     GalleryComponent, PageFlapSync, UserInfo, UserStats, UserList, UserSearch, UserStories,UserFavorite,UserLike,UserSubscriptions, UserLikes, PageObjectMain, PageReview,
-    PageNotFound, LikeListModal
+    PageNotFound, LikeListModal,TagStoryPage
   ],
   imports: [ // import Angular's modules
     BrowserModule, FormsModule,
