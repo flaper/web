@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {User} from "@flaper/angular";
 import {AccountService} from "@flaper/angular";
+//noinspection TypeScriptCheckImport
 import {TRANSACTIONS_TYPES} from '@flaper/consts';
 import {PageUser} from "../../PageUser/PageUser";
 

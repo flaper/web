@@ -2,24 +2,23 @@ import {Component, Input} from '@angular/core';
 import {Router} from '@angular/router';
 import {ACL, Story, StoryService, StoryBestService, ViewService} from "@flaper/angular";
 import * as moment from 'moment';
-import {PostActions} from "../../post/PostActions/PostActions";
 import {PageService} from "../../../services/helpers/PageService";
 import {GalleryComponent} from "../../image/gallery/GalleryComponent/GalleryComponent";
 import {RatingBar} from "../../common/Rating/RatingBar/RatingBar";
 
 @Component({
   selector: 'story',
-  entryComponents: [PostActions,GalleryComponent,RatingBar],
+  entryComponents: [GalleryComponent, RatingBar],
   styles: [require('./StoryComponent.scss')],
   template: require('./StoryComponent.html')
 })
 export class StoryComponent {
   @Input()
-  story:Story;
-  storyLink:any[] = [];
+  story: Story;
+  storyLink: any[] = [];
   private _moment;
-  private initialized:Boolean = false;
-  currentImage:string = null; //current image link / gallery state
+  private initialized: Boolean = false;
+  currentImage: string = null; //current image link / gallery state
   private actions = [
     {name: 'deny', title: 'Отклонить', icon: 'fa-ban', acl: 'Story.deny'},
     {name: 'delete', title: 'Удалить', acl: 'Story.delete'},
@@ -27,15 +26,16 @@ export class StoryComponent {
     {name: 'best', title: 'Победитель', icon: 'fa-trophy', acl: 'super'},
   ];
 
-  constructor(private acl:ACL, private storyService:StoryService, private viewService:ViewService,
-              private pageService:PageService, private router:Router, private storyBestService:StoryBestService) {
+  constructor(private acl: ACL, private storyService: StoryService, private viewService: ViewService,
+              private pageService: PageService, private router: Router, private storyBestService: StoryBestService) {
     this._moment = moment;
   }
 
   ngOnInit() {
     this.viewService.post(this.story.id);
-    this.storyService.getBaseLink(this.story).subscribe(link => this.storyLink=link);
+    this.storyService.getBaseLink(this.story).subscribe(link => this.storyLink = link);
   }
+
   private _yaShare = null;
 
   ngAfterViewInit() {
@@ -57,20 +57,23 @@ export class StoryComponent {
         }
       });
   }
+
   ngOnDestroy() {
     if (this._yaShare) {
       this._yaShare.destroy();
       this._yaShare = null;
     }
   }
+
   openGallery(index) {
     this.currentImage = this.story.images[index];
   }
+
   initImageClickEvents() {
     let storyImages = document.getElementsByClassName('contentHTML')[0].getElementsByTagName('img');
     [].forEach.call(storyImages,
       (element) => {
-        let id = element.src.replace(/[http].*\/([a-z0-9]{2})\/([a-z0-9]{2})\/([a-z0-9]+)_middle.*/i,'$1$2$3');
+        let id = element.src.replace(/[http].*\/([a-z0-9]{2})\/([a-z0-9]{2})\/([a-z0-9]+)_middle.*/i, '$1$2$3');
         element.style.cursor = "pointer";
         element.onclick = (e) => {
           this.currentImage = id;
@@ -91,13 +94,16 @@ export class StoryComponent {
     return ifSignificant && ifSomeTimePassed &&
       this._moment(this.story.created).fromNow() !== this._moment(this.story.updated).fromNow()
   }
+
   //gallery state watcher
   stateChanged(image) {
     this.currentImage = image;
   }
+
   getEditLink() {
     return this.storyLink.concat("edit");
   }
+
   actionEvent(event) {
     switch (event) {
       case 'delete':
@@ -111,7 +117,7 @@ export class StoryComponent {
         });
         break;
       case 'changes' :
-        this.router.navigate(['/p','storyChanges',this.story.id]);
+        this.router.navigate(['/p', 'storyChanges', this.story.id]);
         break;
       case 'best':
         let place = window.prompt('Какой место должен занять отзыв?', '');

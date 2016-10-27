@@ -16,10 +16,10 @@ export class StoriesAutoList {
   order = "";
 
   skip = 0;
-  storiesGroup:Array<Story[]> = [];
+  storiesGroup: Array<Story[]> = [];
   lastLength = 0;
 
-  constructor(private storyService:StoryService) {
+  constructor(private storyService: StoryService) {
   }
 
   ngOnInit() {
@@ -28,14 +28,13 @@ export class StoriesAutoList {
 
 
   loadMore() {
-    console.log('loading more');
     this.skip += this.storyService.LIMIT;
     this.loadStoriesGroup(false);
   }
 
   loading = false;
 
-  loadStoriesGroup(isInitial:boolean) {
+  loadStoriesGroup(isInitial: boolean) {
 
     this.loading = true; // to help change detector to see change later to false
     this.storyService.get({where: this.where, order: this.order, skip: this.skip}).subscribe((stories) => {

@@ -1,7 +1,6 @@
 import {NgModule, ApplicationRef} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {HttpModule} from '@angular/http';
-import {ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {removeNgStyles} from '@angularclass/hmr';
 import {SharedModule} from "./shared/shared.module";
@@ -43,17 +42,11 @@ import {PageManageRequest} from "./components/pages/object/PageManageRequest/Pag
 import {PageManage} from "./components/pages/object/PageManage/PageManage";
 import {LoadMore} from "./components/common/LoadMore/LoadMore";
 import {StoryItem} from "./components/story/StoryItem/StoryItem";
-import {CommentsShortList} from "./components/comment/CommentsShortList/CommentsShortList";
-import {CommentsAutoList} from "./components/comment/CommentsAutoList/CommentsAutoList";
-import {CommentsList} from "./components/comment/CommentsList/CommentsList";
-import {CommentComponent} from "./components/comment/CommentComponent/CommentComponent";
 import {ObjectList} from "./components/object/ObjectList/ObjectList";
 import {ObjectSearchForm} from "./components/object/ObjectSearchForm/ObjectSearchForm";
 import {RatingBar} from "./components/common/Rating/RatingBar/RatingBar";
 import {DropzoneComponent} from "./components/image/dropzone/DropzoneComponent";
 import {PremiumMessages} from "./components/premiumSupport/PremiumMessages/PremiumMessages";
-import {CommentWrite} from "./components/comment/CommentWrite/CommentWrite";
-import {PostActions} from "./components/post/PostActions/PostActions";
 import {PageLogin} from "./components/pages/login/PageLogin";
 import {PageNews} from "./components/pages/home/PageNews/PageNews";
 import {PageWriteStory} from "./components/pages/story/write/PageWriteStory";
@@ -82,16 +75,16 @@ const APP_PROVIDERS = [
   bootstrap: [App],
   declarations: [
     App, MenuLeft, Footer, Navbar, Curtain, PageUsers, PageUserMenu, News, StoriesAutoList, HomeLinks,
-    Github, PageLastStories, LayoutHome, LayoutObject, ObjectSearch, ObjectSearchForm, LastStories, TopStories, PageTopStories, PageTopStoriesLast, ObjectList,
+    Github, PageLastStories, LayoutHome, LayoutObject, ObjectSearch, ObjectSearchForm, LastStories, TopStories,
+    PageTopStories, PageTopStoriesLast, ObjectList,
     StoriesList, SimpleWrite, WriteStoryButton, PageManageSupport, PageManageRequest, PageManage, LoadMore, StoryItem,
-    CommentsShortList, CommentsAutoList, CommentsList, CommentComponent, RatingBar, DropzoneComponent, PremiumMessages,
-    CommentWrite, PostActions, PageLogin, PageNews, PageWriteStory, PagePremiumSupport, PageNavigator, PageStory, PageStoryChanges, StoryComponent,
+    RatingBar, DropzoneComponent, PremiumMessages, PageLogin, PageNews, PageWriteStory, PagePremiumSupport,
+    PageNavigator, PageStory, PageStoryChanges, StoryComponent,
     GalleryComponent, PageFlapSync, PageObjectMain, PageReview, UserSearch, UserList,
     PageNotFound, TagStoryPage
   ],
   imports: [ // import Angular's modules
     BrowserModule,
-    ReactiveFormsModule,
     HttpModule,
     RouterModule.forRoot(ROUTES, {useHash: false}),
     // our modules

@@ -1,32 +1,28 @@
 import {Component, Input} from '@angular/core';
 import {UserService, CommentService, Story, LikeService, ObjectService} from "@flaper/angular";
-import {StoryItem} from "../StoryItem/StoryItem";
-import {CommentsList} from "../../comment/CommentsList/CommentsList";
-import {CommentsShortList} from "../../comment/CommentsShortList/CommentsShortList";
 let _forOwn = require('lodash/forOwn');
 import {ReplaySubject} from 'rxjs';
 
 @Component({
   selector: 'stories-list',
-  entryComponents: [StoryItem, CommentsShortList],
   styles: [require('./StoriesList.scss')],
   template: require('./StoriesList.html')
 })
 export class StoriesList {
   @Input()
-  stories:Story[] = [];
+  stories: Story[] = [];
 
   commentsGroupById = null;
   commentItEvents = {};
   commentItActive = {};
 
-  constructor(private commentService:CommentService, private _like:LikeService,
-              private userService:UserService, private objectService:ObjectService) {
+  constructor(private commentService: CommentService, private _like: LikeService,
+              private userService: UserService, private objectService: ObjectService) {
   }
 
   ngOnInit() {
     let usersIds = this.stories.map(story => story.id),
-        objectIds = this.stories.map(story => story.objectId).filter(id => !!id);
+      objectIds = this.stories.map(story => story.objectId).filter(id => !!id);
     this.objectService.requestIds(objectIds);
     this.stories.forEach(story => this.commentItEvents[story.id] = new ReplaySubject<boolean>(1));
     this.userService.requestIds(usersIds);
@@ -46,9 +42,11 @@ export class StoriesList {
         this.userService.requestIds(usersIds);
       });
   }
-  getObject(id:string) {
+
+  getObject(id: string) {
     return this.objectService.getById(id);
   }
+
   onCommentIt(id) {
     this.commentItActive[id] = true;
     this.commentItEvents[id].next(true);

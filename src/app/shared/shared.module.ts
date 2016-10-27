@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, Form, ReactiveFormsModule} from '@angular/forms';
 import {ObjectLink, AutoFocusIt, FlapImagePipe} from '@flaper/angular';
 import {MomentModule} from 'angular2-moment';
 import {RouterModule} from '@angular/router';
@@ -13,14 +13,26 @@ import {ModalModule} from "angular2-modal";
 import {BootstrapModalModule} from 'angular2-modal/plugins/bootstrap';
 import {SubscribeButton} from "./components/subscribe/SubscribeButton/SubscribeButton";
 import {FixedPipe} from "./pipes/FixedPipe";
+import {CommentWrite} from "./components/comment/CommentWrite/CommentWrite";
+import {PostActions} from "./components/post/PostActions/PostActions";
+import {CommentComponent} from "./components/comment/CommentComponent/CommentComponent";
+import {CommentsList} from "./components/comment/CommentsList/CommentsList";
+import {CommentsShortList} from "./components/comment/CommentsShortList/CommentsShortList";
+import {CommentsAutoList} from "./components/comment/CommentsAutoList/CommentsAutoList";
 
+
+// директивые доступные во всех модулях
+const DIRECTIVES = [Autosize, AutoFocusIt];
+// компоненты доступные во всех модулях
+const COMPONENTS = [ObjectLink, LikeComponent, LikeListModal, UserLink, UserAvatar, SubscribeButton, CommentWrite,
+  PostActions, CommentComponent, CommentsList, CommentsShortList, CommentsAutoList];
+// pipe-ы доступные во всех модулях
+const PIPES = [FixedPipe, FlapImagePipe];
 @NgModule({
-  imports: [CommonModule, RouterModule,
+  imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule, MomentModule,
     ModalModule.withComponents([LikeListModal]), ModalModule.forRoot(), BootstrapModalModule],
-  declarations: [ObjectLink, AutoFocusIt, Autosize, LikeComponent, LikeListModal, UserLink, UserAvatar,
-    SubscribeButton, FixedPipe, FlapImagePipe],
-  exports: [CommonModule, FormsModule, MomentModule, ObjectLink, AutoFocusIt, Autosize, LikeComponent, LikeListModal,
-    UserLink, UserAvatar, SubscribeButton, FixedPipe, FlapImagePipe]
+  declarations: [...PIPES, ...DIRECTIVES, ...COMPONENTS],
+  exports: [CommonModule, FormsModule, ReactiveFormsModule, MomentModule, ...PIPES, ...DIRECTIVES, ...COMPONENTS]
 })
 export class SharedModule {
 }

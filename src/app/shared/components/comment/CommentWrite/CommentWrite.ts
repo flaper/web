@@ -1,9 +1,10 @@
 import {Component, Input, Output, EventEmitter, ElementRef} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Comment, CommentService, UserService, ObjectService} from "@flaper/angular";
-import {FormDraft} from "../../../services/draft/FormDraft";
-import {generateEvent} from "../../../libs/common/common";
+import {FormDraft} from "../../../../services/draft/FormDraft";
+import {generateEvent} from "../../../../libs/common/common";
 import * as Rx from 'rxjs';
+//noinspection TypeScriptCheckImport
 import {OBJECT_PERMISSIONS} from '@flaper/consts';
 @Component({
   selector: 'comment-write',
@@ -15,33 +16,32 @@ export class CommentWrite {
 
   //for existed comment
   @Input()
-  comment:Comment;
+  comment: Comment;
 
   //for new comment
   @Input()
-  subjectId:string;
+  subjectId: string;
 
   @Input()
-  compact:boolean = false;
+  compact: boolean = false;
 
   @Input()
-  commentItObservable:Rx.Observable<boolean>;
+  commentItObservable: Rx.Observable<boolean>;
 
   @Output()
-  commentChange:EventEmitter<Comment> = new EventEmitter<Comment>();
+  commentChange: EventEmitter<Comment> = new EventEmitter<Comment>();
 
   @Output()
-  updateCanceled:EventEmitter<boolean> = new EventEmitter<boolean>();
+  updateCanceled: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  newComment:boolean;
-  disabled:boolean = false;
-  userPermissions:string[] = [];
-  active:boolean = false;
-  form:FormGroup;
+  newComment: boolean;
+  disabled: boolean = false;
+  userPermissions: string[] = [];
+  active: boolean = false;
+  form: FormGroup;
 
-  constructor(private commentService:CommentService, private fb:FormBuilder,
-              private elementRef:ElementRef, private objectService:ObjectService,
-              private  userService:UserService) {
+  constructor(private _comment: CommentService, private fb: FormBuilder,
+              private elementRef: ElementRef, private _object: ObjectService, private _user: UserService) {
   }
 
   ngOnInit() {
@@ -57,20 +57,20 @@ export class CommentWrite {
     let sinceDate = this.comment ? this.comment.updated : null;
     FormDraft.load(this.DRAFT_KEY, this.form, sinceDate);
 
-    this.objectService.getPermissions(this.subjectId)
+    this._object.getPermissions(this.subjectId)
       .subscribe(permissions => this.userPermissions = permissions);
 
     //to preserve this
     this.form.valueChanges.subscribe(values => this.valueChanged(values));
     if (!this.newComment) {
       let textField = this.elementRef.nativeElement.querySelector('textarea');
-        textField && textField.focus();
+      textField && textField.focus();
     }
     if (this.commentItObservable) {
       //noinspection TypeScriptUnresolvedFunction
       this.commentItObservable.subscribe(() => {
         let textField = this.elementRef.nativeElement.querySelector('textarea');
-          textField && textField.focus();
+        textField && textField.focus();
       })
     }
   }
@@ -90,7 +90,7 @@ export class CommentWrite {
     if (this.form.valid) {
       let data = this.getCommentData();
       this.disabled = true;
-      this.commentService.save(data)
+      this._comment.save(data)
         .subscribe((comment) => {
           if (!this.newComment) {
             Object.assign(this.comment, comment);
@@ -117,9 +117,11 @@ export class CommentWrite {
   isOwner() {
     return this.userPermissions.some(permission => permission === OBJECT_PERMISSIONS.OWNER);
   }
+
   canAnswerAsOwner() {
     return this.isOwner() && this.userPermissions.some(permission => permission === OBJECT_PERMISSIONS.ANSWER);
   }
+
   isVisible() {
     return !(this.isOwner() && !this.canAnswerAsOwner());
   }

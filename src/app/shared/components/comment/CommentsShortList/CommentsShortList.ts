@@ -1,33 +1,30 @@
 import {Component, Input} from '@angular/core';
 import {Comment, CommentService, UserService, ICommentable} from "@flaper/angular";
-import {CommentsList} from "../CommentsList/CommentsList";
-import {CommentWrite} from "../CommentWrite/CommentWrite";
 
 const MAX_RECENT_SIZE = 4;
 @Component({
   selector: 'comments-short-list',
-  entryComponents: [CommentsList, CommentWrite],
   styles: [require('./CommentsShortList.scss')],
   template: require('./CommentsShortList.html')
 })
 export class CommentsShortList {
   @Input()
-  subject:ICommentable;
+  subject: ICommentable;
 
   @Input()
-  recentCommentsInput:Comment[] = [];//to use only during initialization
+  recentCommentsInput: Comment[] = [];//to use only during initialization
 
   @Input()
   commentItObservable;
 
-  recentComments:Comment[] = [];
+  recentComments: Comment[] = [];
 
-  previousComments:Comment[] = [];
+  previousComments: Comment[] = [];
 
   previousCommentsNumber = 0;
-  previousOpened:boolean = false;
+  previousOpened: boolean = false;
 
-  constructor(private commentService:CommentService, private userService:UserService) {
+  constructor(private commentService: CommentService, private userService: UserService) {
   }
 
   ngOnInit() {

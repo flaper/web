@@ -1,19 +1,16 @@
 import {Component, Input} from '@angular/core';
 import {ACL, Comment, CommentService} from "@flaper/angular";
-import {UserAvatar} from "../../../shared/shared.module";
-import {PostActions} from "../../post/PostActions/PostActions";
-import {CommentWrite} from "../CommentWrite/CommentWrite";
+import {UserAvatar} from "../../user/UserAvatar/UserAvatar";
 
 @Component({
   selector: 'comment-component',
-  entryComponents: [PostActions, CommentWrite],
   styles: [require('./CommentComponent.scss')],
   template: require('./CommentComponent.html')
 })
 export class CommentComponent {
   avatarSize = UserAvatar.SIZE.MINOR;
   @Input()
-  comment:Comment;
+  comment: Comment;
 
   private actions = [
     {name: 'update', title: 'Изменить', icon: 'fa-pencil', acl: 'Comment.write'},
@@ -22,7 +19,7 @@ export class CommentComponent {
 
   private updateMode = false;
 
-  constructor(private commentService:CommentService, private acl:ACL) {
+  constructor(private commentService: CommentService, private acl: ACL) {
   }
 
   actionEvent(event) {
