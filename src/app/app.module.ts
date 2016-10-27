@@ -32,19 +32,14 @@ import {TopStories} from "./components/pages/home/PageTopStories/Content/TopStor
 import {PageTopStories} from "./components/pages/home/PageTopStories/PageTopStories";
 import {PageTopStoriesLast} from "./components/pages/home/PageTopStoriesLast/PageTopStoriesLast";
 import {News} from "./components/pages/home/PageNews/Content/News";
-import {StoriesAutoList} from "./components/story/StoriesAutoList/StoriesAutoList";
 import {HomeLinks} from "./components/pages/home/LayoutHome/widgets/HomeLinks/HomeLinks";
-import {StoriesList} from "./components/story/StoriesList/StoriesList";
 import {SimpleWrite} from "./components/story/write/SimpleWrite/SimpleWrite";
 import {WriteStoryButton} from "./components/story/write/WriteStoryButton/WriteStoryButton";
 import {PageManageSupport} from "./components/pages/support/PageManageSupport/PageManageSupport";
 import {PageManageRequest} from "./components/pages/object/PageManageRequest/PageManageRequest";
 import {PageManage} from "./components/pages/object/PageManage/PageManage";
-import {LoadMore} from "./components/common/LoadMore/LoadMore";
-import {StoryItem} from "./components/story/StoryItem/StoryItem";
 import {ObjectList} from "./components/object/ObjectList/ObjectList";
 import {ObjectSearchForm} from "./components/object/ObjectSearchForm/ObjectSearchForm";
-import {RatingBar} from "./components/common/Rating/RatingBar/RatingBar";
 import {DropzoneComponent} from "./components/image/dropzone/DropzoneComponent";
 import {PremiumMessages} from "./components/premiumSupport/PremiumMessages/PremiumMessages";
 import {PageLogin} from "./components/pages/login/PageLogin";
@@ -54,8 +49,6 @@ import {PagePremiumSupport} from "./components/pages/support/PagePremiumSupport/
 import {PageStory} from "./components/pages/story/read/PageStory";
 import {TagStoryPage} from "./components/pages/story/tags/TagStoryPage";
 import {PageStoryChanges} from "./components/pages/story/changes/PageStoryChanges";
-import {StoryComponent} from "./components/story/StoryComponent/StoryComponent";
-import {GalleryComponent} from "./components/image/gallery/GalleryComponent/GalleryComponent";
 import {PageFlapSync} from "./components/pages/flap/PageFlapSync/PageFlapSync";
 import {UserSearch} from "./components/user/UserSearch/UserSearch";
 import {UserList} from "./components/user/UserList/UserList";
@@ -74,13 +67,12 @@ const APP_PROVIDERS = [
 @NgModule({
   bootstrap: [App],
   declarations: [
-    App, MenuLeft, Footer, Navbar, Curtain, PageUsers, PageUserMenu, News, StoriesAutoList, HomeLinks,
+    App, MenuLeft, Footer, Navbar, Curtain, PageUsers, PageUserMenu, News, HomeLinks,
     Github, PageLastStories, LayoutHome, LayoutObject, ObjectSearch, ObjectSearchForm, LastStories, TopStories,
     PageTopStories, PageTopStoriesLast, ObjectList,
-    StoriesList, SimpleWrite, WriteStoryButton, PageManageSupport, PageManageRequest, PageManage, LoadMore, StoryItem,
-    RatingBar, DropzoneComponent, PremiumMessages, PageLogin, PageNews, PageWriteStory, PagePremiumSupport,
-    PageNavigator, PageStory, PageStoryChanges, StoryComponent,
-    GalleryComponent, PageFlapSync, PageObjectMain, PageReview, UserSearch, UserList,
+    SimpleWrite, WriteStoryButton, PageManageSupport, PageManageRequest, PageManage,
+    DropzoneComponent, PremiumMessages, PageLogin, PageNews, PageWriteStory, PagePremiumSupport,
+    PageNavigator, PageStory, PageStoryChanges, PageFlapSync, PageObjectMain, PageReview, UserSearch, UserList,
     PageNotFound, TagStoryPage
   ],
   imports: [ // import Angular's modules

@@ -19,13 +19,20 @@ import {CommentComponent} from "./components/comment/CommentComponent/CommentCom
 import {CommentsList} from "./components/comment/CommentsList/CommentsList";
 import {CommentsShortList} from "./components/comment/CommentsShortList/CommentsShortList";
 import {CommentsAutoList} from "./components/comment/CommentsAutoList/CommentsAutoList";
-
+import {RatingBar} from "./components/common/Rating/RatingBar/RatingBar";
+import {LoadMore} from "./components/common/LoadMore/LoadMore";
+import {GalleryComponent} from "./components/image/gallery/GalleryComponent/GalleryComponent";
+import {StoryComponent} from "./components/story/StoryComponent/StoryComponent";
+import {StoriesAutoList} from "./components/story/StoriesAutoList/StoriesAutoList";
+import {StoriesList} from "./components/story/StoriesList/StoriesList";
+import {StoryItem} from "./components/story/StoryItem/StoryItem";
 
 // директивые доступные во всех модулях
 const DIRECTIVES = [Autosize, AutoFocusIt];
 // компоненты доступные во всех модулях
 const COMPONENTS = [ObjectLink, LikeComponent, LikeListModal, UserLink, UserAvatar, SubscribeButton, CommentWrite,
-  PostActions, CommentComponent, CommentsList, CommentsShortList, CommentsAutoList];
+  PostActions, CommentComponent, CommentsList, CommentsShortList, CommentsAutoList, RatingBar, LoadMore,
+  GalleryComponent, StoryComponent, StoryItem, StoriesList, StoriesAutoList];
 // pipe-ы доступные во всех модулях
 const PIPES = [FixedPipe, FlapImagePipe];
 @NgModule({

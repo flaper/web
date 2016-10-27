@@ -1,12 +1,10 @@
 import {Component} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {LayoutHome} from "../LayoutHome/LayoutHome";
 import {PageService} from "../../../../services/helpers/PageService";
 import {Title} from "@angular/platform-browser"
 
 @Component({
   selector: 'page-top-stories',
-  entryComponents: [LayoutHome],
   template: require('./PageLastStories.html')
 })
 export class PageLastStories {

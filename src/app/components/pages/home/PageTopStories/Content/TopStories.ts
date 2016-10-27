@@ -1,12 +1,10 @@
 import {Component} from '@angular/core';
-import {StoriesAutoList} from "../../../../story/StoriesAutoList/StoriesAutoList";
 import * as moment from 'moment';
 import {StoryService, StoryBestService} from "@flaper/angular";
 let _keyBy = require('lodash/keyBy');
 
 @Component({
   selector: 'top-stories',
-  entryComponents: [StoriesAutoList],
   styles: [require('./TopStories.scss')],
   template: require('./TopStories.html')
 })
@@ -15,7 +13,7 @@ export class TopStories {
   winners = [];
   stories = null;
 
-  constructor(storyBestService:StoryBestService, storyService:StoryService) {
+  constructor(storyBestService: StoryBestService, storyService: StoryService) {
     let minTime = moment.utc().startOf('week').subtract(7, 'days').toDate();
     storyBestService.getCurrentWinners().subscribe(data => {
       this.winners = data;

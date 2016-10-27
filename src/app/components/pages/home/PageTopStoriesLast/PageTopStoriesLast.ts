@@ -1,13 +1,11 @@
 import {Component} from '@angular/core';
 import {Title} from "@angular/platform-browser"
-import {StoriesAutoList} from "../../../story/StoriesAutoList/StoriesAutoList";
 import * as moment from 'moment';
 import {StoryService, StoryBestService} from "@flaper/angular";
 let _keyBy = require('lodash/keyBy');
 
 @Component({
   selector: 'page-top-stories-last',
-  entryComponents: [StoriesAutoList],
   template: require('./PageTopStoriesLast.html')
 })
 export class PageTopStoriesLast {

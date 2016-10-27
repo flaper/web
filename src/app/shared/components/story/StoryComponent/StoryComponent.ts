@@ -2,13 +2,10 @@ import {Component, Input} from '@angular/core';
 import {Router} from '@angular/router';
 import {ACL, Story, StoryService, StoryBestService, ViewService} from "@flaper/angular";
 import * as moment from 'moment';
-import {PageService} from "../../../services/helpers/PageService";
-import {GalleryComponent} from "../../image/gallery/GalleryComponent/GalleryComponent";
-import {RatingBar} from "../../common/Rating/RatingBar/RatingBar";
+import {PageService} from "../../../../services/helpers/PageService";
 
 @Component({
   selector: 'story',
-  entryComponents: [GalleryComponent, RatingBar],
   styles: [require('./StoryComponent.scss')],
   template: require('./StoryComponent.html')
 })

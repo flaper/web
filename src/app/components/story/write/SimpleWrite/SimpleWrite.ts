@@ -2,16 +2,15 @@ import {Component, Input, ElementRef} from '@angular/core';
 import {Router} from '@angular/router';
 import {Location} from '@angular/common';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {Story, StoryService,FObject} from "@flaper/angular";
+import {Story, StoryService, FObject} from "@flaper/angular";
 import {FormDraft} from "../../../../services/draft/FormDraft";
 import {DropzoneComponent} from "../../../image/dropzone/DropzoneComponent";
 import {generateEvent} from "../../../../libs/common/common";
-import {RatingBar} from "../../../common/Rating/RatingBar/RatingBar";
 import {Sanitize} from "@flaper/markdown";
 
 @Component({
   selector: 'simple-write',
-  entryComponents: [DropzoneComponent, RatingBar],
+  entryComponents: [DropzoneComponent],
   styles: [require('./SimpleWrite.scss')],
   template: require('./SimpleWrite.html')
 })
@@ -19,26 +18,27 @@ export class SimpleWrite {
   DRAFT_KEY = 'WRITE_STORY';
 
   @Input()
-  story:Story;
+  story: Story;
   @Input('type')
-  type:string;
+  type: string;
   @Input('object')
-  object:FObject;
-  newStory:boolean;
-  rating:number = 1;
-  isReview:boolean;
-  submitInProgress:boolean = false;
-  form:FormGroup;
-  error:string;
-  tagline:string;
-  tags:string[] =[];
-  contentLength:number;
-  preview:boolean = false;
-  renderer:any = null;
-  storyLink:any[] = [];
-  MAX_TAGS:number = 3;
-  constructor(private _story:StoryService, private fb:FormBuilder, private router:Router,
-              private elementRef:ElementRef, private _location:Location) {
+  object: FObject;
+  newStory: boolean;
+  rating: number = 1;
+  isReview: boolean;
+  submitInProgress: boolean = false;
+  form: FormGroup;
+  error: string;
+  tagline: string;
+  tags: string[] = [];
+  contentLength: number;
+  preview: boolean = false;
+  renderer: any = null;
+  storyLink: any[] = [];
+  MAX_TAGS: number = 3;
+
+  constructor(private _story: StoryService, private fb: FormBuilder, private router: Router,
+              private elementRef: ElementRef, private _location: Location) {
   }
 
   ngOnInit() {
@@ -47,7 +47,7 @@ export class SimpleWrite {
     let title = this.story ? this.story.title : '';
     let content = this.story ? this.story.content : '';
     if (this.story) {
-      this._story.getBaseLink(this.story).subscribe(link => this.storyLink = link );
+      this._story.getBaseLink(this.story).subscribe(link => this.storyLink = link);
       this.tags = this.story.tags || [];
     }
     this.form = this.fb.group({
@@ -68,21 +68,20 @@ export class SimpleWrite {
   }
 
   valueChanged(values) {
-    this.contentLength = Sanitize.symbolsNumber(this.form.controls['content'].value)
+    this.contentLength = Sanitize.symbolsNumber(this.form.controls['content'].value);
     FormDraft.save(this.DRAFT_KEY, values);
   }
 
   togglePreview() {
-    if (!this.renderer) {
-      let Markdown = require('@flaper/markdown').FlaperMark;
-      this.renderer = Markdown;
-    }
+    this.renderer = this.renderer || require('@flaper/markdown').FlaperMark;
     this.preview = !this.preview;
   }
+
   getPreviewText() {
     if (!this.renderer) return '';
     return this.renderer.toHTML(this.form.controls['content'].value);
   }
+
   onSubmit(event) {
     if (this.submitInProgress) {
       return false;
@@ -139,9 +138,11 @@ export class SimpleWrite {
     control.setValue(value, {onlySelf: false, emitEvent: true});
     this._autosizeUpdate();
   }
+
   removeTag(value) {
     this.tags = this.tags.filter(tag => tag != value);
   }
+
   processTags(event) {
     if (this.tags.length >= this.MAX_TAGS) {
       this.tagline = "";
@@ -150,12 +151,12 @@ export class SimpleWrite {
     if (line.length <= 1) return;
 
     if (this.tags.length != this.MAX_TAGS) {
-        let newTag = "";
-        newTag = line[0].replace(/[^А-Яа-яЁёA-Za-z0-9\-]/g,"");
-        if (newTag.length > 0) {
-          this.tags.push(newTag);
-        }
-        this.tagline = line[1];
+      let newTag = "";
+      newTag = line[0].replace(/[^А-Яа-яЁёA-Za-z0-9\-]/g, "");
+      if (newTag.length > 0) {
+        this.tags.push(newTag);
+      }
+      this.tagline = line[1];
     }
   }
 
