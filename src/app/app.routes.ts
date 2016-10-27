@@ -8,10 +8,8 @@ import {PageStory} from "./components/pages/story/read/PageStory";
 import {TagStoryPage} from "./components/pages/story/tags/TagStoryPage";
 import {PageStoryChanges} from "./components/pages/story/changes/PageStoryChanges";
 import {PageNotFound} from "./components/pages/notFound/PageNotFound";
-import {PageUser} from './components/pages/user/PageUser/PageUser';
 import {PageUserMenu} from './components/pages/user/PageUserMenu/PageUserMenu';
 import {PageUsers} from './components/pages/user/PageUsers/PageUsers';
-import {UserRoutes} from './components/pages/user/PageUser/UserRoutes';
 import {PageFlapSync} from "./components/pages/flap/PageFlapSync/PageFlapSync";
 import {ObjectRoutes} from "./components/pages/object/LayoutObject/ObjectRoutes";
 import {ObjectSearch} from "./components/pages/object/ObjectSearch/ObjectSearch";
@@ -40,7 +38,6 @@ export const ROUTES = [
   {path: 'o/:text/:page', component: ObjectSearch},
   {path: 'p/sync/:id', component: PageFlapSync, name: 'FlapSync'},
   {path: 'p/sync/:id/:action', component: PageFlapSync, name: 'FlapSync'},
-  UserRoutes,
   ...ObjectRoutes,
   {path: '**', component: PageNotFound},
   {path: 'not-found', component: PageNotFound},

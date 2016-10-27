@@ -5,6 +5,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {removeNgStyles} from '@angularclass/hmr';
 import {SharedModule} from "./shared/shared.module";
+import {UserModule} from "./modules/user";
 
 /*
  * Platform and Environment providers/directives/pipes
@@ -14,7 +15,6 @@ import {ROUTES} from './app.routes';
 
 // App is our top level component
 import {App} from './app.component';
-import {APPLICATION_PIPES} from './environment/pipes';
 import {APP_RESOLVER_PROVIDERS} from './app.resolver';
 import {MenuLeft} from "./components/layout/MenuLeft/MenuLeft";
 import {Footer} from "./components/layout/footer/footer";
@@ -22,7 +22,6 @@ import {Navbar} from "./components/layout/navbar/navbar";
 import {Curtain} from "./components/layout/Curtain/Curtain";
 import {PageNavigator} from "./components/layout/PageNavigator/PageNavigator";
 import {PageUsers} from "./components/pages/user/PageUsers/PageUsers";
-import {PageUser} from "./components/pages/user/PageUser/PageUser";
 import {PageUserMenu} from "./components/pages/user/PageUserMenu/PageUserMenu";
 import {Github} from "./components/layout/navbar/github/github";
 import {PageLastStories} from "./components/pages/home/PageLastStories/PageLastStories";
@@ -44,7 +43,6 @@ import {PageManageRequest} from "./components/pages/object/PageManageRequest/Pag
 import {PageManage} from "./components/pages/object/PageManage/PageManage";
 import {LoadMore} from "./components/common/LoadMore/LoadMore";
 import {StoryItem} from "./components/story/StoryItem/StoryItem";
-import {SubscribeButton} from "./components/subscription/SubscribeButton/SubscribeButton";
 import {SubscriptionAutoList} from "./components/subscription/SubscriptionAutoList/SubscriptionAutoList";
 import {SubscriptionList} from "./components/subscription/SubscriptionList/SubscriptionList";
 import {SubscriptionItem} from "./components/subscription/SubscriptionItem/SubscriptionItem";
@@ -69,15 +67,8 @@ import {PageStoryChanges} from "./components/pages/story/changes/PageStoryChange
 import {StoryComponent} from "./components/story/StoryComponent/StoryComponent";
 import {GalleryComponent} from "./components/image/gallery/GalleryComponent/GalleryComponent";
 import {PageFlapSync} from "./components/pages/flap/PageFlapSync/PageFlapSync";
-import {UserInfo} from "./components/user/UserInfo/UserInfo";
-import {UserStats} from "./components/user/UserStats/UserStats";
 import {UserSearch} from "./components/user/UserSearch/UserSearch";
 import {UserList} from "./components/user/UserList/UserList";
-import {UserStories} from "./components/user/UserStories/UserStories";
-import {UserLikes} from "./components/user/UserLikes/UserLikes";
-import {UserSubscriptions} from "./components/user/UserSubscriptions/UserSubscriptions";
-import {UserLike} from "./components/user/UserLikes/UserLike/UserLike";
-import {UserFavorite} from "./components/user/UserLikes/UserFavorite/UserFavorite";
 import {PageObjectMain} from "./components/pages/object/PageObjectMain/PageObjectMain";
 import {PageReview} from "./components/pages/object/PageReview/PageReview";
 import {PageNotFound} from "./components/pages/notFound/PageNotFound";
@@ -93,21 +84,21 @@ const APP_PROVIDERS = [
 @NgModule({
   bootstrap: [App],
   declarations: [
-    ...APPLICATION_PIPES,
-    App, MenuLeft, Footer, Navbar, Curtain, PageUsers, PageUser, PageUserMenu, News, StoriesAutoList, HomeLinks,
+    App, MenuLeft, Footer, Navbar, Curtain, PageUsers, PageUserMenu, News, StoriesAutoList, HomeLinks,
     Github, PageLastStories, LayoutHome, LayoutObject, ObjectSearch, ObjectSearchForm, LastStories, TopStories, PageTopStories, PageTopStoriesLast, ObjectList,
     StoriesList, SimpleWrite, WriteStoryButton, PageManageSupport, PageManageRequest, PageManage, LoadMore, StoryItem,
-    CommentsShortList, CommentsAutoList, CommentsList, CommentComponent, SubscribeButton, SubscriptionList, SubscriptionItem, SubscriptionAutoList, RatingBar, DropzoneComponent, PremiumMessages,
+    CommentsShortList, CommentsAutoList, CommentsList, CommentComponent, SubscriptionList, SubscriptionItem, SubscriptionAutoList, RatingBar, DropzoneComponent, PremiumMessages,
     CommentWrite, PostActions, PageLogin, PageNews, PageWriteStory, PagePremiumSupport, PageNavigator, PageStory, PageStoryChanges, StoryComponent,
-    GalleryComponent, PageFlapSync, UserInfo, UserStats, UserList, UserSearch, UserStories, UserFavorite, UserLike, UserSubscriptions, UserLikes, PageObjectMain, PageReview,
+    GalleryComponent, PageFlapSync, PageObjectMain, PageReview, UserSearch, UserList,
     PageNotFound, TagStoryPage
   ],
   imports: [ // import Angular's modules
     BrowserModule,
     ReactiveFormsModule,
     HttpModule,
-    SharedModule,
-    RouterModule.forRoot(ROUTES, {useHash: false})
+    RouterModule.forRoot(ROUTES, {useHash: false}),
+    // our modules
+    SharedModule, UserModule
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,

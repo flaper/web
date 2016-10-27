@@ -1,13 +1,13 @@
 import {Component} from '@angular/core';
 import {AUTH_PROVIDERS, User, UserService, UserSettings, ACL, ObjectService} from "@flaper/angular";
-import {PageUser} from "../../pages/user/PageUser/PageUser";
+import {PageUser} from "../../PageUser/PageUser";
 let _keyBy = require('lodash/keyBy');
 
 class IdentityProvider {
-  provider:string;
-  providerTitle:string;
-  url:string;
-  displayName:string
+  provider: string;
+  providerTitle: string;
+  url: string;
+  displayName: string
 }
 
 @Component({
@@ -16,13 +16,13 @@ class IdentityProvider {
   template: require('./UserInfo.html')
 })
 export class UserInfo {
-  user:User;
-  identities:Array<IdentityProvider> = null;
+  user: User;
+  identities: Array<IdentityProvider> = null;
   hideSocialLinks = null;
   hidePoints = null;
 
-  constructor(private _user:UserService, private userSettings:UserSettings, private acl:ACL,
-              private _object:ObjectService) {
+  constructor(private _user: UserService, private userSettings: UserSettings, private acl: ACL,
+              private _object: ObjectService) {
     PageUser.UserObservable.subscribe(user=> {
       if (this.user && this.user.id == user.id) {
         return;
@@ -42,7 +42,7 @@ export class UserInfo {
       });
       if (this._user.isCurrentUser(this.user)) {
         this.userSettings.getMy(UserSettings.SETTINGS.HIDE_SOCIAL_LINKS)
-          .subscribe(value => this.hideSocialLinks = value)
+          .subscribe(value => this.hideSocialLinks = value);
         this.userSettings.getMy(UserSettings.SETTINGS.HIDE_POINTS)
           .subscribe(value => this.hidePoints = value)
       }
@@ -52,6 +52,7 @@ export class UserInfo {
   hideSocialChanged(event) {
     this.userSettings.setMy(UserSettings.SETTINGS.HIDE_SOCIAL_LINKS, event.target.checked);
   }
+
   hidePointsChanged(event) {
     this.userSettings.setMy(UserSettings.SETTINGS.HIDE_POINTS, event.target.checked);
   }

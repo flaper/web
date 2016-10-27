@@ -33,10 +33,10 @@
            *ngIf="_user.isCurrentUser(user) || acl.isAdmin() || !settings['HIDE_SOCIAL_LINKS']"
            routerLinkActive="active">Инфо</a>
         <a class="nav-item nav-link" routerLink="articles" routerLinkActive="active">Статьи</a>
-        <a class="nav-item nav-link" routerLink="stats" *ngIf="_user.isCurrentUser(user) || acl.can('super')" routerLinkActive="active">Баллы</a>
-        <a class="nav-item nav-link" routerLink="like" routerLinkActive="active">Лайки</a>
-        <a class="nav-item nav-link" routerLink="subscription" routerLinkActive="subscription">Подписки</a>
-        <a class="nav-item nav-link" routerLink="favorite" routerLinkActive="active">Избранное</a>
+        <!--<a class="nav-item nav-link" routerLink="stats" *ngIf="_user.isCurrentUser(user) || acl.can('super')" routerLinkActive="active">Баллы</a>-->
+        <!--<a class="nav-item nav-link" routerLink="like" routerLinkActive="active">Лайки</a>-->
+        <!--<a class="nav-item nav-link" routerLink="subscription" routerLinkActive="subscription">Подписки</a>-->
+        <!--<a class="nav-item nav-link" routerLink="favorite" routerLinkActive="active">Избранное</a>-->
       </div>
     </nav>
   </div>
