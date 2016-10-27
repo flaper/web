@@ -43,9 +43,6 @@ import {PageManageRequest} from "./components/pages/object/PageManageRequest/Pag
 import {PageManage} from "./components/pages/object/PageManage/PageManage";
 import {LoadMore} from "./components/common/LoadMore/LoadMore";
 import {StoryItem} from "./components/story/StoryItem/StoryItem";
-import {SubscriptionAutoList} from "./components/subscription/SubscriptionAutoList/SubscriptionAutoList";
-import {SubscriptionList} from "./components/subscription/SubscriptionList/SubscriptionList";
-import {SubscriptionItem} from "./components/subscription/SubscriptionItem/SubscriptionItem";
 import {CommentsShortList} from "./components/comment/CommentsShortList/CommentsShortList";
 import {CommentsAutoList} from "./components/comment/CommentsAutoList/CommentsAutoList";
 import {CommentsList} from "./components/comment/CommentsList/CommentsList";
@@ -87,7 +84,7 @@ const APP_PROVIDERS = [
     App, MenuLeft, Footer, Navbar, Curtain, PageUsers, PageUserMenu, News, StoriesAutoList, HomeLinks,
     Github, PageLastStories, LayoutHome, LayoutObject, ObjectSearch, ObjectSearchForm, LastStories, TopStories, PageTopStories, PageTopStoriesLast, ObjectList,
     StoriesList, SimpleWrite, WriteStoryButton, PageManageSupport, PageManageRequest, PageManage, LoadMore, StoryItem,
-    CommentsShortList, CommentsAutoList, CommentsList, CommentComponent, SubscriptionList, SubscriptionItem, SubscriptionAutoList, RatingBar, DropzoneComponent, PremiumMessages,
+    CommentsShortList, CommentsAutoList, CommentsList, CommentComponent, RatingBar, DropzoneComponent, PremiumMessages,
     CommentWrite, PostActions, PageLogin, PageNews, PageWriteStory, PagePremiumSupport, PageNavigator, PageStory, PageStoryChanges, StoryComponent,
     GalleryComponent, PageFlapSync, PageObjectMain, PageReview, UserSearch, UserList,
     PageNotFound, TagStoryPage

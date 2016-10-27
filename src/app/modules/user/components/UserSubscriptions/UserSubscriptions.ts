@@ -1,11 +1,9 @@
 import {Component} from '@angular/core';
 import {User,UserService} from "@flaper/angular";
-import {PageUser} from "../../pages/user/PageUser/PageUser";
-import {SubscriptionAutoList} from "../../subscription/SubscriptionAutoList/SubscriptionAutoList";
+import {PageUser} from "../../PageUser/PageUser";
 
 @Component({
   selector: 'page-user-subscriptions',
-  entryComponents: [SubscriptionAutoList],
   styles: [require('./UserSubscriptions.scss')],
   template: require('./UserSubscriptions.html')
 })
@@ -13,7 +11,6 @@ export class UserSubscriptions {
   user:User;
   page:string = 'subscriptions';
   query;
-  // currentUser:User;
   constructor(private _user:UserService) {
     PageUser.UserObservable.subscribe(user=> {
       this.user = user;

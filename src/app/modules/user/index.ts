@@ -9,6 +9,11 @@ import {UserStats} from "./components/UserStats/UserStats";
 import {UserLike} from "./components/UserLikes/UserLike/UserLike";
 import {UserLikes} from "./components/UserLikes/UserLikes";
 import {UserFavorite} from "./components/UserLikes/UserFavorite/UserFavorite";
+import {UserSubscriptions} from "./components/UserSubscriptions/UserSubscriptions";
+import {SubscriptionAutoList} from "./components/subscription/SubscriptionAutoList/SubscriptionAutoList";
+import {SubscriptionList} from "./components/subscription/SubscriptionList/SubscriptionList";
+import {SubscriptionItem} from "./components/subscription/SubscriptionItem/SubscriptionItem";
+import {SubscriberItem} from "./components/subscription/SubscriberItem/SubscriberItem";
 
 export const routes = [
   {
@@ -20,14 +25,15 @@ export const routes = [
       {path: '', component: UserStories},
       {path: 'articles', component: UserStories},
       {path: 'like', component: UserLike},
-      // {path: 'subscription', component: UserSubscriptions},
       {path: 'favorite', component: UserFavorite},
+      {path: 'subscription', component: UserSubscriptions},
     ]
   }
 ];
 
 @NgModule({
-  declarations: [PageUser, UserInfo, UserStories, UserStats, UserLike, UserLikes, UserFavorite],
+  declarations: [PageUser, UserInfo, UserStories, UserStats, UserLike, UserLikes, UserFavorite, UserSubscriptions,
+    SubscriptionAutoList, SubscriptionList, SubscriptionItem, SubscriberItem],
   imports: [
     SharedModule,
     RouterModule.forChild(routes),

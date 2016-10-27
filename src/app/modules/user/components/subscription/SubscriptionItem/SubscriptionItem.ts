@@ -1,5 +1,5 @@
 import {Component, Input} from "@angular/core";
-import {User,FObject,Subscription,UserService,ObjectService} from "@flaper/angular";
+import {User, FObject, Subscription, UserService, ObjectService} from "@flaper/angular";
 
 @Component({
   selector: 'subscription-item',
@@ -9,20 +9,24 @@ import {User,FObject,Subscription,UserService,ObjectService} from "@flaper/angul
 
 export class SubscriptionItem {
   @Input()
-  item:Subscription;
+  item: Subscription;
   @Input()
-  displayType:string;
-  user:User;
-  object:FObject;
-  displayName:string = "";
-  subjectId:string;
-  avatar:string;
-  constructor(private _user:UserService, private _object:ObjectService) {
+  displayType: string;
+  user: User;
+  object: FObject;
+  displayName: string = "";
+  subjectId: string;
+  avatar: string;
+
+  constructor(private _user: UserService, private _object: ObjectService) {
 
   }
+
   getRouterLink() {
-    return this.user ? ['/u',this.user.id] : this.object ? ['/',this.object.mainDomain, this.object.region, this.object.slug,'-main'].filter(item => !!item) : [];
+    return this.user ? ['/u', this.user.id] : this.object ?
+      ['/', this.object.mainDomain, this.object.region, this.object.slug, '-main'].filter(item => !!item) : [];
   }
+
   ngOnInit() {
     let property = this.displayType === "subscriptions" ? "targetId" : "userId";
     switch (this.item.subjectType) {
