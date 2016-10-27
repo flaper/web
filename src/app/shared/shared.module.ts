@@ -9,12 +9,15 @@ import {LikeComponent} from "./components/like/LikeComponent/LikeComponent";
 import {LikeListModal} from "./components/like/LikeListModal/LikeListModal";
 import {UserLink} from "./components/user/UserLink/UserLink";
 import {UserAvatar} from "./components/user/UserAvatar/UserAvatar";
+import {ModalModule} from "angular2-modal";
+import {BootstrapModalModule} from 'angular2-modal/plugins/bootstrap';
 
 @NgModule({
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule,
+    ModalModule.withComponents([LikeListModal]), ModalModule.forRoot(), BootstrapModalModule],
   declarations: [ObjectLink, AutoFocusIt, Autosize, LikeComponent, LikeListModal, UserLink, UserAvatar],
   exports: [CommonModule, FormsModule, MomentModule,
-    ObjectLink, AutoFocusIt, Autosize, LikeComponent, UserLink, UserAvatar]
+    ObjectLink, AutoFocusIt, Autosize, LikeComponent, LikeListModal, UserLink, UserAvatar]
 })
 export class SharedModule {
 }

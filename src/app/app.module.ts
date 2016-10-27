@@ -3,7 +3,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {HttpModule} from '@angular/http';
 import {ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
-import {removeNgStyles, createNewHosts} from '@angularclass/hmr';
+import {removeNgStyles} from '@angularclass/hmr';
 import {SharedModule} from "./shared/shared.module";
 
 /*
@@ -81,8 +81,6 @@ import {UserFavorite} from "./components/user/UserLikes/UserFavorite/UserFavorit
 import {PageObjectMain} from "./components/pages/object/PageObjectMain/PageObjectMain";
 import {PageReview} from "./components/pages/object/PageReview/PageReview";
 import {PageNotFound} from "./components/pages/notFound/PageNotFound";
-import {ModalModule} from "angular2-modal";
-import {BootstrapModalModule} from 'angular2-modal/plugins/bootstrap';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -106,8 +104,6 @@ const APP_PROVIDERS = [
   ],
   imports: [ // import Angular's modules
     BrowserModule,
-    ModalModule.forRoot(),
-    BootstrapModalModule,
     ReactiveFormsModule,
     HttpModule,
     SharedModule,
