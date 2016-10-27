@@ -1,6 +1,5 @@
 import {Component, ViewEncapsulation, ViewContainerRef} from '@angular/core';
 import {Location} from '@angular/common';
-import {Http} from '@angular/http';
 import 'jquery';
 import {PageService} from "./services/helpers/PageService";
 import {UserService} from "@flaper/angular";
@@ -9,10 +8,8 @@ import {MenuLeft} from "./components/layout/MenuLeft/MenuLeft";
 import {Navbar} from './components/layout/navbar/navbar';
 import {Footer} from "./components/layout/footer/footer";
 import {Metrika} from "./services/metrics/Metrika";
-import {WriteStoryButton} from "./components/story/write/WriteStoryButton/WriteStoryButton";
-import {ROUTES} from './routes';
-import { Overlay } from 'angular2-modal';
-import { Modal } from 'angular2-modal/plugins/bootstrap';
+import {Overlay} from 'angular2-modal';
+import {Modal} from 'angular2-modal/plugins/bootstrap';
 import {PopupService} from './services/popup/PopupService';
 
 @Component({
@@ -23,22 +20,25 @@ import {PopupService} from './services/popup/PopupService';
   styles: [require('./app.style.scss')]
 })
 export class App {
-  curtain:boolean = true;
+  curtain: boolean = true;
+
   ngAfterContentInit() {
     this.curtain = false;
   }
-  constructor(pageService:PageService, location:Location,
-              private _user:UserService, metrika:Metrika, /*ensure to create Metrika instance*/
-              private _popup:PopupService,overlay:Overlay,vcRef:ViewContainerRef,
+
+  constructor(_page: PageService, location: Location,
+              private _user: UserService, metrika: Metrika, /*ensure to create Metrika instance*/
+              private _popup: PopupService, overlay: Overlay, vcRef: ViewContainerRef,
               public modal: Modal) {
     overlay.defaultViewContainer = vcRef;
     _popup.initContainer(modal);
     let path = location.path();
     if (!path || path === '/') {
-      pageService.navigateToDefault();
+      _page.navigateToDefault();
     }
     if (window.innerWidth >= 1000) this.initScroller();
   }
+
   initScroller() {
     require('scrollup/dist/jquery.scrollUp.min');
     $.scrollUp({

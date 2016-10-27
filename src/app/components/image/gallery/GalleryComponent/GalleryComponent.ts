@@ -1,12 +1,11 @@
 import {Component,Input,Output,EventEmitter,HostListener} from '@angular/core';
 import {GalleryImage} from '../GalleryImage/GalleryImage';
 import {CommentsAutoList} from "../../../comment/CommentsAutoList/CommentsAutoList";
-import {LikeComponent} from "../../../like/LikeComponent/LikeComponent";
 
 @Component({
   selector: 'image-gallery',
   inputs: ['state'],
-  entryComponents: [CommentsAutoList,LikeComponent],
+  entryComponents: [CommentsAutoList],
   template: require('./GalleryComponent.html'),
   styles: [require('./GalleryComponent.scss')]
 })
