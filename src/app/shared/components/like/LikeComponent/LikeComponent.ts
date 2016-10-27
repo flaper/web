@@ -8,7 +8,6 @@ import {LikeListModal} from "../LikeListModal/LikeListModal";
 @Component({
   selector: 'like',
   template: require('./LikeComponent.html'),
-  entryComponents: [LikeListModal]
 })
 export class LikeComponent {
   @Input()
