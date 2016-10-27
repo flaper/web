@@ -13,13 +13,14 @@ import {PaymentService} from "../../../../services/payment/PaymentService";
   styles: [require('./PageManageRequest.scss')]
 })
 export class PageManageRequest {
-  obj:FObject;
+  SUM = 300;
+  obj: FObject;
 
-  manageRequest:any;
-  form:FormGroup;
+  manageRequest: any;
+  form: FormGroup;
 
-  constructor(private fb:FormBuilder, _user:UserService, private _manageRequest:ManageRequestService,
-              _page:PageService, private _payment:PaymentService) {
+  constructor(private fb: FormBuilder, _user: UserService, private _manageRequest: ManageRequestService,
+              _page: PageService, private _payment: PaymentService) {
     LayoutObject.ObjectObservable.subscribe(obj => {
       this.obj = obj;
       Metrika.setParam('page', 'manageRequest');
@@ -56,7 +57,7 @@ export class PageManageRequest {
   }
 
   onPay() {
-    let data = {sum: 200};
+    let data = {sum: this.SUM};
     if (this.manageRequest) {
       if (this.manageRequest.email) {
         data["cps_email"] = this.manageRequest.email;
