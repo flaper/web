@@ -1,28 +1,26 @@
-import { NgModule, ApplicationRef } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule } from '@angular/http';
-// import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormsModule} from '@angular/forms';
-import { RouterModule } from '@angular/router';
-import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
+import {NgModule, ApplicationRef} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {HttpModule} from '@angular/http';
+import {ReactiveFormsModule} from '@angular/forms';
+import {RouterModule} from '@angular/router';
+import {removeNgStyles, createNewHosts} from '@angularclass/hmr';
+import {SharedModule} from "./shared/shared.module";
 
 /*
  * Platform and Environment providers/directives/pipes
  */
-import { ENV_PROVIDERS } from './environment';
-import { ROUTES } from './routes';
+import {ENV_PROVIDERS} from './environment';
+import {ROUTES} from './app.routes';
+
 // App is our top level component
-import { App } from './app.component';
-import {APPLICATION_DIRECTIVES} from './environment/directives';
+import {App} from './app.component';
 import {APPLICATION_PIPES} from './environment/pipes';
-import { APP_RESOLVER_PROVIDERS } from './app.resolver';
+import {APP_RESOLVER_PROVIDERS} from './app.resolver';
 import {MenuLeft} from "./components/layout/MenuLeft/MenuLeft";
 import {Footer} from "./components/layout/footer/footer";
 import {Navbar} from "./components/layout/navbar/navbar";
-// import {ModalHost} from "./components/layout/ModalHost/ModalHost";
 import {Curtain} from "./components/layout/Curtain/Curtain";
 import {PageNavigator} from "./components/layout/PageNavigator/PageNavigator";
-import {ObjectLink, AutoFocusIt} from '@flaper/angular';
 import {PageUsers} from "./components/pages/user/PageUsers/PageUsers";
 import {PageUser} from "./components/pages/user/PageUser/PageUser";
 import {PageUserMenu} from "./components/pages/user/PageUserMenu/PageUserMenu";
@@ -83,9 +81,8 @@ import {UserFavorite} from "./components/user/UserLikes/UserFavorite/UserFavorit
 import {PageObjectMain} from "./components/pages/object/PageObjectMain/PageObjectMain";
 import {PageReview} from "./components/pages/object/PageReview/PageReview";
 import {PageNotFound} from "./components/pages/notFound/PageNotFound";
-import {LikeListModal} from "./components/like/LikeListModal/LikeListModal";
 import {ModalModule} from "angular2-modal";
-import { BootstrapModalModule } from 'angular2-modal/plugins/bootstrap';
+import {BootstrapModalModule} from 'angular2-modal/plugins/bootstrap';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -97,23 +94,23 @@ const APP_PROVIDERS = [
  */
 @NgModule({
   bootstrap: [App],
-  entryComponents: [LikeListModal],
   declarations: [
-    ...APPLICATION_DIRECTIVES, ...APPLICATION_PIPES,
-    App, MenuLeft, Footer, Navbar, Curtain, ObjectLink, PageUsers, PageUser, PageUserMenu, AutoFocusIt, News, StoriesAutoList, HomeLinks,
-    Github, PageLastStories, LayoutHome, LayoutObject,ObjectSearch,ObjectSearchForm, LastStories, TopStories, PageTopStories, PageTopStoriesLast,ObjectList ,
-    StoriesList, SimpleWrite,WriteStoryButton, PageManageSupport, PageManageRequest, PageManage, LoadMore, StoryItem,
-    CommentsShortList, CommentsAutoList, CommentsList, CommentComponent, SubscribeButton,SubscriptionList,SubscriptionItem,SubscriptionAutoList, RatingBar, DropzoneComponent, PremiumMessages,
-    CommentWrite, PostActions, PageLogin, PageNews, PageWriteStory, PagePremiumSupport,PageNavigator, PageStory, PageStoryChanges, StoryComponent,
-    GalleryComponent, PageFlapSync, UserInfo, UserStats, UserList, UserSearch, UserStories,UserFavorite,UserLike,UserSubscriptions, UserLikes, PageObjectMain, PageReview,
-    PageNotFound, LikeListModal,TagStoryPage
+    ...APPLICATION_PIPES,
+    App, MenuLeft, Footer, Navbar, Curtain, PageUsers, PageUser, PageUserMenu, News, StoriesAutoList, HomeLinks,
+    Github, PageLastStories, LayoutHome, LayoutObject, ObjectSearch, ObjectSearchForm, LastStories, TopStories, PageTopStories, PageTopStoriesLast, ObjectList,
+    StoriesList, SimpleWrite, WriteStoryButton, PageManageSupport, PageManageRequest, PageManage, LoadMore, StoryItem,
+    CommentsShortList, CommentsAutoList, CommentsList, CommentComponent, SubscribeButton, SubscriptionList, SubscriptionItem, SubscriptionAutoList, RatingBar, DropzoneComponent, PremiumMessages,
+    CommentWrite, PostActions, PageLogin, PageNews, PageWriteStory, PagePremiumSupport, PageNavigator, PageStory, PageStoryChanges, StoryComponent,
+    GalleryComponent, PageFlapSync, UserInfo, UserStats, UserList, UserSearch, UserStories, UserFavorite, UserLike, UserSubscriptions, UserLikes, PageObjectMain, PageReview,
+    PageNotFound, TagStoryPage
   ],
   imports: [ // import Angular's modules
-    BrowserModule, FormsModule,
+    BrowserModule,
     ModalModule.forRoot(),
     BootstrapModalModule,
     ReactiveFormsModule,
     HttpModule,
+    SharedModule,
     RouterModule.forRoot(ROUTES, {useHash: false})
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
@@ -122,7 +119,7 @@ const APP_PROVIDERS = [
   ]
 })
 export class AppModule {
-  constructor(public appRef:ApplicationRef) {
+  constructor(public appRef: ApplicationRef) {
   }
 
   hmrOnInit() {

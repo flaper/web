@@ -1,8 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {ILikable, UserService, LikeService} from "@flaper/angular";
-import {PageService} from "../../../services/helpers/PageService";
-import {PopupService} from "../../../services/popup/PopupService";
-import {Navbar} from "../../layout/navbar/navbar";
+// import {PageService} from "../../../services/helpers/PageService";
+import {PopupService} from "../../../../services/popup/PopupService";
 import {LikeListModal} from "../LikeListModal/LikeListModal";
 
 
@@ -13,14 +12,14 @@ import {LikeListModal} from "../LikeListModal/LikeListModal";
 })
 export class LikeComponent {
   @Input()
-  subject:ILikable;
+  subject: ILikable;
 
   @Input()
-  iconMode:boolean = false;
+  iconMode: boolean = false;
 
   private ifIHaveLike = false;
 
-  constructor(private _like:LikeService, private _user:UserService, private _page:PageService, private _popup:PopupService) {
+  constructor(private _like: LikeService, private _user: UserService, /* private _page:PageService,*/ private _popup: PopupService) {
 
   }
 
@@ -36,12 +35,15 @@ export class LikeComponent {
         .subscribe(ifIHaveLike => this.ifIHaveLike = ifIHaveLike)
     }
   }
+
   showPopup() {
-    this._popup.openCustom(LikeListModal,{isBlocking:false, subjectId:this.subject.id});
+    this._popup.openCustom(LikeListModal, {isBlocking: false, subjectId: this.subject.id});
   }
+
   toggleLike() {
     if (!this._user.currentUser) {
-      this._page.navigateToLogin();
+      // sklyukin: вернуть после lazy-loading
+      // this._page.navigateToLogin();
     } else if (this._user.currentUserId !== this.subject.userId) {
       this._like.toggle(this.subject.id)
         .subscribe((response) => {
@@ -49,6 +51,7 @@ export class LikeComponent {
         })
     }
   }
+
   ngOnChanges(changes) {
     if (changes.subject) {
       this.requestMyLike();
