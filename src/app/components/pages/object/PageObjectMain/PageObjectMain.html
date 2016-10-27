@@ -1,15 +1,4 @@
 <div *ngIf="obj">
-  <div class="btn-group btn-group-justified" role="group">
-    <button type="button" class="btn btn-success" [routerLink]="getManageLink()">
-      <i class="fa fa-briefcase"></i>
-      Управлять страницей
-    </button>
-    <button type="button" class="btn btn-primary hidden-sm-down" [routerLink]="getLink('review')">Написать отзыв</button>
-    <button type="button" class="btn btn-secondary hidden-sm-down" disabled>
-      <i class="fa fa-pencil"></i>
-      Редактировать
-    </button>
-  </div>
   <image-gallery [oldLinks]='true' [currentImage]="currentImage" (stateUpdated)="stateChanged($event)"
                  [images]='obj.getImages()'></image-gallery>
   <div *ngIf="images.length > 0" class="images hidden-sm-down">
