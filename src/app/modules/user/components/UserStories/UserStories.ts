@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {User,UserService} from "@flaper/angular";
+import {User, UserService} from "@flaper/angular";
 // import {StoriesAutoList} from "../../story/StoriesAutoList/StoriesAutoList";
 import {PageUser} from "../../PageUser/PageUser";
 
@@ -10,20 +10,23 @@ import {PageUser} from "../../PageUser/PageUser";
   template: require('./UserStories.html')
 })
 export class UserStories {
-  user:User;
-  // currentUser:User;
+  user: User;
   storyStatus: string = 'active';
-  constructor(private _user:UserService) {
+
+  constructor(private _user: UserService) {
     PageUser.UserObservable.subscribe(user=> {
       this.user = user;
     });
   }
+
   showStories(status: string) {
     this.storyStatus = status;
   }
+
   isActive(status: string) {
     return this.storyStatus === status;
   }
+
   isVisible(roles: string[]) {
     let isSelf: boolean = Boolean(this._user.currentUser && this._user.currentUser == this.user);
     let isSuper: boolean = Boolean(this._user.currentUser && this._user.currentUser.roles.indexOf('super') >= 0);

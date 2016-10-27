@@ -5,6 +5,10 @@ import {SharedModule} from "../../shared/shared.module";
 import {PageUser} from "./PageUser/PageUser";
 import {UserInfo} from "./components/UserInfo/UserInfo";
 import {UserStories} from "./components/UserStories/UserStories";
+import {UserStats} from "./components/UserStats/UserStats";
+import {UserLike} from "./components/UserLikes/UserLike/UserLike";
+import {UserLikes} from "./components/UserLikes/UserLikes";
+import {UserFavorite} from "./components/UserLikes/UserFavorite/UserFavorite";
 
 export const routes = [
   {
@@ -12,18 +16,18 @@ export const routes = [
     component: PageUser,
     children: [
       {path: 'info', component: UserInfo},
-      // {path: 'stats', component: UserStats},
+      {path: 'stats', component: UserStats},
       {path: '', component: UserStories},
-      // {path: 'articles', component: UserStories},
-      // {path: 'like', component: UserLike},
+      {path: 'articles', component: UserStories},
+      {path: 'like', component: UserLike},
       // {path: 'subscription', component: UserSubscriptions},
-      // {path: 'favorite', component: UserFavorite},
+      {path: 'favorite', component: UserFavorite},
     ]
   }
 ];
 
 @NgModule({
-  declarations: [PageUser, UserInfo, UserStories],
+  declarations: [PageUser, UserInfo, UserStories, UserStats, UserLike, UserLikes, UserFavorite],
   imports: [
     SharedModule,
     RouterModule.forChild(routes),
