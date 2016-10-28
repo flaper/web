@@ -5,6 +5,7 @@ import {ObjectService, UserService} from "@flaper/angular";
 import {FObject} from "@flaper/angular";
 import {Metrika} from "../../../../services/metrics/Metrika";
 import {ReplaySubject} from "rxjs";
+import {PageService} from "../../../../services/helpers/PageService";
 
 @Component({
   selector: 'layout-object',
@@ -24,6 +25,8 @@ export class LayoutObject {
       let data = route.snapshot.data;
       let mainDomain = params['mainDomain'];
       mainDomain = mainDomain ? decodeURIComponent(mainDomain) : data['mainDomain'];
+      if (mainDomain.length <= 2)
+        return this.router.navigateByUrl('/p/not-found');
       let region = decodeURIComponent(params['region']);
       let slug = decodeURIComponent(params['slug']);
       _object.getBySlug({mainDomain, region, slug})
