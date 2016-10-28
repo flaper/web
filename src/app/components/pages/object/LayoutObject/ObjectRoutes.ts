@@ -9,7 +9,6 @@ const children = [
   {path: '', component: PageObjectMain},
   {path: '-main', component: PageObjectMain},
   {path: '-manage', component: PageManage},
-  {path: '-manageRequest', component: PageManage},
   {path: '-request', component: PageManageRequest},
   {path: '-review', component: PageReview},
   {path: ':reviewSlug', component: PageStory},

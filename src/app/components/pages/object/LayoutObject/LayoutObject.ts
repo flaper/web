@@ -48,11 +48,9 @@ export class LayoutObject {
   getManageLink() {
     if (!this.obj)
       return;
-    let ifOwner = false;
-    if (this._user.currentUser) {
-      ifOwner = this._user.currentUser.extra.getObjects().indexOf(this.obj.id) > -1;
-    }
-    return ifOwner ? '/p/manageSupport' : this.getLink('manageRequest');
+    let user = this._user.currentUser;
+    let ifOwner = user && (user.extra.getObjects().indexOf(this.obj.id) > -1);
+    return this.getLink(ifOwner ? 'manage' : 'request');
   }
 
 
