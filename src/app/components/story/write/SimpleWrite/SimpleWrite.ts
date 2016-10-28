@@ -86,6 +86,10 @@ export class SimpleWrite {
     if (this.submitInProgress) {
       return false;
     }
+    if (this.tagline.length > 0) {
+      this.tagline += " ";
+      this.processTags(null);
+    }
     if (this.form.valid) {
       let data = this.getStoryData();
       this.error = null;
@@ -147,7 +151,7 @@ export class SimpleWrite {
     if (this.tags.length >= this.MAX_TAGS) {
       this.tagline = "";
     }
-    let line = this.tagline ? this.tagline.split(/[,\.]/) : [""];
+    let line = this.tagline ? this.tagline.split(/[,\.\s;]/) : [""];
     if (line.length <= 1) return;
 
     if (this.tags.length != this.MAX_TAGS) {
