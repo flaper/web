@@ -44,6 +44,7 @@ import {ObjectList} from "./components/object/ObjectList/ObjectList";
 import {ObjectSearchForm} from "./components/object/ObjectSearchForm/ObjectSearchForm";
 import {DropzoneComponent} from "./components/image/dropzone/DropzoneComponent";
 import {PageLogin} from "./components/pages/login/PageLogin";
+import {PageLoginEmail} from "./components/pages/login/PageLoginEmail/PageLoginEmail";
 import {PageNews} from "./components/pages/home/PageNews/PageNews";
 import {PageWriteStory} from "./components/pages/story/write/PageWriteStory";
 import {PageStory} from "./components/pages/story/read/PageStory";
@@ -71,7 +72,7 @@ const APP_PROVIDERS = [
     AppComponent, MenuLeft, Footer, Navbar, Curtain, PageUsers, PageUserMenu, News, HomeLinks,
     Github, PageLastStories, LayoutHome, LayoutObject, ObjectSearch, ObjectSearchForm, LastStories, TopStories,
     PageTopStories, PageTopStoriesLast, ObjectList, SimpleWrite, WriteStoryButton, PageManageRequest, PageManage,
-    DropzoneComponent, PageLogin, PageNews, PageWriteStory, PageObjectEdit,
+    DropzoneComponent, PageLogin,PageLoginEmail, PageNews, PageWriteStory, PageObjectEdit,
     PageNavigator, PageStory, PageStoryChanges, PageFlapSync, PageObjectMain, PageReview, UserSearch, UserList,
     PageNotFound, TagStoryPage
   ],

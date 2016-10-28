@@ -1,4 +1,5 @@
 import {PageLogin} from './components/pages/login/PageLogin';
+import {PageLoginEmail} from './components/pages/login/PageLoginEmail/PageLoginEmail';
 import {PageWriteStory} from './components/pages/story/write/PageWriteStory';
 import {PageLastStories} from "./components/pages/home/PageLastStories/PageLastStories";
 import {PageNews} from "./components/pages/home/PageNews/PageNews";
@@ -19,6 +20,7 @@ export const ROUTES = [
   {path: 'p/last', component: PageLastStories},
   {path: 'p/menu', component: PageUserMenu},
   {path: 'p/login', component: PageLogin},
+  {path: 'p/signin', component: PageLoginEmail},
   {path: 'p/news', component: PageNews},
   {path: 'p/create_story', component: PageWriteStory},
   {path: 'p/top', component: PageTopStories},

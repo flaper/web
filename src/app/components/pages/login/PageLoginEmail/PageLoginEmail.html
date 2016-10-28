@@ -1,0 +1,25 @@
+<div class="absolute-wrapper" [class.has-message]="message">
+  <div class="absolute-container">
+    <div>
+      <div class="container">
+        <div class="alert alert-info text-xs-center" *ngIf="message" [innerHtml]="message">
+        </div>
+        <h1 class="text-xs-center">Вход</h1>
+        <div class="login-btns mx-auto">
+          <form class="form" (submit)="onSubmit()">
+            <fieldset class="form-group" required>
+              <label for="username">Логин</label>
+              <input class="form-control" type="text" [(ngModel)]="data.username" id="username" name="username">
+            </fieldset>
+            <fieldset class="form-group" required>
+              <label for="password">Пароль</label>
+              <input class="form-control" type="password" [(ngModel)]="data.password" id="password" name="password">
+            </fieldset>
+            <input class="btn btn-primary btn-sm" type="submit" value="Войти">
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
