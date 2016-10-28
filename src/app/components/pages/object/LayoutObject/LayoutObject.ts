@@ -45,12 +45,15 @@ export class LayoutObject {
     return "/" + ([this.obj.mainDomain, this.obj.region, this.obj.slug, '-' + name].join('/'));
   }
 
-  getManageLink() {
+  isOwner() {
     if (!this.obj)
-      return;
+      return false;
     let user = this._user.currentUser;
-    let ifOwner = user && (user.extra.getObjects().indexOf(this.obj.id) > -1);
-    return this.getLink(ifOwner ? 'manage' : 'request');
+    return user && (user.extra.getObjects().indexOf(this.obj.id) > -1);
+  }
+
+  getManageLink() {
+    return this.getLink(this.isOwner() ? 'manage' : 'request');
   }
 
 
