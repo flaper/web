@@ -24,6 +24,10 @@
 <div class='text-xs-left' *ngIf="story.type==='review'">
   <rating [display]="true" [numeric]="true" [rating]="story.rating"></rating>
 </div>
+<div *ngIf="story.tags && story.tags.length > 0" class='tagline'>
+  <label>Тэги:</label>
+  <a [routerLink]="['/t',tag]" class="tag tag-default" *ngFor="let tag of story.tags">{{tag}}</a>
+</div>
 <div [innerHtml]="story.contentHTML" class="contentHTML">
 </div>
 <div class="answer alert alert-success" *ngIf="story.answer">
