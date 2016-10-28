@@ -55,6 +55,7 @@ import {UserList} from "./components/user/UserList/UserList";
 import {PageObjectMain} from "./components/pages/object/PageObjectMain/PageObjectMain";
 import {PageReview} from "./components/pages/object/PageReview/PageReview";
 import {PageNotFound} from "./components/pages/notFound/PageNotFound";
+import {PageObjectEdit} from "./components/pages/object/PageObjectEdit/PageObjectEdit";
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -71,7 +72,7 @@ const APP_PROVIDERS = [
     Github, PageLastStories, LayoutHome, LayoutObject, ObjectSearch, ObjectSearchForm, LastStories, TopStories,
     PageTopStories, PageTopStoriesLast, ObjectList,
     SimpleWrite, WriteStoryButton, PageManageSupport, PageManageRequest, PageManage,
-    DropzoneComponent, PremiumMessages, PageLogin, PageNews, PageWriteStory, PagePremiumSupport,
+    DropzoneComponent, PremiumMessages, PageLogin, PageNews, PageWriteStory, PagePremiumSupport, PageObjectEdit,
     PageNavigator, PageStory, PageStoryChanges, PageFlapSync, PageObjectMain, PageReview, UserSearch, UserList,
     PageNotFound, TagStoryPage
   ],

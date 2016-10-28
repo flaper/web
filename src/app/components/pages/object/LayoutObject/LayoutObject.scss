@@ -1,5 +1,9 @@
 @import "../../../../../css/variables";
 
+router-outlet {
+  margin-top: 1rem;
+}
+
 h1 {
   margin-bottom: 0;
 }
@@ -25,7 +29,6 @@ h1 {
     }
   }
 }
-
 
 @media (max-width: map-get($grid-breakpoints, 'md')-1) {
   .block-avatar {

@@ -52,9 +52,9 @@
         <i class="fa fa-briefcase"></i>
         Управлять страницей
       </button>
-      <button type="button" class="btn btn-primary hidden-sm-down" [routerLink]="getLink('review')" disabled="isOwner()">Написать отзыв
+      <button type="button" class="btn btn-primary hidden-sm-down" [routerLink]="getLink('review')" [disabled]="isOwner()">Написать отзыв
       </button>
-      <button type="button" class="btn btn-secondary hidden-sm-down" disabled>
+      <button type="button" class="btn btn-secondary hidden-sm-down" [routerLink]="getLink('edit')" [disabled]="!isOwner()">
         <i class="fa fa-pencil"></i>
         Редактировать
       </button>

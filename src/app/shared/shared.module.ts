@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {FormsModule, Form, ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ObjectLink, AutoFocusIt, FlapImagePipe} from '@flaper/angular';
 import {MomentModule} from 'angular2-moment';
 import {RouterModule} from '@angular/router';

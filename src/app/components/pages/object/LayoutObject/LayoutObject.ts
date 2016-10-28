@@ -39,10 +39,10 @@ export class LayoutObject {
     });
   }
 
-  getLink(name) {
+  getLink(action) {
     if (!this.obj)
       return;
-    return "/" + ([this.obj.mainDomain, this.obj.region, this.obj.slug, '-' + name].join('/'));
+    return ObjectService.getUrl(this.obj, action);
   }
 
   isOwner() {

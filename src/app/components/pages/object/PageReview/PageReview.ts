@@ -8,7 +8,6 @@ import {SimpleWrite} from "../../../story/write/SimpleWrite/SimpleWrite";
   selector: 'page-review',
   entryComponents: [SimpleWrite],
   template: require('./PageReview.html'),
-  styles: [require('./PageReview.scss')]
 })
 export class PageReview {
   obj:FObject;

@@ -5,12 +5,14 @@ import {PageManageRequest} from "../PageManageRequest/PageManageRequest";
 import {PageReview} from "../PageReview/PageReview";
 import {PageStory} from "../../story/read/PageStory";
 import {PageWriteStory} from "../../story/write/PageWriteStory";
+import {PageObjectEdit} from "../PageObjectEdit/PageObjectEdit";
 const children = [
   {path: '', component: PageObjectMain},
   {path: '-main', component: PageObjectMain},
   {path: '-manage', component: PageManage},
   {path: '-request', component: PageManageRequest},
   {path: '-review', component: PageReview},
+  {path: '-edit', component: PageObjectEdit},
   {path: ':reviewSlug', component: PageStory},
   {path: ':reviewSlug/edit', component: PageWriteStory}
 ];
