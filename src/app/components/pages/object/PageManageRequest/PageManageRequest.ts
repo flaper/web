@@ -1,12 +1,12 @@
 import {Component} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {FObject, UserService, ManageRequestService} from "@flaper/angular";
-import {ScreenService} from "../../../../services/helpers/ScreenService";
 import {LayoutObject} from "../LayoutObject/LayoutObject";
 import {PageService} from "../../../../services/helpers/PageService";
 import {Metrika} from "../../../../services/metrics/Metrika";
 import {PaymentService} from "../../../../services/payment/PaymentService";
 
+// страница запроса на управление страницей
 @Component({
   selector: 'page-manage-request',
   template: require('./PageManageRequest.html'),
@@ -57,16 +57,15 @@ export class PageManageRequest {
   }
 
   onPay() {
-    let data = {sum: this.SUM};
-    if (this.manageRequest) {
-      if (this.manageRequest.email) {
-        data["cps_email"] = this.manageRequest.email;
-      }
-      if (this.manageRequest.phone) {
-        data["cps_phone"] = this.manageRequest.phone;
-      }
-      data["flap_subject_id"] = this.manageRequest.subjectId;
-    }
+    if (!this.manageRequest) return;
+    let data = {
+      id: `manager_request_` + this.manageRequest.id,
+      amount: this.SUM,
+      description: `Управление страницей id #${this.manageRequest.subjectId}`,
+      email: this.manageRequest.email,
+      phone: this.manageRequest.phone,
+      customerName: this.manageRequest.name
+    };
     this._payment.pay(data);
   }
 }

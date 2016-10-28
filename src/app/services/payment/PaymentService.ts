@@ -7,17 +7,29 @@ const SCID = Config.ym.scid;
 @Injectable()
 export class PaymentService {
 
-  constructor(private _user:UserService) {
+  constructor(private _user: UserService) {
   }
 
-  pay(data) {
+  pay({id, amount, description = null, email = null, phone = null, customerName = null}) {
+    let data = {
+      sum: amount,
+      orderNumber: id,
+      custName: customerName,
+      cps_email: email,
+      cps_phone: phone,
+      orderDetails: description
+    };
+    this.payViaYandex(data);
+  }
+
+  payViaYandex(data) {
     data.shopId = SHOP_ID;
     data.scid = SCID;
     data.customerNumber = this._user.currentUserId;
-    data.flap_type = 'manage-request';
     let params = [];
     for (let param in data) {
       if (data.hasOwnProperty(param)) {
+        if (!data[param]) return;
         let value = encodeURIComponent(data[param]);
         params.push(`${param}=${value}`);
       }

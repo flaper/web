@@ -1,7 +1,6 @@
 import {Component, ElementRef} from '@angular/core';
 import {UserService, PremiumSupport} from "@flaper/angular";
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {PageService} from "../../../../services/helpers/PageService";
 import {PremiumMessages} from "../../../premiumSupport/PremiumMessages/PremiumMessages";
 
 @Component({
