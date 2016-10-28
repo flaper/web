@@ -28,11 +28,9 @@ export class PaymentService {
     data.customerNumber = this._user.currentUserId;
     let params = [];
     for (let param in data) {
-      if (data.hasOwnProperty(param)) {
-        if (!data[param]) return;
-        let value = encodeURIComponent(data[param]);
-        params.push(`${param}=${value}`);
-      }
+      if (!data.hasOwnProperty(param) || !data[param]) continue;
+      let value = encodeURIComponent(data[param]);
+      params.push(`${param}=${value}`);
     }
     let url = 'https://money.yandex.ru/eshop.xml?';
     url += params.join('&');

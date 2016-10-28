@@ -14,12 +14,11 @@ import {PopupService} from './services/popup/PopupService';
 
 @Component({
   selector: 'app',
-  entryComponents: [Navbar, Footer, MenuLeft, Curtain],
   encapsulation: ViewEncapsulation.None,
   template: require('./app.html'),
   styles: [require('./app.style.scss')]
 })
-export class App {
+export class AppComponent {
   curtain: boolean = true;
 
   ngAfterContentInit() {

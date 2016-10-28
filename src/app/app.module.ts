@@ -16,7 +16,7 @@ import {UserModule} from "./modules/user";
 import {SupportModule} from "./modules/support";
 
 // App is our top level component
-import {App} from './app.component';
+import {AppComponent} from './app.component';
 import {APP_RESOLVER_PROVIDERS} from './app.resolver';
 import {MenuLeft} from "./components/layout/MenuLeft/MenuLeft";
 import {Footer} from "./components/layout/footer/footer";
@@ -66,9 +66,9 @@ const APP_PROVIDERS = [
  * `AppModule` is the main entry point into Angular2's bootstrapping process
  */
 @NgModule({
-  bootstrap: [App],
+  bootstrap: [AppComponent],
   declarations: [
-    App, MenuLeft, Footer, Navbar, Curtain, PageUsers, PageUserMenu, News, HomeLinks,
+    AppComponent, MenuLeft, Footer, Navbar, Curtain, PageUsers, PageUserMenu, News, HomeLinks,
     Github, PageLastStories, LayoutHome, LayoutObject, ObjectSearch, ObjectSearchForm, LastStories, TopStories,
     PageTopStories, PageTopStoriesLast, ObjectList, SimpleWrite, WriteStoryButton, PageManageRequest, PageManage,
     DropzoneComponent, PageLogin, PageNews, PageWriteStory, PageObjectEdit,

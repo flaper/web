@@ -34,10 +34,11 @@ export class PageSupportPayment {
     let month = date.getMonth() + 1;
     let userId = this._user.currentUser.id;
     let data = {
-      id: `premium_support_${userId}_${year}_${month}`,
+      id: `premium_support_${year}_${month}_${userId}`,
       amount: this.amount,
       description: `Премиум Поддержка 30 дней`,
     };
+
     //noinspection TypeScriptValidateTypes
     this._payment.pay(data);
   }
