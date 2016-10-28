@@ -1,15 +1,13 @@
 import {Component, ElementRef} from '@angular/core';
 import {UserService, PremiumSupport} from "@flaper/angular";
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {PremiumMessages} from "../../../premiumSupport/PremiumMessages/PremiumMessages";
 
 @Component({
-  selector: 'page-manage-support',
-  entryComponents: [PremiumMessages],
-  template: require('./PageManageSupport.html'),
-  styles: [require('./PageManageSupport.scss')]
+  selector: 'page-admin-support',
+  template: require('./PageAdminSupport.html'),
+  styles: [require('./PageAdminSupport.scss')]
 })
-export class PageManageSupport {
+export class PageAdminSupport {
   form:FormGroup;
   dialogs = [];
 

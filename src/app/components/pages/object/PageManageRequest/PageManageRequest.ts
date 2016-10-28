@@ -5,6 +5,7 @@ import {LayoutObject} from "../LayoutObject/LayoutObject";
 import {PageService} from "../../../../services/helpers/PageService";
 import {Metrika} from "../../../../services/metrics/Metrika";
 import {PaymentService} from "../../../../services/payment/PaymentService";
+import {CostService} from "../../../../services/payment/CostService";
 
 // страница запроса на управление страницей
 @Component({
@@ -13,7 +14,7 @@ import {PaymentService} from "../../../../services/payment/PaymentService";
   styles: [require('./PageManageRequest.scss')]
 })
 export class PageManageRequest {
-  SUM = 300;
+  SUM = CostService.MANAGE_REQUEST;
   obj: FObject;
 
   manageRequest: any;

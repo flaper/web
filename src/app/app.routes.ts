@@ -13,8 +13,6 @@ import {PageUsers} from './components/pages/user/PageUsers/PageUsers';
 import {PageFlapSync} from "./components/pages/flap/PageFlapSync/PageFlapSync";
 import {ObjectRoutes} from "./components/pages/object/LayoutObject/ObjectRoutes";
 import {ObjectSearch} from "./components/pages/object/ObjectSearch/ObjectSearch";
-import {PagePremiumSupport} from "./components/pages/support/PagePremiumSupport/PagePremiumSupport";
-import {PageManageSupport} from "./components/pages/support/PageManageSupport/PageManageSupport";
 
 export const ROUTES = [
   {path: '', component: PageLastStories},
@@ -26,8 +24,6 @@ export const ROUTES = [
   {path: 'p/top', component: PageTopStories},
   {path: 'p/top_last', component: PageTopStoriesLast},
   {path: 'p/flapers', component: PageUsers},
-  {path: 'p/support', component: PagePremiumSupport},
-  {path: 'p/manageSupport', component: PageManageSupport},
   {path: 'p/storyChanges/:id', component: PageStoryChanges},
   {path: 'p/storyChanges/:id/:page', component: PageStoryChanges},
   {path: 's/:slug', component: PageStory},
@@ -40,5 +36,5 @@ export const ROUTES = [
   {path: 'p/sync/:id/:action', component: PageFlapSync, name: 'FlapSync'},
   ...ObjectRoutes,
   {path: '**', component: PageNotFound},
-  {path: 'not-found', component: PageNotFound},
+  {path: 'p/not-found', component: PageNotFound},
 ];

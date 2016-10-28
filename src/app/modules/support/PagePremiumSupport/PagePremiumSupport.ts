@@ -1,12 +1,10 @@
 import {Component} from '@angular/core';
 import {UserService, PremiumSupport} from "@flaper/angular";
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {PageService} from "../../../../services/helpers/PageService";
-import {PremiumMessages} from "../../../premiumSupport/PremiumMessages/PremiumMessages";
+import {PageService} from "../../../services/helpers/PageService";
 
 @Component({
   selector: 'page-premium-support',
-  entryComponents: [PremiumMessages],
   template: require('./PagePremiumSupport.html'),
   styles: [require('./PagePremiumSupport.scss')]
 })

@@ -3,14 +3,17 @@ import {BrowserModule} from '@angular/platform-browser';
 import {HttpModule} from '@angular/http';
 import {RouterModule} from '@angular/router';
 import {removeNgStyles} from '@angularclass/hmr';
-import {SharedModule} from "./shared/shared.module";
-import {UserModule} from "./modules/user";
 
 /*
  * Platform and Environment providers/directives/pipes
  */
 import {ENV_PROVIDERS} from './environment';
 import {ROUTES} from './app.routes';
+
+// our list of app modules
+import {SharedModule} from "./shared/shared.module";
+import {UserModule} from "./modules/user";
+import {SupportModule} from "./modules/support";
 
 // App is our top level component
 import {App} from './app.component';
@@ -35,17 +38,14 @@ import {News} from "./components/pages/home/PageNews/Content/News";
 import {HomeLinks} from "./components/pages/home/LayoutHome/widgets/HomeLinks/HomeLinks";
 import {SimpleWrite} from "./components/story/write/SimpleWrite/SimpleWrite";
 import {WriteStoryButton} from "./components/story/write/WriteStoryButton/WriteStoryButton";
-import {PageManageSupport} from "./components/pages/support/PageManageSupport/PageManageSupport";
 import {PageManageRequest} from "./components/pages/object/PageManageRequest/PageManageRequest";
 import {PageManage} from "./components/pages/object/PageManage/PageManage";
 import {ObjectList} from "./components/object/ObjectList/ObjectList";
 import {ObjectSearchForm} from "./components/object/ObjectSearchForm/ObjectSearchForm";
 import {DropzoneComponent} from "./components/image/dropzone/DropzoneComponent";
-import {PremiumMessages} from "./components/premiumSupport/PremiumMessages/PremiumMessages";
 import {PageLogin} from "./components/pages/login/PageLogin";
 import {PageNews} from "./components/pages/home/PageNews/PageNews";
 import {PageWriteStory} from "./components/pages/story/write/PageWriteStory";
-import {PagePremiumSupport} from "./components/pages/support/PagePremiumSupport/PagePremiumSupport";
 import {PageStory} from "./components/pages/story/read/PageStory";
 import {TagStoryPage} from "./components/pages/story/tags/TagStoryPage";
 import {PageStoryChanges} from "./components/pages/story/changes/PageStoryChanges";
@@ -70,9 +70,8 @@ const APP_PROVIDERS = [
   declarations: [
     App, MenuLeft, Footer, Navbar, Curtain, PageUsers, PageUserMenu, News, HomeLinks,
     Github, PageLastStories, LayoutHome, LayoutObject, ObjectSearch, ObjectSearchForm, LastStories, TopStories,
-    PageTopStories, PageTopStoriesLast, ObjectList,
-    SimpleWrite, WriteStoryButton, PageManageSupport, PageManageRequest, PageManage,
-    DropzoneComponent, PremiumMessages, PageLogin, PageNews, PageWriteStory, PagePremiumSupport, PageObjectEdit,
+    PageTopStories, PageTopStoriesLast, ObjectList, SimpleWrite, WriteStoryButton, PageManageRequest, PageManage,
+    DropzoneComponent, PageLogin, PageNews, PageWriteStory, PageObjectEdit,
     PageNavigator, PageStory, PageStoryChanges, PageFlapSync, PageObjectMain, PageReview, UserSearch, UserList,
     PageNotFound, TagStoryPage
   ],
@@ -81,7 +80,7 @@ const APP_PROVIDERS = [
     HttpModule,
     RouterModule.forRoot(ROUTES, {useHash: false}),
     // our modules
-    SharedModule, UserModule
+    SharedModule, UserModule, SupportModule
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,

@@ -1,7 +1,8 @@
 import {Component} from '@angular/core';
 import {FObject, ObjectService, UserService, User} from "@flaper/angular";
-import {Router,ActivatedRoute} from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 
+// управление страницей объекта
 @Component({
   selector: 'page-manage',
   template: require('./PageManage.html'),
@@ -9,7 +10,7 @@ import {Router,ActivatedRoute} from '@angular/router';
 })
 export class PageManage {
   obj:FObject;
-  moderators:User[] = []
+  moderators:User[] = [];
   foundUsers:User[] = [];
   constructor(private _user:UserService, route:ActivatedRoute,
               private _object:ObjectService) {
