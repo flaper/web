@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {UserService, PremiumSupport} from "@flaper/angular";
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {PageService} from "../../../services/helpers/PageService";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'page-premium-support',
@@ -9,13 +10,16 @@ import {PageService} from "../../../services/helpers/PageService";
   styles: [require('./PagePremiumSupport.scss')]
 })
 export class PagePremiumSupport {
-  form:FormGroup;
+  form: FormGroup;
   messages = [];
 
-  constructor(private _user:UserService, _page:PageService, private fb:FormBuilder,
-              private premiumSupport:PremiumSupport) {
-    if (!(_user.currentUser && _user.currentUser.extra.hasPremiumSupport() )) {
-      _page.navigateToDefault();
+  constructor(private _user: UserService, _page: PageService, private fb: FormBuilder, router: Router,
+              private premiumSupport: PremiumSupport) {
+    if (!_user.currentUser) {
+      return _page.navigateToLogin('Для Премиум Поддержки необходима авторизация');
+    }
+    if (!_user.currentUser.extra.hasPremiumSupport()) {
+      return router.navigateByUrl('/p/support/payment');
     }
     this.form = this.fb.group({
       message: ['', Validators.required]

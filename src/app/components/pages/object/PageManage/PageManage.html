@@ -1,20 +1,20 @@
 <div>
   <h2 class="text-xs-center">Управление страницей</h2>
+  <div class="alert alert-info">
+    Консультации и решение проблем осуществляются через <a routerLink="/p/support/premium">Премиум Поддержку</a>.
+  </div>
   <h3>Модераторы:</h3>
   <ul class="mod-list">
     <li *ngFor="let user of moderators">
-      <img [src]="user.photo" alt="Аватар" class="avatar" />
+      <img [src]="user.photo" alt="Аватар" class="avatar"/>
       <a [routerLink]='["/u",user.id]'>{{user.displayName}}</a>
       <button type="button" class="btn" (click)="removeFromModerators(user)">Удалить из модераторов</button>
     </li>
   </ul>
-  <div class="alert alert-info">
-    Поддержка компаний осуществляется через почту <a href="mailto:help@flaper.org">help@flaper.org</a>
-  </div>
   <user-search (usersFound)="whenFound($event)" class="col-xs-4"></user-search>
   <div class="row" *ngFor="let user of foundUsers">
     <div class="col-lg-1 col-md-1 col-xs-2 col-sm-2">
-      <img class="avatar" [src]="user.photo" alt="{{user.displayName}}" />
+      <img class="avatar" [src]="user.photo" alt="{{user.displayName}}"/>
     </div>
     <div class="col-lg-2 col-md-2 col-xs-4 col-sm-4">
       <button type="button" name="button" (click)="addAsModerator(user)" class="btn">
