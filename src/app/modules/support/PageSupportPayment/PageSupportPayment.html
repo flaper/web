@@ -1,13 +1,32 @@
 <div class="container">
   <h2 class="text-xs-center">Премиум Поддержка</h2>
+  <div *ngIf="premiumSupport" class="alert alert-info text-xs-center">
+    Срок действия <strong>Премиум Поддержки</strong> закончился <strong>{{premiumSupport | amDateFormat: 'LL'}}</strong>
+  </div>
+  <div class="support-payment">
+    <div>
+    </div>
+    <div>
+      <div class="jumbotron">
+        <h2 class="display-5 text-xs-center">Примеры проблем</h2>
+        <ul class="list">
+          <li>Неправильная информация / фотографии</li>
+          <li>Помощь в оформлении страниц</li>
+          <li>Ложные отзывы</li>
+          <li>Работа с негативом</li>
+          <li>Расширенные права для владельцов компаний</li>
+          <li>Помощь с дополнительными правами (загрузка логотипов, ответы на отзывы и т.д.)</li>
+          <li>Реклама</li>
+          <li>Любые другие вопросы</li>
+        </ul>
+        <div class="alert">
+          Стоимость <strong>{{amount}} рублей</strong> за 30 дней сервиса.
+        </div>
 
-  <div>
-    Премиум поддержка платная услуга.
-  </div>
-  <div>
-    Стоимость {{amount}} рублей за 30 дней сервиса.
-  </div>
-  <div>
-    <div class="btn btn-primary">Оплатить</div>
+        <div>
+          <button class="btn btn-primary" (click)="pay()">Оплатить</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

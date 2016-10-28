@@ -16,10 +16,12 @@ export class PagePremiumSupport {
   constructor(private _user: UserService, _page: PageService, private fb: FormBuilder, router: Router,
               private premiumSupport: PremiumSupport) {
     if (!_user.currentUser) {
-      return _page.navigateToLogin('Для Премиум Поддержки необходима авторизация');
+      _page.navigateToLogin('Для Премиум Поддержки необходима авторизация');
+      return;
     }
     if (!_user.currentUser.extra.hasPremiumSupport()) {
-      return router.navigateByUrl('/p/support/payment');
+      router.navigateByUrl('/p/support/payment');
+      return;
     }
     this.form = this.fb.group({
       message: ['', Validators.required]

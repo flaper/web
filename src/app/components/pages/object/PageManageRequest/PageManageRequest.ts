@@ -60,7 +60,7 @@ export class PageManageRequest {
   onPay() {
     if (!this.manageRequest) return;
     let data = {
-      id: `manager_request_` + this.manageRequest.id,
+      id: `manager_request_${this.manageRequest.id}`,
       amount: this.SUM,
       description: `Управление страницей id #${this.manageRequest.subjectId}`,
       email: this.manageRequest.email,

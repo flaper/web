@@ -1,0 +1,11 @@
+@import "../../../../css/variables";
+
+h2 {
+  margin-bottom: 1rem;
+}
+
+@media (min-width: map-get($grid-breakpoints, 'lg')) {
+  .jumbotron {
+    padding: 2rem 2rem;
+  }
+}
