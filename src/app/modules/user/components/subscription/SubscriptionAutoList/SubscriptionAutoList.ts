@@ -12,6 +12,8 @@ export class SubscriptionAutoList {
   where;
   @Input()
   displayType: string;
+  @Input()
+  placeholder:string;
   subscriptions: Subscription[];
 
   constructor(private _subscriptions: SubscriptionService) {

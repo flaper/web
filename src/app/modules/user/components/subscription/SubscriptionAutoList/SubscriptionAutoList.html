@@ -1,2 +1,5 @@
+<div class="alert alert-info" *ngIf="!subscriptions || !subscriptions.length">
+  {{placeholder}}
+</div>
 <subscription-list [subscriptions]="subscriptions" [displayType]="displayType">
 </subscription-list>

@@ -7,5 +7,5 @@
       <button type="button" name="button" [ngClass]="{active: isActive('subscriptions')}" (click)="show('subscriptions')">Подписки</button>
     </li>
   </ul>
-  <subscription-auto-list [where]="query" [displayType]="page"></subscription-auto-list>
+  <subscription-auto-list [where]="query" [displayType]="page" [placeholder]="isActive('subscribers') ? 'Подписчики отсутствуют' : 'Подписки отсутствуют' "></subscription-auto-list>
 </div>
