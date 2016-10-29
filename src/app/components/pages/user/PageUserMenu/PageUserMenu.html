@@ -4,7 +4,7 @@
   </div>
   <ul class="nav nav-pills nav-stacked mobile-collapsed" id="ml-items">
     <li class="nav-item" *ngIf="acl.isSales()">
-      <a class="nav-link" routerLink="/p/manageSupport">
+      <a class="nav-link" routerLink="/p/support/admin">
       <span class="icon-container text-xs-center">
         <i class="fa fa-question-circle">
         </i>
@@ -15,7 +15,7 @@
       </a>
     </li>
     <li class="nav-item" *ngIf="_user.currentUser.extra.hasPremiumSupport()">
-      <a class="nav-link" routerLink="/p/support">
+      <a class="nav-link" routerLink="/p/support/premium">
       <span class="icon-container text-xs-center">
         <i class="fa fa-question">
         </i>
