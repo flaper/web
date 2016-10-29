@@ -5,7 +5,6 @@ import {ObjectService, UserService} from "@flaper/angular";
 import {FObject} from "@flaper/angular";
 import {Metrika} from "../../../../services/metrics/Metrika";
 import {ReplaySubject} from "rxjs";
-import {PageService} from "../../../../services/helpers/PageService";
 
 @Component({
   selector: 'layout-object',
