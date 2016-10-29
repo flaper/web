@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Router} from '@angular/router';
+import {Router, NavigationEnd} from '@angular/router';
 
 import {JwtToken} from "@flaper/angular";
 import {PageLogin} from "../../components/pages/login/PageLogin";
@@ -8,8 +8,17 @@ const PAGE_BEFORE_LOGIN = '_PAGE_BEFORE_LOGIN';
 
 @Injectable()
 export class PageService {
-  constructor(private router:Router) {
+  private _goto = null;
+
+  constructor(private router: Router) {
     PageService._navigateAfterLogin = this.navigateAfterLogin.bind(this);
+    this.router.events.subscribe((event)=> {
+      if (event instanceof NavigationEnd && this._goto) {
+        // hack т.к. начальный afterLogin редирект на 1 ноября 2016 года сбрасывался изначальным событимем редиректа
+        this._goto();
+        this._goto = null;
+      }
+    })
   }
 
   public getDefault() {
@@ -50,10 +59,11 @@ export class PageService {
   public navigateAfterLogin() {
     let path = ls.getItem(PAGE_BEFORE_LOGIN);
     if (path) {
-      this.router.navigateByUrl(path);
+      this._goto = () => this.router.navigateByUrl(path);
+      //this.router.routerState.snapshot.
     } else {
       let route = this.getDefault();
-      this.router.navigate([route]);
+      this._goto = () => this.router.navigate([route]);
     }
   }
 
