@@ -5,6 +5,7 @@ import {LayoutObject} from "../LayoutObject/LayoutObject";
 @Component({
   selector: 'page-object-edit',
   template: require('./PageObjectEdit.html'),
+  styles: [require('./PageObjectEdit.scss')]
 })
 export class PageObjectEdit {
   obj: FObject;

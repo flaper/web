@@ -3,12 +3,14 @@
   <div class="alert alert-info">
     Консультации и решение проблем осуществляются через <a routerLink="/p/support/premium">Премиум Поддержку</a>.
   </div>
-  <h3>Модераторы:</h3>
+  <h3>Управляющие страницей:</h3>
   <ul class="mod-list">
     <li *ngFor="let user of moderators">
       <img [src]="user.photo" alt="Аватар" class="avatar"/>
       <a [routerLink]='["/u",user.id]'>{{user.displayName}}</a>
-      <button type="button" class="btn" (click)="removeFromModerators(user)">Удалить из модераторов</button>
+      <button type="button" class="btn btn-danger" (click)="removeFromModerators(user)">
+        <i class="fa fa-times"></i> Удалить
+      </button>
     </li>
   </ul>
   <user-search (usersFound)="whenFound($event)" class="col-xs-4"></user-search>
@@ -19,7 +21,7 @@
     <div class="col-lg-2 col-md-2 col-xs-4 col-sm-4">
       <button type="button" name="button" (click)="addAsModerator(user)" class="btn">
         <i class="fa fa-flash"></i>
-        Сделать модератором
+        Сделать управляющим
       </button>
     </div>
     <div class="col-lg-1 col-md-1 col-xs-2 col-sm-2">
