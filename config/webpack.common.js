@@ -5,11 +5,14 @@ var helpers = require('./helpers');
  * Webpack Plugins
  */
 
+const AssetsPlugin = require('assets-webpack-plugin');
 const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
 const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
+const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 
 /**
  * Webpack Constants
@@ -29,19 +32,8 @@ const METADATA = {
 module.exports = (options) => {
   var isProd = options.env === 'production';
   return {
-    // Cache generated modules and chunks to improve performance for multiple incremental builds.
-    // This is enabled by default in watch mode.
-    // You can pass false to disable it.
-    //
-    // See: http://webpack.github.io/docs/configuration.html#cache
-    // cache: false,
-
-    // The entry point for the bundle
-    // Our Angular.js app
-    //
-    // See: http://webpack.github.io/docs/configuration.html#entry
     entry: {
-      'main.css': './src/chunks/main.css.ts',
+      'main_css': './src/chunks/main_css.ts',
       'polyfills': './src/chunks/polyfills.ts',
       'global': './src/chunks/global.ts',
       'vendor': './src/chunks/vendor.ts',
@@ -70,6 +62,7 @@ module.exports = (options) => {
     //
     // See: http://webpack.github.io/docs/configuration.html#module
     module: {
+
       rules: [
          /*
          * Typescript loader support for .ts and Angular 2 async routes via .async.ts
@@ -148,8 +141,7 @@ module.exports = (options) => {
       // See: https://webpack.github.io/docs/list-of-plugins.html#commonschunkplugin
       // See: https://github.com/webpack/docs/wiki/optimization#multi-page-app
       new CommonsChunkPlugin({
-        name: helpers.reverse(['polyfills', 'global', 'main.css', 'vendor', 'angular', 'angular_vendor', 'main']),
-        minChunks: Infinity
+        name: ['polyfills', 'global', 'main.css', 'vendor', 'angular', 'angular_vendor', 'main'].reverse(),
       }),
 
       /**
@@ -188,9 +180,7 @@ module.exports = (options) => {
       new HtmlWebpackPlugin({
         template: 'src/index.html',
         title: METADATA.title,
-        chunksSortMode: helpers.packageSort(['polyfills', 'global', 'main.css', 'vendor',
-          'angular', 'angular_vendor', 'main'
-        ]),
+        chunksSortMode: 'dependency',
         metadata: METADATA,
         inject: 'head'
       })
