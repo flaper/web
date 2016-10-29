@@ -12,7 +12,7 @@
   "license": "MIT",
   "main": "",
   "scripts": {
-    "deploy": "npm run build:prod && cd dist && zip dist.zip * -r && aws s3 cp dist.zip s3://flaper/dist.zip --recursive",
+    "deploy": "npm run build:prod && cd dist && zip dist.zip * -r && aws s3 cp dist.zip s3://flaper/dist.zip",
     "sdeploy": "npm run build:prod && aws s3 cp dist s3://stage.flaper.org --recursive",
     "s3update": "aws s3 cp s3://flaper/dist.zip dist.zip --region eu-central-1 --no-sign-request && unzip -o dist.zip",
     "clean": "npm cache clean && npm run rimraf -- node_modules doc coverage dist",
