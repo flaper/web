@@ -12,9 +12,9 @@ const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
  * Webpack Constants
  */
 const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
-const HMR = helpers.hasProcessFlag('hot');
 const HOST = process.env.HOST || '0.0.0.0';
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
+const HMR = helpers.hasProcessFlag('hot');
 const METADATA = webpackMerge(commonConfig({env:ENV}).metadata, {
   host: HOST,
   port: PORT,
@@ -29,12 +29,13 @@ const METADATA = webpackMerge(commonConfig({env:ENV}).metadata, {
  */
 module.exports = (options) => {
   return webpackMerge(commonConfig({env:ENV}), {
-
-    // Developer tool to enhance debugging
-    //
-    // See: http://webpack.github.io/docs/configuration.html#devtool
-    // See: https://github.com/webpack/docs/wiki/build-performance#sourcemaps
-    devtool: 'cheap-module-eval-source-map',
+    /**
+     * Developer tool to enhance debugging
+     *
+     * See: http://webpack.github.io/docs/configuration.html#devtool
+     * See: https://github.com/webpack/docs/wiki/build-performance#sourcemaps
+     */
+    devtool: 'cheap-module-source-map',
 
     // Options affecting the output of the compilation.
     //
@@ -64,6 +65,8 @@ module.exports = (options) => {
       // See: http://webpack.github.io/docs/configuration.html#output-chunkfilename
       chunkFilename: '[id].chunk.js',
 
+      library: 'ac_[name]',
+      libraryTarget: 'var',
     },
 
     plugins: [
@@ -124,7 +127,8 @@ module.exports = (options) => {
       watchOptions: {
         aggregateTimeout: 300,
         poll: 1000
-      }
+      },
+      outputPath: helpers.root('dist')
     },
 
     node: {
