@@ -20,24 +20,37 @@ export class PageManageRequest {
   manageRequest: any;
   form: FormGroup;
 
-  constructor(private fb: FormBuilder, _user: UserService, private _manageRequest: ManageRequestService,
+  constructor(private fb: FormBuilder, private _user: UserService, private _manageRequest: ManageRequestService,
               _page: PageService, private _payment: PaymentService) {
     LayoutObject.ObjectObservable.subscribe(obj => {
       this.obj = obj;
       Metrika.setParam('page', 'manageRequest');
-      if (!_user.currentUser) {
+      if (!_user.hasCurrentUser()) {
         _page.navigateToLogin(`Для управления страницей <strong>"${this.obj.title}"</strong>  нужно войти на сайт.`);
         return;
       }
-      let name = _user.currentUser ? _user.currentUser.displayName : '';
-      this.form = this.fb.group({
-        name: [name, Validators.required],
-        position: [''],
-        email: ['', Validators.required],
-        phone: [''],
-      });
-      this._manageRequest.getBySubjectId(this.obj.id).subscribe(manageRequest => this.manageRequest = manageRequest)
+
+      if (this._user.currentUser) {
+        this.onUser();
+      } else {
+        // пользователь может быть еще в процессе авторизации
+        this._user.currentUserObservable.subscribe(user=> {
+          if (user) this.onUser();
+        });
+      }
     });
+  }
+
+  onUser() {
+    let name = this._user.currentUser ? this._user.currentUser.displayName : '';
+    this.form = this.fb.group({
+      name: [name, Validators.required],
+      position: [''],
+      email: ['', Validators.required],
+      phone: [''],
+    });
+    this._manageRequest.getBySubjectId(this.obj.id).subscribe(manageRequest => this.manageRequest = manageRequest)
+
   }
 
   onSubmit() {
