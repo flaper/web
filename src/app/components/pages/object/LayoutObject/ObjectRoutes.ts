@@ -6,6 +6,7 @@ import {PageReview} from "../PageReview/PageReview";
 import {PageStory} from "../../story/read/PageStory";
 import {PageWriteStory} from "../../story/write/PageWriteStory";
 import {PageObjectEdit} from "../PageObjectEdit/PageObjectEdit";
+import {PageSearchEngineHide} from "../PageSearchEngineHide/PageSearchEngineHide";
 const children = [
   {path: '', component: PageObjectMain},
   {path: '-main', component: PageObjectMain},
@@ -13,6 +14,7 @@ const children = [
   {path: '-request', component: PageManageRequest},
   {path: '-review', component: PageReview},
   {path: '-edit', component: PageObjectEdit},
+  {path: '-hide', component: PageSearchEngineHide},
   {path: ':reviewSlug', component: PageStory},
   {path: ':reviewSlug/edit', component: PageWriteStory}
 ];

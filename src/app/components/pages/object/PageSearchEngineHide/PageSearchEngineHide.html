@@ -1,0 +1,46 @@
+<div>
+  <h2 class="text-xs-center">Скрытие от поисковых систем</h2>
+  <div class="alert alert-info">
+    <div>
+      Мы категорически не удаляем отзывы не нарушающие законодательство и правила портала.
+    </div>
+    <div>
+      Однако мы может скрыть Вашу страницу от google и yandex, если у Вас не получается справится с потоком негативных
+      отзывов.
+    </div>
+  </div>
+  <div>
+    <h3>Как это работает</h3>
+    <div>
+      Мы добавляем <a href="http://www.robotstxt.org/meta.html" target="_blank"> специальную метку</a> на Вашу страницу:
+    </div>
+    <code>
+      &lt;meta name="robots" content="noindex, nofollow"/&gt;
+    </code>
+    <div>
+      запрещающую всем поисковых систем (в т.ч. google и yandex) добавлять эту страницу в результаты своего поиска.
+      Т.е. фактически Ваша страница на Флапе исчезает для интернета, за исключением флаперов.
+    </div>
+    <div>
+      Применяется одновременно для нового <a target="_blank" href="http://flaper.org">flaper.org</a> и старой версии на
+      <a target="_blank" href="http://флап.рф">флап.рф</a>.
+    </div>
+  </div>
+
+  <h2>Оплата</h2>
+  <div class="payment">
+    <div *ngFor="let item of prices">
+      <label>
+
+        <input type="radio" name="options" (click)="selected = item"
+               [checked]="selected === item">
+        {{item.amount}} скрытие на {{item.description}}
+      </label>
+    </div>
+    <button (click)="pay()" class="btn btn-primary">Оплатить</button>
+    <br>
+    <div>
+      <small><em>Услуга активируется в течение 1 рабочего дня после оплаты</em></small>
+    </div>
+  </div>
+</div>

@@ -57,6 +57,7 @@ import {PageObjectMain} from "./components/pages/object/PageObjectMain/PageObjec
 import {PageReview} from "./components/pages/object/PageReview/PageReview";
 import {PageNotFound} from "./components/pages/notFound/PageNotFound";
 import {PageObjectEdit} from "./components/pages/object/PageObjectEdit/PageObjectEdit";
+import {PageSearchEngineHide} from "./components/pages/object/PageSearchEngineHide/PageSearchEngineHide";
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -72,7 +73,7 @@ const APP_PROVIDERS = [
     AppComponent, MenuLeft, Footer, Navbar, Curtain, PageUsers, PageUserMenu, News, HomeLinks,
     Github, PageLastStories, LayoutHome, LayoutObject, ObjectSearch, ObjectSearchForm, LastStories, TopStories,
     PageTopStories, PageTopStoriesLast, ObjectList, SimpleWrite, WriteStoryButton, PageManageRequest, PageManage,
-    DropzoneComponent, PageLogin,PageLoginEmail, PageNews, PageWriteStory, PageObjectEdit,
+    PageSearchEngineHide, DropzoneComponent, PageLogin,PageLoginEmail, PageNews, PageWriteStory, PageObjectEdit,
     PageNavigator, PageStory, PageStoryChanges, PageFlapSync, PageObjectMain, PageReview, UserSearch, UserList,
     PageNotFound, TagStoryPage
   ],
