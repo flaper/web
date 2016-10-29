@@ -9,14 +9,18 @@ const PAGE_BEFORE_LOGIN = '_PAGE_BEFORE_LOGIN';
 @Injectable()
 export class PageService {
   private _goto = null;
+  private _initial_done = false;
 
   constructor(private router: Router) {
     PageService._navigateAfterLogin = this.navigateAfterLogin.bind(this);
     this.router.events.subscribe((event)=> {
-      if (event instanceof NavigationEnd && this._goto) {
+      if (event instanceof NavigationEnd) {
+        this._initial_done = true;
         // hack т.к. начальный afterLogin редирект на 1 ноября 2016 года сбрасывался изначальным событимем редиректа
-        this._goto();
-        this._goto = null;
+        if (this._goto) {
+          this._goto();
+          this._goto = null;
+        }
       }
     })
   }
@@ -64,6 +68,10 @@ export class PageService {
     } else {
       let route = this.getDefault();
       this._goto = () => this.router.navigate([route]);
+    }
+    if (this._initial_done) {
+      this._goto();
+      this._goto = null;
     }
   }
 
