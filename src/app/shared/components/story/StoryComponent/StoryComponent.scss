@@ -30,9 +30,13 @@
       cursor: pointer;
     }
   }
-  .tagline{
+  .tagline {
+    font-size: 1.5em;
     .tag {
-      margin: 0 3px;
+      margin: 0 0.5em 0.5em 0;
+    }
+    .tag:first-child {
+      margin-left: 0;
     }
   }
 }
