@@ -9,7 +9,7 @@
         <span class="brand-short">Ф</span>
       </a>
     </div>
-    <object-search-form *ngIf="searchFormVisible()"></object-search-form>
+    <object-search-form *ngIf="searchFormVisible()" [buttonMode]="isMobile()"></object-search-form>
   </div>
 
   <div class="navbar-section user-controls">

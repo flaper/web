@@ -23,6 +23,10 @@ export class Navbar {
     let path = window.location.pathname.split("/").filter(val => !!val);
     return path[0] != "o";
   }
+  isMobile() {
+    let val = window.innerWidth <= 990;
+    return val;
+  }
   onMenuPress() {
     let path = window.location.pathname.split("/").filter(val => !!val);
     if (path.some(val => val === 'menu'))

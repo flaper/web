@@ -1,4 +1,4 @@
-import {Component,ElementRef} from "@angular/core"
+import {Component,ElementRef,Input} from "@angular/core"
 import {Router} from "@angular/router";
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
@@ -10,7 +10,8 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 export class ObjectSearchForm {
   form:FormGroup;
-
+  @Input()
+  buttonMode:boolean = false;
   constructor(private fb:FormBuilder,
               private router:Router,
               private el:ElementRef) {

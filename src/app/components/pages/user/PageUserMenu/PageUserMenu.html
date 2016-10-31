@@ -14,7 +14,7 @@
       </span>
       </a>
     </li>
-    <li class="nav-item" *ngIf="_user.currentUser.extra.hasPremiumSupport()">
+    <li class="nav-item" *ngIf="userHasPremiumSupport()">
       <a class="nav-link" routerLink="/p/support/premium">
       <span class="icon-container text-xs-center">
         <i class="fa fa-question">
@@ -25,7 +25,7 @@
       </span>
       </a>
     </li>
-    <li class="nav-item" *ngFor="let objectId of _user.currentUser.extra.getObjects()">
+    <li class="nav-item" *ngFor="let objectId of getUserObjects()">
       <a class="nav-link" [routerLink]="_object.getRouteById(objectId)" *ngIf="_object.$getById(objectId)">
           <span class="icon-container text-xs-center">
             <i class="fa fa-briefcase">
@@ -36,7 +36,7 @@
           </span>
       </a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item" *ngIf="_user.currentUser">
       <a class="nav-link" [routerLink]="['/u', _user.currentUser.id]">
       <span class="icon-container text-xs-center">
         <i class="fa fa-user">
@@ -55,7 +55,7 @@
         <span class="label">{{item.label}}</span>
       </a>
     </li>
-    <li class=" nav-item">
+    <li class=" nav-item" *ngIf="_user.currentUser">
       <a class="nav-link" (click)="logout()">
         <span class="icon-container text-xs-center">
           <i class="fa fa-sign-out"></i>

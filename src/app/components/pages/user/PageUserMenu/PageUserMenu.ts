@@ -38,7 +38,14 @@ export class PageUserMenu {
     el.classList.toggle('ml-toggle');
     ls.setItem('ml-toggle', el.classList.contains('ml-toggle'));
   }
-
+  getUserObjects() {
+    if (!this._user.currentUser) return [];
+    else return this._user.currentUser.extra.getObjects();
+  }
+  userHasPremiumSupport() {
+    if (!this._user.currentUser) return false;
+    else return this._user.currentUser.extra.hasPremiumSupport();
+  }
   toggleSm() {
     let el = this.elementRef.nativeElement.querySelector('#ml-items');
     el.classList.remove('mobile-collapsed');
