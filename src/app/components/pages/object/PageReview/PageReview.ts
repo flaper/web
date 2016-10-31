@@ -2,11 +2,9 @@ import {Component} from '@angular/core';
 import {FObject, UserService} from "@flaper/angular";
 import {ScreenService} from "../../../../services/helpers/ScreenService";
 import {LayoutObject} from "../LayoutObject/LayoutObject";
-import {SimpleWrite} from "../../../story/write/SimpleWrite/SimpleWrite";
 
 @Component({
   selector: 'page-review',
-  entryComponents: [SimpleWrite],
   template: require('./PageReview.html'),
 })
 export class PageReview {

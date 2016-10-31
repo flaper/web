@@ -2,13 +2,11 @@ import {Component} from '@angular/core';
 import {Title} from "@angular/platform-browser"
 import {ActivatedRoute} from '@angular/router';
 import {StoryService, UserService} from "@flaper/angular";
-import {SimpleWrite} from "../../../story/write/SimpleWrite/SimpleWrite";
 import {Story} from "@flaper/angular";
 import {PageService} from "../../../../services/helpers/PageService";
 
 @Component({
   selector: 'page-write-story',
-  entryComponents: [SimpleWrite],
   styles: [require('./PageWriteStory.scss')],
   template: require('./PageWriteStory.html')
 })

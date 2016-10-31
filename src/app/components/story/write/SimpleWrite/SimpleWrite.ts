@@ -4,13 +4,11 @@ import {Location} from '@angular/common';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Story, StoryService, FObject} from "@flaper/angular";
 import {FormDraft} from "../../../../services/draft/FormDraft";
-import {DropzoneComponent} from "../../../image/dropzone/DropzoneComponent";
 import {generateEvent} from "../../../../libs/common/common";
 import {Sanitize} from "@flaper/markdown";
 
 @Component({
   selector: 'simple-write',
-  entryComponents: [DropzoneComponent],
   styles: [require('./SimpleWrite.scss')],
   template: require('./SimpleWrite.html')
 })

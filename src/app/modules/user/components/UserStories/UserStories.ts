@@ -1,11 +1,9 @@
 import {Component} from '@angular/core';
 import {User, UserService} from "@flaper/angular";
-// import {StoriesAutoList} from "../../story/StoriesAutoList/StoriesAutoList";
 import {PageUser} from "../../PageUser/PageUser";
 
 @Component({
   selector: 'page-user-stories',
-  // entryComponents: [StoriesAutoList],
   styles: [require('./UserStories.scss')],
   template: require('./UserStories.html')
 })
