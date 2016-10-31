@@ -81,10 +81,12 @@ export class SimpleWrite {
   }
 
   onSubmit(event) {
+    event.preventDefault();
+    event.stopPropagation();
     if (this.submitInProgress) {
       return false;
     }
-    if (this.tagline.length > 0) {
+    if (this.tagline && this.tagline.length > 0) {
       this.tagline += " ";
       this.processTags(null);
     }
