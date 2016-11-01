@@ -12,62 +12,22 @@
 
     </div>
     <ul class="nav nav-pills nav-stacked mobile-collapsed" id="ml-items">
-      <li class="nav-item" *ngIf="acl.isSales()">
-        <a class="nav-link" routerLink="/p/support/admin">
+      <li class="nav-item" *ngFor="let menuItem of _menu.getFlaperMenu()">
+        <a class="nav-link" *ngIf="menuItem.routerLink" [routerLink]="menuItem.routerLink">
         <span class="icon-container text-xs-center">
-          <i class="fa fa-question-circle">
+          <i [class]="menuItem.iconClass">
           </i>
         </span>
         <span class="label">
-           Админка Поддержки
+           {{menuItem.title}}
         </span>
         </a>
       </li>
-      <li class="nav-item" *ngIf="_user.currentUser.extra.hasPremiumSupport()">
-        <a class="nav-link" routerLink="/p/support/premium">
-        <span class="icon-container text-xs-center">
-          <i class="fa fa-question">
-          </i>
-        </span>
-        <span class="label">
-           Премиум Поддержка
-        </span>
-        </a>
-      </li>
-      <li class="nav-item" *ngFor="let objectId of _user.currentUser.extra.getObjects()">
-        <a class="nav-link" [routerLink]="_object.getRouteById(objectId)" *ngIf="_object.$getById(objectId)">
-            <span class="icon-container text-xs-center">
-              <i class="fa fa-briefcase">
-              </i>
-            </span>
-            <span class="label">
-              {{_object.$getById(objectId).title}}
-            </span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/u', _user.currentUser.id]">
-        <span class="icon-container text-xs-center">
-          <i class="fa fa-user">
-          </i>
-        </span>
-        <span class="label">
-            Моя страница
-        </span>
-        </a>
-      </li>
-      <li *ngFor="let item of items" class="nav-item">
-        <a class="nav-link" [routerLink]="item.route">
-        <span class="icon-container text-xs-center">
-          <i class="{{item.iconClass}}"></i>
-        </span>
-          <span class="label">{{item.label}}</span>
-        </a>
-      </li>
-      <li class="hidden-sm-up nav-item">
+      <li class="nav-item" *ngIf="_user.hasCurrentUser">
         <a class="nav-link" (click)="logout()">
           <span class="icon-container text-xs-center">
-            <i class="fa fa-sign-out"></i>
+            <i class="fa fa-sign-out">
+            </i>
           </span>
           <span class="label">
             Выход
