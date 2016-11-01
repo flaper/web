@@ -9,7 +9,7 @@
     <ul class='user-list' *ngIf="userList.length > 0">
       <li class='user-list__item' *ngFor="let userId of userList">
         <!-- <user-avatar [id]="userId"></user-avatar> -->
-        <user-link [id]="userId"></user-link>
+        <user-link [id]="userId" (click)="close()"></user-link>
       </li>
     </ul>
   </div>
