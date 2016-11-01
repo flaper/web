@@ -1,6 +1,8 @@
 import {Component,Output,EventEmitter} from '@angular/core';
 import {UserService,User} from '@flaper/angular';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/observable/fromEvent';
 
 @Component({
   selector: 'user-search',
@@ -22,6 +24,9 @@ export class UserSearch {
     this.form = this.fb.group({
       searchText: [searchText],
     });
+    this.form.controls['searchText'].valueChanges
+      .debounceTime(1000)
+      .subscribe(newValue => this.onSubmit(null));
   }
 
   onSubmit(event) {
