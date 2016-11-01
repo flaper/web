@@ -7,9 +7,22 @@
       У этой записи нет лайков
     </div>
     <ul class='user-list' *ngIf="userList.length > 0">
-      <li class='user-list__item' *ngFor="let userId of userList">
-        <!-- <user-avatar [id]="userId"></user-avatar> -->
-        <user-link [id]="userId" (click)="close()"></user-link>
+      <li class='user-list__item' *ngFor="let user of userList">
+        <user-avatar [id]="user.id"></user-avatar>
+        <div class="user-list__info">
+          <a [routerLink]="['/u',user.id]" (click)="close()">
+            {{user.displayName}}
+          </a>
+          <br>
+          <small>
+            <span>
+              <i class="fa fa-book"></i> {{user.storiesNumber}}
+            </span>
+            <span>
+              <i class="fa fa-thumbs-o-up"></i> {{user.likesNumber}}
+            </span>
+          </small>
+        </div>
       </li>
     </ul>
   </div>

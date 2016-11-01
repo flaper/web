@@ -15,12 +15,18 @@ export class CustomContext extends BSModalContext {
 
 export class LikeListModal implements ModalComponent<CustomContext> {
   context: CustomContext;
-  userList:string[]=[];
+  userList:User[]=[];
   constructor(public dialog: DialogRef<CustomContext>,private _user:UserService,
               private _like:LikeService) {
     this.context = dialog.context;
     _like.getLikesHistory({subjectId: this.context.subjectId},0,0)
-    .subscribe(likes => this.userList = likes.map(like => like.userId));
+    .subscribe(likes => {
+      let userIds = likes.map(like => like.userId);
+      _user.requestIds(userIds);
+      userIds.forEach(id => {
+        _user.getById(id).first().subscribe(user => this.userList.push(user));
+      })
+    });
   }
   close() {
     this.dialog.close();
