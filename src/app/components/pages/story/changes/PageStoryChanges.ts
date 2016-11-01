@@ -78,6 +78,10 @@ export class PageStoryChanges {
       let oldValue = record.fields[field].oldValue,
         currentValue = record.fields[field].currentValue;
 
+        if (typeof oldValue != "string" || typeof currentValue != "string") {
+          return {key:field, oldValue: oldValue, currentValue: currentValue};
+        }
+
         if (oldValue !== "") oldValue = oldValue.replace(/\n/g,"<br>");
 
         if (currentValue != "") currentValue = currentValue.replace(/\n/g,"<br>");
