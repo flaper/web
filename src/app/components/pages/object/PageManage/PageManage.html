@@ -18,13 +18,13 @@
     </li>
   </ul>
   <user-search (usersFound)="whenFound($event)" class="col-xs-4"></user-search>
-  <div class="row" *ngFor="let user of foundUsers">
+  <div class="row user-row" *ngFor="let user of foundUsers">
     <div class="col-lg-1 col-md-1 col-xs-2 col-sm-2">
       <!-- <img class="avatar" [src]="user.photo" alt="{{user.displayName}}"/> -->
       <user-avatar [id]="user.id"></user-avatar>
     </div>
     <div class="col-lg-2 col-lg-2 col-sm-4 col-xs-4">
-      {{user.displayName}}
+      <a [routerLink]="['/u',user.id]">{{user.displayName}}</a>
       <br>
       <span class="counter" titile='Количество статей'>
         <i class="fa fa-book"></i> {{user.storiesNumber}}
