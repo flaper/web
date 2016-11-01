@@ -20,15 +20,12 @@
   <user-search (usersFound)="whenFound($event)" class="col-xs-4"></user-search>
   <div class="row" *ngFor="let user of foundUsers">
     <div class="col-lg-1 col-md-1 col-xs-2 col-sm-2">
-      <img class="avatar" [src]="user.photo" alt="{{user.displayName}}"/>
+      <!-- <img class="avatar" [src]="user.photo" alt="{{user.displayName}}"/> -->
+      <user-avatar [id]="user.id"></user-avatar>
     </div>
-    <div class="col-lg-2 col-md-2 col-xs-4 col-sm-4">
-      <button type="button" name="button" (click)="addAsModerator(user)" class="btn">
-        <i class="fa fa-flash"></i>
-        Сделать управляющим
-      </button>
-    </div>
-    <div class="col-lg-1 col-md-1 col-xs-2 col-sm-2">
+    <div class="col-lg-2 col-lg-2 col-sm-4 col-xs-4">
+      {{user.displayName}}
+      <br>
       <span class="counter" titile='Количество статей'>
         <i class="fa fa-book"></i> {{user.storiesNumber}}
       </span>
@@ -36,8 +33,11 @@
         <i class="fa fa-thumbs-o-up"></i> {{user.likesNumber}}
       </span>
     </div>
-    <div class="col-lg-8 col-lg-8 col-sm-4 col-xs-4">
-      {{user.displayName}}
+    <div class="col-lg-2 col-md-2 col-xs-2 col-sm-2">
+      <button type="button" name="button" (click)="addAsModerator(user)" class="btn btn-default">
+        <i class="fa fa-flash"></i>
+        Сделать управляющим
+      </button>
     </div>
   </div>
 
