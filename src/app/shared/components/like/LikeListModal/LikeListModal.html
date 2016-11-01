@@ -7,11 +7,9 @@
       У этой записи нет лайков
     </div>
     <ul class='user-list' *ngIf="userList.length > 0">
-      <li class='user-list__item' *ngFor="let user of userList">
-        <img [src]="user.photo" class="user-photo" alt="" />
-        <a [routerLink]="['/u',user.id]" (click)="close()">
-          {{user.displayName}}
-        </a>
+      <li class='user-list__item' *ngFor="let userId of userList">
+        <!-- <user-avatar [id]="userId"></user-avatar> -->
+        <user-link [id]="userId"></user-link>
       </li>
     </ul>
   </div>
