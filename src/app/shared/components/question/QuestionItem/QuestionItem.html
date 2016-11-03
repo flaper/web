@@ -1,0 +1,25 @@
+<div class="question-container" *ngIf="question">
+  <div class="user-info">
+    <user-avatar [id]="question.userId"></user-avatar>
+    <user-link [id]="question.userId"></user-link>
+  </div>
+  <div class="question-content">
+    <h2>
+      {{question.title}}
+    </h2>
+    <ul class="answer-list" *ngIf="!iHadAnswered()">
+      <li class="answer-list__item col-xs-6 col-sm-4 col-md-3 col-lg-2" *ngFor="let answer of question.answers">
+        <a class='btn btn-vote' (click)="vote(answer)">
+          {{answer.text}}
+        </a>
+      </li>
+    </ul>
+    <ul class="result-list" *ngIf="iHadAnswered()"> Результаты:
+      <li class="result-list__item" *ngFor="let answer of question.answers">
+          {{answer.text}} - {{answer.count}}
+      </li>
+    </ul>
+  </div>
+  <comments-short-list [subject]="question">
+  </comments-short-list>
+</div>
