@@ -47,6 +47,7 @@ import {PageLogin} from "./components/pages/login/PageLogin";
 import {PageLoginEmail} from "./components/pages/login/PageLoginEmail/PageLoginEmail";
 import {PageNews} from "./components/pages/home/PageNews/PageNews";
 import {PageQuestion} from "./components/pages/question/read/PageQuestion";
+import {PageQuestionCreate} from "./components/pages/question/write/PageQuestionCreate";
 import {PageWriteStory} from "./components/pages/story/write/PageWriteStory";
 import {PageStory} from "./components/pages/story/read/PageStory";
 import {TagStoryPage} from "./components/pages/story/tags/TagStoryPage";
@@ -74,14 +75,14 @@ const APP_PROVIDERS = [
     AppComponent, MenuLeft, Footer, Navbar, Curtain, PageUsers, PageUserMenu, News, HomeLinks,
     Github, PageLastStories, LayoutHome, LayoutObject, ObjectSearch, ObjectSearchForm, LastStories, TopStories,
     PageTopStories, PageTopStoriesLast, ObjectList, SimpleWrite, WriteStoryButton, PageManageRequest, PageManage,
-    PageSearchEngineHide, DropzoneComponent, PageLogin,PageLoginEmail, PageNews, PageWriteStory, PageObjectEdit,
+    PageSearchEngineHide, DropzoneComponent, PageLogin, PageLoginEmail, PageNews, PageWriteStory, PageObjectEdit,
     PageNavigator, PageStory, PageStoryChanges, PageFlapSync, PageObjectMain, PageReview, UserSearch, UserList,
-    PageNotFound, TagStoryPage,PageQuestion
+    PageNotFound, TagStoryPage, PageQuestion, PageQuestionCreate
   ],
   imports: [ // import Angular's modules
     BrowserModule,
     HttpModule,
-    RouterModule.forRoot(ROUTES, {useHash: false}),
+    RouterModule.forRoot(ROUTES, { useHash: false }),
     // our modules
     SharedModule, UserModule, SupportModule
   ],

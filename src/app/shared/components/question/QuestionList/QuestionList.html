@@ -1,3 +1,7 @@
 <div class="container">
   <question-item [question]="question" *ngFor="let question of records"></question-item>
 </div>
+
+<div class="alert alert-info text-xs-center" *ngIf="records.length === 0">
+  Ещё не создано ни одного голосования. Вы можете <a [routerLink]="['/p','questions','create']">создать новый опрос</a>.
+</div>

@@ -1,0 +1,14 @@
+.answer-row {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  input {
+    flex-grow: 12;
+    border-radius: 0.25rem 0 0 0.25rem;
+  }
+  button {
+    flex-grow: 1;
+    border-radius: 0 0.25rem 0.25rem 0;
+  }
+}

@@ -1,0 +1,41 @@
+<div class="container">
+  <h1 class="text-xs-center">Создать опрос</h1>
+  <div>
+    <form class="form" [formGroup]="form" (submit)="onSubmit(form)">
+
+      <div class="has-danger" *ngIf="error">
+        <span class="text-help">{{error}}</span>
+      </div>
+
+      <div class="title-group">
+        <label for="title">Заголовок</label>
+      </div>
+
+      <fieldset class="form-group" required>
+        <input id="title" formControlName="title" type="text" placeholder="Заголовок" class="form-control" auto-focus-it name="title">
+        <div class='e-content-length pull-right'>
+          <span [ngClass]="{valid:titleValid(),invalid:!titleValid()}">{{getTitleLength()}}</span>/128 символов
+        </div>
+      </fieldset>
+
+
+      <fieldset class="form-group" formArrayName="answers">
+        <label>Варианты ответов</label>
+
+        <div *ngFor="let answer of form.controls.answers.controls; let i = index;">
+          <div class="answer-row" [formGroupName]="i">
+
+            <input class="form-control" type="text" formControlName="answer">
+
+            <a class="btn" (click)="removeAnswer(i)" *ngIf="form.controls.answers.controls.length > 1"><i class='fa fa-minus'></i></a>
+          </div>
+        </div>
+
+        <button type="button" class="add-answer-button btn" (click)="addAnswer()"><i class="fa fa-plus"></i></button>
+      </fieldset>
+      <button type="submit" class="btn btn-primary">Создать</button>
+      <button type="button" class="btn btn-link" (click)="onCancel()">Отменить
+    </button>
+    </form>
+  </div>
+</div>
