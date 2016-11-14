@@ -6,8 +6,8 @@ import {PageNews} from "./components/pages/home/PageNews/PageNews";
 import {PageTopStories} from "./components/pages/home/PageTopStories/PageTopStories";
 import {PageTopStoriesLast} from "./components/pages/home/PageTopStoriesLast/PageTopStoriesLast";
 import {PageStory} from "./components/pages/story/read/PageStory";
-import {PageQuestion} from "./components/pages/question/read/PageQuestion";
-import {PageQuestionCreate} from "./components/pages/question/write/PageQuestionCreate";
+import {PagePoll} from "./components/pages/poll/read/PagePoll";
+import {PagePollCreate} from "./components/pages/poll/write/PagePollCreate";
 import {TagStoryPage} from "./components/pages/story/tags/TagStoryPage";
 import {PageStoryChanges} from "./components/pages/story/changes/PageStoryChanges";
 import {PageNotFound} from "./components/pages/notFound/PageNotFound";
@@ -28,8 +28,8 @@ export const ROUTES = [
   {path: 'p/top', component: PageTopStories},
   {path: 'p/top_last', component: PageTopStoriesLast},
   {path: 'p/flapers', component: PageUsers},
-  {path: 'p/questions', component: PageQuestion},
-  {path: 'p/questions/create', component: PageQuestionCreate},
+  {path: 'p/polls', component: PagePoll},
+  {path: 'p/polls/create', component: PagePollCreate},
   {path: 'p/storyChanges/:id', component: PageStoryChanges},
   {path: 'p/storyChanges/:id/:page', component: PageStoryChanges},
   {path: 's/:slug', component: PageStory},

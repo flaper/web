@@ -46,8 +46,8 @@ import {DropzoneComponent} from "./components/image/dropzone/DropzoneComponent";
 import {PageLogin} from "./components/pages/login/PageLogin";
 import {PageLoginEmail} from "./components/pages/login/PageLoginEmail/PageLoginEmail";
 import {PageNews} from "./components/pages/home/PageNews/PageNews";
-import {PageQuestion} from "./components/pages/question/read/PageQuestion";
-import {PageQuestionCreate} from "./components/pages/question/write/PageQuestionCreate";
+import {PagePoll} from "./components/pages/poll/read/PagePoll";
+import {PagePollCreate} from "./components/pages/poll/write/PagePollCreate";
 import {PageWriteStory} from "./components/pages/story/write/PageWriteStory";
 import {PageStory} from "./components/pages/story/read/PageStory";
 import {TagStoryPage} from "./components/pages/story/tags/TagStoryPage";
@@ -77,7 +77,7 @@ const APP_PROVIDERS = [
     PageTopStories, PageTopStoriesLast, ObjectList, SimpleWrite, WriteStoryButton, PageManageRequest, PageManage,
     PageSearchEngineHide, DropzoneComponent, PageLogin, PageLoginEmail, PageNews, PageWriteStory, PageObjectEdit,
     PageNavigator, PageStory, PageStoryChanges, PageFlapSync, PageObjectMain, PageReview, UserSearch, UserList,
-    PageNotFound, TagStoryPage, PageQuestion, PageQuestionCreate
+    PageNotFound, TagStoryPage, PagePoll, PagePollCreate
   ],
   imports: [ // import Angular's modules
     BrowserModule,

@@ -13,8 +13,8 @@ import {ModalModule} from "angular2-modal";
 import {BootstrapModalModule} from 'angular2-modal/plugins/bootstrap';
 import {SubscribeButton} from "./components/subscribe/SubscribeButton/SubscribeButton";
 import {FixedPipe} from "./pipes/FixedPipe";
-import {QuestionList} from "./components/question/QuestionList/QuestionList";
-import {QuestionItem} from "./components/question/QuestionItem/QuestionItem";
+import {PollList} from "./components/poll/PollList/PollList";
+import {PollItem} from "./components/poll/PollItem/PollItem";
 import {CommentWrite} from "./components/comment/CommentWrite/CommentWrite";
 import {PostActions} from "./components/post/PostActions/PostActions";
 import {CommentComponent} from "./components/comment/CommentComponent/CommentComponent";
@@ -34,7 +34,7 @@ const DIRECTIVES = [Autosize, AutoFocusIt];
 // компоненты доступные во всех модулях
 const COMPONENTS = [ObjectLink, LikeComponent, LikeListModal, UserLink, UserAvatar, SubscribeButton, CommentWrite,
   PostActions, CommentComponent, CommentsList, CommentsShortList, CommentsAutoList, RatingBar, LoadMore,
-  GalleryComponent, StoryComponent, StoryItem, StoriesList, StoriesAutoList, QuestionList, QuestionItem];
+  GalleryComponent, StoryComponent, StoryItem, StoriesList, StoriesAutoList, PollList, PollItem];
 // pipe-ы доступные во всех модулях
 const PIPES = [FixedPipe, FlapImagePipe];
 @NgModule({

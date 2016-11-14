@@ -1,0 +1,33 @@
+<div class="poll-container" *ngIf="poll">
+  <div class="user-info">
+    <user-avatar [id]="poll.userId"></user-avatar>
+    <user-link [id]="poll.userId"></user-link>
+  </div>
+  <div class="poll-content">
+    <h2>
+      {{poll.title}}
+    </h2>
+    <div class="" *ngIf="poll.type==='voting' && !isCandidate()">
+      <button class='btn btn-success col-xs-12' (click)="addMeAsCandidate()"><i class='fa fa-person'></i>Добавить свою кандидатуру</button>
+    </div>
+    <ul class="answer-list">
+      <li class="answer-list__item col-xs-6 col-sm-6 col-md-4 col-lg-4" *ngFor="let answer of poll.answers">
+        <a class='btn btn-vote' (click)="vote(answer)" *ngIf="poll.type=='poll'">
+          {{answer.text}}
+        </a>
+        <a class='btn btn-vote' (click)="vote(answer)" *ngIf="poll.type=='voting'">
+          <user-avatar [id]="answer"></user-avatar>
+          <user-link [id]="answer"></user-link>
+        </a>
+      </li>
+    </ul>
+
+    <ul class="result-list" *ngIf="iHadVoted"> Результаты:
+      <li class="result-list__item" *ngFor="let answer of poll.answers">
+          {{answer.text}} - {{answer.count}}
+      </li>
+    </ul>
+  </div>
+  <comments-short-list [subject]="poll">
+  </comments-short-list>
+</div>
