@@ -23,7 +23,7 @@ export class PollItem {
     return this.poll.answers.indexOf(this._user.currentUserId) !== -1;
   }
   vote(answer) {
-    this._vote.voteFof(this.poll.id,answer)
+    this._vote.voteFor(this.poll.id,answer)
     .subscribe(
       data => this.iHadVoted = true,
       err => console.log(err)
