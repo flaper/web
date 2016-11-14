@@ -3,6 +3,10 @@
     "host": "localhost",
     "port": "4000"
   },
+  "search": {
+    "host": "api.flaper.org",
+    "port": "80"
+  },
   "debug": {
     "api": false
   },
