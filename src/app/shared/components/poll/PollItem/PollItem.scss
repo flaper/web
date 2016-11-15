@@ -5,6 +5,10 @@
 .result-list {
   list-style: none;
   margin-top: 1rem;
+  &__item {
+    margin-bottom: 0.25rem;
+    text-indent: 1rem;
+  }
 }
 .answer-list {
   margin-top: 1rem;

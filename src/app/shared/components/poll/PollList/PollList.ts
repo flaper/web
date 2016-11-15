@@ -11,7 +11,6 @@ export class PollList {
   constructor(private _vote:VoteService, private _poll:PollService) {
     let where:any = {status:"active"};
     _poll.get(where).subscribe(data => {
-      console.log(data);
       this.records = data
     });
   }

@@ -2,6 +2,8 @@
   <div class="user-info">
     <user-avatar [id]="poll.userId"></user-avatar>
     <user-link [id]="poll.userId"></user-link>
+    <post-actions class="active pull-right" [actions]="actions" [model]="poll" (actionClicked)="actionEvent($event)"
+                  *ngIf="acl.can('Poll.write', poll)"></post-actions>
   </div>
   <div class="poll-content">
     <h2>
@@ -9,30 +11,34 @@
     </h2>
 
     <div class="alert alert-success" *ngIf="!inProgress() && !hasFinished()">
-      Голосование начнется {{poll.openDate | date: "dd.MM.yyyy"}} <br>
+      Голосование начнется {{poll.openDate | date: "dd.MM.yyyy"}}
     </div>
-    <div class="" *ngIf="canBeCandidate() && !inProgress() && !hasFinished()">
+    <div class="alert alert-danger" *ngIf="!canVote()">
+      К сожалению вы не можете участвовать в этом {{poll.type==="voting" ? "голсовании" : "опросе"}} <br>
+      Для голосования необходимо иметь как минимум 5 статей.
+    </div>
+    <div class="" *ngIf="canBeCandidate() && !isCandidate() && !inProgress() && !hasFinished()">
       <button class='btn btn-success col-xs-12' (click)="addMeAsCandidate()"><i class='fa fa-person'></i>Добавить свою кандидатуру</button>
     </div>
 
     <ul class="answer-list" *ngIf="canVote() && inProgress()">
       <li class="answer-list__item col-xs-6 col-sm-6 col-md-4 col-lg-4" *ngFor="let answer of poll.answers">
-        <a class='btn btn-vote' (click)="vote(answer)" *ngIf="poll.type=='poll'">
+        <a class='btn btn-vote' (click)="vote(answer)" *ngIf="isPoll">
           {{answer}}
         </a>
-        <a class='btn btn-vote' (click)="vote(answer)" *ngIf="poll.type=='voting'">
+        <a class='btn btn-vote' (click)="vote(answer)" *ngIf="isVoting">
           <user-avatar [id]="answer"></user-avatar>
           <user-link [id]="answer"></user-link>
         </a>
       </li>
     </ul>
 
-    <ul class="result-list" *ngIf="!canVote()"> {{ poll.type ==='voting' ? 'Кандидаты':'Варианты ответов'}}: {{ poll.type==='poll' || (poll.answers.length > 0) ? "" : "пока не зарегистрированы"}}
+    <ul class="result-list" *ngIf="!canVote() || iHadVoted"> {{ isVoting ? 'Кандидаты':'Варианты ответов'}}: {{ isPoll || (poll.answers.length > 0) ? "" : "пока не зарегистрированы"}}
       <li class="result-list__item" *ngFor="let answer of poll.answers">
-        <div *ngIf="poll.type=='poll'">
-          {{answer}}
+        <div *ngIf="isPoll">
+          {{answer}} - {{results[answer] ? results[answer].length : 0}} голосов
         </div>
-        <div *ngIf="poll.type=='voting'">
+        <div *ngIf="isVoting">
           <user-avatar [id]="answer"></user-avatar>
           <user-link [id]="answer"></user-link>
         </div>
