@@ -7,13 +7,18 @@
     <h2>
       {{poll.title}}
     </h2>
-    <div class="" *ngIf="poll.type==='voting' && !isCandidate()">
+
+    <div class="alert alert-success" *ngIf="!inProgress() && !hasFinished()">
+      Голосование начнется {{poll.openDate | date: "dd.MM.yyyy"}} <br>
+    </div>
+    <div class="" *ngIf="canBeCandidate() && !inProgress() && !hasFinished()">
       <button class='btn btn-success col-xs-12' (click)="addMeAsCandidate()"><i class='fa fa-person'></i>Добавить свою кандидатуру</button>
     </div>
-    <ul class="answer-list">
+
+    <ul class="answer-list" *ngIf="canVote() && inProgress()">
       <li class="answer-list__item col-xs-6 col-sm-6 col-md-4 col-lg-4" *ngFor="let answer of poll.answers">
         <a class='btn btn-vote' (click)="vote(answer)" *ngIf="poll.type=='poll'">
-          {{answer.text}}
+          {{answer}}
         </a>
         <a class='btn btn-vote' (click)="vote(answer)" *ngIf="poll.type=='voting'">
           <user-avatar [id]="answer"></user-avatar>
@@ -22,9 +27,15 @@
       </li>
     </ul>
 
-    <ul class="result-list" *ngIf="iHadVoted"> Результаты:
+    <ul class="result-list" *ngIf="!canVote()"> {{ poll.type ==='voting' ? 'Кандидаты':'Варианты ответов'}}: {{ poll.type==='poll' || (poll.answers.length > 0) ? "" : "пока не зарегистрированы"}}
       <li class="result-list__item" *ngFor="let answer of poll.answers">
-          {{answer.text}} - {{answer.count}}
+        <div *ngIf="poll.type=='poll'">
+          {{answer}}
+        </div>
+        <div *ngIf="poll.type=='voting'">
+          <user-avatar [id]="answer"></user-avatar>
+          <user-link [id]="answer"></user-link>
+        </div>
       </li>
     </ul>
   </div>
