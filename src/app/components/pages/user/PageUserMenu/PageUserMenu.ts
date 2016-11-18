@@ -1,6 +1,7 @@
-import {Component, ElementRef} from '@angular/core';
-import {AuthService,  UserService, UserMenuService} from "@flaper/angular";
+import {Component} from '@angular/core';
+import {AuthService, UserService} from "@flaper/angular";
 import {PageService} from "../../../../services/helpers/PageService";
+import {UserMenuService} from "../../../../services/user/UserMenuService";
 
 let _get = require('lodash/get');
 
@@ -12,8 +13,8 @@ let _get = require('lodash/get');
 
 export class PageUserMenu {
 
-  constructor(private _user:UserService, private _page:PageService,
-              private _auth:AuthService, private _menu:UserMenuService) {
+  constructor(private _user: UserService, private _page: PageService,
+              private _auth: AuthService, private _menu: UserMenuService) {
   }
 
   logout() {
