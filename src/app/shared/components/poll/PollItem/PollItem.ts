@@ -28,8 +28,8 @@ export class PollItem {
     this.isVoting = this.poll.type === 'voting';
     this.isPoll = this.poll.type === 'poll';
     this.now = new Date();
-    this.poll.openDate = new Date(this.poll.openDate);
-    this.poll.closeDate = new Date(this.poll.closeDate);
+    this.poll.openDate = this.poll.openDate;
+    this.poll.closeDate = this.poll.closeDate;
     this._vote.voteExists(this.poll.id)
     .subscribe(
       data => {
@@ -68,7 +68,7 @@ export class PollItem {
     return userRule;
   }
   isCandidate() {
-    let pollRule = this.poll.type==='voting' && (this._user.hasCurrentUser ? this.poll.answers.indexOf(this._user.currentUserId) === -1 : false);
+    let pollRule = this.isVoting && (this._user.hasCurrentUser ? this.poll.answers.indexOf(this._user.currentUserId) === -1 : false);
     return pollRule;
   }
   canVote() {
