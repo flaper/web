@@ -14,6 +14,7 @@ import {ROUTES} from './app.routes';
 import {SharedModule} from "./shared/shared.module";
 import {UserModule} from "./modules/user";
 import {SupportModule} from "./modules/support";
+import {PollModule} from "./modules/poll";
 
 // App is our top level component
 import {AppComponent} from './app.component';
@@ -46,8 +47,7 @@ import {DropzoneComponent} from "./components/image/dropzone/DropzoneComponent";
 import {PageLogin} from "./components/pages/login/PageLogin";
 import {PageLoginEmail} from "./components/pages/login/PageLoginEmail/PageLoginEmail";
 import {PageNews} from "./components/pages/home/PageNews/PageNews";
-import {PagePoll} from "./components/pages/poll/read/PagePoll";
-import {PagePollCreate} from "./components/pages/poll/write/PagePollCreate";
+
 import {PageWriteStory} from "./components/pages/story/write/PageWriteStory";
 import {PageStory} from "./components/pages/story/read/PageStory";
 import {TagStoryPage} from "./components/pages/story/tags/TagStoryPage";
@@ -77,14 +77,14 @@ const APP_PROVIDERS = [
     PageTopStories, PageTopStoriesLast, ObjectList, SimpleWrite, WriteStoryButton, PageManageRequest, PageManage,
     PageSearchEngineHide, DropzoneComponent, PageLogin, PageLoginEmail, PageNews, PageWriteStory, PageObjectEdit,
     PageNavigator, PageStory, PageStoryChanges, PageFlapSync, PageObjectMain, PageReview, UserSearch, UserList,
-    PageNotFound, TagStoryPage, PagePoll, PagePollCreate
+    PageNotFound, TagStoryPage
   ],
   imports: [ // import Angular's modules
     BrowserModule,
     HttpModule,
     RouterModule.forRoot(ROUTES, { useHash: false }),
     // our modules
-    SharedModule, UserModule, SupportModule
+    SharedModule, UserModule, SupportModule,PollModule
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
