@@ -22,6 +22,7 @@ declare module "autosize" {
   export = autosize;
 }
 
+declare var googletag:any;
 
 // FROM AngularClass
 

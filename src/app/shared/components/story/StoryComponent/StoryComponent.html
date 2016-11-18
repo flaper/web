@@ -7,7 +7,7 @@
       </div>
       <div class="time">
         <span>{{story.created | amTimeAgo}}</span>
-      <span *ngIf="showChangedTime()">
+        <span *ngIf="showChangedTime()">
         (изменено {{story.updated | amTimeAgo}})
       </span>
       </div>
@@ -27,6 +27,10 @@
 <div *ngIf="story.tags && story.tags.length" class="tagline">
   <a [routerLink]="['/t',tag]" class="tag tag-default" *ngFor="let tag of story.tags">{{tag}}</a>
 </div>
+<div *ngIf="dfp">
+  <div id='div-gpt-ad-1479456129763-0' style='height:280px; width:336px;'>
+  </div>
+</div>
 <div [innerHtml]="story.contentHTML" class="contentHTML">
 </div>
 <div class="answer alert alert-success" *ngIf="story.answer">
@@ -45,4 +49,5 @@
        data-services="viber,whatsapp,vkontakte,odnoklassniki,moimir,facebook,gplus,twitter"></div>
 </div>
 
-<image-gallery [currentImage]="currentImage" (stateUpdated)="stateChanged($event)" [images]='story.images'></image-gallery>
+<image-gallery [currentImage]="currentImage" (stateUpdated)="stateChanged($event)"
+               [images]='story.images'></image-gallery>

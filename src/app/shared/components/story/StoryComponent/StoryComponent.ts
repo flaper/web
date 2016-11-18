@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {Router} from '@angular/router';
-import {ACL, Story, StoryService, StoryBestService, ViewService} from "@flaper/angular";
+import {ACL, Story, StoryService, StoryBestService, ViewService, UserService} from "@flaper/angular";
 import * as moment from 'moment';
 import {PageService} from "../../../../services/helpers/PageService";
 
@@ -16,6 +16,7 @@ export class StoryComponent {
   private _moment;
   private initialized: Boolean = false;
   currentImage: string = null; //current image link / gallery state
+  dfp = false;
   private actions = [
     {name: 'deny', title: 'Отклонить', icon: 'fa-ban', acl: 'Story.deny'},
     {name: 'delete', title: 'Удалить', acl: 'Story.delete'},
@@ -23,14 +24,15 @@ export class StoryComponent {
     {name: 'best', title: 'Победитель', icon: 'fa-trophy', acl: 'super'},
   ];
 
-  constructor(private acl: ACL, private storyService: StoryService, private viewService: ViewService,
-              private pageService: PageService, private router: Router, private storyBestService: StoryBestService) {
+  constructor(private acl: ACL, private _story: StoryService, private _view: ViewService, private _page: PageService,
+              private router: Router, private _storyBest: StoryBestService, private _user: UserService) {
     this._moment = moment;
   }
 
   ngOnInit() {
-    this.viewService.post(this.story.id);
-    this.storyService.getBaseLink(this.story).subscribe(link => this.storyLink = link);
+    this._view.post(this.story.id);
+    this._story.getBaseLink(this.story).subscribe(link => this.storyLink = link);
+    this.dfp = !this._user.currentUser && !this.story.flagCp;
   }
 
   private _yaShare = null;
@@ -53,6 +55,7 @@ export class StoryComponent {
           counter: !mobile
         }
       });
+    this.showDfp();
   }
 
   ngOnDestroy() {
@@ -104,13 +107,13 @@ export class StoryComponent {
   actionEvent(event) {
     switch (event) {
       case 'delete':
-        this.storyService.del(this.story.id).subscribe(() => {
-          this.pageService.navigateToDefault();
+        this._story.del(this.story.id).subscribe(() => {
+          this._page.navigateToDefault();
         });
         break;
       case 'deny':
-        this.storyService.deny(this.story.id).subscribe(() => {
-          this.pageService.navigateToDefault();
+        this._story.deny(this.story.id).subscribe(() => {
+          this._page.navigateToDefault();
         });
         break;
       case 'changes' :
@@ -119,13 +122,26 @@ export class StoryComponent {
       case 'best':
         let place = window.prompt('Какой место должен занять отзыв?', '');
         if (place) {
-          this.storyBestService.post(this.story.id, place).subscribe(() => {
+          this._storyBest.post(this.story.id, place).subscribe(() => {
             this.router.navigate(['Top'])
           })
         }
         break;
       default:
         throw `Unsupported event ${event}`;
+    }
+  }
+
+
+  showDfp() {
+    if (this.dfp) {
+      googletag.cmd.push(function () {
+        googletag.defineSlot('/113097344/flaper_main', [336, 280], 'div-gpt-ad-1479456129763-0').addService(googletag.pubads());
+        googletag.pubads().enableSingleRequest();
+        googletag.pubads().collapseEmptyDivs();
+        googletag.enableServices();
+        googletag.display('div-gpt-ad-1479456129763-0');
+      });
     }
   }
 }
