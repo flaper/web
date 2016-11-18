@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component,Input} from "@angular/core";
 import {VoteService, PollService} from "@flaper/angular";
 @Component({
   selector: "poll-list",
@@ -8,13 +8,11 @@ import {VoteService, PollService} from "@flaper/angular";
 
 export class PollList {
   records:any[] = [];
+  @Input()
   order:string = "created DESC";
   where:any = {status:"active"};
   constructor(private _vote:VoteService, private _poll:PollService) {
-    let filter = {where:this.where, order:this.order};
-    _poll.get(filter).subscribe(data => {
-      this.records = data
-    });
+    this.getRecords();
   }
   switchOrder(field) {
     let params = this.order.split(" ");
@@ -25,5 +23,14 @@ export class PollList {
       params[0] = field;
     }
     this.order = params.join(" ");
+  }
+  getRecords() {
+    let filter = {where:this.where, order:this.order};
+    this._poll.get(filter).subscribe(data => {
+      this.records = data
+    });
+  }
+  ngOnChanges() {
+    this.getRecords();
   }
 }
