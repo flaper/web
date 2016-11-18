@@ -10,9 +10,12 @@ import {ActivatedRoute} from "@angular/router";
 export class TagStoryPage {
   where:any;
   tag:string;
-  sortType:number=0;
-  sortDirection:string = "DESC";
-  sortFields:string[] = ["lastActive","likesNumber","created"];
+  order:string = "lastActive DESC";
+  orderFields:any = [
+    {name:"lastActive", title:"по дате активности"},
+    {name:"likesNumber", title:"по количеству лайков"},
+    {name:"created",title:"по дате создания"}
+  ];
   constructor(private route:ActivatedRoute){
     route.params.subscribe(
       params => {
@@ -21,15 +24,7 @@ export class TagStoryPage {
       }
     )
   }
-  sort(type:number) {
-    if (this.sortType === type) {
-        this.sortDirection = this.sortDirection === 'DESC' ? 'ASC' : 'DESC';
-    }
-    else {
-      this.sortType = type;
-    }
-  }
-  getSort() {
-    return `${this.sortFields[this.sortType]} ${this.sortDirection}`;
+  onSort(value:string) {
+    this.order = value;
   }
 }

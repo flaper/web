@@ -1,23 +1,8 @@
 <div class="container container-text">
   <h2 class="text-xs-center">Статьи по тэгу {{tag}}</h2>
-  <div class="text-xs-center">
-    <div class="btn-group">
-      <button type="button" class="btn btn-default" (click)="sort(0)" [ngClass]="{active:sortType===0}">
-      По количеству лайков
-      <i class='fa' [ngClass]="{'fa-sort-asc':sortDirection === 'ASC','fa-sort-desc': sortDirection==='DESC'}"></i>
-    </button>
-      <button type="button" class="btn btn-default" (click)="sort(1)" [ngClass]="{active:sortType===1}">
-      последняя активность
-      <i class='fa' [ngClass]="{'fa-sort-asc':sortDirection === 'ASC','fa-sort-desc': sortDirection==='DESC'}"></i>
-    </button>
-      <button type="button" class="btn btn-default" (click)="sort(2)" [ngClass]="{active:sortType===2}">
-      дата создания
-      <i class='fa' [ngClass]="{'fa-sort-asc':sortDirection === 'ASC','fa-sort-desc': sortDirection==='DESC'}"></i>
-    </button>
-    </div>
-  </div>
+  <order-switch [fields]="orderFields" (orderChanged)="onSort($event)"></order-switch>
 
-  <stories-auto-list [order]="getSort()" [where]="where" *ngIf="where">
+  <stories-auto-list [order]="order" [where]="where" *ngIf="where">
 
   </stories-auto-list>
 </div>
