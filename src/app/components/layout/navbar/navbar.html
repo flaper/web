@@ -1,6 +1,6 @@
 <nav class="navbar" [class.has-user]="_user.currentUser">
   <div class="navbar-section main-controls">
-    <a class="navbar-toggler mobile-only" (click)="onMenuPress()">
+    <a class="navbar-toggler mobile-only" (click)="onMenuPress()" *ngIf="_user.currentUser">
       &#9776;
     </a>
     <div class="brand-container">

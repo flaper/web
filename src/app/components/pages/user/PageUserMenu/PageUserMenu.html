@@ -14,7 +14,7 @@
       </span>
       </a>
     </li>
-    <li class="nav-item" *ngIf="_user.hasCurrentUser">
+    <li class="nav-item" *ngIf="_user.currentUser">
       <a class="nav-link" (click)="logout()">
         <span class="icon-container text-xs-center">
           <i class="fa fa-sign-out">
