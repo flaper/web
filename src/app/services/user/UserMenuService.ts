@@ -14,7 +14,6 @@ export class UserMenuService {
   getFlaperMenu() {
     let menu = [];
     if (this._acl.isSales()) menu.push({title:"Админка Поддержки",routerLink:["/p","support","admin"],iconClass: 'fa fa-question-circle'});
-    menu.push({title:"Вопросы и голосования",routerLink:["/p","polls"],iconClass: 'fa fa-group'});
     if (this._user.hasCurrentUser) {
       if (this._user.currentUser.extra.hasPremiumSupport())
         menu.push({title:"Премиум Поддержка",routerLink:["/p","support","premium"],iconClass: 'fa fa-question'});
@@ -25,6 +24,10 @@ export class UserMenuService {
       menu.push({title:"Моя страница",routerLink:["/u",this._user.currentUserId],iconClass: 'fa fa-user'});
       menu = menu.concat(this.flaperDefault);
       // menu.push({title:"Выход",onClick:this._auth.logout,iconClass: 'fa fa-sign-out'});
+    }
+
+    if (this._acl.isSuper()){
+      menu.push({title:"Test.Вопросы и голосования",routerLink:["/p","polls"],iconClass: 'fa fa-group'});
     }
 
     return menu;
