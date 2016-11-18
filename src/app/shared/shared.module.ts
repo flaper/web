@@ -26,13 +26,13 @@ import {StoryComponent} from "./components/story/StoryComponent/StoryComponent";
 import {StoriesAutoList} from "./components/story/StoriesAutoList/StoriesAutoList";
 import {StoriesList} from "./components/story/StoriesList/StoriesList";
 import {StoryItem} from "./components/story/StoryItem/StoryItem";
-
+import {OrderSwitch} from "./components/common/OrderSwitch/OrderSwitch";
 // директивые доступные во всех модулях
 const DIRECTIVES = [Autosize, AutoFocusIt];
 // компоненты доступные во всех модулях
 const COMPONENTS = [ObjectLink, LikeComponent, LikeListModal, UserLink, UserAvatar, SubscribeButton, CommentWrite,
   PostActions, CommentComponent, CommentsList, CommentsShortList, CommentsAutoList, RatingBar, LoadMore,
-  GalleryComponent, StoryComponent, StoryItem, StoriesList, StoriesAutoList];
+  GalleryComponent, StoryComponent, StoryItem, StoriesList, StoriesAutoList, OrderSwitch];
 // pipe-ы доступные во всех модулях
 const PIPES = [FixedPipe, FlapImagePipe];
 @NgModule({
