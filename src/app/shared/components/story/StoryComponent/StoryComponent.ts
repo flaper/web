@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {ACL, Story, StoryService, StoryBestService, ViewService, UserService} from "@flaper/angular";
 import * as moment from 'moment';
 import {PageService} from "../../../../services/helpers/PageService";
+import {Amalker} from "../../../../services/amalker/Amalker";
 
 @Component({
   selector: 'story',
@@ -17,6 +18,7 @@ export class StoryComponent {
   private initialized: Boolean = false;
   currentImage: string = null; //current image link / gallery state
   dfp = false;
+  DFP_ID1 = 'div-gpt-ad-1479456129763-0';
   private actions = [
     {name: 'deny', title: 'Отклонить', icon: 'fa-ban', acl: 'Story.deny'},
     {name: 'delete', title: 'Удалить', acl: 'Story.delete'},
@@ -135,13 +137,7 @@ export class StoryComponent {
 
   showDfp() {
     if (this.dfp) {
-      googletag.cmd.push(function () {
-        googletag.defineSlot('/113097344/flaper_main', [336, 280], 'div-gpt-ad-1479456129763-0').addService(googletag.pubads());
-        googletag.pubads().enableSingleRequest();
-        googletag.pubads().collapseEmptyDivs();
-        googletag.enableServices();
-        googletag.display('div-gpt-ad-1479456129763-0');
-      });
+      Amalker.show({type: '/113097344/flaper_main', id: this.DFP_ID1, size: [336, 280]});
     }
   }
 }

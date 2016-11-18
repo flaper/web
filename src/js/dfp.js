@@ -1,5 +1,6 @@
 var googletag = googletag || {};
 googletag.cmd = googletag.cmd || [];
+var dfp = dfp || {};
 if (true) {
   (function () {
     var gads = document.createElement('script');

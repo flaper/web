@@ -28,8 +28,8 @@ export class PollItem {
     this.isVoting = this.poll.type === 'voting';
     this.isPoll = this.poll.type === 'poll';
     this.now = new Date();
-    this.poll.openDate = new Date(this.poll.openDate);
-    this.poll.closeDate = new Date(this.poll.closeDate);
+    // this.poll.openDate = new Date(this.poll.openDate);
+    // this.poll.closeDate = new Date(this.poll.closeDate);
     this._vote.voteExists(this.poll.id)
     .subscribe(
       data => {

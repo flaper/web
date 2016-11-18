@@ -27,8 +27,8 @@
 <div *ngIf="story.tags && story.tags.length" class="tagline">
   <a [routerLink]="['/t',tag]" class="tag tag-default" *ngFor="let tag of story.tags">{{tag}}</a>
 </div>
-<div *ngIf="dfp">
-  <div id='div-gpt-ad-1479456129763-0' style='height:280px; width:336px;'>
+<div *ngIf="dfp" class="dfp">
+  <div id='{{DFP_ID1}}' style='height:280px; width:336px;'>
   </div>
 </div>
 <div [innerHtml]="story.contentHTML" class="contentHTML">
