@@ -14,7 +14,7 @@ export class UserMenuService {
   getFlaperMenu() {
     let menu = [];
     if (this._acl.isSales()) menu.push({title:"Админка Поддержки",routerLink:["/p","support","admin"],iconClass: 'fa fa-question-circle'});
-    if (this._user.hasCurrentUser) {
+    if (this._user.currentUser) {
       if (this._user.currentUser.extra.hasPremiumSupport())
         menu.push({title:"Премиум Поддержка",routerLink:["/p","support","premium"],iconClass: 'fa fa-question'});
       for (let objectId of this._user.currentUser.extra.getObjects()) {
