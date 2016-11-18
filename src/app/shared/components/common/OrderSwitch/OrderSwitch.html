@@ -1,0 +1,8 @@
+<div class="text-xs-center">
+  <div class="btn-group">
+  <button type="button" class="btn btn-default" (click)="sort(field)" [ngClass]="{active:sortField === field.name}" *ngFor='let field of fields'>
+    {{field.title}}
+    <i class='fa' [ngClass]="{'fa-sort-asc':sortDirection === 'ASC','fa-sort-desc': sortDirection==='DESC'}"></i>
+  </button>
+  </div>
+</div>
