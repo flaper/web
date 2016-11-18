@@ -1,8 +1,9 @@
 import {Component} from "@angular/core";
-import {DatePipe} from "@angular/common";
 import {FormBuilder, FormControl, FormGroup, Validators,FormArray} from '@angular/forms';
 import {PollService} from "@flaper/angular";
 import {Router} from "@angular/router";
+import * as moment from 'moment';
+
 @Component({
   selector: "page-poll-create",
   styles: [require("./PagePollCreate.scss")],
@@ -15,7 +16,7 @@ export class PagePollCreate {
   error:string=null;
   answers:string[] = [""];
   constructor(private fb: FormBuilder, private _poll:PollService, private router:Router) {
-    let defaultDate = (new DatePipe()).transform(new Date(), 'yyyy-MM-dd');
+    let defaultDate = moment('YYYY-MM-DD');
     this.form = fb.group({
       title: ['',Validators.required],
       openDate:[defaultDate, Validators.required],
