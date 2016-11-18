@@ -30,6 +30,8 @@
 <div *ngIf="dfp" class="dfp">
   <div id='{{DFP_ID1}}' style='height:280px; width:336px;'>
   </div>
+  <div *ngIf="slotSecond" id='{{DFP_ID2}}' style='height:280px; width:336px;'>
+  </div>
 </div>
 <div [innerHtml]="story.contentHTML" class="contentHTML">
 </div>

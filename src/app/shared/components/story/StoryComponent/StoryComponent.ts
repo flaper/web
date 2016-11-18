@@ -17,8 +17,12 @@ export class StoryComponent {
   private _moment;
   private initialized: Boolean = false;
   currentImage: string = null; //current image link / gallery state
+  // dfp start
   dfp = false;
   DFP_ID1 = 'div-gpt-ad-1479456129763-0';
+  DFP_ID2 = 'div-gpt-ad-1479472293124-0';
+  slotSecond = false;
+  // dfp end
   private actions = [
     {name: 'deny', title: 'Отклонить', icon: 'fa-ban', acl: 'Story.deny'},
     {name: 'delete', title: 'Удалить', acl: 'Story.delete'},
@@ -35,6 +39,8 @@ export class StoryComponent {
     this._view.post(this.story.id);
     this._story.getBaseLink(this.story).subscribe(link => this.storyLink = link);
     this.dfp = !this._user.currentUser && !this.story.flagCp;
+    //noinspection TypeScriptUnresolvedVariable
+    this.slotSecond = window.innerWidth > 800;
   }
 
   private _yaShare = null;
@@ -138,6 +144,8 @@ export class StoryComponent {
   showDfp() {
     if (this.dfp) {
       Amalker.show({type: '/113097344/flaper_main', id: this.DFP_ID1, size: [336, 280]});
+      if (this.slotSecond)
+        Amalker.show({type: '/113097344/flaper_main2', id: this.DFP_ID2, size: [336, 280]});
     }
   }
 }

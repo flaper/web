@@ -1,4 +1,6 @@
 export class Amalker {
+  static init = false;
+
   static show({type, id, size}) {
     googletag.cmd.push(function () {
       if (dfp[id]) {
@@ -7,8 +9,12 @@ export class Amalker {
         return;
       }
       dfp[id] = googletag.defineSlot(type, size, id).addService(googletag.pubads());
-      googletag.pubads().enableSingleRequest();
-      googletag.pubads().collapseEmptyDivs();
+
+      if (!Amalker.init) {
+        googletag.pubads().enableSingleRequest();
+        googletag.pubads().collapseEmptyDivs();
+        Amalker.init = true;
+      }
       googletag.enableServices();
       googletag.display(id);
     });
