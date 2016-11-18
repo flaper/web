@@ -6,6 +6,8 @@ import {PageNews} from "./components/pages/home/PageNews/PageNews";
 import {PageTopStories} from "./components/pages/home/PageTopStories/PageTopStories";
 import {PageTopStoriesLast} from "./components/pages/home/PageTopStoriesLast/PageTopStoriesLast";
 import {PageStory} from "./components/pages/story/read/PageStory";
+import {PageStoryRegion} from "./components/pages/story/region/PageStoryRegion";
+import {PageStoryDomain} from "./components/pages/story/domain/PageStoryDomain";
 
 import {TagStoryPage} from "./components/pages/story/tags/TagStoryPage";
 import {PageStoryChanges} from "./components/pages/story/changes/PageStoryChanges";
@@ -22,6 +24,9 @@ export const ROUTES = [
   {path: 'p/menu', component: PageUserMenu},
   {path: 'p/login', component: PageLogin},
   {path: 'p/signin', component: PageLoginEmail},
+  {path: ':domain', component: PageStoryDomain},
+  {path: 'места/:region', component: PageStoryRegion},
+  {path: `${encodeURIComponent('места')}/:region`, component: PageStoryRegion},
   {path: 'p/news', component: PageNews},
   {path: 'p/create_story', component: PageWriteStory},
   {path: 'p/top', component: PageTopStories},
