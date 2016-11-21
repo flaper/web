@@ -62,6 +62,8 @@ import {PageNotFound} from "./components/pages/notFound/PageNotFound";
 import {PageObjectEdit} from "./components/pages/object/PageObjectEdit/PageObjectEdit";
 import {PageSearchEngineHide} from "./components/pages/object/PageSearchEngineHide/PageSearchEngineHide";
 
+import {ToastModule} from 'ng2-toastr/ng2-toastr';
+
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS
@@ -82,6 +84,7 @@ const APP_PROVIDERS = [
   ],
   imports: [ // import Angular's modules
     BrowserModule,
+    ToastModule,
     HttpModule,
     RouterModule.forRoot(ROUTES, { useHash: false }),
     // our modules
