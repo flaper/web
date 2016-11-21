@@ -9,6 +9,7 @@
       <thead>
       <tr>
         <th></th>
+        <th></th>
         <th>
           Имя
         </th>
@@ -18,6 +19,9 @@
       </thead>
       <tbody>
       <tr *ngFor="let user of users">
+        <td>
+          {{user.level}}
+        </td>
         <td class="td-avatar"><img src="{{user.photo}}"></td>
         <td>
           <a [routerLink]="['/u', user.id]">{{user.displayName}}</a>
