@@ -29,7 +29,7 @@ export class PageUsers {
         displayName: {like: filter, options: 'i'}
       };
     }
-    this._user.get({where, order: 'storiesNumber DESC, updated DESC'}).subscribe(data => this.users = data);
+    this._user.get({where, order: 'level DESC, storiesNumber DESC'}).subscribe(data => this.users = data);
     this.lastQuery = filter;
   }
 }
