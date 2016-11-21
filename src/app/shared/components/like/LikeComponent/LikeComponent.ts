@@ -3,7 +3,7 @@ import {ILikable, UserService, LikeService} from "@flaper/angular";
 import {PageService} from "../../../../services/helpers/PageService";
 import {PopupService} from "../../../../services/popup/PopupService";
 import {LikeListModal} from "../LikeListModal/LikeListModal";
-
+import {ToastsManager} from "ng2-toastr/ng2-toastr";
 
 @Component({
   selector: 'like',
@@ -18,7 +18,8 @@ export class LikeComponent {
 
   private ifIHaveLike = false;
 
-  constructor(private _like: LikeService, private _user: UserService,  private _page:PageService, private _popup: PopupService) {
+  constructor(private _like: LikeService, private _user: UserService,  private _page:PageService, private _popup: PopupService,
+              private _toastr:ToastsManager) {
 
   }
 
@@ -40,13 +41,17 @@ export class LikeComponent {
   }
 
   toggleLike() {
+    console.log(this.subject.id);
+    
     if (!this._user.currentUser) {
       this._page.navigateToLogin();
     } else if (this._user.currentUserId !== this.subject.userId) {
+
       this._like.toggle(this.subject.id)
-        .subscribe((response) => {
-          this.subject.likesNumber = response.count;
-        })
+        .subscribe(
+          response => this.subject.likesNumber = response.count,
+          error => this._toastr.error(error.error.message, error.error.name,{timeOut:3000})
+        )
     }
   }
 
