@@ -3,8 +3,13 @@
     <div class='col-xs-3'>
       <img class='avatar' [src]="object.flap.avatar ? object.flap.avatar : '/assets/img/no-image.png'"/>
     </div>
-    <div class='col-xs-2'>
-      Рейтинг: <strong>{{asFObject(object).getRating() | fixed : 1}}</strong>/10 <br> Отзывы:
+    <div class='col-xs-3'>
+      <span class='hidden-sm-down'>Рейтинг:</span>
+      <i class='fa fa-star hidden-md-up'></i>
+      <strong>{{asFObject(object).getRating() | fixed : 1}}</strong>/10
+      <br>
+      <span class='hidden-sm-down'>Отзывы:</span>
+      <i class='fa fa-reply hidden-md-up'></i>
       <strong>{{asFObject(object).getReviewsNumber()}}</strong>
     </div>
     <div class='col-xs-6'>
