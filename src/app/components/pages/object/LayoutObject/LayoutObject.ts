@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Title} from "@angular/platform-browser"
-import {ObjectService, UserService} from "@flaper/angular";
+import {ObjectService, UserService, LocationService} from "@flaper/angular";
 import {FObject} from "@flaper/angular";
 import {Metrika} from "../../../../services/metrics/Metrika";
 import {ReplaySubject} from "rxjs";
@@ -18,7 +18,7 @@ export class LayoutObject {
   permissions: string[];
 
   constructor(ts: Title, route: ActivatedRoute, _object: ObjectService, private _user: UserService,
-              private router: Router) {
+              private router: Router, private _location:LocationService) {
     LayoutObject.ObjectObservable = new ReplaySubject<FObject>(1);
     route.params.subscribe(params=> {
       let data = route.snapshot.data;
@@ -31,6 +31,10 @@ export class LayoutObject {
       _object.getBySlug({mainDomain, region, slug})
         .subscribe(fobject => {
           this.obj = fobject;
+          if (mainDomain)
+            this._location.setCurrentDomain(mainDomain)
+          if (region)
+            this._location.setCurrentRegion(region);
           LayoutObject.ObjectObservable.next(fobject);
           LayoutObject.Object = fobject;
           ts.setTitle(fobject.title);
