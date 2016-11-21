@@ -1,10 +1,20 @@
 <form class='search-form' [formGroup]="form" (submit)="onSubmit($event)">
-  <div class="input-group">
+  <div class="input-group main-search">
     <span class="input-group-btn">
       <button type="submit" class="btn">
         <i class="fa fa-search"></i>
       </button>
     </span>
     <input type="text" formControlName="searchText" name="searchText" class="form-control search-input" placeholder="Поиск объектов..." *ngIf="!buttonMode">
+  </div>
+  <div class="input-group expand-search" *ngIf="expand">
+    <span class='input-group-addon hidden-xs-down'>
+      Домен:
+    </span>
+    <input type="text" name="domain" formControlName="domain" class="form-control search-input" placeholder="Домен">
+    <span class='input-group-addon hidden-xs-down'>
+      Регион:
+    </span>
+    <input type="text" name="region" formControlName="region" class="form-control search-input" placeholder="Регион">
   </div>
 </form>
