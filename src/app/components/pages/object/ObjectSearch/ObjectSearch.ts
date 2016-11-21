@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FObject, ObjectService} from '@flaper/angular';
+import {FObject, ObjectService, SearchService, LocationService} from '@flaper/angular';
 import {Router,ActivatedRoute} from '@angular/router';
 import {PageNavigator} from "../../../layout/PageNavigator/PageNavigator";
 import {ObjectSearchForm} from "../../../object/ObjectSearchForm/ObjectSearchForm";
@@ -17,28 +17,29 @@ export class ObjectSearch {
   pageSize:number = 10;
   pages:number = 0;
   searchText:string;
-  constructor(private _objects:ObjectService, private route:ActivatedRoute) {
+  constructor(private _objects:ObjectService, private route:ActivatedRoute, private _search:SearchService, private _location:LocationService) {
     route.params.subscribe(params=> {
       let data = route.snapshot.data,
           page:number = parseInt(params['page']) || 1;
       this.searchText = decodeURIComponent(params['text']) || "";
-      let query =  {or: [
-          {region:{like:this.searchText}},
-          {title:{like:this.searchText}},
-          {mainDomain:{like:this.searchText}}
-        ]},
-        order = this.searchText === "" ? "created DESC" : "";
       if (page) this.currentPage = page;
       else this.currentPage = 0;
-      _objects.count(query)
-        .subscribe(data => {
-          this.count = data.count;
+      let domain = _location.getCurrentDomain()
+      let region = domain === 'места' ? _location.getCurrentRegion() : null;
+      _search.search(this.searchText,domain,region)
+      .subscribe(
+        data => {
+          this.count = data.hits.total;
           this.pages = Math.ceil(this.count / this.pageSize);
-        })
-      _objects.search(this.searchText,this.currentPage,order)
-        .subscribe(objects => {
-          this.objects = objects;
-        });
+          this.objects = data.hits.hits.map(hit => hit._source);
+        },
+        error => {
+          console.error(error);
+          this.count = 0;
+          this.pages = 0;
+          this.objects = [];
+        }
+      )
     });
   }
   getPagination() {
