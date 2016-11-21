@@ -16,6 +16,9 @@
         <span class="likes-number" title="Количество лайков">
           <i class="fa fa-thumbs-o-up"></i> {{user.likesNumber}}
         </span>
+        <span class="level" title="Уровень">
+          <i class="fa fa-arrow-up"></i> {{user.level}}
+        </span>
         </div>
         <div *ngIf="isPointsVisible()">
           <span class="text-muted">Баллов:</span> {{amount | fixed}}
