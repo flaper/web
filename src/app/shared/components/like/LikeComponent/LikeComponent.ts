@@ -41,8 +41,6 @@ export class LikeComponent {
   }
 
   toggleLike() {
-    console.log(this.subject.id);
-    
     if (!this._user.currentUser) {
       this._page.navigateToLogin();
     } else if (this._user.currentUserId !== this.subject.userId) {
@@ -50,7 +48,7 @@ export class LikeComponent {
       this._like.toggle(this.subject.id)
         .subscribe(
           response => this.subject.likesNumber = response.count,
-          error => this._toastr.error(error.error.message, error.error.name,{timeOut:3000})
+          error => this._toastr.error(error.message, error.name,{timeOut:3000})
         )
     }
   }
