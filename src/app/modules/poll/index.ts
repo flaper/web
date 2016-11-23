@@ -15,6 +15,7 @@ export const routes = [
     path: 'p',
     children: [
       { path: 'polls/create', component: PagePollCreate },
+      { path: 'ideas/create', component: PagePollCreate },
       { path: 'polls', component: PagePoll },
       { path: 'ideas', component: PageIdeas },
       { path: 'ideas/:id', component: PagePollSingle },
