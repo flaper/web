@@ -28,6 +28,7 @@ export class UserMenuService {
 
     if (this._acl.isSuper()){
       menu.push({title:"Test.Вопросы и голосования",routerLink:["/p","polls"],iconClass: 'fa fa-group'});
+      menu.push({title:"Test.Предложения",routerLink:["/p","ideas"],iconClass: 'fa fa-group'});
     }
 
     return menu;
