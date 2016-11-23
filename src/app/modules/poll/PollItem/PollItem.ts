@@ -70,7 +70,7 @@ export class PollItem {
     return pollRule;
   }
   canVote() {
-    let userRule = this._user.hasCurrentUser ? this._user.currentUser.storiesNumber >=5 : false;
+    let userRule = this._user.hasCurrentUser ? this.poll.type === 'proposal' ? this._user.currentUser.level >= 2 : this._user.currentUser.storiesNumber >=5 : false;
     return userRule;
   }
   addMeAsCandidate() {
