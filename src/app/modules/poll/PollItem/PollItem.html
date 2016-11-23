@@ -8,9 +8,21 @@
   <div class="poll-content">
     <h2>
       <a [routerLink]="['/p','polls',poll.id]">{{poll.title}}</a>
+      <span class='tag tag-warning' title='{{isVoting ? "Голосование" : "Опрос"}} начнется {{poll.openDate | date: "dd.MM.yyyy"}}' *ngIf="!inProgress() && !hasFinished()">
+        <i class='fa fa-clock-o'></i>
+      </span>
+      <span class='tag tag-success' title='{{isVoting ? "Голосование" : "Опрос"}} идёт.' *ngIf="inProgress() && !hasFinished()">
+        <i class='fa fa-clock-o'></i>
+      </span>
+      <span class='tag tag-danger' title='К сожалению вы не можете участвовать в этом {{isPoll? "опросе" : "голосовании"}}' *ngIf="!canVote() && !hasFinished()">
+        <i class='fa fa-inbox'></i>
+      </span>
+      <span class='tag tag-danger' title='Голосование закрыто' *ngIf="hasFinished()">
+        <i class='fa fa-lock'></i>
+      </span>
     </h2>
 
-    <div class="alert alert-success" *ngIf="!inProgress() && !hasFinished()">
+    <!-- <div class="alert alert-warning" *ngIf="!inProgress() && !hasFinished()">
       {{isVoting ? "Голосование" : "Опрос"}} начнется {{poll.openDate | date: "dd.MM.yyyy"}}
     </div>
     <div class="alert alert-success" *ngIf="inProgress() && !hasFinished()">
@@ -19,7 +31,7 @@
     <div class="alert alert-danger" *ngIf="!canVote()">
       К сожалению вы не можете участвовать в этом {{isPoll? "опросе" : "голосовании"}} <br>
       Для голосования необходимо иметь как минимум {{poll.type === 'proposal' ? '2 уровень' : '5 статей'}}.
-    </div>
+    </div> -->
   </div>
   <comments-short-list [subject]="poll">
   </comments-short-list>

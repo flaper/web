@@ -56,10 +56,13 @@ export class PollItem {
     )
   }
   inProgress() {
-    return this.poll.openDate < this.now && this.poll.closeDate > this.now && this.poll.status === 'active';
+    let openDate = new Date(this.poll.openDate),
+        closeDate = new Date(this.poll.closeDate);
+    return openDate < this.now && closeDate > this.now && this.poll.status === 'active';
   }
   hasFinished() {
-    return this.poll.closeDate < this.now || this.poll.status === 'closed';
+    let closeDate = new Date(this.poll.closeDate);
+    return closeDate < this.now || this.poll.status === 'closed';
   }
   canBeCandidate() {
     let userRule = this._user.hasCurrentUser ? this._user.currentUser.storiesNumber >= 10 : false;

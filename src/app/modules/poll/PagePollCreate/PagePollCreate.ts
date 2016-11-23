@@ -60,7 +60,7 @@ export class PagePollCreate {
             answers = this.form.controls['answers'].value.map(value => value.answer).filter(value => !!value);
             break;
           case "proposal" :
-            answers =  ['Поддержать'];
+            answers =  ['Поддержать'].filter(value => !!value);
             break;
           case "voting" :
           default:

@@ -42,6 +42,7 @@
         </div>
         <div class="btn-group" role="group" aria-label="Basic example">
           <button type="button" class="btn btn-secondary" (click)="setType('poll')" [class.active]="type==='poll'">Опрос</button>
+          <button type="button" class="btn btn-secondary" (click)="setType('proposal')" [class.active]="type==='proposal'">Предложение</button>
           <button type="button" class="btn btn-secondary" (click)="setType('voting')" [class.active]="type==='voting'">Голосование</button>
         </div>
       </fieldset>
