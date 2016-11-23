@@ -50,11 +50,23 @@ export class PagePollCreate {
     )
   }
   getPollData() {
-    let title = this.form.controls['title'].value.trim();
-    let openDate = this.form.controls['openDate'].value;
-    let closeDate = this.form.controls['closeDate'].value;
-    let type = this.type;
-    let answers = type === "poll" ? this.form.controls['answers'].value.map(value => value.answer).filter(value => !!value) : [];
+    let title = this.form.controls['title'].value.trim(),
+        openDate = this.form.controls['openDate'].value,
+        closeDate = this.form.controls['closeDate'].value,
+        type = this.type,
+        answers = [];
+        switch (type) {
+          case "poll" :
+            answers = this.form.controls['answers'].value.map(value => value.answer).filter(value => !!value);
+            break;
+          case "proposal" :
+            answers =  ['Поддержать'];
+            break;
+          case "voting" :
+          default:
+            answers = [];
+            break;
+        }
     return {title,answers,type,openDate,closeDate};
   }
   addAnswer() {
