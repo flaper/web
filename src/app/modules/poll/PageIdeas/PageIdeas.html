@@ -1,0 +1,4 @@
+<h1 class="text-xs-center">Предложения</h1>
+<order-switch [fields]="orderFields" (orderChanged)="onSort($event)"></order-switch>
+<h5 class="text-xs-center"><a [routerLink]="['/p','polls','create']">создать новый опрос</a></h5>
+  <poll-list [order]="order" [where]="where"></poll-list>
