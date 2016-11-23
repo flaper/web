@@ -70,10 +70,13 @@ export class PagePollSingle {
     )
   }
   inProgress() {
-    return this.poll.openDate < this.now && this.poll.closeDate > this.now && this.poll.status === 'active';
+    let openDate = new Date(this.poll.openDate.toString()),
+        closeDate = new Date(this.poll.closeDate.toString());
+    return openDate < this.now && closeDate > this.now && this.poll.status === 'active';
   }
   hasFinished() {
-    return this.poll.closeDate < this.now || this.poll.status === 'closed';
+    let closeDate = new Date(this.poll.closeDate.toString());
+    return closeDate < this.now || this.poll.status === 'closed';
   }
   canBeCandidate() {
     let userRule = this._user.hasCurrentUser ? this._user.currentUser.storiesNumber >= 10 : false;
@@ -84,7 +87,7 @@ export class PagePollSingle {
     return pollRule;
   }
   canVote() {
-    let userRule = this._user.hasCurrentUser ? this._user.currentUser.storiesNumber >=5 : false;
+    let userRule = this._user.hasCurrentUser ? this.poll.type === 'proposal' ? this._user.currentUser.level >= 2 : this._user.currentUser.storiesNumber >=5 : false;
     return userRule;
   }
   addMeAsCandidate() {
