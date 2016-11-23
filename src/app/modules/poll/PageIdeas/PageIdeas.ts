@@ -7,10 +7,10 @@ import {Component} from "@angular/core";
 })
 
 export class PageIdeas {
-  order:string="created DESC";
+  order:string="likesNumber DESC";
   where:any ={status:'active',type:'proposal'};
   orderFields:any[] = [
-    {name:"lastActive",title:"По дате последней активности"},
+    {name:"likesNumber",title:"По количеству голосов"},
     {name:"created",title:"По дате создания"}
   ]
   constructor() {
