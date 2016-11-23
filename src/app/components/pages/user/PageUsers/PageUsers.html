@@ -9,22 +9,22 @@
       <thead>
       <tr>
         <th></th>
-        <th></th>
         <th>
           Имя
         </th>
+        <th><i class="fa fa-arrow-up"></i> Уровень</th>
         <th><i class="fa fa-book"></i> Статей</th>
         <th><i class="fa fa-thumbs-o-up"></i> Лайков</th>
       </tr>
       </thead>
       <tbody>
       <tr *ngFor="let user of users">
-        <td>
-          {{user.level}}
-        </td>
         <td class="td-avatar"><img src="{{user.photo}}"></td>
         <td>
           <a [routerLink]="['/u', user.id]">{{user.displayName}}</a>
+        </td>
+        <td>
+          {{user.level}}
         </td>
         <td>{{user.storiesNumber}}</td>
         <td>{{user.likesNumber}}</td>
