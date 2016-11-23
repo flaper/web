@@ -56,12 +56,12 @@ export class PollItem {
     )
   }
   inProgress() {
-    let openDate = new Date(this.poll.openDate),
-        closeDate = new Date(this.poll.closeDate);
+    let openDate = new Date(this.poll.openDate.toString()),
+        closeDate = new Date(this.poll.closeDate.toString());
     return openDate < this.now && closeDate > this.now && this.poll.status === 'active';
   }
   hasFinished() {
-    let closeDate = new Date(this.poll.closeDate);
+    let closeDate = new Date(this.poll.closeDate.toString());
     return closeDate < this.now || this.poll.status === 'closed';
   }
   canBeCandidate() {
