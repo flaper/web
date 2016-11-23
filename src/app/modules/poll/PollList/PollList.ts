@@ -10,6 +10,7 @@ export class PollList {
   records:any[] = [];
   @Input()
   order:string = "created DESC";
+  @Input()
   where:any = {status:"active"};
   constructor(private _vote:VoteService, private _poll:PollService) {
     this.getRecords();
