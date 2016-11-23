@@ -40,7 +40,7 @@
 
     <ul class="result-list" *ngIf="!canVote() || iHadVoted"> {{ isVoting ? 'Кандидаты':'Варианты ответов'}}: {{ isPoll || (poll.answers.length > 0) ? "" : "пока не зарегистрированы"}}
       <li class="result-list__item" *ngFor="let answer of poll.answers">
-        <div *ngIf="isPoll">
+        <div *ngIf="isPoll || isProposal">
           {{answer}} - {{results[answer] ? results[answer].length : 0}} голосов
         </div>
         <div *ngIf="isVoting">

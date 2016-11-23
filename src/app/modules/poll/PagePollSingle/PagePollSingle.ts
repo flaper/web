@@ -15,6 +15,7 @@ export class PagePollSingle {
   results:any = {};
   isVoting:boolean = false;
   isPoll:boolean = false;
+  isProposal:boolean = false;
   private actions = [
     {name: 'deny', title: 'Отклонить', icon: 'fa-ban', acl: 'Poll.deny'},
     {name: 'delete', title: 'Удалить', acl: 'Poll.delete'},
@@ -39,6 +40,7 @@ export class PagePollSingle {
   init() {
     this.isVoting = this.poll.type === 'voting';
     this.isPoll = this.poll.type === 'poll';
+    this.isProposal = this.poll.type === 'proposal';
     this.now = new Date();
     this._vote.voteExists(this.poll.id)
     .subscribe(
