@@ -16,7 +16,7 @@ export class PagePollCreate {
   error:string=null;
   answers:string[] = [""];
   constructor(private fb: FormBuilder, private _poll:PollService, private router:Router) {
-    let defaultDate = moment('YYYY-MM-DD');
+    let defaultDate = moment().format('YYYY-MM-DD');
     this.form = fb.group({
       title: ['',Validators.required],
       openDate:[defaultDate, Validators.required],
