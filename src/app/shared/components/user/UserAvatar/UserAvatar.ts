@@ -30,7 +30,6 @@ export class UserAvatar {
     //noinspection TypeScriptUnresolvedFunction
     this.userService.getById(this.id).subscribe(user => this.user = user);
   }
-
   setSizePx() {
     switch (this.size) {
       case UserAvatar.SIZE.MINOR:
@@ -42,5 +41,9 @@ export class UserAvatar {
         break;
     }
 
+  }
+
+  ngOnChanges() {
+    this.ngOnInit();
   }
 }
