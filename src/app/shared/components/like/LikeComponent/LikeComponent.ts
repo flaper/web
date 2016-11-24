@@ -48,7 +48,7 @@ export class LikeComponent {
       this._like.toggle(this.subject.id)
         .subscribe(
           response => this.subject.likesNumber = response.count,
-          error => this._toastr.error(error.message, error.name,{timeOut:3000})
+          error => this._toastr.error('Ошибка', error.name,{timeOut:3000})
         )
     }
   }
