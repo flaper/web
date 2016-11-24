@@ -21,6 +21,7 @@ export class PagePollCreate {
       title: ['',Validators.required],
       openDate:[defaultDate, Validators.required],
       closeDate:[defaultDate, Validators.required],
+      description:[""],
       answers: fb.array([
         this.initAnswerForm(),
       ])
@@ -67,7 +68,9 @@ export class PagePollCreate {
             answers = [];
             break;
         }
-    return {title,answers,type,openDate,closeDate};
+    let poll = {title,answers,type,openDate,closeDate};
+    if (type==='proposal') poll.description = this.form.controls['description'].value;
+    return poll;
   }
   addAnswer() {
     let control = <FormArray>this.form.controls['answers']

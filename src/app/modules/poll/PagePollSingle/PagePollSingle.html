@@ -10,7 +10,9 @@
     <h2>
       {{poll.title}}
     </h2>
-
+    <blockquote class='blockquote' *ngIf="isProposal">
+      {{poll.description}}
+    </blockquote>
     <div class="alert alert-success" *ngIf="!inProgress() && !hasFinished()">
       {{isVoting ? "Голосование" : "Опрос"}} начнется {{poll.openDate | date: "dd.MM.yyyy"}}
     </div>

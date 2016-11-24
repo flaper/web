@@ -36,6 +36,9 @@
           </div>
         </div>
       </fieldset>
+      <fieldset class="form-group" *ngIf="type==='proposal'">
+        <textarea formControlName="description" class="form-control" rows="8" cols="40" placeholder="Описание вашего предложения"></textarea>
+      </fieldset>
       <fieldset class="form-group">
         <div class="title-group">
           <label for="title">Это будет</label>
