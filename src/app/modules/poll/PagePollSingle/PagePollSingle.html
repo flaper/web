@@ -17,12 +17,12 @@
       {{isVoting ? "Голосование" : "Опрос"}} начнется {{poll.openDate | date: "dd.MM.yyyy"}}
     </div>
     <div class="alert alert-danger" *ngIf="!canVote()">
-      К сожалению вы не можете участвовать в этом {{poll.type==="voting" ? "голсовании" : "опросе"}}. <br>
-      Для голосования необходимо иметь как минимум 5 статей.
+      К сожалению вы не можете участвовать в этом {{poll.type==="voting" ? "голосовании" : "опросе"}}. <br>
+      Для голосования необходимо иметь как минимум {{poll.type==="voting" ? 3 : 2}} уровень.
     </div>
     <div class="alert alert-danger" *ngIf="!canBeCandidate() && isVoting">
       К сожалению вы не можете зарегистрироваться как кандидат. <br>
-      Для регистрации необходимо иметь как минимум 10 статей.
+      Для регистрации необходимо иметь как минимум 4 уровень.
     </div>
     <div class="" *ngIf="canBeCandidate() && !isCandidate() && !inProgress() && !hasFinished()">
       <button class='btn btn-success col-xs-12' (click)="addMeAsCandidate()"><i class='fa fa-person'></i>Добавить свою кандидатуру</button>
