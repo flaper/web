@@ -6,6 +6,9 @@
     <div class="alert text-xs-center" *ngIf="userList.length === 0">
       У этой записи нет лайков
     </div>
+    <div class="alert text-xs-center">
+      <like [subject]="context.subject" [iconMode]="true"></like>
+    </div>
     <ul class='user-list' *ngIf="userList.length > 0">
       <li class='user-list__item' *ngFor="let user of userList">
         <user-avatar [id]="user.id"></user-avatar>

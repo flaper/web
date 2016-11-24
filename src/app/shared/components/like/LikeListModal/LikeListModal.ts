@@ -1,10 +1,10 @@
 import {Component} from '@angular/core';
 import {DialogRef, ModalComponent} from 'angular2-modal';
 import {BSModalContext} from 'angular2-modal/plugins/bootstrap';
-import {User, UserService, LikeService} from '@flaper/angular';
+import {User, UserService, LikeService,ILikable,StoryService,CommentService} from '@flaper/angular';
 
 export class CustomContext extends BSModalContext {
-  public subjectId:string;
+  public subject:ILikable;
 }
 
 @Component({
@@ -17,9 +17,9 @@ export class LikeListModal implements ModalComponent<CustomContext> {
   context: CustomContext;
   userList:User[]=[];
   constructor(public dialog: DialogRef<CustomContext>,private _user:UserService,
-              private _like:LikeService) {
+              private _like:LikeService,private _story:StoryService) {
     this.context = dialog.context;
-    _like.getLikesHistory({subjectId: this.context.subjectId},0,0)
+    _like.getLikesHistory({subjectId: this.context.subject.id},0,0)
     .subscribe(likes => {
       let userIds = likes.map(like => like.userId);
       _user.requestIds(userIds);
