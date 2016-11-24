@@ -69,8 +69,10 @@ export class CommentWrite {
     if (this.commentItObservable) {
       //noinspection TypeScriptUnresolvedFunction
       this.commentItObservable.subscribe(() => {
-        let textField = this.elementRef.nativeElement.querySelector('textarea');
-        textField && textField.focus();
+        setTimeout( () => {
+          let textField = this.elementRef.nativeElement.querySelector('textarea');
+          textField && textField.focus();
+        } , 200);
       })
     }
   }
