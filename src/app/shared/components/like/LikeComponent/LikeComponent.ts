@@ -37,7 +37,7 @@ export class LikeComponent {
   }
 
   showPopup() {
-    this._popup.openCustom(LikeListModal, {isBlocking: false, subjectId: this.subject.id});
+    this._popup.openCustom(LikeListModal, {isBlocking: false, subject: this.subject});
   }
 
   toggleLike() {
