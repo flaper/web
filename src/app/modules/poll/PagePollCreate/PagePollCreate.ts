@@ -1,6 +1,6 @@
 import {Component} from "@angular/core";
 import {FormBuilder, FormControl, FormGroup, Validators,FormArray} from '@angular/forms';
-import {PollService} from "@flaper/angular";
+import {PollService,Poll} from "@flaper/angular";
 import {Router} from "@angular/router";
 import * as moment from 'moment';
 
@@ -68,7 +68,7 @@ export class PagePollCreate {
             answers = [];
             break;
         }
-    let poll = {title,answers,type,openDate,closeDate};
+    let poll:Poll = <Poll> {id:null,title,answers,type,openDate,closeDate};
     if (type==='proposal') poll.description = this.form.controls['description'].value;
     return poll;
   }
