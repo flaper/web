@@ -68,7 +68,7 @@ export class PagePollCreate {
             answers = [];
             break;
         }
-    let poll:Poll = <Poll> {id:null,title,answers,type,openDate,closeDate};
+    let poll:Poll = <Poll> {title,answers,type,openDate,closeDate};
     if (type==='proposal') poll.description = this.form.controls['description'].value;
     return poll;
   }
