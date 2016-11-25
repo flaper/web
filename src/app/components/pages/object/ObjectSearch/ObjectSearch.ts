@@ -24,23 +24,26 @@ export class ObjectSearch {
       this.searchText = decodeURIComponent(params['text']) || "";
       if (page) this.currentPage = page;
       else this.currentPage = 0;
-      let domain = _location.getCurrentDomain()
-      let region = domain === 'места' ? _location.getCurrentRegion() : null;
-      _search.search(this.searchText,domain,region)
-      .subscribe(
-        data => {
-          this.count = data.hits.total;
-          this.pages = Math.ceil(this.count / this.pageSize);
-          this.objects = data.hits.hits.map(hit => hit._source);
-        },
-        error => {
-          console.error(error);
-          this.count = 0;
-          this.pages = 0;
-          this.objects = [];
-        }
-      )
+      this.search();
     });
+  }
+  search() {
+    let domain = this._location.getCurrentDomain(),
+        region = domain === 'места' ? this._location.getCurrentRegion() : null;
+    this._search.search(this.searchText,domain,region)
+    .subscribe(
+      data => {
+        this.count = data.hits.total;
+        this.pages = Math.ceil(this.count / this.pageSize);
+        this.objects = data.hits.hits.map(hit => hit._source);
+      },
+      error => {
+        console.error(error);
+        this.count = 0;
+        this.pages = 0;
+        this.objects = [];
+      }
+    )
   }
   getPagination() {
     let pages = [this.currentPage - 2 , this.currentPage - 1, this.currentPage , this.currentPage + 1 , this.currentPage + 2 ].filter(page => page > 0 && page <= this.pages);
