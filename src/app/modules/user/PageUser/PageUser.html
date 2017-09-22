@@ -31,7 +31,7 @@
       </div>
     </div>
 
-    <nav class="navbar navbar-light bg-faded" *ngIf="settings">
+    <nav class="navbar navbar-light bg-light" *ngIf="settings">
       <div class="nav navbar-nav">
         <a class="nav-item nav-link" routerLink="info"
            *ngIf="_user.isCurrentUser(user) || acl.isAdmin() || !settings['HIDE_SOCIAL_LINKS']"
