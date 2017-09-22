@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ObjectLink, AutoFocusIt, FlapImagePipe} from '@flaper/angular';
 import {MomentModule} from 'angular2-moment';
+import {ToastModule} from 'ng2-toastr';
 import {RouterModule} from '@angular/router';
 import {Autosize} from "./directives/Autosize/Autosize";
 import {LikeComponent} from "./components/like/LikeComponent/LikeComponent";
@@ -36,7 +37,7 @@ const COMPONENTS = [ObjectLink, LikeComponent, LikeListModal, UserLink, UserAvat
 // pipe-ы доступные во всех модулях
 const PIPES = [FixedPipe, FlapImagePipe];
 @NgModule({
-  imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule, MomentModule,
+  imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule, MomentModule, ToastModule.forRoot(),
     ModalModule.withComponents([LikeListModal]), ModalModule.forRoot(), BootstrapModalModule],
   declarations: [...PIPES, ...DIRECTIVES, ...COMPONENTS],
   exports: [CommonModule, FormsModule, ReactiveFormsModule, MomentModule, ...PIPES, ...DIRECTIVES, ...COMPONENTS]

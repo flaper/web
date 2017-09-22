@@ -3,7 +3,7 @@ import {ILikable, UserService, LikeService} from "@flaper/angular";
 import {PageService} from "../../../../services/helpers/PageService";
 import {PopupService} from "../../../../services/popup/PopupService";
 import {LikeListModal} from "../LikeListModal/LikeListModal";
-import {ToastsManager} from "ng2-toastr/ng2-toastr";
+import {ToastsManager} from "ng2-toastr";
 
 @Component({
   selector: 'like',
