@@ -1,16 +1,16 @@
 <div class="container-text">
-  <h2 class="text-xs-center">Активные статьи</h2>
-  <h4 class="text-xs-center" *ngIf="relatedStories.length">Текущий домен: {{domain}}{{domain === 'места'? ', текущий регион: '+region : ''}}</h4>
+  <h2 class="text-center">Активные статьи</h2>
+  <h4 class="text-center" *ngIf="relatedStories.length">Текущий домен: {{domain}}{{domain === 'места'? ', текущий регион: '+region : ''}}</h4>
   <stories-list [stories]="relatedStories" *ngIf="relatedStories">
 
   </stories-list>
-  <h5 class="text-xs-center" *ngIf="relatedStories.length">просмотреть все отзывы в <a [routerLink]="['/',domain]">{{domain}}</a>
+  <h5 class="text-center" *ngIf="relatedStories.length">просмотреть все отзывы в <a [routerLink]="['/',domain]">{{domain}}</a>
     <span *ngIf="domain === 'места' && region">
       / <a [routerLink]="['/',domain,region]">{{region}}</a>
     </span>
   </h5>
   <br>
-  <h4 class="text-xs-center" *ngIf="relatedStories.length">Все домены</h4>
+  <h4 class="text-center" *ngIf="relatedStories.length">Все домены</h4>
   <stories-auto-list [exclude]="relatedStories" order="lastActive DESC">
 
   </stories-auto-list>

@@ -3,10 +3,10 @@
     <button type="button" class="close-button" name="button" (click)="close()">
       <i class="fa fa-close" ></i>
     </button>
-    <div class="alert text-xs-center" *ngIf="userList.length === 0">
+    <div class="alert text-center" *ngIf="userList.length === 0">
       У этой записи нет лайков
     </div>
-    <div class="alert text-xs-center">
+    <div class="alert text-center">
       <like [subject]="context.subject" [iconMode]="true"></like>
     </div>
     <ul class='user-list' *ngIf="userList.length > 0">

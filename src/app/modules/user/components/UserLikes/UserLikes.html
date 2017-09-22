@@ -4,7 +4,7 @@
   <button (click)="findComments()" type="button" id="commentId" [ngClass]="{'active': type == 'Comment'}" class="btn btn-info btn-sm navbar-btn no-out">Комментарии</button>
 </div>
 <div class="alert alert-info m-t-1" *ngIf="(fanbase.length === 0) && loading">Еще нет лайков</div>
-<div *ngIf="!loading" class="text-xs-center m-t-1">
+<div *ngIf="!loading" class="text-center m-t-1">
   <img src="/assets/img/loading.gif">
 </div>
 <div *ngIf="loading">

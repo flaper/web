@@ -1,5 +1,5 @@
 <div class="container container-text">
-  <h2 class="text-xs-center">Статьи по региону {{region}}</h2>
+  <h2 class="text-center">Статьи по региону {{region}}</h2>
   <order-switch [fields]="orderFields" (orderChanged)="onSort($event)"></order-switch>
 
   <stories-auto-list [order]="order" [where]="where" *ngIf="where">

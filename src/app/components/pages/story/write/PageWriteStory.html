@@ -1,4 +1,4 @@
 <div class="container" *ngIf="newStory || !!story">
-  <h1 class="text-xs-center">{{newStory ? 'Создать' : 'Редактировать'}} статью</h1>
+  <h1 class="text-center">{{newStory ? 'Создать' : 'Редактировать'}} статью</h1>
   <simple-write [story]="story" [type]="story && story.type ? story.type : 'article'"></simple-write>
 </div>

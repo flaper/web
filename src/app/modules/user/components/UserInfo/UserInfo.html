@@ -4,7 +4,7 @@
 
     <div *ngIf="identities !== null">
       <div *ngFor="let identity of identities">
-      <span class="icon-container text-xs-center">
+      <span class="icon-container text-center">
           <i class="{{identity.icon}}"></i>
       </span>
         <a href="{{identity.url}}" target="_blank">{{identity.displayName}}</a>

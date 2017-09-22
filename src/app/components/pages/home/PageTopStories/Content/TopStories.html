@@ -1,6 +1,6 @@
 <div class="right-column">
   <div>
-    <h4 class="text-xs-center">Призы</h4>
+    <h4 class="text-center">Призы</h4>
 
     <div class="list-wrapper">
       <ul>
@@ -14,7 +14,7 @@
     </div>
   </div>
   <div *ngIf="winners && winners.length && stories" class="winners">
-    <h4 class="text-xs-center">Победители прошлой недели:</h4>
+    <h4 class="text-center">Победители прошлой недели:</h4>
 
     <div *ngFor="let winner of winners">
       <div *ngIf="stories[winner.id]">
@@ -27,7 +27,7 @@
   </div>
 </div>
 <div class="left-column container-text">
-  <h2 class="text-xs-center">Лучшие статьи</h2>
+  <h2 class="text-center">Лучшие статьи</h2>
   <stories-auto-list order="likesNumber DESC" [where]="where" *ngIf="where">
 
   </stories-auto-list>

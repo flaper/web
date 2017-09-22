@@ -14,7 +14,7 @@
     <ul class="nav nav-pills nav-stacked mobile-collapsed" id="ml-items">
       <li class="nav-item" *ngFor="let menuItem of _menu.getFlaperMenu()">
         <a class="nav-link" *ngIf="menuItem.routerLink" [routerLink]="menuItem.routerLink">
-        <span class="icon-container text-xs-center">
+        <span class="icon-container text-center">
           <i [class]="menuItem.iconClass">
           </i>
         </span>
@@ -25,7 +25,7 @@
       </li>
       <li class="nav-item" *ngIf="_user.currentUser">
         <a class="nav-link" (click)="logout()">
-          <span class="icon-container text-xs-center">
+          <span class="icon-container text-center">
             <i class="fa fa-sign-out">
             </i>
           </span>
