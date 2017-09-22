@@ -1,6 +1,6 @@
 @import "../../../../css/variables";
 
-$local-gray: lighten($gray-light, 10%);
+$local-gray: lighten($gray-600, 10%);
 :host {
   position: absolute;
   top: 0;
@@ -44,7 +44,7 @@ $local-gray: lighten($gray-light, 10%);
     background-color: $brand-secondary-light;
   }
   &:not(.active):hover {
-    background-color: $gray-lightest;
+    background-color: $gray-200;
   }
 }
 

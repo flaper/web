@@ -1,6 +1,5 @@
 import {Component, ViewEncapsulation, ViewContainerRef} from '@angular/core';
 import {Location} from '@angular/common';
-import 'jquery';
 import {PageService} from "./services/helpers/PageService";
 import {UserService} from "@flaper/angular";
 import {Metrika} from "./services/metrics/Metrika";

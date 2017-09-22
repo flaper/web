@@ -5,6 +5,6 @@ comment-component {
   margin: 0 0;
 
   &:not(:last-of-type) {
-    border-bottom: 1px solid $gray-lighter;
+    border-bottom: 1px solid $gray-200;
   }
 }

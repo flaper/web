@@ -153,9 +153,6 @@ $local-border: 1px solid lighten($brand-secondary, 10);
   overflow: hidden;
   -webkit-transition: all .3s cubic-bezier(.55,0,.55,.2);
   transition: all .3s cubic-bezier(.55,0,.55,.2);
-  -webkit-transition-property: background-color,box-shadow,-webkit-transform;
-  transition-property: background-color,box-shadow,-webkit-transform;
-  transition-property: background-color,box-shadow,transform;
   transition-property: background-color,box-shadow,transform,-webkit-transform;
   background: #ff6510;
 }

@@ -1,22 +1,22 @@
 .fa-chevron-down, .fa-chevron-up {
   font-size: 1.4rem;
   cursor: pointer;
-  color: $gray-lighter;
+  color: $gray-200;
   transition: $transition-all;
 }
 
 .post:hover, post-actions.active {
   .fa-chevron-down, .fa-chevron-up {
     transition: none;
-    color: $gray-light;
+    color: $gray-600;
   }
 }
 
 .post-actions-widget {
   background-color: white;
-  border: 1px solid $gray-dark;
+  border: 1px solid $gray-800;
   padding: 0.1rem 0;
-  box-shadow: 0 0 2px $gray-dark;
+  box-shadow: 0 0 2px $gray-800;
   .post-action {
     padding: 0.3rem 0.5rem;
     cursor: pointer;
@@ -28,5 +28,5 @@
 }
 
 .time {
-  color: $gray-light;
+  color: $gray-600;
 }
