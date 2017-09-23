@@ -19,7 +19,7 @@
   </ul>
   <user-search (usersFound)="whenFound($event)" class="col-xs-4"></user-search>
   <div class="row user-row" *ngFor="let user of foundUsers">
-    <div class="col-lg-1 col-md-1 col-xs-2 col-sm-2">
+    <div class="col-lg-1 col-md-1 col-2 col-sm-2">
       <!-- <img class="avatar" [src]="user.photo" alt="{{user.displayName}}"/> -->
       <user-avatar [id]="user.id"></user-avatar>
     </div>
@@ -33,7 +33,7 @@
         <i class="fa fa-thumbs-o-up"></i> {{user.likesNumber}}
       </span>
     </div>
-    <div class="col-lg-2 col-md-2 col-xs-2 col-sm-2">
+    <div class="col-lg-2 col-md-2 col-2 col-sm-2">
       <button type="button" name="button" (click)="addAsModerator(user)" class="btn btn-default">
         <i class="fa fa-flash"></i>
         Сделать управляющим

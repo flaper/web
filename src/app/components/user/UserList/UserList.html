@@ -1,8 +1,8 @@
 <div class="row" *ngFor="let user of users">
-  <div class="col-lg-1 col-md-1 col-xs-2 col-sm-2">
+  <div class="col-lg-1 col-md-1 col-2 col-sm-2">
     <img class="avatar" [src]="user.photo" alt="{{user.displayName}}" />
   </div>
-  <div class="col-lg-1 col-md-1 col-xs-2 col-sm-2">
+  <div class="col-lg-1 col-md-1 col-2 col-sm-2">
     <span class="counter" titile='Количество статей'>
       <i class="fa fa-book"></i> {{user.storiesNumber}}
     </span>
@@ -10,7 +10,7 @@
       <i class="fa fa-thumbs-o-up"></i> {{user.likesNumber}}
     </span>
   </div>
-  <div class="col-lg-10 col-lg-10 col-sm-8 col-xs-8">
+  <div class="col-lg-10 col-lg-10 col-sm-8 col-8">
     {{user.displayName}}
   </div>
 </div>

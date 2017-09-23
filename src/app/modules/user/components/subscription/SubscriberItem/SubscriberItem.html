@@ -1,16 +1,16 @@
 <div class='row'>
-  <div class='col-xs-1'>
+  <div class='col-1'>
     <img class='avatar' [src]="avatar"/>
   </div>
-  <div class='col-xs-1'>
+  <div class='col-1'>
     <!-- {{(user ? user : object) | json}} -->
   </div>
-  <div class='col-xs-8'>
+  <div class='col-8'>
     <a [routerLink]="getRouterLink()">
       <h4 class='sub-title'>{{displayName}}</h4>
     </a>
   </div>
-  <div class="col-xs-2">
+  <div class="col-2">
     <subscribe [targetId]="subjectId" [iconMode]="true"></subscribe>
   </div>
 </div>

@@ -25,7 +25,7 @@
       Для регистрации необходимо иметь как минимум 4 уровень.
     </div>
     <div class="" *ngIf="canBeCandidate() && !isCandidate() && !inProgress() && !hasFinished()">
-      <button class='btn btn-success col-xs-12' (click)="addMeAsCandidate()"><i class='fa fa-person'></i>Добавить свою кандидатуру</button>
+      <button class='btn btn-success col-12' (click)="addMeAsCandidate()"><i class='fa fa-person'></i>Добавить свою кандидатуру</button>
     </div>
 
     <ul class="answer-list" *ngIf="canVote() && inProgress() && !iHadVoted">
