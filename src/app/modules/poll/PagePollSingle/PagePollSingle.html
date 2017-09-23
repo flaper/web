@@ -29,7 +29,7 @@
     </div>
 
     <ul class="answer-list" *ngIf="canVote() && inProgress() && !iHadVoted">
-      <li class="answer-list__item col-xs-6 col-sm-6 col-md-4 col-lg-4" *ngFor="let answer of poll.answers">
+      <li class="answer-list__item col-6 col-sm-6 col-md-4 col-lg-4" *ngFor="let answer of poll.answers">
         <a class='btn btn-vote' (click)="vote(answer)" *ngIf="isPoll || isProposal">
           {{answer}}
         </a>
