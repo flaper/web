@@ -133,6 +133,12 @@ module.exports = (options) => {
       // See: https://github.com/s-panferov/awesome-typescript-loader#forkchecker-boolean-defaultfalse
       new ForkCheckerPlugin(),
 
+      new webpack.ProvidePlugin({
+        /*$: 'jquery',
+        jQuery: 'jquery',
+        'window.jQuery': 'jquery',*/
+        Popper: ['popper.js', 'default'],
+      }),
 
       // Plugin: CommonsChunkPlugin
       // Description: Shares common code between the pages.
