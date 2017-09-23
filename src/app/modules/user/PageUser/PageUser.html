@@ -2,7 +2,7 @@
   <div *ngIf="user">
 
     <div class="user-media">
-   <span class="media-left">
+   <span class="mr-2">
      <img class="media-object img-thumbnail" src="{{user.photoLarge}}" alt="{{user.displayName}}">
    </span>
 
@@ -31,8 +31,8 @@
       </div>
     </div>
 
-    <nav class="navbar navbar-light bg-light" *ngIf="settings">
-      <div class="nav navbar-nav">
+    <nav class="navbar navbar-light bg-light navbar-expand-sm" *ngIf="settings">
+      <div class="navbar-nav">
         <a class="nav-item nav-link" routerLink="info"
            *ngIf="_user.isCurrentUser(user) || acl.isAdmin() || !settings['HIDE_SOCIAL_LINKS']"
            routerLinkActive="active">Инфо</a>
