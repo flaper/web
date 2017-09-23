@@ -1,9 +1,9 @@
 <div>
   <div class="row" *ngFor="let object of objects">
-    <div class='col-xs-3'>
+    <div class='col-3'>
       <img class='avatar' [src]="object.flap.avatar ? object.flap.avatar : '/assets/img/no-image.png'"/>
     </div>
-    <div class='col-xs-3'>
+    <div class='col-3'>
       <span class='hidden-sm-down'>Рейтинг:</span>
       <i class='fa fa-star hidden-md-up'></i>
       <strong>{{asFObject(object).getRating() | fixed : 1}}</strong>/10
