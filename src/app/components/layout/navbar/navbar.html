@@ -13,17 +13,17 @@
   </div>
 
   <div class="navbar-section user-controls">
-    <ul class="nav navbar-nav">
+    <ul class="navbar-nav navbar-expand">
       <li class="nav-item" *ngIf="!_user.currentUser">
         <a class="nav-link" (click)="pageService.navigateToLogin()"><i class="fa fa-sign-in"></i> Вход</a>
       </li>
-      <li class="nav-item" *ngIf="_user.currentUser">
+      <li class="nav-itemm" *ngIf="_user.currentUser">
         <a [routerLink]="['/u', _user.currentUser.id, 'like']" title="История лайков" class="likes">
           <i class="fa fa-heart"></i>
           <i class="fa fa-heart-o"></i>
         </a>
       </li>
-      <li class="nav-item dropdown" *ngIf="_user.currentUser">
+      <li class="nav-item dropdown ml-3" *ngIf="_user.currentUser">
         <a class="nav-link dropdown-toggle nav-user" id="userDropDownMenu" data-toggle="dropdown"
            aria-haspopup="true">
           <img class="my-avatar" src="{{_user.currentUser.photo}}">
