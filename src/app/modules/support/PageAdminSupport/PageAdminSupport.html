@@ -6,7 +6,7 @@
       <div *ngFor="let m of dialogs" class="dialog" (click)="selectDialog(m.dialog)"
            [class.active]="activeDialog === m.dialog">
         <div class="media">
-          <div class="media-left">
+          <div class="mr-1">
             <user-avatar [id]="m.fromId" [size]="avatarSize" *ngIf="m.fromId"></user-avatar>
           </div>
           <div class="media-body">

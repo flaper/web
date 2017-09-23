@@ -1,7 +1,7 @@
 <div class="messages" *ngIf="messages && messages.length > 0">
   <div *ngFor="let m of messages" class="message">
     <div class="media">
-      <div class="media-left">
+      <div class="mr-1">
         <user-avatar [id]="m.fromId" [size]="avatarSize" *ngIf="m.toId !== m.dialog"></user-avatar>
         <img class="support-avatar" src="/assets/img/user/favicon-96x96.png" *ngIf="m.toId === m.dialog"/>
       </div>
