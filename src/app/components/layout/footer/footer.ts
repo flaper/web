@@ -9,4 +9,6 @@ export class Footer {
   constructor() {
 
   }
+
+  year = Math.max(2016, (new Date().getFullYear()));
 }
