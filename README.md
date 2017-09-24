@@ -2,7 +2,7 @@
 Based on angular2
 
 ##Requirements
-* node 5.1
+* node 6.0
 * bower (npm install bower -g)
 * typings (npm install bower -g)
 

@@ -135,7 +135,7 @@ module.exports = function (env) {
        * See: https://webpack.github.io/docs/list-of-plugins.html#uglifyjsplugin
        */
       // NOTE: To debug prod builds uncomment //debug lines and comment //prod lines
-      new UglifyJsPlugin({
+      /*new UglifyJsPlugin({
         // beautify: true, //debug
         // mangle: false, //debug
         // dead_code: false, //debug
@@ -156,11 +156,8 @@ module.exports = function (env) {
           screw_ie8: true,
           keep_fnames: true
         }, //prod
-        compress: {
-          screw_ie8: true
-        }, //prod
         comments: false //prod
-      }),
+      }),*/
 
       /**
        * Plugin: NormalModuleReplacementPlugin

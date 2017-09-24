@@ -10,7 +10,8 @@ export class PaymentService {
   constructor(private _user: UserService) {
   }
 
-  pay({id, amount, description = null, email = null, phone = null, customerName = null}) {
+  pay({id, amount, description, email, phone, customerName}:
+    {id: any, amount: any, description?: string, email?: string, phone?: string, customerName?: string}) {
     let data = {
       sum: amount,
       orderNumber: id,
